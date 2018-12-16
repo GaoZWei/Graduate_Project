@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Layout, Menu, Breadcrumb } from "antd";
-const { Header, Content, Footer } = Layout;
+import Nav from "./pages/common/Nav";
+import Foot from "./pages/common/Foot";
+// import "./App.css";
+import Implement from "./pages/implement/index";
+import { Layout} from "antd";
+const { Content} = Layout;
 
 class App extends Component {
   constructor() {
@@ -19,39 +21,17 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={["1"]}
-            style={{ lineHeight: "64px" }}
-          >
-            <div className="logo" style={{ display: "inline-block" }}>
-             ----- Change健身系统 ----   &nbsp;
-            </div>
-            <Menu.Item key="1">健身动作库</Menu.Item>
-            <Menu.Item key="2">健身计划</Menu.Item>
-            <Menu.Item key="3">饮食查询</Menu.Item>
-            <Menu.Item key="4">健康知识</Menu.Item>
-            <Menu.Item key="5">健身工具</Menu.Item>
-            <Menu.Item key="6">个人中心</Menu.Item>
-          </Menu>
-        </Header>
+        <Nav />
         <Content style={{ padding: "0 50px", marginTop: 64 }}>
-          {/* <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb> */}
-          <div style={{ background: "#fff", padding: 24, minHeight: 380 }}>
-            {/* Content */}
+          {/* <div style={{ background: "#fff", padding: 24, minHeight: 380 }}>
+            Content
             <div>健身知识库</div>
             <div>dasda</div>
-          </div>
+          </div> */}
+          <Implement />
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        
+        <Foot />
       </Layout>
       // <div className="App">
       //   <header className="App-header">
