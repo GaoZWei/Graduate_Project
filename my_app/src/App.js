@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import Nav from "./pages/common/Nav";
-import Foot from "./pages/common/Foot";
-// import "./App.css";
+import Exercise from "./pages/exercise/index";
+import Plan from "./pages/plan/index";
+import Food from "./pages/food/index";
+import News from "./pages/news/index";
+import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
-import { Layout} from "antd";
-const { Content} = Layout;
+
+
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -20,19 +23,16 @@ class App extends Component {
   }
   render() {
     return (
-      <Layout>
-        <Nav />
-        <Content style={{ padding: "0 50px", marginTop: 64 }}>
-          {/* <div style={{ background: "#fff", padding: 24, minHeight: 380 }}>
-            Content
-            <div>健身知识库</div>
-            <div>dasda</div>
-          </div> */}
-          <Implement />
-        </Content>
-        
-        <Foot />
-      </Layout>
+      <BrowserRouter>
+        <div>
+          <Route path="/exercise" exact component={Exercise} />
+          <Route path="/plan" exact component={Plan} />
+          <Route path="/food" exact component={Food} />
+          <Route path="/news" exact component={News} />
+          <Route path="/implement" exact component={Implement} />
+          <Route path="/personal" exact component={Personal} />
+        </div>
+      </BrowserRouter>
       // <div className="App">
       //   <header className="App-header">
       //     <img src={logo} className="App-logo" alt="logo" />
