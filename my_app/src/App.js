@@ -5,6 +5,7 @@ import Food from "./pages/food/index";
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
+import BMI from "./pages/implement/component/BMI"
 
 
 import { BrowserRouter, Route } from "react-router-dom";
@@ -30,6 +31,7 @@ class App extends Component {
           <Route path="/food" exact component={Food} />
           <Route path="/news" exact component={News} />
           <Route path="/implement" exact component={Implement} />
+          <Route path="/implement/BMI" exact component={BMI} />
           <Route path="/personal" exact component={Personal} />
         </div>
       </BrowserRouter>

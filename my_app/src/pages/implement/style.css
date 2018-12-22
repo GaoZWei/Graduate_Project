@@ -14,14 +14,22 @@
   display: inline-block;
   vertical-align: middle;
 }
-
-.gutter-box {
-  background: #00A0E9;
+.gutter-left {
+  color: black;
+  width: 20px 20px;
   padding: 5px 0;
 }
 
+/* .gutter-right {
+  display: inline-block;
+  background: #00A0E9;
+  color: black;
+  padding: 5px 0;
+} */
+
 .introduce {
   background: rgb(241, 241, 241);
+  color: black;
   padding:2%;
 }
 
