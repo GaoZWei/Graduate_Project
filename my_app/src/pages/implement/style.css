@@ -36,3 +36,13 @@
 }
 
 /* BMI组件样式 */
+.implement_content{
+  margin:2% 30% 0 9.5%; 
+  padding: 2%;
+  border: 1px solid rgb(217,217,217);
+}
+.implement_content_area{
+  /* width: 1000px; */
+  /* margin:0 20% 0 10%;  */
+  background: rgb(241,241,241);
+}
