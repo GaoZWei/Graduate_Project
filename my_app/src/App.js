@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import store from './store';
+import {Provider} from 'react-redux'
 import Exercise from "./pages/exercise/index";
 import Plan from "./pages/plan/index";
 import Food from "./pages/food/index";
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
-import BMI from "./pages/implement/component/BMI"
-
-
+import BMI from "./pages/implement/component/BMI";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
   }
   render() {
     return (
+      <Provider store ={store}>
       <BrowserRouter>
         <div>
           <Route path="/exercise" exact component={Exercise} />
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path="/personal" exact component={Personal} />
         </div>
       </BrowserRouter>
+      </Provider>
       // <div className="App">
       //   <header className="App-header">
       //     <img src={logo} className="App-logo" alt="logo" />

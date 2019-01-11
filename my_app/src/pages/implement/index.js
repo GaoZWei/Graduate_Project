@@ -48,6 +48,7 @@ class Implement extends Component {
                   </Col>
                 </Col>
               </Row>
+              <hr className="under_line"/>
               <Row gutter={16}>
                 <Col className="gutter-row" span={12}>
                   <Col className="gutter-row" span={4}>
@@ -77,6 +78,7 @@ class Implement extends Component {
                   </Col>
                 </Col>
               </Row>
+              <hr className="under_line"/>
               <Row gutter={16}>
                 <Col className="gutter-row" span={12}>
                   <Col className="gutter-row" span={4}>

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux';
 import { Layout, Menu } from "antd";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
+    console.log(this.state);
     return (
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <Menu
@@ -39,4 +41,9 @@ class Nav extends Component {
     );
   }
 }
-export default Nav;
+const mapStateToProps=(state)=>{
+  return {
+    selectValue:2
+  }
+}
+export default connect(mapStateToProps,null)(Nav);
