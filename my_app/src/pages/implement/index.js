@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Nav from "../common/Nav";
 import NavBreadcrumb from "../common/NavBreadcrumb";
 import Foot from "../common/Foot";
-import BMI from "./component/BMI";
+// import BMI from "./component/BMI";
 import "./style.css";
 import { Layout, Row, Col } from "antd";
 const { Content } = Layout;
@@ -13,7 +13,6 @@ class Implement extends Component {
     return (
       <Layout>
         <Nav />
-
         <Content
           style={{ padding: "0 50px", marginTop: 64, background: "white" }}
         >

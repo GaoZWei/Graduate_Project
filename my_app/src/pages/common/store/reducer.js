@@ -1,8 +1,6 @@
-// import * as actionTypes from "./actionTypes";
+import * as actionTypes from "./actionTypes";
 //immutable库
-import {
-  fromJS
-} from "immutable";
+import { fromJS } from "immutable";
 
 const defaultState = fromJS({
   focused: false,
@@ -10,13 +8,14 @@ const defaultState = fromJS({
   mouseIn: false,
   page: 1,
   totalPage: 1,
+  selectValue: "1"
 });
 
 export default (state = defaultState, action) => {
-  // switch (action.type) {
+  switch (action.type) {
     // case actionTypes.SEARCH_FOCUS:
-    //   //immutable对象的set方法,会结合之前的immutable对象的值
-    //   //和设置的值,返回一个全新的对象
+    //immutable对象的set方法,会结合之前的immutable对象的值
+    //和设置的值,返回一个全新的对象
     //   return state.set("focused", true);
     // case actionTypes.SEARCH_BLUR:
     //   return state.set("focused", false);
@@ -31,7 +30,9 @@ export default (state = defaultState, action) => {
     //   })
     // case actionTypes.CHANGE_PAGE:
     //   return state.set("page", action.page);
-    // default:
+    case actionTypes.CHANGE_NAV:
+      return state.set("selectValue", action.item);
+    default:
       return state;
-  // }
+  }
 };
