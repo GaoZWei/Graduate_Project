@@ -10,7 +10,7 @@ class Exercise extends Component {
     return (
       <Layout>
         <Nav />
-        <Content style={{ padding: "0 50px", marginTop: 64, height: 450 }}>
+        <Content style={{ padding: "0 50px", marginTop: 64, height: 600 }}>
           <Row>
             <Col span={9}>
               <div style={{ marginTop: 15 }}>
