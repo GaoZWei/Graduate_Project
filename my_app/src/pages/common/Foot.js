@@ -5,7 +5,7 @@ class Foot extends Component {
   render() {
     return (
         <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
+        ©2018-2019 Created by GaoZhengwei 
       </Footer>
     );
   }

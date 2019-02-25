@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import store from './store';
-import {Provider} from 'react-redux'
+import store from "./store";
+import { Provider } from "react-redux";
 import Exercise from "./pages/exercise/index";
 import Plan from "./pages/plan/index";
 import Food from "./pages/food/index";
@@ -24,18 +24,19 @@ class App extends Component {
   }
   render() {
     return (
-      <Provider store ={store}>
-      <BrowserRouter>
-        <div>
-          <Route path="/exercise" exact component={Exercise} />
-          <Route path="/plan" exact component={Plan} />
-          <Route path="/food" exact component={Food} />
-          <Route path="/news" exact component={News} />
-          <Route path="/implement" exact component={Implement} />
-          <Route path="/implement/BMI" exact component={BMI} />
-          <Route path="/personal" exact component={Personal} />
-        </div>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Route path="/" exact component={Exercise} />
+            <Route path="/exercise" exact component={Exercise} />
+            <Route path="/plan" exact component={Plan} />
+            <Route path="/food" exact component={Food} />
+            <Route path="/news" exact component={News} />
+            <Route path="/implement" exact component={Implement} />
+            <Route path="/implement/BMI" exact component={BMI} />
+            <Route path="/personal" exact component={Personal} />
+          </div>
+        </BrowserRouter>
       </Provider>
       // <div className="App">
       //   <header className="App-header">

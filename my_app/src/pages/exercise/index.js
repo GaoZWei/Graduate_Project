@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import { Layout, Col, Row, Button } from "antd";
+import Action from './component/Action';
+import { Layout, Col, Row, Button, Input } from "antd";
 const { Content } = Layout;
+const Search = Input.Search;
 class Exercise extends Component {
   render() {
     return (
       <Layout>
         <Nav />
         <Content style={{ padding: "0 50px", marginTop: 64, height: 450 }}>
-          这是健身动作库主页
           <Row>
-            <Col span={6}>
+            <Col span={9}>
+              <div style={{ marginTop: 15 }}>
+                <Search
+                  placeholder="动作名"
+                  onSearch={value => console.log(value)}
+                  style={{ width: 300 }}
+                />
+              </div>
               <div style={{ marginTop: 15 }}>
                 器械要求
                 <Row gutter={16}>
@@ -137,9 +145,58 @@ class Exercise extends Component {
                   </Col>
                 </Row>
               </div>
+              <div style={{ marginTop: 15 }}>
+                训练部位
+                <Row gutter={16}>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      不限部位
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      肱二头肌
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      胸肌
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      前臂
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
+              <div style={{ marginTop: 15 }}>
+                <Row gutter={16}>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      中背
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      下背
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      颈部
+                    </Button>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Button size="small" type="primary">
+                      股四头肌
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
             </Col>
-            <Col span={18}>
-              右侧主页 <div>dadada</div>
+            <Col span={15}>
+             <Action/>
             </Col>
           </Row>
         </Content>
