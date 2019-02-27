@@ -24,7 +24,7 @@ class Nav extends Component {
             <Link to="/exercise"> 健身动作库</Link>
           </Menu.Item>
           <Menu.Item key="2" onClick={() => changeNavItem("2")}>
-            <Link to="/plan"> 健身计划</Link>
+            <Link to="/plan"> 训练计划</Link>
           </Menu.Item>
           <Menu.Item key="3" onClick={() => changeNavItem("3")}>
             <Link to="/food"> 饮食查询</Link>

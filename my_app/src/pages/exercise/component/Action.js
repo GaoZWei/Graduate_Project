@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ActionItem from "./ActionItem";
-// import { Card} from "antd";
+import { Pagination } from "antd";
 // const { Meta } = Card;
 class Action extends Component {
   render() {
@@ -10,6 +10,9 @@ class Action extends Component {
         <ActionItem />
         <div style={{ marginTop: 155 }}>
           <ActionItem />
+        </div>
+        <div style={{ marginTop: 180 }}>
+          <Pagination defaultCurrent={3} total={500} />
         </div>
       </div>
     );
