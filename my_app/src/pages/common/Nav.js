@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
+import './style.css';
 import { Layout, Menu } from "antd";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
     const { selectValue, changeNavItem } = this.props;
     return (
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+      <Header style={{ position: "fixed", zIndex: 1, width: "100%",fontWeight:'bold' }}>
         <Menu
           theme="dark"
           mode="horizontal"
@@ -38,7 +39,16 @@ class Nav extends Component {
           <Menu.Item key="6" onClick={() => changeNavItem("6")}>
             <Link to="/personal"> 个人中心</Link>
           </Menu.Item>
+          {/* <Menu.Item key="7" onClick={() => changeNavItem("7")}>
+            <Link to="/">   登录/注册</Link>
+          </Menu.Item> */}
         </Menu>
+       <span className="login">
+       <Link to="/" className="loginRegiister_font"> 登录</Link>
+       </span>
+       <span className="register">
+       <Link to="/" className="loginRegiister_font"> 注册</Link>
+       </span>
       </Header>
     );
   }

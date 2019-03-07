@@ -1,0 +1,25 @@
+.login,
+.register {
+    position: fixed;
+    top: 0.05%;
+    color: rgb(149, 157, 165);
+    font-size: 14px;
+    z-Index: 100;
+}
+
+.login {
+    right: 9%;
+}
+
+.register {
+    right: 6%;
+}
+
+.loginRegiister_font {
+    color: rgb(149, 157, 165);
+}
+
+.loginRegiister_font:hover {
+    color: white;
+    text-decoration: none;
+}
