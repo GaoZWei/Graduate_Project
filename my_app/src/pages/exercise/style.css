@@ -1,0 +1,7 @@
+/* 内容区的大小布局 */
+.contentArea {
+    padding: 0 4%;
+    /* margin-top: 64px; */
+    margin-top: 6%;
+    height: 100%;
+}

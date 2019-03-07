@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ActionItem from "./ActionItem";
 import { Pagination } from "antd";
-// const { Meta } = Card;
 class Action extends Component {
   render() {
     return (

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './style.css';
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
 import Action from "./component/Action";
@@ -10,7 +11,7 @@ class Exercise extends Component {
     return (
       <Layout>
         <Nav />
-        <Content style={{ padding: "0 50px", marginTop: 64, height: 650 }}>
+        <Content className="contentArea">
         <Row>
             <Col span={9}>
             <ExerciseNav/>

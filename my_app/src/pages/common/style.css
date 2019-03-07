@@ -1,3 +1,12 @@
+/* 导航头部样式 */
+.navHead {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    font-weight: bold;
+}
+
+/* 登录注册链接的样式 */
 .login,
 .register {
     position: fixed;
@@ -15,11 +24,11 @@
     right: 6%;
 }
 
-.loginRegiister_font {
+.loginRegister_font {
     color: rgb(149, 157, 165);
 }
 
-.loginRegiister_font:hover {
+.loginRegister_font:hover {
     color: white;
     text-decoration: none;
 }
