@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Card, Col, Row } from "antd";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 class ActionItem extends Component {
   render() {
     return (
        <Row>
           <Col span={6}>
+          <Link to="/action/detail"> 
             <Card
               hoverable
               style={{ width: 140, height: 100 }}
@@ -18,6 +20,7 @@ class ActionItem extends Component {
             >
               <Meta title="具体动作名" description="所属相关分类" />
             </Card>
+            </Link>
           </Col>
           <Col span={6}>
             <Card

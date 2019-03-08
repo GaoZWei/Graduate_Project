@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
 import Exercise from "./pages/exercise/index";
+import ActionDetail from "./pages/exercise/component/ActionDetail/ActionDetail";
 import Plan from "./pages/plan/index";
 import Food from "./pages/food/index";
 import News from "./pages/news/index";
@@ -29,6 +30,7 @@ class App extends Component {
           <div>
             <Route path="/" exact component={Exercise} />
             <Route path="/exercise" exact component={Exercise} />
+            <Route path="/action/detail" exact component={ActionDetail} />
             <Route path="/plan" exact component={Plan} />
             <Route path="/food" exact component={Food} />
             <Route path="/news" exact component={News} />

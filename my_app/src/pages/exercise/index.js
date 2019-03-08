@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import './style.css';
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import Action from "./component/Action";
-import ExerciseNav from './component/ExerciseNav'
+import ActionList from "./component/ActionLIst/ActionList";
+import ExerciseNav from './component/LeftNavComponent/ExerciseNav'
 import { Layout, Col, Row} from "antd";
 const { Content } = Layout;
 class Exercise extends Component {
@@ -17,7 +17,7 @@ class Exercise extends Component {
             <ExerciseNav/>
             </Col>
             <Col span={15}>
-              <Action />
+              <ActionList />
             </Col>
           </Row>
         </Content>

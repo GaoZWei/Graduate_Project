@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ActionItem from "./ActionItem";
 import { Pagination } from "antd";
-class Action extends Component {
+class ActionList extends Component {
   render() {
     return (
       <div style={{ marginTop: 15 }}>
@@ -17,4 +17,4 @@ class Action extends Component {
     );
   }
 }
-export default Action;
+export default ActionList;
