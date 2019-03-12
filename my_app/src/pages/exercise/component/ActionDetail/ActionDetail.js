@@ -17,11 +17,11 @@ class ActionDetail extends Component{
                 <Col span={9}>
                 <ExerciseNav/>
                 </Col>
-                <Col span={15}>
-                  这是动作详情页面
+                <Col span={13}>
                   <ActionVideo/>
                   <ActionBasic/>
                 </Col>
+                <Col span={3}></Col>
               </Row>
             </Content>
             <div />

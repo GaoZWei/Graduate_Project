@@ -4,4 +4,82 @@
     /* margin-top: 64px; */
     margin-top: 6%;
     height: 100%;
+    font-weight: 600;
+}
+
+/* 动作详情页的动作基本信息 */
+.action_basic{
+    border: 1px gainsboro solid;
+    background-color: white;
+}
+.action_basic_two,.action_basic_three{
+    margin-top:2%; 
+    border: 1px gainsboro solid;
+    background-color: white;
+}
+
+.action_title {
+    color: black;
+    font-size: 1.5em;
+    /* margin-left: 1%;
+    margin-top: 1%; */
+    padding: 1.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1.7%;
+}
+.action_underline{
+    color: gray;
+    opacity: 0.2;
+}
+.action_content {
+    font-size: 1em;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 1.2%;
+}
+.action_type ,.action_level,.action_implement{
+    margin-left: 1%;
+}
+.action_type_sort,.action_main_sort,.action_level_sort,.action_other_sort,.action_implement_sort{
+    margin-left: 2%;
+    color: #167ac6;
+    /* padding: 2%; */
+}
+.action_main,.action_other{
+    margin-left: 10%;
+}
+/* 动作要领图样式 */
+.action_main_pic{
+    margin-top: 1%;
+}
+.action_main_pic img{
+    width:100%;
+    height: 100%;
+    margin-left: 15%;
+}
+.action_main_pic p{
+margin-left: 27%;
+margin-top: 1%;
+}
+/* .action_main_pic_first,.action_main_pic_second{
+    background-color:yellow;
+    display: flex;
+    justify-content: flex-start;
+} */
+
+
+/* 第三部分 */
+.action_basic_three{
+    padding: 2%;
+}
+.action_basic_three .action_title{
+    text-align: center;
+}
+.main_show_pic img {
+    width: 50%;
+    height: 50%;
+}
+.main_action_description p{
+    margin-top: 5%;
+    padding-left: 10%;
 }
