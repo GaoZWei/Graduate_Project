@@ -1,16 +1,27 @@
 import React, { Component } from "react";
+import "./style.css";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import { Layout } from "antd";
+import ExerciseNav from "../../../src/pages/exercise/component/LeftNavComponent/ExerciseNav";
+import PlanList from "./component/PlanList/PlanList";
+import { Layout, Col, Row } from "antd";
 const { Content } = Layout;
 class Plan extends Component {
   render() {
     return (
       <Layout>
         <Nav />
-        <Content style={{ padding: "0 50px", marginTop: 64 ,height:450}}>
-          这是健身计划
+        <Content className="contentArea">
+          <Row>
+            <Col span={9}>
+              <ExerciseNav />
+            </Col>
+            <Col span={15}>
+              <PlanList />
+            </Col>
+          </Row>
         </Content>
+        <div />
         <Foot />
       </Layout>
     );

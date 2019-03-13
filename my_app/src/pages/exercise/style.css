@@ -12,7 +12,7 @@
     border: 1px gainsboro solid;
     background-color: white;
 }
-.action_basic_two,.action_basic_three{
+.action_basic_two,.action_basic_three,.action_basic_four{
     margin-top:2%; 
     border: 1px gainsboro solid;
     background-color: white;
@@ -61,12 +61,6 @@
 margin-left: 27%;
 margin-top: 1%;
 }
-/* .action_main_pic_first,.action_main_pic_second{
-    background-color:yellow;
-    display: flex;
-    justify-content: flex-start;
-} */
-
 
 /* 第三部分 */
 .action_basic_three{
@@ -82,4 +76,16 @@ margin-top: 1%;
 .main_action_description p{
     margin-top: 5%;
     padding-left: 10%;
+}
+/* 第四部分 */
+.action_basic_four{
+    padding: 2%;
+    /* height: 20%; */
+}
+.add_to_plan .add_btn{
+    width: 25%;
+    /* height: 5%; */
+    margin-left: 17%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

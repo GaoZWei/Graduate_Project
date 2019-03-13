@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row } from "antd";
+import { Col, Row, Button } from "antd";
 import "../../style.css";
 import num01 from "../../../../statics/01.jpg";
 import num02 from "../../../../statics/02.jpg";
@@ -61,11 +61,17 @@ class ActionBasic extends Component {
             <Col span={12}>
               <div className="action_title">平板卧推动作要领</div>
               <div className="main_action_description">
-              <p>1、挺胸收腹，躯干与地面平行</p>
-              <p>2、双手与肩同宽，始终保持腰背挺直，控制肘部紧贴身体两侧</p>
+                <p>1、挺胸收腹，躯干与地面平行</p>
+                <p>2、双手与肩同宽，始终保持腰背挺直，控制肘部紧贴身体两侧</p>
               </div>
             </Col>
           </Row>
+        </div>
+        <div className="action_basic_four">
+          <div className="add_to_plan">
+            <Button type="primary" className="add_btn" size="large">添加至我的计划</Button>
+            <Button type="primary" className="add_btn" size="large">查看已有计划</Button>
+          </div>
         </div>
       </div>
     );
