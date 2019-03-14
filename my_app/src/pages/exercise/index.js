@@ -3,7 +3,7 @@ import './style.css';
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
 import ActionList from "./component/ActionLIst/ActionList";
-import ExerciseNav from './component/LeftNavComponent/ExerciseNav'
+import ExerciseNav from '../common/LeftNavComponent/ExerciseNav'
 import { Layout, Col, Row} from "antd";
 const { Content } = Layout;
 class Exercise extends Component {

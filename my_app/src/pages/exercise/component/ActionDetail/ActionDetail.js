@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import '../../style.css';
 import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
-import ExerciseNav from '../LeftNavComponent/ExerciseNav';
+import ExerciseNav from '../../../common/LeftNavComponent/ExerciseNav';
 import ActionVideo from './ActionVideo';
 import ActionBasic from './ActionBasic';
 import { Layout, Col, Row} from "antd";

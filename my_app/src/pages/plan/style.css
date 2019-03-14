@@ -6,3 +6,25 @@
     height: 100%;
     font-weight: 600;
 }
+/* 锻炼计划列表 */
+.planlist_title {
+    font-size: 1.5em;
+    background-color: white;
+    border-bottom: 1px solid gainsboro;
+    padding: 2%;
+}
+
+.planlist_content {
+    background-color: white;
+    padding: 2%;
+}
+/* 列表标题 */
+.ant-list-vertical .ant-list-item-meta-title {
+    font-size: 20px !important;
+}
+
+/* 锻炼计划详情 */
+.plan_detail_content{
+    margin-left: 1%;
+    margin-right: 1%;;
+}

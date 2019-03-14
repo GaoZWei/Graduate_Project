@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import ExerciseNav from "../../../src/pages/exercise/component/LeftNavComponent/ExerciseNav";
+import ExerciseNav from "../common/LeftNavComponent/ExerciseNav";
 import PlanList from "./component/PlanList/PlanList";
 import { Layout, Col, Row } from "antd";
 const { Content } = Layout;

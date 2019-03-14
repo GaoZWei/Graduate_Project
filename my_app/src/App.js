@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Exercise from "./pages/exercise/index";
 import ActionDetail from "./pages/exercise/component/ActionDetail/ActionDetail";
 import Plan from "./pages/plan/index";
+import PlanDetail from "./pages/plan/component/PlanDetail/PlanDetail"
 import Food from "./pages/food/index";
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
@@ -32,6 +33,7 @@ class App extends Component {
             <Route path="/exercise" exact component={Exercise} />
             <Route path="/action/detail" exact component={ActionDetail} />
             <Route path="/plan" exact component={Plan} />
+            <Route path="/plan/detail" exact component={PlanDetail} />
             <Route path="/food" exact component={Food} />
             <Route path="/news" exact component={News} />
             <Route path="/implement" exact component={Implement} />
