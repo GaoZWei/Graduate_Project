@@ -5,23 +5,23 @@ class PlanDetailItemTable extends Component {
   render() {
     const columns = [
       {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
+        title: "训练时间",
+        dataIndex: "time",
+        key: "time"
         // render: text => <a href="javascript:;">{text}</a>
       },
       {
-        title: "Age",
-        dataIndex: "age",
-        key: "age"
+        title: "训练部位",
+        dataIndex: "body",
+        key: "body"
       },
       {
-        title: "Address",
+        title: "训练动作",
         dataIndex: "address",
         key: "address"
       },
       {
-        title: "Tags",
+        title: "训练动作",
         key: "tags",
         dataIndex: "tags",
         render: tags => (
@@ -32,21 +32,23 @@ class PlanDetailItemTable extends Component {
                 color = "volcano";
               }
               return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
+                <a href="/">
+                  <Tag color={color} key={tag}>
+                    {tag.toUpperCase()}
+                  </Tag>
+                </a>
               );
             })}
           </span>
         )
       },
       {
-        title: "Action",
+        title: "操作",
         key: "action",
         render: (text, record) => (
           <span>
             {/* <a href="javascript:;"></a> */}
-            Invite {record.name}
+            点击查看 {record.name}
             <Divider type="vertical" />
             {/* <a href="javascript:;"></a> */}
             Delete
@@ -58,23 +60,51 @@ class PlanDetailItemTable extends Component {
     const data = [
       {
         key: "1",
-        name: "John Brown",
-        age: 32,
+        time: "周一",
+        body: "胸部",
         address: "New York No. 1 Lake Park",
-        tags: ["nice", "developer"]
+        tags: ["平板卧推", "哑铃弯举ad", "自由飞鸟"]
       },
       {
         key: "2",
-        name: "Jim Green",
-        age: 42,
+        time: "周二",
+        body: "肩部",
         address: "London No. 1 Lake Park",
         tags: ["loser"]
       },
       {
         key: "3",
-        name: "Joe Black",
-        age: 32,
+        time: "周三",
+        body: "腹部",
         address: "Sidney No. 1 Lake Park",
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+      },
+      {
+        key: "4",
+        time: "周四",
+        body: "前臂",
+        address: "Sidney No. 1 Lake Park",
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+      },
+      {
+        key: "5",
+        time: "周五",
+        body: "下背",
+        address: "Sidney No. 1 Lake Park",
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+      },
+      {
+        key: "6",
+        time: "周六",
+        body: "肱四头肌",
+        address: "Sidney No. 1 Lake Park",
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+      },
+      {
+        key: "7",
+        time: "周日",
+        body: "休息日",
+        address: "休息日",
         tags: ["cool", "teacher"]
       }
     ];

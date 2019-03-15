@@ -42,3 +42,25 @@
 .plan_detail_first_title{
     font-size: 1.5em;
 }
+
+.plan_detail_third{
+    margin-top: 2%;
+}
+/* 下划线 */
+.plan_underline{
+    color: gray;
+    opacity: 0.2;
+}
+
+/* 添加计划 */
+.plan_detail_four{
+    padding: 2%;
+    /* height: 20%; */
+}
+.plan_detail_four .add_btn{
+    width: 25%;
+    /* height: 5%; */
+    margin-left: 17%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
