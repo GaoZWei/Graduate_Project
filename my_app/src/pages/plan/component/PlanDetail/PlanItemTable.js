@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../style.css";
-import { Table, Divider, Tag } from "antd";
+import { Table, Divider, Tag, Col, Row } from "antd";
 class PlanDetailItemTable extends Component {
   render() {
     const columns = [
@@ -27,88 +27,121 @@ class PlanDetailItemTable extends Component {
         render: tags => (
           <span>
             {tags.map(tag => {
+              var random1 = new Date() + Math.random();
               let color = tag.length > 5 ? "geekblue" : "green";
               if (tag === "loser") {
                 color = "volcano";
               }
               return (
-                <a href="/">
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                </a>
+                <Tag color={color} key={random1}>
+                  {tag.toUpperCase()}
+                </Tag>
               );
             })}
           </span>
         )
-      },
-      {
-        title: "操作",
-        key: "action",
-        render: (text, record) => (
-          <span>
-            {/* <a href="javascript:;"></a> */}
-            点击查看 {record.name}
-            <Divider type="vertical" />
-            {/* <a href="javascript:;"></a> */}
-            Delete
-          </span>
-        )
       }
+      // {
+      //   title: "操作",
+      //   key: "action",
+      //   render: (text, record) => (
+      //     <span>
+      //       {/* <a href="javascript:;"></a> */}
+      //       点击查看 {record.name}
+      //       <Divider type="vertical" />
+      //       {/* <a href="javascript:;"></a> */}
+      //       Delete
+      //     </span>
+      //   )
+      // }
     ];
 
     const data = [
       {
-        key: "1",
+        key: 1,
         time: "周一",
         body: "胸部",
         address: "New York No. 1 Lake Park",
-        tags: ["平板卧推", "哑铃弯举ad", "自由飞鸟"]
+        tags: ["平板卧推", "哑铃弯举ad", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "2",
+        key: 2,
         time: "周二",
         body: "肩部",
         address: "London No. 1 Lake Park",
-        tags: ["loser"]
+        tags: ["平板卧推", "哑铃弯举ad", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "3",
+        key: 3,
         time: "周三",
         body: "腹部",
         address: "Sidney No. 1 Lake Park",
-        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "4",
+        key: 4,
         time: "周四",
         body: "前臂",
         address: "Sidney No. 1 Lake Park",
-        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "5",
+        key: 5,
         time: "周五",
         body: "下背",
         address: "Sidney No. 1 Lake Park",
-        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "6",
+        key: 6,
         time: "周六",
         body: "肱四头肌",
         address: "Sidney No. 1 Lake Park",
-        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"]
+        tags: ["平板卧推", "哑铃弯举", "自由飞鸟"],
+        groups: [3, 4, 5]
       },
       {
-        key: "7",
+        key: 7,
         time: "周日",
         body: "休息日",
         address: "休息日",
-        tags: ["cool", "teacher"]
+        tags: ["休息日"],
+        groups: [0]
       }
     ];
-    return <Table columns={columns} dataSource={data} />;
+    return (
+      <Table
+        columns={columns}
+        expandedRowRender={record => (
+          <div style={{ margin: 0 }}>
+            <Row>
+              <Col span={4}>
+                {record.tags.map(tag => {
+                   var random2 = new Date() + Math.random();
+                  return (<div key={random2}>{tag}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br/></div>);
+                })}
+              </Col>
+              <Col span={20}>
+                {record.groups.map(tag => {               
+                  let color = tag.length > 5 ? "geekblue" : "green";
+                  var random3 = new Date() + Math.random();
+                  if (tag === "loser") {
+                    color = "volcano";
+                  }
+                  return (<div key={random3}>{tag}组<br/></div>);
+                })}
+              </Col>
+            </Row>
+          </div>
+        )}
+        dataSource={data}
+      />
+    );
   }
 }
 export default PlanDetailItemTable;
