@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../style.css";
-import { List, Avatar, Icon } from "antd";
+// import { List,  Icon } from "antd";
+import { List } from "antd";
 import { Link } from "react-router-dom";
 class PlanList extends Component {
   render() {
@@ -17,12 +18,12 @@ class PlanList extends Component {
           "准备好燃脂，增肌，增加力量，并在6周内彻头彻尾的达到低体脂。准备好实现最佳身材吧。准备好极速脱脂计划吧！"
       });
     }
-    const IconText = ({ type, text }) => (
-      <span>
-        <Icon type={type} style={{ marginRight: 8 }} />
-        {text}
-      </span>
-    );
+    // const IconText = ({ type, text }) => (
+    //   <span>
+    //     <Icon type={type} style={{ marginRight: 8 }} />
+    //     {text}
+    //   </span>
+    // );
     return (
       <div>
         <div className="planlist_title">所有计划训练</div>

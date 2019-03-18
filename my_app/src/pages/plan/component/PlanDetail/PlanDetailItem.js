@@ -14,6 +14,7 @@ class PlanDetailItem extends Component {
           <div className="plan_detail_first_title">
             吉姆·斯托帕尼六周极速脱脂计划
           </div>
+         
           <div>
             <span>课时:</span> <span>5周</span>&nbsp;&nbsp;&nbsp;&nbsp;
             <span>天/周:</span> <span>5天</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,6 +25,7 @@ class PlanDetailItem extends Component {
               Stoppani），博士学位，致力于运动，营养和健康的研究，多本畅销书籍的作者，曾为像巨石强森和洛佩兹这样的名人做私人的营养和健康咨询。
               他的这套课程将在6周内帮助你燃脂、增肌和增加力量，让你彻头彻尾的达到低体脂！
             </div>
+          </div>
           </div>
           <div className="plan_detail_third">
             <PlanItemTable />
@@ -38,7 +40,7 @@ class PlanDetailItem extends Component {
               </Button>
             </div>
           </div>
-        </div>
+   
       </div>
     );
   }

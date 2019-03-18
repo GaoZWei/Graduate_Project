@@ -44,7 +44,9 @@
 }
 
 .plan_detail_third{
-    margin-top: 2%;
+    background-color: white;
+    margin-top: 1%;
+    padding: 1%;
 }
 /* 下划线 */
 .plan_underline{
@@ -54,6 +56,8 @@
 
 /* 添加计划 */
 .plan_detail_four{
+    background-color: white;
+    margin-top: 1%;
     padding: 2%;
     /* height: 20%; */
 }

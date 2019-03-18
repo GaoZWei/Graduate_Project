@@ -7,7 +7,7 @@ class NavBreadcrumb extends Component {
         <Breadcrumb>
           <Breadcrumb.Item>主页</Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="/">健身工具</a>
+            <a href="/">{window.location.href.slice(22)}</a>
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>

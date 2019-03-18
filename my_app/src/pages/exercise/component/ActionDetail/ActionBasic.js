@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Button } from "antd";
+import { Col, Row, Button, Divider } from "antd";
 import "../../style.css";
 import num01 from "../../../../statics/01.jpg";
 import num02 from "../../../../statics/02.jpg";
@@ -16,12 +16,28 @@ class ActionBasic extends Component {
             <Row>
               <span className="action_type">类型:</span>
               <span className="action_type_sort">上肢</span>
+              <Divider
+                type="vertical"
+                style={{
+                  position: "absolute",
+                  marginLeft: "5%",
+                  marginTop: "1%"
+                }}
+              />
               <span className="action_main">主要肌肉群:</span>
               <span className="action_main_sort">胸大肌</span>
             </Row>
             <Row>
               <span className="action_level">级别:</span>
               <span className="action_level_sort">初级</span>
+              <Divider
+                type="vertical"
+                style={{
+                  position: "absolute",
+                  marginLeft: "5%",
+                  marginTop: "1%"
+                }}
+              />
               <span className="action_other">其他肌肉:</span>
               <span className="action_other_sort">肱三头肌</span>
             </Row>
@@ -69,8 +85,12 @@ class ActionBasic extends Component {
         </div>
         <div className="action_basic_four">
           <div className="add_to_plan">
-            <Button type="primary" className="add_btn" size="large">添加至我的计划</Button>
-            <Button type="primary" className="add_btn" size="large">查看已有计划</Button>
+            <Button type="primary" className="add_btn" size="large">
+              添加至我的计划
+            </Button>
+            <Button type="primary" className="add_btn" size="large">
+              查看已有计划
+            </Button>
           </div>
         </div>
       </div>
