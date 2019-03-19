@@ -66,5 +66,59 @@
 
 /* 内容区 */
 .food_sort_content {
-    margin-top: 5%;
+    margin-top: 4.5%;
+    padding: 2%;
+    border: 1px solid red;
+}
+
+.food_sort_item {
+    color: gray;
+    opacity: 0.8;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* 食物列表 */
+.food_sortlist_top {
+    /* margin-left: 2%; */
+    /* margin-right: 8%; */
+    /* margin-top: 2%; */
+    padding: 1.5%;
+}
+
+.food_sortlist_content {
+    margin-left: 11%;
+}
+
+.food_sortlist_content_left {
+    border: 1px solid gainsboro;
+    padding: 2%;
+    /* padding-left: 0;
+    padding-right: 0; */
+}
+
+.food_sortlist_content_left_title {
+    /* border-bottom: 1px solid grey; */
+    /* border-width: 120%; */
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.food_sortlist_content_left_list:hover {
+    border: 1px solid rgb(224, 224, 224);
+    /* opacity: 0.2; */
+}
+
+.food_sortlist_content_right {
+    /* background-color: white; */
+    color: #3c62db;
+    border: 1px solid rgb(224, 224, 224);
+    padding: 2%;
+}
+
+.food_sortlist_content_right_title {
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
 }

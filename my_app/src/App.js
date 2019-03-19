@@ -6,6 +6,7 @@ import ActionDetail from "./pages/exercise/component/ActionDetail/ActionDetail";
 import Plan from "./pages/plan/index";
 import PlanDetail from "./pages/plan/component/PlanDetail/PlanDetail"
 import Food from "./pages/food/index";
+import FoodSortList from "./pages/food/component/FoodSortList"
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path="/plan" exact component={Plan} />
             <Route path="/plan/detail" exact component={PlanDetail} />
             <Route path="/food" exact component={Food} />
+            <Route path="/food/sortlist" exact component={FoodSortList} />
             <Route path="/news" exact component={News} />
             <Route path="/implement" exact component={Implement} />
             <Route path="/implement/BMI" exact component={BMI} />
