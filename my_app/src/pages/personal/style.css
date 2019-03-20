@@ -1,0 +1,43 @@
+/* 内容区整体布局 */
+.personal_content {
+    padding: 0 4%;
+    margin-top: 6%;
+    height: 100%;
+    font-weight: 600;
+}
+
+/* 内容区导航面包屑 */
+.personal_content_navbread {
+    margin-left: -12%;
+}
+
+.personal_content_main {
+    margin-top: 2%;
+    border: 1px solid red;
+}
+
+/* 公共计划 */
+.personal_public_plan {
+    border: 1px solid gray;
+    padding: 2%;
+}
+
+.personal_public_plan_title {
+    margin-top: 1%;
+    color: gray;
+    font-size: 1.5em;
+    /* margin-bottom: 2%; */
+    border-bottom: 1px solid gainsboro;
+}
+
+/* 定制计划 */
+.personal_customize_plan {
+    border: 1px solid green;
+    padding: 2%;
+}
+
+/* 个人信息 */
+.personal_message {
+    border: 1px solid orange;
+    padding: 2%;
+}
