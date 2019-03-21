@@ -39,5 +39,59 @@
 /* 个人信息 */
 .personal_message {
     border: 1px solid orange;
-    padding: 2%;
+    position: relative;
+    /* padding: 2%; */
+}
+
+.personal_message_top img {
+    width: 100%;
+}
+
+/*头像*/
+.personal_message_headpicture {
+    position: absolute;
+    color: white;
+    /* border: 1px solid red; */
+    width: 25%;
+    height: 25%;
+    margin-left: 10%;
+    margin-top: -35%;
+}
+
+/* 昵称 */
+.personal_message_name {
+    position: absolute;
+    color: white;
+    font-size: 1.5em;
+    margin-left: 58%;
+    margin-top: -27%;
+}
+
+.personal_message_modifymessage {
+    position: absolute;
+    background-color: black;
+    color: white;
+    margin-left: 80%;
+    margin-top: -10%;
+}
+
+/* 下方内容区 */
+.personal_message_content {
+    height: 50%;
+    /* background-color: black; */
+    color: black;
+    border: 1px solid gray;
+}
+
+/* 内容区标题 */
+.personal_message_content_title {
+    font-size: 1.5em;
+    margin-left: 32%;
+}
+
+/* 内容区内容 */
+.personal_message_content_detail01 {
+    font-size: 1.2em;
+    margin-left: 5%;
+    margin-top: 1%;
 }
