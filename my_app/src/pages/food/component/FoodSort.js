@@ -12,7 +12,7 @@ class FoodSort extends Component {
           <span className="food_sort_title"> 常见食物分类</span>
           <div className="food_sort_content">
             <Row>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
               <Col span={10}>
                 <Link to="/food/sortlist">
                   <Col span={6}>图片占位符</Col>
@@ -35,11 +35,11 @@ class FoodSort extends Component {
                   </Col>
                 </Link>
               </Col>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
             </Row>
-            <hr style={{width:'80%',color:'gray',opacity:'0.5'}}/>
+            <hr style={{ width: "80%", color: "gray", opacity: "0.5" }} />
             <Row>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
               <Col span={10}>
                 <Link to="/">
                   <Col span={6}>图片占位符</Col>
@@ -62,11 +62,11 @@ class FoodSort extends Component {
                   </Col>
                 </Link>
               </Col>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
             </Row>
-            <hr style={{width:'80%',color:'gray',opacity:'0.5'}}/>
+            <hr style={{ width: "80%", color: "gray", opacity: "0.5" }} />
             <Row>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
               <Col span={10}>
                 <Link to="/">
                   <Col span={6}>图片占位符</Col>
@@ -89,7 +89,7 @@ class FoodSort extends Component {
                   </Col>
                 </Link>
               </Col>
-              <Col span={2}>占位符</Col>
+              <Col span={2} />
             </Row>
           </div>
           <div />

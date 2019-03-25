@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
 import { Layout, Menu } from "antd";
-import './style.css';
+import "./style.css";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
@@ -15,10 +15,10 @@ class Nav extends Component {
           mode="horizontal"
           // defaultSelectedKeys={["1"]}
           selectedKeys={[selectValue]}
-          style={{ lineHeight: "64px" }}
+          style={{ lineHeight: "64px", backgroundColor: "rgb(32,32,34)" }}
         >
           {/* <div className="logo" style={{ display: "inline-block" }}>
-            ----- Change健身系统 ---- &nbsp;
+            --------- Change健身系统 --------- &nbsp;
           </div> */}
           {/* ----- Change健身系统 ---- &nbsp; */}
           <Menu.Item key="1" onClick={() => changeNavItem("1")}>
@@ -40,12 +40,18 @@ class Nav extends Component {
             <Link to="/personal"> 个人中心</Link>
           </Menu.Item>
         </Menu>
-       <span className="login">
-       <Link to="/" className="loginRegister_font"> 登录</Link>
-       </span>
-       <span className="register">
-       <Link to="/" className="loginRegister_font"> 注册</Link>
-       </span>
+        <span className="login">
+          <Link to="/" className="loginRegister_font">
+            {" "}
+            登录
+          </Link>
+        </span>
+        <span className="register">
+          <Link to="/" className="loginRegister_font">
+            {" "}
+            注册
+          </Link>
+        </span>
       </Header>
     );
   }
