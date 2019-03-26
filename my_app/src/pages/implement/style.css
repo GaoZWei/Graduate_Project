@@ -1,55 +1,79 @@
+/* -------健身工具主页样式------ */
+.implement_contentarea {
+  padding: 0 4%;
+  margin-top: 4%;
+  background: white;
+}
+
+/* 最外层区 */
 .implement_body {
   background: #fff;
   margin-left: 8%;
   margin-right: 8%;
   padding: 1.5%;
 }
-.implement_title{
+
+/* 大标题 */
+.implement_title {
   font-size: 20px;
   font-weight: bold;
 }
-.implement_title::before{
+
+/* 标题前面的竖线 */
+.implement_title::before {
   content: '';
-  background:rgb(218,0,66);
+  background: rgb(218, 0, 66);
   width: 5px;
   height: 30px;
   display: inline-block;
   vertical-align: middle;
 }
-.gutter-left {
-  color: black;
-  width: 20px 20px;
-  padding: 5px 0;
+
+/* 列表区域 */
+.implement_listarea {
+  margin-top: 1%;
 }
 
-/* .gutter-right {
-  display: inline-block;
-  background: #00A0E9;
+/* 小标题 */
+.implement_topic {
+  font-size: 1.2em;
+  margin-top: 2%;
   color: black;
-  padding: 5px 0;
-} */
+  font-weight: bold;
+}
 
 .introduce {
   background: rgb(241, 241, 241);
   color: black;
-  padding:2%;
+  padding: 2%;
 }
+
 /* 下划线 */
-.under_line{
-  background-color: rgba(193, 193, 193,0.5);
+.under_line {
+  background-color: rgba(193, 193, 193, 0.5);
   height: 1px;
   border: none;
 }
 
-/* BMI组件样式 */
-.implement_content{
-  margin:2% 30% 0 9.5%; 
+/* ----------BMI组件样式---------- */
+.implement_bmi {
+  margin: 2% 30% 0 9.5%;
   padding: 2%;
-  border: 1px solid rgb(217,217,217);
-}
-.implement_content_area{
-  /* width: 1000px; */
-  /* margin:0 20% 0 10%;  */
-  background: rgb(241,241,241);
+  border: 1px solid rgb(217, 217, 217);
 }
 
+/* 大标题 */
+.implement_bmi_title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.implement_bmi_content {
+  padding: 2%;
+}
+
+/* 提示信息 */
+.implement_bmi_prompt {
+  font-weight: bold;
+  font-size: 1.1em;
+}

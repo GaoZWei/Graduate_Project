@@ -72,22 +72,71 @@
     width: 80%;
     background-color: rgb(198, 58, 61) !important;
     border: none !important;
-    border-radius: 0 !important;
-
+    border-radius: 0 !important; 
 }
 
 .left_nav_collapse_panel .ant-collapse-header {
     color: white !important;
 }
 
+
+.left_nav_collapse_panel .ant-collapse-content-box {
+    background-color: rgb(45, 44, 46);
+}
+
 /* 左侧样式按钮 */
 .left_nav {
-    margin-top: 1%;
+    margin-top: 2%;
+    font-weight: bold;
+    color: #b2b2b2;
+  
+}
+
+.left_nav_title {
+    font-size: 1.2em;
+    border-bottom: 1px solid #343335;
 }
 
 .left_nav .ant-btn-sm {
     font-size: 1em;
+    color: #b2b2b2;
+    background-color: #3f3f3f !important;
+    border: 1px solid #3f3f3f !important;
     height: 2em;
     width: 5em;
+    font-weight: 450;
+    /* padding: 1%; */
+    margin-top: 2%;
     margin-left: 2%;
+}
+
+.left_nav .ant-btn-sm:hover {
+    color: white;
+    background-color: #3f3f3f !important;
+    border: 1px solid #3f3f3f;
+}
+
+.left_nav .ant-btn-sm::selection {
+    background-color: yellow !important;
+    color: #fff;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    /* project id 968179 */
+    src: url('//at.alicdn.com/t/font_968179_erqe6eaccb5.eot');
+    src: url('//at.alicdn.com/t/font_968179_erqe6eaccb5.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_968179_erqe6eaccb5.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_968179_erqe6eaccb5.woff') format('woff'),
+        url('//at.alicdn.com/t/font_968179_erqe6eaccb5.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_968179_erqe6eaccb5.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
 }

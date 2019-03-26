@@ -6,6 +6,10 @@
     height: 100%;
     font-weight: 600;
 }
+/* 锻炼计划大布局 */
+.planlist_area{
+    padding: 0 4%;
+}
 /* 锻炼计划列表 */
 .planlist_title {
     font-size: 1.5em;

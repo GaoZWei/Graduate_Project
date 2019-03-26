@@ -25,7 +25,7 @@ class PlanList extends Component {
     //   </span>
     // );
     return (
-      <div>
+      <div className="planlist_area">
         <div className="planlist_title">所有计划训练</div>
         <div className="planlist_content">
           <List

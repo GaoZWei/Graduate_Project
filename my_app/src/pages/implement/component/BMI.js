@@ -19,25 +19,24 @@ class BMI extends Component {
           }}
         >
           <NavBreadcrumb />
-          <div className="implement_content">
-            <h3>身体质量指数</h3>
-            <div className="implement_content_area">
-              <p>
+          <div className="implement_bmi">
+          <div className="implement_bmi_title">身体质量指数</div>
+            <div className="implement_bmi_content">
+              <div>
                 BMI[Body Mass Index]
                 即BMI指数，也叫身体质量指数，是衡量是否肥胖和标准体重的重要指标。适用范围：18至65岁的人士。儿童、发育中的青少年、孕妇、乳母、老人及身型健硕的运动员除外。世界卫生组织认为BMI指数保持在22左右是比较理想的。
-              </p>
+              </div>
             </div>
             <div>
-              请输入您的身高、体重：
-              <br />
+              <div className="implement_bmi_prompt"> 请输入您的身高、体重：</div>
               <div>
                 <Row gutter={16}>
-                  <Col className="gutter-row" span={8}>
+                  <Col span={8}>
                     身高:
                     <Input size="small" placeholder="身高" />
                     CM(厘米)
                   </Col>
-                  <Col className="gutter-row" span={8}>
+                  <Col span={8}>
                     体重:
                     <Input size="small" placeholder="体重" />
                     KG(公斤)
