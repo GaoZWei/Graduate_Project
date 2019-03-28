@@ -57,9 +57,10 @@
 
 /* ----------BMI组件样式---------- */
 .implement_bmi {
-  margin: 2% 30% 0 9.5%;
+  margin: 3% 10% 2% 9.5%;
   padding: 2%;
   border: 1px solid rgb(217, 217, 217);
+  background: white;
 }
 
 /* 大标题 */
@@ -69,11 +70,49 @@
 }
 
 .implement_bmi_content {
-  padding: 2%;
+  background: rgb(244, 244, 244);
+  font-weight: 600;
+  padding: 3%;
+  margin-top: 1%;
 }
 
 /* 提示信息 */
 .implement_bmi_prompt {
   font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* 输入框 */
+.implement_bmi_input {
+  font-weight: bold;
   font-size: 1.1em;
+}
+
+.implement_bmi_input_place {
+  border: 1px solid #d4d4d4;
+}
+
+/* 提交按钮及重置按钮的位置 */
+.implement_bmi_input {
+  margin-top: 2%;
+}
+
+.implement_bmi_summit {
+  margin-top: 5%;
+}
+
+/* 提交按钮及重置按钮的样式 */
+.implement_bmi_submit_btn {
+  background-color: rgb(253, 243, 243) !important;
+  color: #dc5454 !important;
+  border: 1px solid #ef9494 !important;
+  cursor: pointer;
+  width: 80%;
+}
+/* 结果区域 */
+.implement_bmi_extend_content{
+  background: rgb(244, 244, 244);
+  font-weight: 600;
+  padding: 3%;
+  margin-top:3%;
 }

@@ -6,7 +6,7 @@ import { Button } from "antd";
 class PlanDetailItem extends Component {
   render() {
     return (
-      <div>
+      <div className="plan_detail_area">
         <div className="plan_detail_head">
           <img src={bg01} alt="" />
         </div>

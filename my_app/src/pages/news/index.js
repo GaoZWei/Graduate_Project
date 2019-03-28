@@ -1,20 +1,45 @@
 import React, { Component } from "react";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import { Layout } from "antd";
-const { Content } = Layout;
+import NavBreadcrumb from "../common/NavBreadcrumb";
+import NewsList from "./component/NewsList/NewsList";
+import "./style.css";
+import { Layout, Row, Col, Button } from "antd";
 class News extends Component {
   render() {
     return (
-      <Layout>
+      <Layout className="news_area_out">
         <Nav />
-        <Content style={{ padding: "0 50px", marginTop: 64 ,height:450}}>
-        这是新闻知识页面
-        </Content>
+        <div className="news_area">
+          <NavBreadcrumb />
+          <div className="news_part">
+            <div className="news_part_top">
+            <div className="news_part_top_title">增肌</div>
+           
+              <Button type="primary" className="news_part_top_btn">
+                上肢
+              </Button>
+              <Button type="primary" className="news_part_top_btn">
+                上肢
+              </Button>
+              <Button type="primary" className="news_part_top_btn">
+                上肢
+              </Button>
+              <Button type="primary" className="news_part_top_btn">
+                上肢
+              </Button>
+              <Button type="primary" className="news_part_top_btn">
+                上肢
+              </Button>
+            </div>
+            <div>
+              <NewsList />
+            </div>
+          </div>
+        </div>
         <Foot />
       </Layout>
     );
   }
 }
 export default News;
-

@@ -10,7 +10,7 @@ import FoodSortList from "./pages/food/component/FoodSortList"
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
-import BMI from "./pages/implement/component/BMI";
+import BMI from "./pages/implement/component/ImplementItem/BMI";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
