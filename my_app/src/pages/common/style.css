@@ -72,14 +72,14 @@
     width: 80%;
     background-color: rgb(198, 58, 61) !important;
     border: none !important;
-    border-radius: 0 !important; 
+    border-radius: 0 !important;
 }
 
 .left_nav_collapse_panel .ant-collapse-header {
     color: white !important;
 }
 
-
+/* 按钮显示区样式 */
 .left_nav_collapse_panel .ant-collapse-content-box {
     background-color: rgb(45, 44, 46);
 }
@@ -89,7 +89,7 @@
     margin-top: 2%;
     font-weight: bold;
     color: #b2b2b2;
-  
+
 }
 
 .left_nav_title {

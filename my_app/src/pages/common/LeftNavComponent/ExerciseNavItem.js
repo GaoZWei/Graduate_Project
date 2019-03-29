@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from "react";
-import { Collapse, Row, Button } from "antd";
 import "../style.css";
+import { connect } from "react-redux";
+import { actionCreator } from "../store";
+import { Collapse, Row, Button } from "antd";
 const Panel = Collapse.Panel;
+
 class ExerciseNavItem extends Component {
   render() {
+    const { selectPage } = this.props;
+    console.log(selectPage)
     return (
       <Fragment>
         <Collapse accordion className="left_nav_collapse">
@@ -13,9 +18,10 @@ class ExerciseNavItem extends Component {
             className="left_nav_collapse_panel"
             style={{ backgroundColor: "rgb(37,36,37)" }}
           >
+           
             <div className="left_nav">
               <div className="left_nav_title">
-                <i className="iconfont">&#xe8ab;</i>&nbsp;&nbsp;训练目标{" "}
+                <i className="iconfont">&#xe8ab;</i>&nbsp;&nbsp;训练目标
               </div>
               <Row gutter={16}>
                 <Button size="small" type="primary">
@@ -262,7 +268,6 @@ class ExerciseNavItem extends Component {
             </div>
             <div className="left_nav">
               <div className="left_nav_title">
-                {" "}
                 <i className="iconfont">&#xe609;</i>&nbsp;&nbsp;训练难度{" "}
               </div>
               <Row gutter={16}>
@@ -286,4 +291,13 @@ class ExerciseNavItem extends Component {
     );
   }
 }
-export default ExerciseNavItem;
+const mapStateToProps = state => {
+  return {
+    selectPage: state.getIn(["header", "selectPage"])
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(ExerciseNavItem);

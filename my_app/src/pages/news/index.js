@@ -4,14 +4,16 @@ import Foot from "../common/Foot";
 import NavBreadcrumb from "../common/NavBreadcrumb";
 import NewsList from "./component/NewsList/NewsList";
 import "./style.css";
-import { Layout, Row, Col, Button } from "antd";
+import { Layout, Button } from "antd";
 class News extends Component {
   render() {
     return (
       <Layout className="news_area_out">
         <Nav />
         <div className="news_area">
-          <NavBreadcrumb />
+        <div className="news_area_nav">
+        <NavBreadcrumb />
+          </div> 
           <div className="news_part">
             <div className="news_part_top">
             <div className="news_part_top_title">增肌</div>

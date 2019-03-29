@@ -1,14 +1,17 @@
 import * as actionTypes from "./actionTypes";
 //immutable库
-import { fromJS } from "immutable";
+import {
+  fromJS
+} from "immutable";
 
 const defaultState = fromJS({
-  focused: false,
-  list: [],
-  mouseIn: false,
-  page: 1,
-  totalPage: 1,
-  selectValue: "1"
+  // focused: false,
+  // list: [],
+  // mouseIn: false,
+  // page: 1,
+  // totalPage: 1,
+  selectValue: "1",
+  selectPage: "backgroundColor: 'rgb(37,36,37)'"
 });
 
 export default (state = defaultState, action) => {

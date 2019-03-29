@@ -8,6 +8,9 @@
     margin-left: 8%;
     margin-top: 5%;
 }
+.news_area_nav{
+    margin-left: -11%;
+}
 
 .news_part {
     border: 1px solid red;
@@ -17,7 +20,7 @@
     background: rgb(240, 240, 240);
     font-size: 1.5em;
     font-weight: bold;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     margin-left: 1%;
     margin-right: 1%;
    
@@ -26,8 +29,9 @@
 .news_part_top_title {
     font-size: 1.3em;
     color: #333;
+    padding: 1%;
     margin-top: 3%;
-    margin-left: 3%;
+    margin-left: 2%;
 }
 
 .news_part_top_btn {
