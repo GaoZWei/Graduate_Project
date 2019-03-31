@@ -1,0 +1,39 @@
+/* -------注册整体布局------- */
+.register_area {
+    padding: 0 4%;
+    margin-top: 4%;
+    background: white;
+}
+
+/* 注册区域 */
+.register_area_content {
+    margin-top: 10%;
+    margin-bottom: 2%;
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.register_area_top {
+    text-align: center;
+    color: white;
+    letter-spacing: 10px;
+    font-size: 2em;
+    background: linear-gradient(to bottom, #26262e 0, #46464c 100%);
+    padding: 2%;
+}
+
+/* 表单每行 */
+.register_area_formitem {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 2%;
+}
+
+.register_label{
+    /* margin-top: 1%; */
+    margin-bottom: 1%;
+}
+.register_input{
+    margin-bottom: 2%;
+}

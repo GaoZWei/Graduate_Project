@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
+import Register from "./pages/login/Register/register";
 import Exercise from "./pages/exercise/index";
 import ActionDetail from "./pages/exercise/component/ActionDetail/ActionDetail";
 import Plan from "./pages/plan/index";
-import PlanDetail from "./pages/plan/component/PlanDetail/PlanDetail"
+import PlanDetail from "./pages/plan/component/PlanDetail/PlanDetail";
 import Food from "./pages/food/index";
-import FoodSortList from "./pages/food/component/FoodSortList"
+import FoodSortList from "./pages/food/component/FoodSortList";
 import News from "./pages/news/index";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path="/implement" exact component={Implement} />
             <Route path="/implement/BMI" exact component={BMI} />
             <Route path="/personal" exact component={Personal} />
+            <Route path="/register" exact component={Register} />
           </div>
         </BrowserRouter>
       </Provider>

@@ -10,8 +10,8 @@ const defaultState = fromJS({
   // mouseIn: false,
   // page: 1,
   // totalPage: 1,
-  selectValue: "1",
-  selectPage: "backgroundColor: 'rgb(37,36,37)'"
+  selectValue: "",
+  selectPage:'plan_panel'
 });
 
 export default (state = defaultState, action) => {

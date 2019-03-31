@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from "react";
 import "../style.css";
 import { connect } from "react-redux";
-import { actionCreator } from "../store";
+// import { actionCreator } from "../store";
 import { Collapse, Row, Button } from "antd";
 const Panel = Collapse.Panel;
 
 class ExerciseNavItem extends Component {
   render() {
     const { selectPage } = this.props;
-    console.log(selectPage)
+    console.log(selectPage);
+    const data = this.props.location;
+    console.log(data);
     return (
       <Fragment>
         <Collapse accordion className="left_nav_collapse">
@@ -16,9 +18,8 @@ class ExerciseNavItem extends Component {
             header="健身计划"
             key="1"
             className="left_nav_collapse_panel"
-            style={{ backgroundColor: "rgb(37,36,37)" }}
+            className={selectPage === "plan_panel" ? selectPage : ""}
           >
-           
             <div className="left_nav">
               <div className="left_nav_title">
                 <i className="iconfont">&#xe8ab;</i>&nbsp;&nbsp;训练目标
@@ -85,7 +86,7 @@ class ExerciseNavItem extends Component {
             </div>
             <div className="left_nav">
               <div className="left_nav_title">
-                <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位{" "}
+                <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位
               </div>
               <Row gutter={16}>
                 <Button size="small" type="primary">
@@ -129,7 +130,14 @@ class ExerciseNavItem extends Component {
               </Row>
             </div>
           </Panel>
-          <Panel header="健身动作" key="2" className="left_nav_collapse_panel">
+          <Panel
+            header="健身动作"
+            key="2"
+            className="left_nav_collapse_panel"
+            className={
+              selectPage !== "plan_panel" ? selectPage : "exercise_panel"
+            }
+          >
             <div className="left_nav">
               <div className="left_nav_title">
                 <i className="iconfont">&#xe65d;</i>&nbsp;&nbsp;器械要求
