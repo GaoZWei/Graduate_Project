@@ -17,18 +17,96 @@
 .index_top_left {
     position: absolute;
     color: white;
-    margin-left: 20%;
-    margin-top: -16.5%;
+    font-weight: bold;
+    margin-left: 17%;
+    margin-top: -17.5%;
     z-index: 100;
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
-.index_top_right {
+/* 头部小字 */
+.index_top_left_small {
     position: absolute;
     color: white;
-    margin-left: 70%;
-    margin-top: -16.5%;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 30%;
+    margin-top: -8.5%;
     z-index: 100;
-    font-size: 3em;
-    border: 1px solid black;
+}
+
+/* 头部右侧 */
+.index_top_right {
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* border: 1px solid black; */
+    width: 30%;
+    height: 80%;
+    padding: 3%;
+    margin-left: 57%;
+    margin-top: -22.8%;
+    z-index: 100;
+}
+
+.index_top_right_item {
+    font-size: 0.8em;
+    margin-top: 10%;
+}
+
+/* 头部按钮 */
+.index_top_right_item_btn {
+    color: white;
+    font-weight: bold;
+    background-color: rgb(218, 0, 66);
+    border: 1px solid rgb(218, 0, 66);
+    margin-left: 4%;
+    padding: 1%;
+    width: 40%;
+}
+
+.index_top_right_item_btn:hover {
+    color: white;
+    background-color: rgb(218, 0, 66);
+    border: 1px solid rgb(218, 0, 66);
+}
+
+/* 主要内容区 */
+.index_middle_content {
+    margin-top: 2%;
+}
+
+
+/* 右侧内容区 */
+.index_middle_content_small_title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+.index_middle_content_small_title::before {
+    content: '';
+    background: rgb(218, 0, 66);
+    width: 5px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.index_middle_content_left_list,
+.index_middle_content_right_list {
+    margin-top: 2%;
+}
+
+.more_link {
+    font-size: 0.9em;
+    color: gray;
+    margin-left: 70%;
+    /* padding-right: -20%; */
+}
+
+.more_link:hover {
+    color: rgb(218, 0, 66);
 }
