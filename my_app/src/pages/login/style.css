@@ -1,14 +1,15 @@
 /* -------注册整体布局------- */
 .register_area {
-    padding: 0 4%;
-    margin-top: 4%;
+    padding: 0 15%;
+    margin-top: 0.5%;
     background: white;
 }
 
 /* 注册区域 */
 .register_area_content {
-    margin-top: 10%;
-    margin-bottom: 2%;
+    margin-top: 8%;
+    padding-bottom: 2%;
+    margin-bottom: 5%;
     background-color: white;
     font-weight: bold;
     border: 1px solid black;
@@ -25,15 +26,57 @@
 
 /* 表单每行 */
 .register_area_formitem {
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-top: 2%;
+    font-size: 1.2em;
+    margin-left: 31%;
+    margin-right: 31%;
+    margin-top: 1.25%;
 }
 
-.register_label{
-    /* margin-top: 1%; */
+.register_label {
     margin-bottom: 1%;
 }
-.register_input{
+
+.register_input {
     margin-bottom: 2%;
+    /* font-size: 1em; */
+}
+
+/* 提交区域 */
+.register_submit {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1%;
+}
+
+.register_btn {
+    width: 21.5%;
+    /* height: 5%; */
+    margin-left: 19%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background: #f12b24 !important;
+    color: white !important;
+    border: #f12b24 1px solid !important;
+}
+
+
+/* 登录区域 */
+.login_area_content {
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    padding-bottom: 10%;
+    margin-top: 10%;
+    margin-bottom: 3%;
+}
+
+.login_area_formitem {
+    font-size: 1.2em;
+    margin-left: 31%;
+    margin-right: 31%;
+    margin-top: 1.25%;
+}
+
+.login_area_content2 {
+    margin-top: 5%;
 }

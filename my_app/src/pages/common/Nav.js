@@ -41,14 +41,12 @@ class Nav extends Component {
           </Menu.Item>
         </Menu>
         <span className="login">
-          <Link to="/" className="loginRegister_font">
-            {" "}
+          <Link to="/login" className="loginRegister_font">
             登录
           </Link>
         </span>
         <span className="register">
-          <Link to="/" className="loginRegister_font">
-            {" "}
+          <Link to="/register" className="loginRegister_font">
             注册
           </Link>
         </span>

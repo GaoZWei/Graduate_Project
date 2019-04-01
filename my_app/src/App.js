@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
-import Register from "./pages/login/Register/register";
+import Register from "./pages/login/component/Register/register";
+import Login from "./pages/login/component/Login/Login";
+import Main from "./pages/main/index";
 import Exercise from "./pages/exercise/index";
 import ActionDetail from "./pages/exercise/component/ActionDetail/ActionDetail";
 import Plan from "./pages/plan/index";
@@ -31,7 +33,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={Exercise} />
+            <Route path="/" exact component={Main} />
             <Route path="/exercise" exact component={Exercise} />
             <Route path="/action/detail" exact component={ActionDetail} />
             <Route path="/plan" exact component={Plan} />
@@ -43,6 +45,7 @@ class App extends Component {
             <Route path="/implement/BMI" exact component={BMI} />
             <Route path="/personal" exact component={Personal} />
             <Route path="/register" exact component={Register} />
+            <Route path="/login" exact component={Login} />
           </div>
         </BrowserRouter>
       </Provider>

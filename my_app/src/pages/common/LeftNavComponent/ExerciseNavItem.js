@@ -133,7 +133,7 @@ class ExerciseNavItem extends Component {
           <Panel
             header="健身动作"
             key="2"
-            className="left_nav_collapse_panel"
+            // className="left_nav_collapse_panel"
             className={
               selectPage !== "plan_panel" ? selectPage : "exercise_panel"
             }
