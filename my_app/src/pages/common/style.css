@@ -49,8 +49,9 @@
     border: 1px solid #29282a !important;
     border-radius: 5px;
     box-shadow: 0 !important;
-    margin-left: 12%;
+    margin-left: 15%;
     margin-top: 6%;
+    width: 70%;
 }
 
 /* 搜索按钮样式 */
@@ -58,8 +59,8 @@
     background-color: #252326;
     border: 1px solid #29282a !important;
     box-shadow: 0 !important;
-    margin-left: 75%;
-    margin-top: 36%;
+    margin-left: -110%;
+    margin-top: 42%;
 }
 
 .antd_input2 .ant-btn-primary:hover,

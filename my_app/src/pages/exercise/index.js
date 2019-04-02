@@ -13,10 +13,10 @@ class Exercise extends Component {
         <Nav />
         <Content className="contentArea">
         <Row>
-            <Col span={9}>
+            <Col span={8}>
             <ExerciseNav/>
             </Col>
-            <Col span={15}>
+            <Col span={16}>
               <ActionList />
             </Col>
           </Row>

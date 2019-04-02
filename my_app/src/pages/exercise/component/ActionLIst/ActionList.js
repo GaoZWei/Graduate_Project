@@ -4,10 +4,10 @@ import { Pagination } from "antd";
 class ActionList extends Component {
   render() {
     return (
-      <div style={{ marginTop: 15 }}>
+      <div style={{ marginTop: 15,marginLeft:-50 }}>
         <h1>全部动作</h1>
         <ActionItem />
-        <div style={{ marginTop: 155 }}>
+        <div style={{ marginTop: 25 }}>
           <ActionItem />
         </div>
         <div style={{ marginTop: 180 }}>

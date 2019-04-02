@@ -10,8 +10,6 @@ class ExerciseNavSearch extends Component {
           placeholder="动作名"
           enterButton
           onSearch={value => console.log(value)}
-          style={{ width: 300}}
-          className="antd_input2_btn"
         />
       </div>
     );
