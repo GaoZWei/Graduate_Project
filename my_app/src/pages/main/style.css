@@ -59,6 +59,7 @@
 /* 头部按钮 */
 .index_top_right_item_btn {
     color: white;
+    font-size: 0.8em;
     font-weight: bold;
     background-color: rgb(218, 0, 66);
     border: 1px solid rgb(218, 0, 66);
