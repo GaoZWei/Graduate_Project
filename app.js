@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var api = require('./routes/api');
 var index = require('./routes/index');
+var plan = require('./routes/plan');
 var users = require('./routes/users');
 var exercise = require('./routes/exercise');
 var food = require('./routes/food');
@@ -30,12 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 中间件
 app.use('/api', api);
 app.use('/', index);
+app.use('/plan', plan);
 app.use('/users', users);
 app.use('/exercise', exercise);
 app.use('/food', food);
 app.use('/health', health);
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

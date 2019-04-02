@@ -8,9 +8,6 @@ const Panel = Collapse.Panel;
 class ExerciseNavItem extends Component {
   render() {
     const { selectPage } = this.props;
-    console.log(selectPage);
-    const data = this.props.location;
-    console.log(data);
     return (
       <Fragment>
         <Collapse accordion className="left_nav_collapse">

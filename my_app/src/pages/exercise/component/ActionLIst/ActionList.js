@@ -10,9 +10,9 @@ class ActionList extends Component {
         <div style={{ marginTop: 25 }}>
           <ActionItem />
         </div>
-        <div style={{ marginTop: 180 }}>
+        {/* <div style={{ marginTop: 180 }}>
           <Pagination defaultCurrent={3} total={500} />
-        </div>
+        </div> */}
       </div>
     );
   }

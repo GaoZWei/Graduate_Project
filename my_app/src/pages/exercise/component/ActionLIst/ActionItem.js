@@ -4,7 +4,20 @@ import first_hand_chest_01 from "../../../../statics/chest/first_hand_chest_01.j
 import { Link } from "react-router-dom";
 const { Meta } = Card;
 class ActionItem extends Component {
+  constructor(props){
+    super(props);
+    this.state = { users: [] };
+  }
+  fetchUsers() {
+    return fetch("/exercise", { accpet: "application/json" }).then(res => {
+      return res.json().then(json => {
+        // console.log(json)
+        this.setState({ users: json });
+      });
+    });
+  }
   render() {
+    this.fetchUsers();
     return (
       <Row>
         <Col span={6}>
