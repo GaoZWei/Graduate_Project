@@ -1,26 +1,19 @@
 var express = require('express');
-var api = require('./routes/api');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var api = require('./routes/api');
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-// // 数据库连接
-// var $mysql = require("mysql");
-// //   这句话是，引入当前目录的mysql模板   mysql就是我们上面创建的mysql.js
-// var sql = require("./mysql");
-// //创建一个连接        mysql是我们上面文件暴露出来的模板的方法
-// var $sql = $mysql.createConnection(sql.mysql)
-// $sql.connect() //运用了这句才是真正连接
-
-
+var exercise = require('./routes/exercise');
+var food = require('./routes/food');
+var health = require('./routes/health');
 var app = express();
 
-// view engine setup
+// 模板引擎设置,没用
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -34,32 +27,15 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// 中间件
 app.use('/api', api);
 app.use('/', index);
 app.use('/users', users);
+app.use('/exercise', exercise);
+app.use('/food', food);
+app.use('/health', health);
 
-//--------------------- 数据库---------------
-// var mysql      = require('mysql');
-// var connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : 'root',
-//   database : 'exercise'
-// });
- 
-// connection.connect();
- 
-// connection.query('SELECT * from exercise', function(err, data, fields) {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   };
-//   console.log(JSON.parse(JSON.stringify(data)));
-// });
- 
-// connection.end();
-// ------------------------------------------------------------
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
