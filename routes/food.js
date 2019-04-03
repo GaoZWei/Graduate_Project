@@ -1,8 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var ExerciseDao = require('../dao/ExerciseDao');
-/* ---------根路径---------- */
-router.get('/food', function (req, res, next) {
-  ExerciseDao.getAllExercise(res);
+var FoodDao = require('../dao/FoodDao');
+
+// 获取食物分类
+router.get('/', function (req, res, next) {
+  FoodDao.getAllFoodSort(res);
+});
+
+// 根据食物分类id查询
+router.get('/:sort_id', function (req, res, next) {
+  FoodDao.getFoodBySort(req, (results) => {
+    res.send(results)
+  });
 });
 module.exports = router;

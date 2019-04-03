@@ -17,7 +17,7 @@ class ActionItem extends Component {
     });
   }
   render() {
-    this.fetchUsers();
+    // this.fetchUsers();
     return (
       <Row>
         <Col span={6}>

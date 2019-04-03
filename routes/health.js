@@ -1,10 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var ExerciseDao = require('../dao/ExerciseDao');
-/* ---------根路径---------- */
-router.get('/health', function (req, res, next) {
-    ExerciseDao.getAllExercise(res);
+var HealthDao = require('../dao/HealthDao');
+
+// 获取所有健康信息
+router.get('/', function (req, res, next) {
+    HealthDao.getAllHealth(res);
 });
+
+// 根据id查询详细health信息
+router.get('/:health_id', function (req, res, next) {
+    HealthDao.getHealthById(req,function(results){
+        res.json(results);
+    });
+});
+
 
 
 module.exports = router;

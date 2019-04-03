@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../style.css";
 // import { List,  Icon } from "antd";
+import plan_list_01 from "../../../../statics/plan_list_01.jpg";
 import { List } from "antd";
 import { Link } from "react-router-dom";
 class PlanList extends Component {
@@ -53,9 +54,9 @@ class PlanList extends Component {
                 // ]}
                 extra={
                   <img
-                    width={272}
+                    width={270}
                     alt="logo"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                    src={plan_list_01}
                   />
                 }
               >
