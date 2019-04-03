@@ -75,19 +75,38 @@
     border: none !important;
     border-radius: 0 !important;
 }
+/* 设置颜色变化 */
+.ant-collapse-header {
+    background-color: rgb(37, 36, 37);
+}
 
-.plan_panel {
-    background-color: rgb(198, 58, 61) !important;
+.ant-collapse-item-active .ant-collapse-header {
+    background-color: rgb(198, 58, 61);
+}
+
+.ant-collapse-item ant-collapse-item-active  {
+    background-color: rgb(198, 58, 61);
+}
+
+/* plan_panel  */
+/* .plan_panel {
+    background-color: rgb(198, 58, 61);
 }
 
 .exercise_panel {
-    background-color: rgb(37, 36, 37) !important;
-}
+    background-color: rgb(37, 36, 37);
+} */
 
 .left_nav_collapse_panel .ant-collapse-header,
 .plan_panel .ant-collapse-header,
 .exercise_panel .ant-collapse-header {
     color: white !important;
+}
+
+/* 设置panel的边框弧度 */
+.ant-collapse>.ant-collapse-item:last-child,
+.ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header {
+    border-radius: 0 0 0 0 !important;
 }
 
 

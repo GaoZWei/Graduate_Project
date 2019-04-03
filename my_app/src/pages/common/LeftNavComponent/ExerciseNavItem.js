@@ -10,12 +10,16 @@ class ExerciseNavItem extends Component {
     const { selectPage } = this.props;
     return (
       <Fragment>
-        <Collapse accordion className="left_nav_collapse">
+        <Collapse
+          accordion
+          defaultActiveKey={["2"]}
+          className="left_nav_collapse"
+        >
           <Panel
             header="健身计划"
             key="1"
             className="left_nav_collapse_panel"
-            className={selectPage === "plan_panel" ? selectPage : ""}
+            // className={selectPage === "plan_panel" ? selectPage : ""}
           >
             <div className="left_nav">
               <div className="left_nav_title">
@@ -130,10 +134,10 @@ class ExerciseNavItem extends Component {
           <Panel
             header="健身动作"
             key="2"
-            // className="left_nav_collapse_panel"
-            className={
-              selectPage !== "plan_panel" ? selectPage : "exercise_panel"
-            }
+            className="left_nav_collapse_panel"
+            // className={
+            //   selectPage !== "plan_panel" ? selectPage : "exercise_panel"
+            // }
           >
             <div className="left_nav">
               <div className="left_nav_title">
