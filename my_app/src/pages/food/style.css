@@ -122,3 +122,18 @@
     font-size: 1em;
     font-weight: bold;
 }
+
+/* ---------食物详情页-----------*/
+.food_detail {
+    background: #fff;
+}
+
+.food_detail_top {
+    margin-left: 8%;
+    margin-right: 8%;
+    /* margin-top: 2%; */
+    padding: 1.5%;
+}
+.food_detail_content{
+    
+}
