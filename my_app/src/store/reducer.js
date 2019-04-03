@@ -1,7 +1,9 @@
 import { combineReducers } from "redux-immutable";
-import { reducer as headerReducer } from "../pages/common/store/"
+import { reducer as headerReducer } from "../pages/common/store/";
+import { reducer as exerciseReducer } from "../pages/exercise/store/";
 const reducer = combineReducers({
-  header: headerReducer
+  header: headerReducer,
+  exercise:exerciseReducer
 });
 
 export default reducer;
@@ -23,4 +25,3 @@ export default reducer;
 //     }
 //     return state;
 // }
-

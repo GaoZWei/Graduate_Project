@@ -1,26 +1,50 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Card, Col, Row } from "antd";
-import first_hand_chest_01 from "../../../../statics/chest/first_hand_chest_01.jpg";
+// import first_hand_chest_01 from "../../../../statics/chest/first_hand_chest_01.jpg";
 import { Link } from "react-router-dom";
 const { Meta } = Card;
 class ActionItem extends Component {
-  constructor(props){
-    super(props);
-    this.state = { users: [] };
-  }
-  fetchUsers() {
-    return fetch("/exercise", { accpet: "application/json" }).then(res => {
-      return res.json().then(json => {
-        // console.log(json)
-        this.setState({ users: json });
-      });
-    });
-  }
   render() {
-    // this.fetchUsers();
+    const { exerciseList } = this.props;
+    // console.log(exerciseList);
     return (
       <Row>
-        <Col span={6}>
+        {exerciseList.map(item => {
+          return (
+            <Col span={6} key={item.get("exercise_id")}>
+              <Link to="/action/detail">
+                <Card
+                  hoverable
+                  style={{ width: "90%", marginTop: "5%" }}
+                  cover={
+                    <img alt="example" src={item.get("exercise_pic_main")} />
+                  }
+                  key={item.get("exercise_id")}
+
+                  // pagination="bottom"
+                  // pagination={{
+                  //   onChange: page => {
+                  //     console.log(page);
+                  //   },
+                  //   pageSize: 8
+                  // }}
+                >
+                  <Meta
+                    // title={item.exercise_name}
+                    title={item.get("exercise_name")}
+                    description={
+                      item.get("exercise_difficulty") +
+                      " " +
+                      item.get("exercise_sort")
+                    }
+                  />
+                </Card>
+              </Link>
+            </Col>
+          );
+        })}
+        {/* <Col span={6}>
           <Link to="/action/detail">
             <Card
               hoverable
@@ -57,9 +81,16 @@ class ActionItem extends Component {
           >
             <Meta title="具体动作名" description="所属相关分类" />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     );
   }
 }
-export default ActionItem;
+const mapStateToProps = state => ({
+  exerciseList: state.getIn(["exercise", "exerciseList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(ActionItem);

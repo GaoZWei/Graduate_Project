@@ -1,8 +1,6 @@
 import * as actionTypes from "./actionTypes";
 //immutable库
-import {
-  fromJS
-} from "immutable";
+import { fromJS } from "immutable";
 
 const defaultState = fromJS({
   // focused: false,
@@ -10,8 +8,8 @@ const defaultState = fromJS({
   // mouseIn: false,
   // page: 1,
   // totalPage: 1,
-  selectValue: "",
-  selectPage:'plan_panel'
+  selectValue: ""
+  // selectPage:'plan_panel'
 });
 
 export default (state = defaultState, action) => {

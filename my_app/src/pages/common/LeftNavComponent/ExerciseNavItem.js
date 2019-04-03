@@ -7,7 +7,7 @@ const Panel = Collapse.Panel;
 
 class ExerciseNavItem extends Component {
   render() {
-    const { selectPage } = this.props;
+    // const { selectPage } = this.props;
     return (
       <Fragment>
         <Collapse
