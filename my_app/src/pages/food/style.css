@@ -107,11 +107,9 @@
 
 .food_sortlist_content_left_list:hover {
     border: 1px solid rgb(224, 224, 224);
-    /* opacity: 0.2; */
 }
 
 .food_sortlist_content_right {
-    /* background-color: white; */
     color: #3c62db;
     border: 1px solid rgb(224, 224, 224);
     padding: 2%;
@@ -132,14 +130,12 @@
 .food_detail_top {
     margin-left: 5%;
     margin-right: 8%;
-    /* margin-top: 2%; */
     padding: 1.5%;
 }
 
 /* 内容区 */
 .food_detail_content {
     font-weight: 500;
-    border: 1px solid gray;
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -147,8 +143,7 @@
 /* 内容区头部 */
 .food_detail_content_top {
     padding: 2%;
-    /* background-color: yellow; */
-    border: 1px solid #666;
+    border: 1px solid #eee;
 }
 
 /* 内容区头部左侧 */
@@ -189,25 +184,80 @@
     margin-bottom: 0;
 }
 
+/* 内容中部整体 */
 .food_detail_content_middle {
-    background-color: red;
     margin-top: 2%;
 }
 
-.food_detail_content_middle_left {
-    background: gray;
-    font-size: 1.3em;
-}
-
-.food_detail_content_middle_left_content {
-    background-color: darkcyan;
-}
-
+/* 内容中部左,右侧 */
+.food_detail_content_middle_left,
 .food_detail_content_middle_right {
-    background-color: aquamarine;
     font-size: 1.3em;
+    letter-spacing: 0.8em;
+    text-align: center;
 }
 
+/* 内容中部左侧 */
+.food_detail_content_middle_left_content {
+    background-color: rgb(242, 242, 242);
+    padding: 2%;
+}
+
+.food_detail_content_middle_left_content li {
+    line-height: 2em;
+}
+
+/* 内容中部右侧 */
 .food_detail_content_middle_right_content {
-    background-color: royalblue;
+    background-color: rgb(242, 242, 242);
+    padding: 2%;
+    padding-bottom: 10%;
+}
+
+.food_detail_content_middle_right_content_left,
+.food_detail_content_middle_right_content_right {
+    /* margin-left: 10%; */
+    margin-top: 10%;
+    text-align: center;
+}
+
+.food_detail_content_middle_right_content_left1,
+.food_detail_content_middle_right_content_right1 {
+    /* margin-left: 3%; */
+    margin-top: 6%;
+    text-align: center;
+}
+
+/* 添加食物 */
+.food_detail_three {
+    background-color: white;
+    margin-top: 1%;
+    padding: 2%;
+}
+
+.food_detail_three .add_btn {
+    width: 20%;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* 相关食物部分 */
+.food_detail_content_bottom_title {
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+.food_detail_content_bottom_content {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.food_detail_content_bottom_content img {
+    width: 80%;
+}
+
+.food_detail_content_bottom_content_name {
+    margin-left: 25%;
+    letter-spacing: 1.2em;
 }

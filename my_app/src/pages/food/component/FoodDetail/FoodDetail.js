@@ -4,7 +4,7 @@ import Foot from "../../../common/Foot";
 import FoodTopArea from "../FoodTopArea";
 import "../../style.css";
 import rice from "../../../../statics/rice.jpg";
-import { Row, Col, Layout } from "antd";
+import { Row, Col, Layout, Button } from "antd";
 class FoodDetail extends Component {
   render() {
     return (
@@ -62,7 +62,7 @@ class FoodDetail extends Component {
                       </Col>
                     </Row>
                     <div className="food_detail_content_top_message_bottom_title">
-                      <span>减肥人群</span>推荐使用
+                      <span>减肥人群:</span>推荐食用
                     </div>
                   </div>
                 </Col>
@@ -73,38 +73,86 @@ class FoodDetail extends Component {
             </div>
             <div className="food_detail_content_middle">
               <Row>
-                <Col span={12}>
+                <Col span={1} />
+                <Col span={10}>
                   <div className="food_detail_content_middle_left">
                     热量分解
                   </div>
                   <div className="food_detail_content_middle_left_content">
                     <ul>
-                      <li>蛋白质</li>
-                      <li>碳水化合物</li>
-                      <li>脂肪</li>
+                      <li>蛋白质 &nbsp; &nbsp; (70%)</li>
+                      <li>碳水化合物 &nbsp; &nbsp; (20%) </li>
+                      <li>脂肪 &nbsp; &nbsp; (10%)</li>
                     </ul>
                   </div>
                 </Col>
-                <Col span={12}>
+                <Col span={2} />
+                <Col span={10}>
                   <div className="food_detail_content_middle_right">
                     食用分量
                   </div>
                   <div className="food_detail_content_middle_right_content">
                     <Row>
-                      <Col>
-                        <div>度量单位</div>
-                        <div>1碗米饭(219.0克)</div>
+                      <Col span={12}>
+                        <div className="food_detail_content_middle_right_content_left">
+                          度量单位
+                        </div>
+                        <div className="food_detail_content_middle_right_content_left1">
+                          1碗米饭(219.0克)
+                        </div>
                       </Col>
-                      <Col>
-                        <div>热量</div>
+                      <Col span={12}>
+                        <div className="food_detail_content_middle_right_content_right">
+                          热量
+                        </div>
+                        <div className="food_detail_content_middle_right_content_right1">
+                          234千卡
+                        </div>
                       </Col>
                     </Row>
                   </div>
                 </Col>
+                <Col span={1} />
               </Row>
             </div>
-            <div>添加到我的食物清单</div>
-            <div className="food_detail_content_bottom">相关食物</div>
+            <div className="food_detail_three">
+              <div className="add_to_food">
+                <Button type="primary" className="add_btn" size="large">
+                  添加至我的食物清单
+                </Button>
+                <Button type="primary" className="add_btn" size="large">
+                  查看我的食物清单
+                </Button>
+              </div>
+            </div>
+            <hr style={{ opacity: "0.2" }} />
+            <div className="food_detail_content_bottom">
+              <div className="food_detail_content_bottom_title">相关食物</div>
+              <div className="food_detail_content_bottom_content">
+                <Row>
+                  <Col span={1} />
+                  <Col span={5}>
+                    <img src={rice} alt="" /><br/>
+                    <div className="food_detail_content_bottom_content_name">米饭</div>
+                  </Col>
+                  <Col span={1} />
+                  <Col span={5}>
+                    <img src={rice} alt="" /><br/>
+                    <div className="food_detail_content_bottom_content_name">米饭</div>
+                  </Col>
+                  <Col span={1} />
+                  <Col span={5}>
+                    <img src={rice} alt="" /><br/>
+                    <div className="food_detail_content_bottom_content_name">米饭</div>
+                  </Col>
+                  <Col span={1} />
+                  <Col span={5}>
+                    <img src={rice} alt="" /><br/>
+                    <div className="food_detail_content_bottom_content_name">米饭</div>
+                  </Col>
+                </Row>
+              </div>
+            </div>
           </div>
         </div>
         <Foot />
