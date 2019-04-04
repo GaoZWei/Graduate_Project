@@ -1,1 +1,3 @@
-export const CHANGE_HOME_DATA='home/CHANGE_HOME_DATA'
+export const CHANGE_EXERCISE_DATA='exercise/CHANGE_EXERCISE_DATA'
+
+export const CHANGE_DETAIL_DATA='exercise/CHANGE_DETAIL_DATA'

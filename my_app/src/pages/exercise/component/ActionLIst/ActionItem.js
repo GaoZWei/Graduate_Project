@@ -7,13 +7,14 @@ const { Meta } = Card;
 class ActionItem extends Component {
   render() {
     const { exerciseList } = this.props;
-    // console.log(exerciseList);
+    console.log(exerciseList);
     return (
       <Row>
-        {exerciseList.map(item => {
+        {exerciseList.map((item, index) => {
           return (
             <Col span={6} key={item.get("exercise_id")}>
-              <Link to="/action/detail">
+              {/* <Link to="/action/detail"> */}
+              <Link key={index} to={"/exercise/" + item.get("exercise_id")}>
                 <Card
                   hoverable
                   style={{ width: "90%", marginTop: "5%" }}
@@ -21,7 +22,6 @@ class ActionItem extends Component {
                     <img alt="example" src={item.get("exercise_pic_main")} />
                   }
                   key={item.get("exercise_id")}
-
                   // pagination="bottom"
                   // pagination={{
                   //   onChange: page => {

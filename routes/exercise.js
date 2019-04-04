@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 });
 
 // ----------根据id查询动作详情-------------
-router.get('/:id', function (req, res, next) {
+router.get('/:exercise_id', function (req, res, next) {
   ExerciseDao.getExerciseById(req, (results) => {
     res.json(results);
   });

@@ -9,7 +9,7 @@ function getAllExercise(res) {
 
 // 根据id查具体动作
 function getExerciseById(req, callback) {
-    db.query("select * from exercise where exercise_id=?", [req.params.id], function (results, fields) {
+    db.query("select * from exercise where exercise_id=?", [req.params.exercise_id], function (results, fields) {
         callback(results);
     })
 }
