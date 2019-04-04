@@ -128,12 +128,86 @@
     background: #fff;
 }
 
+/*食物页头部面包屑*/
 .food_detail_top {
-    margin-left: 8%;
+    margin-left: 5%;
     margin-right: 8%;
     /* margin-top: 2%; */
     padding: 1.5%;
 }
-.food_detail_content{
-    
+
+/* 内容区 */
+.food_detail_content {
+    font-weight: 500;
+    border: 1px solid gray;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* 内容区头部 */
+.food_detail_content_top {
+    padding: 2%;
+    /* background-color: yellow; */
+    border: 1px solid #666;
+}
+
+/* 内容区头部左侧 */
+.food_detail_content_top_left img {
+    width: 90%;
+    height: 40%;
+}
+
+/* 内容区右侧标题 */
+.food_detail_content_top_message_title {
+    padding-bottom: 1%;
+}
+
+/* 内容区右侧参数 */
+.food_detail_content_top_message_param {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* 内容区右侧参数名 */
+.food_detail_content_top_message_param_name {
+    font-size: 1em;
+    text-align: center;
+}
+
+.food_detail_content_top_message_bottom_title {
+    margin-top: 2%;
+}
+
+/* 内容头部食物简介 */
+.food_detail_content_top_description {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    color: #999;
+    padding: 2%;
+    margin: 2%;
+    margin-bottom: 0;
+}
+
+.food_detail_content_middle {
+    background-color: red;
+    margin-top: 2%;
+}
+
+.food_detail_content_middle_left {
+    background: gray;
+    font-size: 1.3em;
+}
+
+.food_detail_content_middle_left_content {
+    background-color: darkcyan;
+}
+
+.food_detail_content_middle_right {
+    background-color: aquamarine;
+    font-size: 1.3em;
+}
+
+.food_detail_content_middle_right_content {
+    background-color: royalblue;
 }

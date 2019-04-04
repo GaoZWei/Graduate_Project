@@ -3,6 +3,7 @@ import NavBreadcrumb from "../../../common/NavBreadcrumb";
 import Foot from "../../../common/Foot";
 import FoodTopArea from "../FoodTopArea";
 import "../../style.css";
+import rice from "../../../../statics/rice.jpg";
 import { Row, Col, Layout } from "antd";
 class FoodDetail extends Component {
   render() {
@@ -14,13 +15,95 @@ class FoodDetail extends Component {
             <NavBreadcrumb />
           </div>
           <div className="food_detail_content">
-            <div className="food_detail_content_top">米饭</div>
+            <div className="food_detail_content_top">
+              <Row>
+                <Col span={6}>
+                  <div className="food_detail_content_top_left">
+                    <img src={rice} alt="" />
+                  </div>
+                </Col>
+                <Col span={18}>
+                  <div className="food_detail_content_top_message">
+                    <div className="food_detail_content_top_message_title">
+                      <span>米饭 </span>每100g营养
+                    </div>
+                    <Row>
+                      <Col span={6}>
+                        <div className="food_detail_content_top_message_param">
+                          116千卡
+                        </div>
+                        <div className="food_detail_content_top_message_param_name">
+                          热量
+                        </div>
+                      </Col>
+                      <Col span={6}>
+                        <div className="food_detail_content_top_message_param">
+                          2.6g
+                        </div>
+                        <div className="food_detail_content_top_message_param_name">
+                          蛋白质
+                        </div>
+                      </Col>
+                      <Col span={6}>
+                        <div className="food_detail_content_top_message_param">
+                          25.9g
+                        </div>
+                        <div className="food_detail_content_top_message_param_name">
+                          碳水化合物
+                        </div>
+                      </Col>
+                      <Col span={6}>
+                        <div className="food_detail_content_top_message_param">
+                          25.9g
+                        </div>
+                        <div className="food_detail_content_top_message_param_name">
+                          脂肪
+                        </div>
+                      </Col>
+                    </Row>
+                    <div className="food_detail_content_top_message_bottom_title">
+                      <span>减肥人群</span>推荐使用
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <div className="food_detail_content_top_description">
+                提示：一种碳水化合物和水分含量都较高的主食，它是身体所需热量的主要来源之一，可占全天热量的55%左右，适宜减肥期间食用。
+              </div>
+            </div>
             <div className="food_detail_content_middle">
               <Row>
-                <Col span={12}>热量分解</Col>
-                <Col span={12}>食用分量</Col>
+                <Col span={12}>
+                  <div className="food_detail_content_middle_left">
+                    热量分解
+                  </div>
+                  <div className="food_detail_content_middle_left_content">
+                    <ul>
+                      <li>蛋白质</li>
+                      <li>碳水化合物</li>
+                      <li>脂肪</li>
+                    </ul>
+                  </div>
+                </Col>
+                <Col span={12}>
+                  <div className="food_detail_content_middle_right">
+                    食用分量
+                  </div>
+                  <div className="food_detail_content_middle_right_content">
+                    <Row>
+                      <Col>
+                        <div>度量单位</div>
+                        <div>1碗米饭(219.0克)</div>
+                      </Col>
+                      <Col>
+                        <div>热量</div>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
               </Row>
             </div>
+            <div>添加到我的食物清单</div>
             <div className="food_detail_content_bottom">相关食物</div>
           </div>
         </div>
