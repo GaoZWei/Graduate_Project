@@ -1,25 +1,34 @@
-var db = require('../db');
+var pool = require("../db");
 
 // 查询exercise表
 function getAllExercise(res) {
-    db.query('select * from exercise', [], function (results, fields) {
-        res.json(results);
-    })
+  return new Promise((resolve, reject) => {
+    pool.query("select * from exercise", [], function(errors, results) {
+      if (results) {
+        resolve(results);
+      } else {
+        reject(errors);
+      }
+    });
+  });
 }
 
 // 根据id查具体动作
 function getExerciseById(req, callback) {
-    db.query("select * from exercise where exercise_id=?", [req.params.exercise_id], function (results, fields) {
-        callback(results);
-    })
+  pool.query(
+    "select * from exercise where exercise_id=?",
+    [req.params.exercise_id],
+    function(errors, results) {
+      callback(results);
+    }
+  );
 }
-
 
 // 取得所有健身动作分类
 function getAllExerciseSort(res) {
-    db.query('select * from exercise_sort', [], function (results, fields) {
-        res.json(results);
-    })
+  pool.query("select * from exercise_sort", [], function(errors, results) {
+    res.json(results);
+  });
 }
 
 module.exports.getAllExercise = getAllExercise;

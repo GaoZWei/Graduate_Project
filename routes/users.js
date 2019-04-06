@@ -14,6 +14,12 @@ router.get('/:user_id', function (req, res, next) {
   })
 });
 
+router.post("/login", function (req, res, next) {
+  UserDao.login(req.body.account, req.body.password)
+    .then((response) => {
+      res.json(response[0]) // response[0] = rowDataPacket
+  })
+})
 
 
 module.exports = router;

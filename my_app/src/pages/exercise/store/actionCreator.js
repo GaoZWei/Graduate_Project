@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
+import { fetch } from "../../../util/HttpUtil";
 // import { fromJS } from "immutable";
 
 const changehomeData = result => ({
@@ -9,8 +10,8 @@ const changehomeData = result => ({
 
 export const changeHomeInfo = () => {
   return dispatch => {
-    axios.get("/exercise").then(res => {
-      const result = res.data;
+    fetch("/exercise").then(res => {
+      const result = res;
       dispatch(changehomeData(result));
     });
   };
@@ -23,7 +24,7 @@ const changeDetailData = result => ({
 export const getExerciseDetail = exercise_id => {
   return dispatch => {
     axios.get("/exercise/" + exercise_id).then(res => {
-      const result = res.data;
+      const result = res;
       dispatch(changeDetailData(result));
     });
   };

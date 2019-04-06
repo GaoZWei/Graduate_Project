@@ -22,13 +22,13 @@ class App extends Component {
     super();
     this.state = { users: [] };
   }
-  fetchUsers() {
-    return fetch("api/users", { accpet: "application/json" }).then(res => {
-      return res.json().then(json => {
-        this.setState({ users: json });
-      });
-    });
-  }
+  // fetchUsers() {
+  //   return fetch("api/users", { accpet: "application/json" }).then(res => {
+  //     return res.json().then(json => {
+  //       this.setState({ users: json });
+  //     });
+  //   });
+  // }
   render() {
     return (
       <Provider store={store}>
@@ -36,7 +36,11 @@ class App extends Component {
           <div>
             <Route path="/" exact component={Main} />
             <Route path="/exercise" exact component={Exercise} />
-            <Route path="/exercise/:exercise_id" exact component={ActionDetail} />
+            <Route
+              path="/exercise/:exercise_id"
+              exact
+              component={ActionDetail}
+            />
             <Route path="/plan" exact component={Plan} />
             <Route path="/plan/detail" exact component={PlanDetail} />
             <Route path="/food" exact component={Food} />
