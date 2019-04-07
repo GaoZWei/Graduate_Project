@@ -17,9 +17,9 @@ class ActionItem extends Component {
               <Link key={index} to={"/exercise/" + item.get("exercise_id")}>
                 <Card
                   hoverable
-                  style={{ width: "90%", marginTop: "5%" }}
+                  style={{ width: "90%",height:'200px', marginTop: "6%" }}
                   cover={
-                    <img alt="example" src={item.get("exercise_pic_main")} />
+                    <img alt="example" src={item.get("exercise_pic_main")}/>
                   }
                   key={item.get("exercise_id")}
                   // pagination="bottom"

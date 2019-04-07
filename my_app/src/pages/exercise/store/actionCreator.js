@@ -23,7 +23,8 @@ const changeDetailData = result => ({
 });
 export const getExerciseDetail = exercise_id => {
   return dispatch => {
-    axios.get("/exercise/" + exercise_id).then(res => {
+    // axios.get
+    fetch("/exercise/" + exercise_id).then(res => {
       const result = res;
       dispatch(changeDetailData(result));
     });

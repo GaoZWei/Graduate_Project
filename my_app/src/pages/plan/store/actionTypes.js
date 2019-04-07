@@ -1,0 +1,1 @@
+export const CHANGE_PLAN_DATA = 'plan/CHANGE_PLAN_DATA';
