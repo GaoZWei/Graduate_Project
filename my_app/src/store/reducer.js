@@ -1,9 +1,11 @@
 import { combineReducers } from "redux-immutable";
 import { reducer as headerReducer } from "../pages/common/store/";
 import { reducer as exerciseReducer } from "../pages/exercise/store/";
+import { reducer as planReducer } from "../pages/plan/store";
 const reducer = combineReducers({
   header: headerReducer,
-  exercise:exerciseReducer
+  exercise: exerciseReducer,
+  plan: planReducer
 });
 
 export default reducer;

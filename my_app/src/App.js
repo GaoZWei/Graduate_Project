@@ -42,7 +42,7 @@ class App extends Component {
               component={ActionDetail}
             />
             <Route path="/plan" exact component={Plan} />
-            <Route path="/plan/detail" exact component={PlanDetail} />
+            <Route path="/plan/:plan_id" exact component={PlanDetail} />
             <Route path="/food" exact component={Food} />
             <Route path="/food/sortlist" exact component={FoodSortList} />
             <Route path="/food/detail" exact component={FoodDetail} />

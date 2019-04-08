@@ -7,7 +7,7 @@ const { Meta } = Card;
 class ActionItem extends Component {
   render() {
     const { exerciseList } = this.props;
-    console.log(exerciseList);
+    // console.log(exerciseList);
     return (
       <Row>
         {exerciseList.map((item, index) => {
