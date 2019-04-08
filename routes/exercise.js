@@ -12,9 +12,12 @@ router.get("/:exercise_id", function (req, res, next) {
   // ExerciseDao.getExerciseById(req, results => {
   //   res.json(results);
   // });
-  console.log(req.params.exercise_id)
+  // console.log(req.params.exercise_id)
   ExerciseDao.getExerciseById(req)
-    .then(response => {console.log(response);res.json(response)});
+    .then(response => {
+      // console.log(response);
+      res.json(response)
+    });
 });
 
 module.exports = router;
