@@ -3,14 +3,13 @@ import * as actionTypes from "./actionTypes";
 import { fromJS } from "immutable";
 
 const defaultState = fromJS({
-  // password
+  userList: []
 });
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.CHANGE_EXERCISE_DATA:
-      return state.set("exerciseList", fromJS(action.exerciseList));
-
+    case actionTypes.GET_USER_DATA:
+      return state.set("userList", fromJS(action.userList));
     default:
       return state;
   }
