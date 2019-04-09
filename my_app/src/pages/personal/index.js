@@ -12,7 +12,6 @@ import { Layout, Row, Col } from "antd";
 const { Content } = Layout;
 class Personal extends Component {
   render() {
-    console.log(this.props.location.pathname);
     return (
       <Layout>
         <Nav />

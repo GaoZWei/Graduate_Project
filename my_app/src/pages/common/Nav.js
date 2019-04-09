@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
 import { Layout, Menu } from "antd";
@@ -7,14 +7,29 @@ import "./style.css";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
-    const { selectValue, changeNavItem } = this.props;
+    const { changeNavItem } = this.props;
+    var recent_path1 = this.props.location.pathname;
+    var selectValue1 = "";
+    if (recent_path1.indexOf("/exercise") > -1) {
+      selectValue1 = "1";
+    } else if (recent_path1.indexOf("/plan") > -1) {
+      selectValue1 = "2";
+    } else if (recent_path1.indexOf("/food") > -1) {
+      selectValue1 = "3";
+    } else if (recent_path1.indexOf("/news") > -1) {
+      selectValue1 = "4";
+    } else if (recent_path1.indexOf("/implement") > -1) {
+      selectValue1 = "5";
+    } else if (recent_path1.indexOf("/personal") > -1) {
+      selectValue1 = "6";
+    }
     return (
       <Header className="navHead">
         <Menu
           theme="dark"
           mode="horizontal"
-          // defaultSelectedKeys={["1"]}
-          selectedKeys={[selectValue]}
+          defaultSelectedKeys={[selectValue1]}
+          // selectedKeys={[selectValue]}
           style={{ lineHeight: "64px", backgroundColor: "rgb(32,32,34)" }}
         >
           {/* <div className="logo" style={{ display: "inline-block" }}>
@@ -69,4 +84,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Nav);
+)(withRouter(Nav));

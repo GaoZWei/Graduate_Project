@@ -69,9 +69,12 @@ class FoodSortList extends Component {
                             avatar={
                               <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                             }
-                            title={
-                              <a href="https://ant.design">{item.title}</a>
-                            }
+                            title=
+                            // {
+                              // <a href="https://ant.design">
+                              {item.title}
+                              // </a>
+                            // }
                             description={
                               <span>热量:{item.heat}大卡(100克可食部分)</span>
                             }
