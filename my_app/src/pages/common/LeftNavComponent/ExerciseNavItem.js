@@ -13,6 +13,7 @@ class ExerciseNavItem extends Component {
         <Collapse
           accordion
           defaultActiveKey={["2"]}
+          // activeKey={["1"]}
           className="left_nav_collapse"
         >
           <Panel

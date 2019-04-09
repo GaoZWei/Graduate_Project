@@ -4,12 +4,15 @@ import Foot from "../common/Foot";
 import NavBreadcrumb from "../common/NavBreadcrumb";
 import PersonalPublic from "./component/PersonalPublic";
 import PersonalCustomize from "./component/PersonalCustomize";
+import PersonalFoodList from "./component/PersonalFoodList";
 import PersonalMessage from "./component/PersonalMessage";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 import { Layout, Row, Col } from "antd";
 const { Content } = Layout;
 class Personal extends Component {
   render() {
+    console.log(this.props.location.pathname);
     return (
       <Layout>
         <Nav />
@@ -22,7 +25,10 @@ class Personal extends Component {
               {/* <Col span={2} /> */}
               <Col span={14}>
                 <PersonalPublic />
+                <br />
                 <PersonalCustomize />
+                <br />
+                <PersonalFoodList />
               </Col>
               <Col span={1} />
               <Col span={8}>
@@ -36,4 +42,4 @@ class Personal extends Component {
     );
   }
 }
-export default Personal;
+export default withRouter(Personal);

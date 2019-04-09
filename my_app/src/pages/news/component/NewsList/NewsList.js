@@ -58,7 +58,7 @@ class NewsList extends Component {
                   />
                 }
               >
-                <Link to="/plan/detail">
+                <Link to="/news/detail">
                   <List.Item.Meta
                     // avatar={<Avatar src={item.avatar} />}
                     // title={<a href={item.href}>{item.title}</a>}

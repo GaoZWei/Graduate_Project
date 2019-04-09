@@ -11,13 +11,13 @@ class News extends Component {
       <Layout className="news_area_out">
         <Nav />
         <div className="news_area">
-        <div className="news_area_nav">
-        <NavBreadcrumb />
-          </div> 
+          <div className="news_area_nav">
+            <NavBreadcrumb />
+          </div>
           <div className="news_part">
             <div className="news_part_top">
-            <div className="news_part_top_title">增肌</div>
-           
+              <div className="news_part_top_title">增肌</div>
+
               <Button type="primary" className="news_part_top_btn">
                 上肢
               </Button>

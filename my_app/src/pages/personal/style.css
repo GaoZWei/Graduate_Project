@@ -13,12 +13,13 @@
 
 .personal_content_main {
     margin-top: 2%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 /* 公共计划 */
 .personal_public_plan {
-    border: 1px solid gray;
+    border: 1px solid gainsboro;
+    border-radius: 6px;
     padding: 2%;
 }
 
@@ -32,13 +33,13 @@
 
 /* 定制计划 */
 .personal_customize_plan {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     padding: 2%;
 }
 
 /* 个人信息 */
 .personal_message {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     position: relative;
     /* padding: 2%; */
 }
@@ -79,7 +80,7 @@
 .personal_message_content {
     background-color: white;
     color: #666;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     height: 50%;
     padding: 2%;
 }
@@ -109,7 +110,7 @@
 .personal_message_setcard {
     font-size: 1.2em;
     background-color: white;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     padding: 2%;
     margin-top: 1%;
 }

@@ -8,7 +8,8 @@
     margin-left: 8%;
     margin-top: 5%;
 }
-.news_area_nav{
+
+.news_area_nav {
     margin-left: -11%;
 }
 
@@ -23,7 +24,7 @@
     /* border-radius: 10px; */
     margin-left: 1%;
     margin-right: 1%;
-   
+
 }
 
 .news_part_top_title {
@@ -47,4 +48,58 @@
     padding: 2%;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+/* 新闻详情 */
+.news_detail {
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-top: 5%;
+}
+
+.news_detail_area {
+    margin: 2% 10% 2% 9.5%;
+    padding: 2%;
+    /* border: 1px solid rgb(217, 217, 217); */
+    background: white;
+}
+
+.news_detail_title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.news_detail_img {
+    margin: 2% 30% 2% 30%;
+}
+
+.news_detail_p {
+    font-size: 1.2em;
+    padding: 2%;
+}
+.news_detail_p_last{
+    font-size: 1.2em;
+    padding: 2%;
+    text-align: center;
+}
+/* 相关动作部分 */
+.news_detail_content_bottom_title {
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+.news_detail_content_bottom_content {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.news_detail_content_bottom_content img {
+    width: 80%;
+}
+
+.news_detail_content_bottom_content_name {
+    margin-left: 22%;
+    letter-spacing: 1.2em;
 }
