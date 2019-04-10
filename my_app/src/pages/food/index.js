@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actionCreator } from "./store";
 import Foot from "../common/Foot";
 import FoodTopArea from "./component/FoodTopArea";
 import FoodSort from "./component/FoodSort";
@@ -14,5 +16,18 @@ class Food extends Component {
       </Layout>
     );
   }
+  componentDidMount() {
+    this.props.changeFoodData();
+  }
 }
-export default Food;
+const mapDispatchToProps = dispatch => ({
+  changeFoodData() {
+    const action = actionCreator.changeFoodSort();
+    dispatch(action);
+  }
+});
+export default connect(
+  // mapStateToProps,
+  null,
+  mapDispatchToProps
+)(Food);

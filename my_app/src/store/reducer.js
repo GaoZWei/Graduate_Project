@@ -3,11 +3,13 @@ import { reducer as headerReducer } from "../pages/common/store/";
 import { reducer as exerciseReducer } from "../pages/exercise/store/";
 import { reducer as planReducer } from "../pages/plan/store";
 import { reducer as mainReducer } from "../pages/login/store";
+import { reducer as foodReducer } from "../pages/food/store";
 const reducer = combineReducers({
   header: headerReducer,
+  main: mainReducer,
   exercise: exerciseReducer,
   plan: planReducer,
-  main: mainReducer
+  food: foodReducer
 });
 
 export default reducer;
