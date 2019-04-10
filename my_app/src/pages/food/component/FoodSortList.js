@@ -23,8 +23,11 @@ class FoodSortList extends Component {
               <Col span={15}>
                 <div className="food_sortlist_content_left">
                   <div className="food_sortlist_content_left_title">
-                    {foodList.map(item => {
-                      return item.get("sort_name");
+                    {foodList.map((item, index) => {
+                      if (index === 0) {
+                        return <span key={index}>{item.get("sort_name")}</span>;
+                      }
+                      return '';
                     })}
                   </div>
                   <hr
@@ -38,7 +41,7 @@ class FoodSortList extends Component {
                     itemLayout="horizontal"
                     dataSource={foodList}
                     renderItem={item => (
-                      <Link to="/food/detail">
+                      <Link to={"/food/detail/" + item.get("food_id")}>
                         <List.Item className="food_sortlist_content_left_list">
                           <List.Item.Meta
                             avatar={

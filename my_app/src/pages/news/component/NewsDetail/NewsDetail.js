@@ -17,6 +17,8 @@ class NewsDetail extends Component {
           </div>
           <div className="news_detail_area">
             <div className="news_detail_title">健身新闻的标题</div>
+            <div className="news_detail_title_under">所属分类:增肌</div>
+            <hr style={{ width: "100%", color: "gray", opacity: "0.3" }} />
             <div className="news_detail_content">
               <div className="news_detail_p">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健身界有很多的新秀，比如这位叫做张钧的帅哥，就是获得过健体青年组比赛的第一名。在他19岁的时候才开始健身，因为去国外留学念书，也是处于半工半读的情况。

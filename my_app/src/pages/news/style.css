@@ -60,7 +60,7 @@
 .news_detail_area {
     margin: 2% 10% 2% 9.5%;
     padding: 2%;
-    /* border: 1px solid rgb(217, 217, 217); */
+    border: 1px solid rgb(217, 217, 217);
     background: white;
 }
 
@@ -69,8 +69,12 @@
     font-weight: bold;
     text-align: center;
     letter-spacing: 0.1em;
+    /* border: 1px solid black; */
 }
-
+.news_detail_title_under{
+    font-size: 1em;
+    margin-left: 85%;
+}
 .news_detail_img {
     margin: 2% 30% 2% 30%;
 }
@@ -79,11 +83,13 @@
     font-size: 1.2em;
     padding: 2%;
 }
-.news_detail_p_last{
+
+.news_detail_p_last {
     font-size: 1.2em;
     padding: 2%;
     text-align: center;
 }
+
 /* 相关动作部分 */
 .news_detail_content_bottom_title {
     margin-top: 2%;

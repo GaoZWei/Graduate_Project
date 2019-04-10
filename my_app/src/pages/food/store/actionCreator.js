@@ -28,6 +28,32 @@ export const getFoodItem = sort_id => {
   };
 };
 
+const getfooddetail = result => ({
+  type: actionTypes.GET_FOOD_DETAIL,
+  fooddetailList: result
+});
+export const getFoodDetail = food_id => {
+  return dispatch => {
+    fetch("/food/detail/" + food_id).then(res => {
+      const result = res;
+      dispatch(getfooddetail(result));
+    });
+  };
+};
+
+const getrelatefood = result => ({
+  type: actionTypes.GET_RELATED_FOOD,
+  relateList: result
+});
+export const getRelateFood = food_id => {
+  return dispatch => {
+    fetch("/food/relate/" + food_id).then(res => {
+      const result = res;
+      dispatch(getrelatefood(result));
+    });
+  };
+};
+
 // const changeDetailData = result => ({
 //   type: actionTypes.CHANGE_DETAIL_DATA,
 //   detailList: result

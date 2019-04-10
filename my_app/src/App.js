@@ -46,7 +46,7 @@ class App extends Component {
             <Route path="/plan/:plan_id" exact component={PlanDetail} />
             <Route path="/food" exact component={Food} />
             <Route path="/food/:sort_id" exact component={FoodSortList} />
-            <Route path="/food/detail" exact component={FoodDetail} />
+            <Route path="/food/detail/:food_id" exact component={FoodDetail} />
             <Route path="/news" exact component={News} />
             <Route path="/news/detail" exact component={NewsDetail} />
             <Route path="/implement" exact component={Implement} />
