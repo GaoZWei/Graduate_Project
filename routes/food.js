@@ -24,4 +24,7 @@ router.get('/relate/:food_id', function (req, res, next) {
   FoodDao.getRelateFood(req)
     .then(response => res.json(response))
 });
+
+//将食物添加到我的食物列表中
+
 module.exports = router;

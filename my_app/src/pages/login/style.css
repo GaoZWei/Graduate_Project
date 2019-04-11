@@ -25,6 +25,9 @@
 }
 
 /* 表单每行 */
+.ant-form-item{
+margin-bottom: 0;
+}
 .register_area_formitem {
     font-size: 1.2em;
     margin-left: 31%;
@@ -33,7 +36,7 @@
 }
 
 .register_label {
-    margin-bottom: 1%;
+    /* margin-bottom: 1%; */
 }
 
 .register_input {
@@ -45,7 +48,7 @@
 .register_submit {
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .register_btn {

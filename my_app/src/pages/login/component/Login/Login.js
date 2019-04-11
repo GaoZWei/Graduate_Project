@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 // import { post } from "../../../../util/HttpUtil";
 import { actionCreator } from "../../store";
 import Nav from "../../../common/Nav";
@@ -19,9 +19,7 @@ class LoginItem extends Component {
           <div className="login_area_content">
             <div className="register_area_top">登录</div>
             <div className="login_area_content2">
-              <Form
-                className="login-form"
-              >
+              <Form className="login-form">
                 <Form.Item>
                   {getFieldDecorator("account", {
                     rules: [{ required: true, message: "请输入你的用户名" }]
@@ -66,7 +64,7 @@ class LoginItem extends Component {
                         className="register_btn"
                         size="large"
                       >
-                        注册
+                        <Link to="/register">注册</Link>
                       </Button>
                     </div>
                   </div>

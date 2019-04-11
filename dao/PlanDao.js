@@ -1,6 +1,6 @@
 var pool = require("../db");
 
-//  查询所有的plan
+// 查询所有的plan
 function getAllPlan() {
     return new Promise((resolve, reject) => {
         pool.query("select * from plan", [], function (errors, results) {
@@ -25,5 +25,7 @@ function getPlanById(req) {
         })
     })
 }
+
+// 将plan添加至公共计划区
 module.exports.getPlanById = getPlanById;
 module.exports.getAllPlan = getAllPlan;

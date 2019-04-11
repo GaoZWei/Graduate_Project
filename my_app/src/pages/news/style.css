@@ -71,10 +71,13 @@
     letter-spacing: 0.1em;
     /* border: 1px solid black; */
 }
-.news_detail_title_under{
+
+.news_detail_title_under {
     font-size: 1em;
+    font-weight: bold;
     margin-left: 85%;
 }
+
 .news_detail_img {
     margin: 2% 30% 2% 30%;
 }
@@ -86,6 +89,8 @@
 
 .news_detail_p_last {
     font-size: 1.2em;
+    font-weight: bold;
+    color: red;
     padding: 2%;
     text-align: center;
 }
