@@ -6,11 +6,10 @@ import NavBreadcrumb from "../../../common/NavBreadcrumb";
 import Foot from "../../../common/Foot";
 import FoodTopArea from "../FoodTopArea";
 import "../../style.css";
-// import rice from "../../../../statics/rice.jpg";
 import { Row, Col, Layout, Button } from "antd";
 class FoodDetail extends Component {
   render() {
-    const { fooddetailList, relateList } = this.props;
+    const { fooddetailList, relateList, changeroute } = this.props;
     return (
       <Layout>
         <FoodTopArea />
@@ -154,10 +153,16 @@ class FoodDetail extends Component {
                         <div key={index}>
                           <Col span={1} />
                           <Col span={5}>
-                            <img src={items.get("food_pic")} alt="" />
-                            <br />
-                            <div className="food_detail_content_bottom_content_name">
-                              {items.get("food_name")}
+                            <div
+                              onClick={() =>
+                                changeroute(items.get("food_id"), this.props)
+                              }
+                            >
+                              <img src={items.get("food_pic")} alt="" />
+                              <br />
+                              <div className="food_detail_content_bottom_content_name">
+                                {items.get("food_name")}
+                              </div>
                             </div>
                           </Col>
                         </div>
@@ -221,13 +226,22 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => ({
+  // 获取食物详情
   getFoodDetail(food_id) {
     const action = actionCreator.getFoodDetail(food_id);
     dispatch(action);
   },
+  // 获取相关食物
   getRelateFood(food_id) {
     const action = actionCreator.getRelateFood(food_id);
     dispatch(action);
+  },
+  // 相关食物点击切换
+  changeroute(food_id, props) {
+    const action = actionCreator.getFoodDetail(food_id);
+    dispatch(action);
+    props.getRelateFood(food_id);
+    props.history.push("/food/detail/" + food_id);
   }
 });
 export default connect(
