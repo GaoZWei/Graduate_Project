@@ -44,7 +44,7 @@ function getFoodById(req) {
 //根据food_it查sort_id的相关食物
 function getRelateFood(req) {
     return new Promise((resolve, reject) => {
-        pool.query("select * from food where sort_id in (select sort_id from food where food_id = ?) and food_id!= ?", [req.params.food_id,req.params.food_id], function (errors, results) {
+        pool.query("select * from food where sort_id in (select sort_id from food where food_id = ?) and food_id!= ?", [req.params.food_id, req.params.food_id], function (errors, results) {
             if (results) {
                 resolve(results)
             } else {
@@ -54,6 +54,19 @@ function getRelateFood(req) {
     });
 }
 
+// 搜索食物
+function SearchFood(req) {
+    return new Promise((resolve, reject) => {
+        console.log(1231);
+        pool.query("select * from food where food_name like ?",['%'+req.query.food_name+'%'], function (errors, results) {
+            if (results) {
+                resolve(results)
+            } else {
+                reject(errors);
+            }
+        });
+    })
+}
 
 
 // 查询food表
@@ -68,4 +81,5 @@ module.exports.getAllFoodSort = getAllFoodSort;
 module.exports.getFoodBySort = getFoodBySort;
 module.exports.getFoodById = getFoodById;
 module.exports.getRelateFood = getRelateFood;
+module.exports.SearchFood = SearchFood;
 module.exports.getAllFood = getAllFood;

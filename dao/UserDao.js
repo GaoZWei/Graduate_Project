@@ -23,7 +23,7 @@ function login(account, password) {
 // 注册
 function register(user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) {
     return new Promise((resolve, reject) => {
-        pool.insert('INSERT INTO user (user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) VALUES (=?, =?,=?, =?,=?, =?,=?)', [user_name, user_account, user_password, user_age, user_sex, user_height, user_weight], function (errors, results) {
+        pool.query('INSERT INTO user (user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) VALUES (?, ?,?, ?,?, ?,?)', [user_name, user_account, user_password, user_age, user_sex, user_height, user_weight], function (errors, results) {
             if (results) {
                 resolve(results);
             } else {

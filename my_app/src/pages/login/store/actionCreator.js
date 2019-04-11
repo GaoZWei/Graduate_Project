@@ -27,7 +27,7 @@ export const Register = (values, props) => {
   return dispatch => {
     post("http://localhost:3005/users/register", values)
     .then(response => {
-      const result = response;
+      // const result = response;
       console.log(response);
       if (response === null || response === undefined) {
         alert("login failed");

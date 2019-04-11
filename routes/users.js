@@ -24,7 +24,7 @@ router.post("/login", function (req, res, next) {
 
 // 注册
 router.post("/register", function (req, res, next) {
-  UserDao.register(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight);
+  UserDao.register(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight)
     // .then((response) => {
     //   res.json(response[0]) // response[0] = rowDataPacket
     // })

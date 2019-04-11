@@ -8,6 +8,12 @@ router.get('/', function (req, res, next) {
     .then(response => res.json(response))
 });
 
+//模糊查找
+router.get(('/search'), function (req, res, next) {
+  FoodDao.SearchFood(req)
+    .then(response => res.json(response))
+})
+
 // 根据食物分类id查询
 router.get('/:sort_id', function (req, res, next) {
   FoodDao.getFoodBySort(req)
@@ -24,6 +30,8 @@ router.get('/relate/:food_id', function (req, res, next) {
   FoodDao.getRelateFood(req)
     .then(response => res.json(response))
 });
+
+
 
 //将食物添加到我的食物列表中
 

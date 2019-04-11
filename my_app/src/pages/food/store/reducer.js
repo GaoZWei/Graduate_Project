@@ -21,6 +21,8 @@ export default (state = defaultState, action) => {
       return state.set("fooddetailList", fromJS(action.fooddetailList));
     case actionTypes.GET_RELATED_FOOD:
       return state.set("relateList", fromJS(action.relateList));
+    case actionTypes.GET_SEARCH_FOOD:
+      return state.set("foodList", fromJS(action.foodList));
     default:
       return state;
   }

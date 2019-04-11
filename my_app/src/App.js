@@ -11,6 +11,7 @@ import PlanDetail from "./pages/plan/component/PlanDetail/PlanDetail";
 import Food from "./pages/food/index";
 import FoodSortList from "./pages/food/component/FoodSortList";
 import FoodDetail from "./pages/food/component/FoodDetail/FoodDetail";
+import FoodSearch from "./pages/food/component/FoodSearch/FoodSearch";
 import News from "./pages/news/index";
 import NewsDetail from "./pages/news/component/NewsDetail/NewsDetail";
 import Personal from "./pages/personal/index";
@@ -47,6 +48,7 @@ class App extends Component {
             <Route path="/food" exact component={Food} />
             <Route path="/food/:sort_id" exact component={FoodSortList} />
             <Route path="/food/detail/:food_id" exact component={FoodDetail} />
+            <Route path="/food/search/:food_name" exact component={FoodSearch} />
             <Route path="/news" exact component={News} />
             <Route path="/news/detail" exact component={NewsDetail} />
             <Route path="/implement" exact component={Implement} />
