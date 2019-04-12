@@ -3,36 +3,52 @@ import * as actionTypes from "./actionTypes";
 import { fromJS } from "immutable";
 
 const defaultState = fromJS({
-  // focused: false,
-  // list: [],
-  // mouseIn: false,
-  // page: 1,
-  // totalPage: 1,
-  selectValue: ""
-  // selectPage:'plan_panel'
+  selectValue: "",
+  exerciseImplementList: [],
+  exerciseFixedImplementList: [],
+  exerciseFreeImplementList: [],
+  exerciseBodyList: [],
+  exerciseDifficultList: [],
+  planAimList: [],
+  planDaysList: [],
+  planImplementList: [],
+  planBodyList: []
 });
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    // case actionTypes.SEARCH_FOCUS:
-    //immutable对象的set方法,会结合之前的immutable对象的值
-    //和设置的值,返回一个全新的对象
-    //   return state.set("focused", true);
-    // case actionTypes.SEARCH_BLUR:
-    //   return state.set("focused", false);
-    // case actionTypes.MOUSE_ENTER:
-    //   return state.set("mouseIn", true);
-    // case actionTypes.MOUSE_LEAVE:
-    //   return state.set("mouseIn", false);
-    // case actionTypes.CHANGE_LIST:
-    //   return state.merge({
-    //     'list': action.data,
-    //     'totalPage': action.totalPage
-    //   })
-    // case actionTypes.CHANGE_PAGE:
-    //   return state.set("page", action.page);
     case actionTypes.CHANGE_NAV:
       return state.set("selectValue", action.item);
+    case actionTypes.CHANGE_EXERCISEIMPLEMENT:
+      return state.set(
+        "exerciseImplementList",
+        fromJS(action.exerciseImplementList)
+      );
+    case actionTypes.CHANGE_EXERCISEFIXEDIMPLEMENT:
+      return state.set(
+        "exerciseFixedImplementList",
+        fromJS(action.exerciseFixedImplementList)
+      );
+    case actionTypes.CHANGE_EXERCISEFREEIMPLEMENT:
+      return state.set(
+        "exerciseFreeImplementList",
+        fromJS(action.exerciseFreeImplementList)
+      );
+    case actionTypes.CHANGE_EXERCISEBODY:
+      return state.set("exerciseBodyList", fromJS(action.exerciseBodyList));
+    case actionTypes.CHANGE_EXERCISEDIFFICULT:
+      return state.set(
+        "exerciseDifficultList",
+        fromJS(action.exerciseDifficultList)
+      );
+    case actionTypes.CHANGE_PLANAIM:
+      return state.set("planAimList", fromJS(action.planAimList));
+    case actionTypes.CHANGE_PLANDAYS:
+      return state.set("planDaysList", fromJS(action.planDaysList));
+    case actionTypes.CHANGE_PLANIMPLEMENT:
+      return state.set("planImplementList", fromJS(action.planImplementList));
+    case actionTypes.CHANGE_PLANBODY:
+      return state.set("planBodyList", fromJS(action.planBodyList));
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { actionCreator } from "../store";
 import "../style.css";
 // import { actionCreator } from "../store";
 import { Collapse, Row, Button } from "antd";
@@ -8,6 +9,7 @@ const Panel = Collapse.Panel;
 
 class ExerciseNavItem extends Component {
   render() {
+    //完成左侧panel的切换
     var recent_path = this.props.location.pathname;
     var selectkey = "";
     if (recent_path.indexOf("/plan") > -1) {
@@ -15,6 +17,17 @@ class ExerciseNavItem extends Component {
     } else if (recent_path.indexOf("/exercise") > -1) {
       selectkey = "2";
     }
+    const {
+      exerciseImplementList,
+      exerciseFixedImplementList,
+      exerciseFreeImplementList,
+      exerciseBodyList,
+      exerciseDifficultList,
+      planAimList,
+      planDaysList,
+      planImplementList,
+      planBodyList
+    } = this.props;
     return (
       <Fragment>
         <Collapse
@@ -35,18 +48,13 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe8ab;</i>&nbsp;&nbsp;训练目标
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限目标
-                  </Button>
-                  <Button size="small" type="primary">
-                    减脂
-                  </Button>
-                  <Button size="small" type="primary">
-                    塑形
-                  </Button>
-                  <Button size="small" type="primary">
-                    增肌
-                  </Button>
+                  {planAimList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("sort_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
@@ -54,25 +62,13 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont"> &#xe889;</i>&nbsp;&nbsp;每周训练天数
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限天数
-                  </Button>
-                  <Button size="small" type="primary">
-                    2天
-                  </Button>
-                  <Button size="small" type="primary">
-                    3天
-                  </Button>
-                  <Button size="small" type="primary">
-                    4天
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    5天以上
-                  </Button>
+                  {planDaysList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("day_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
@@ -80,18 +76,13 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe65d;</i>&nbsp;&nbsp;器械要求
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限器械
-                  </Button>
-                  <Button size="small" type="primary">
-                    徒手
-                  </Button>
-                  <Button size="small" type="primary">
-                    哑铃
-                  </Button>
-                  <Button size="small" type="primary">
-                    健身房
-                  </Button>
+                  {planImplementList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("implement_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
@@ -99,44 +90,13 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限部位
-                  </Button>
-                  <Button size="small" type="primary">
-                    胸部
-                  </Button>
-                  <Button size="small" type="primary">
-                    背部
-                  </Button>
-                  <Button size="small" type="primary">
-                    肩部
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    腹部
-                  </Button>
-                  <Button size="small" type="primary">
-                    臀部
-                  </Button>
-                  <Button size="small" type="primary">
-                    腿部
-                  </Button>
-                  <Button size="small" type="primary">
-                    肱二头肌
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    肱三头肌
-                  </Button>
-                  <Button size="small" type="primary">
-                    全身
-                  </Button>
+                  {planBodyList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("body_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
             </Link>
@@ -155,135 +115,51 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe65d;</i>&nbsp;&nbsp;器械要求
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限器械
-                  </Button>
-                  <Button size="small" type="primary">
-                    徒手训练
-                  </Button>
-                  <Button size="small" type="primary">
-                    双人训练
-                  </Button>
-                  <Button size="small" type="primary">
-                    其他器械
-                  </Button>
+                  {exerciseImplementList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("exercise_implement_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
                 <div className="left_nav_title"> 固定器械</div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    龙门架
-                  </Button>
-                  <Button size="small" type="primary">
-                    史密斯机
-                  </Button>
-                  <Button size="small" type="primary">
-                    推胸机
-                  </Button>
-                  <Button size="small" type="primary">
-                    夹胸器
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    划船机
-                  </Button>
-                  <Button size="small" type="primary">
-                    下拉机
-                  </Button>
-                  <Button size="small" type="primary">
-                    推肩器
-                  </Button>
-                  <Button size="small" type="primary">
-                    倒蹬机
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    腿弯举机
-                  </Button>
-                  <Button size="small" type="primary">
-                    腿屈伸机
-                  </Button>
-                  <Button size="small" type="primary">
-                    单杠
-                  </Button>
-                  <Button size="small" type="primary">
-                    双杠
-                  </Button>
+                  {exerciseFixedImplementList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("exercise_implement_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
                 <div className="left_nav_title"> 自由器械</div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    哑铃
-                  </Button>
-                  <Button size="small" type="primary">
-                    杠铃
-                  </Button>
-                  <Button size="small" type="primary">
-                    壶铃
-                  </Button>
-                  <Button size="small" type="primary">
-                    弹力带
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    瑞士球
-                  </Button>
-                  <Button size="small" type="primary">
-                    泡沫轴
-                  </Button>
-                  <Button size="small" type="primary">
-                    波速球
-                  </Button>
-                  <Button size="small" type="primary">
-                    战绳
-                  </Button>
+                  {exerciseFreeImplementList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("exercise_implement_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
                 <div className="left_nav_title">
-                  <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位{" "}
+                  <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限部位
-                  </Button>
-                  <Button size="small" type="primary">
-                    肱二头肌
-                  </Button>
-                  <Button size="small" type="primary">
-                    胸肌
-                  </Button>
-                  <Button size="small" type="primary">
-                    前臂
-                  </Button>
-                </Row>
-              </div>
-              <div className="left_nav">
-                <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    中背
-                  </Button>
-                  <Button size="small" type="primary">
-                    下背
-                  </Button>
-                  <Button size="small" type="primary">
-                    颈部
-                  </Button>
-                  <Button size="small" type="primary">
-                    股四头肌
-                  </Button>
+                  {exerciseBodyList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("sort_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
               <div className="left_nav">
@@ -291,18 +167,13 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe609;</i>&nbsp;&nbsp;训练难度
                 </div>
                 <Row gutter={16}>
-                  <Button size="small" type="primary">
-                    不限难度
-                  </Button>
-                  <Button size="small" type="primary">
-                    初级
-                  </Button>
-                  <Button size="small" type="primary">
-                    中级
-                  </Button>
-                  <Button size="small" type="primary">
-                    高级
-                  </Button>
+                  {exerciseDifficultList.map((item, index) => {
+                    return (
+                      <Button size="small" type="primary" key={index}>
+                        {item.get("difficult_name")}
+                      </Button>
+                    );
+                  })}
                 </Row>
               </div>
             </Link>
@@ -311,14 +182,44 @@ class ExerciseNavItem extends Component {
       </Fragment>
     );
   }
+  componentDidMount() {
+    this.props.getNavLeft();
+  }
 }
-const mapStateToProps = state => {
-  return {
-    selectPage: state.getIn(["header", "selectPage"])
-  };
-};
+const mapStateToProps = state => ({
+  selectPage: state.getIn(["header", "selectPage"]),
+  exerciseImplementList: state.getIn(["header", "exerciseImplementList"]),
+  exerciseFixedImplementList: state.getIn([
+    "header",
+    "exerciseFixedImplementList"
+  ]),
+  exerciseFreeImplementList: state.getIn([
+    "header",
+    "exerciseFreeImplementList"
+  ]),
+  exerciseBodyList: state.getIn(["header", "exerciseBodyList"]),
+  exerciseDifficultList: state.getIn(["header", "exerciseDifficultList"]),
+  planAimList: state.getIn(["header", "planAimList"]),
+  planDaysList: state.getIn(["header", "planDaysList"]),
+  planImplementList: state.getIn(["header", "planImplementList"]),
+  planBodyList: state.getIn(["header", "planBodyList"])
+});
 
+const mapDispatchToProps = dispatch => ({
+  //获取implement参数
+  getNavLeft() {
+    dispatch(actionCreator.getExerciseImplement());
+    dispatch(actionCreator.getExerciseFixedImplement());
+    dispatch(actionCreator.getExerciseFreeImplement());
+    dispatch(actionCreator.getExerciseBody());
+    dispatch(actionCreator.getExerciseDefficult());
+    dispatch(actionCreator.getPlanAim());
+    dispatch(actionCreator.getPlanDay());
+    dispatch(actionCreator.getPlanImplement());
+    dispatch(actionCreator.getPlanBody());
+  }
+});
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withRouter(ExerciseNavItem));

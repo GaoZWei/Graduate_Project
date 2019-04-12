@@ -8,6 +8,14 @@ router.get("/exercise_implement", function (req, res, next) {
         .then(response => res.json(response));
 });
 
+router.get("/exercise_implement_fix", function (req, res, next) {
+    ParamsDao.getAllExerciseFixImplement()
+        .then(response => res.json(response));
+});
+router.get("/exercise_implement_free", function (req, res, next) {
+    ParamsDao.getAllExerciseFreeImplement()
+        .then(response => res.json(response));
+});
 
 router.get("/exercise_difficult", function (req, res, next) {
     ParamsDao.getAllExerciseDifficulty()

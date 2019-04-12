@@ -4,7 +4,33 @@ var pool = require("../db");
 // 取得所有健身的器械
 function getAllExerciseImplement() {
     return new Promise((resolve, reject) => {
-        pool.query("select * from exercise_implement", [],
+        pool.query("select * from exercise_implement where exercise_implement_flag=0", [],
+            function (errors, results) {
+                if (results) {
+                    resolve(results)
+                } else {
+                    reject(errors)
+                }
+            })
+    })
+}
+
+function getAllExerciseFixImplement() {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from exercise_implement where exercise_implement_flag=1", [],
+            function (errors, results) {
+                if (results) {
+                    resolve(results)
+                } else {
+                    reject(errors)
+                }
+            })
+    })
+}
+
+function getAllExerciseFreeImplement() {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from exercise_implement where exercise_implement_flag=2", [],
             function (errors, results) {
                 if (results) {
                     resolve(results)
@@ -96,7 +122,10 @@ function getAllPlanBody() {
             })
     })
 }
+
 module.exports.getAllExerciseImplement = getAllExerciseImplement;
+module.exports.getAllExerciseFixImplement = getAllExerciseFixImplement;
+module.exports.getAllExerciseFreeImplement = getAllExerciseFreeImplement;
 module.exports.getAllExerciseDifficulty = getAllExerciseDifficulty;
 module.exports.getAllExerciseSort = getAllExerciseSort;
 module.exports.getAllPlanAim = getAllPlanAim;
