@@ -32,21 +32,16 @@ class FoodTopArea extends Component {
     );
   }
 }
-// const mapStateToProps = state => {
-//   return {
-//     foodList: state.getIn(["food", "foodList"])
-//   };
-// };
 const mapDispatchToProps = dispatch => ({
   //保证了当前页是搜索页也可以改状态
   SearchFood(food_name, props) {
     const action = actionCreator.getSearchFood(food_name);
     dispatch(action);
     props.history.push("/food/search/" + food_name);
+    // props.history.push("/food/" + food_name);
   }
 });
 export default connect(
-  // mapStateToProps,
   null,
   mapDispatchToProps
 )(withRouter(FoodTopArea));

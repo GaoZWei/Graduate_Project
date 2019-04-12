@@ -39,8 +39,22 @@ function getExerciseById(req) {
   })
 }
 
-// 将动作添加至定制计划中
+// 搜索动作
+function SearchExercise(req) {
+  return new Promise((resolve, reject) => {
+      console.log(1231);
+      pool.query("select * from exercise where exercise_name like ?", ['%' + req.query.exercise_name + '%'], function (errors, results) {
+          if (results) {
+              resolve(results)
+          } else {
+              reject(errors);
+          }
+      });
+  })
+}
 
+
+// 将动作添加至定制计划中
 
 
 
@@ -61,4 +75,5 @@ function getAllExerciseSort() {
 
 module.exports.getAllExercise = getAllExercise;
 module.exports.getExerciseById = getExerciseById;
+module.exports.SearchExercise = SearchExercise;
 module.exports.getAllExerciseSort = getAllExerciseSort;

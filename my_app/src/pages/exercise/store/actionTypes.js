@@ -1,3 +1,6 @@
 export const CHANGE_EXERCISE_DATA='exercise/CHANGE_EXERCISE_DATA'
 
 export const CHANGE_DETAIL_DATA='exercise/CHANGE_DETAIL_DATA'
+
+export const GET_SEARCH_DATA='exercise/GET_SEARCH_DATA'
+

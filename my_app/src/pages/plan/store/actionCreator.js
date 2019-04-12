@@ -1,11 +1,11 @@
 import * as actionTypes from "./actionTypes";
 import { fetch } from "../../../util/HttpUtil";
 
+// 计划列表
 const changeplanData = result => ({
   type: actionTypes.CHANGE_PLAN_DATA,
   planlist: result
 });
-// 计划列表
 export const changePlanData = () => {
   return dispatch => {
     fetch("/plan").then(res => {
@@ -15,16 +15,30 @@ export const changePlanData = () => {
   };
 };
 
+// 计划详情
 const changeplanDetail = result => ({
   type: actionTypes.CHANGE_PLAN_DETAIL,
   planDetialList: result
 });
-// 计划详情
 export const getPlanById = plan_id => {
   return dispatch => {
     fetch("/plan/" + plan_id).then(res => {
       const result = res;
       dispatch(changeplanDetail(result));
+    });
+  };
+};
+
+// 搜索计划
+const getSearchData = result => ({
+  type: actionTypes.GET_SEARCH_DATA,
+  planlist: result
+});
+export const getSearchPlan = plan_name=> {
+  return dispatch => {
+    fetch("/plan/search?plan_name=" + encodeURI(plan_name)).then(res => {
+      const result = res;
+      dispatch(getSearchData(result));
     });
   };
 };

@@ -7,6 +7,11 @@ router.get("/", function (req, res, next) {
     PlanDao.getAllPlan()
         .then(response => res.json(response));
 });
+//根据name查询动作
+router.get(('/search'), function (req, res, next) {
+    PlanDao.SearchPlan(req)
+        .then(response => res.json(response))
+})
 
 // 根据id查找计划
 router.get('/:id', function (req, res, next) {

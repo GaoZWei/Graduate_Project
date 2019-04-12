@@ -30,3 +30,19 @@ export const getExerciseDetail = exercise_id => {
     });
   };
 };
+
+// 搜索动作
+const getSearchData = result => ({
+  type: actionTypes.GET_SEARCH_DATA,
+  exerciseList: result
+});
+export const getSearchExercise = exercise_name=> {
+  return dispatch => {
+    // axios.get
+    fetch("/exercise/search?exercise_name=" + encodeURI(exercise_name)).then(res => {
+      const result = res;
+      dispatch(getSearchData(result));
+    });
+  };
+};
+

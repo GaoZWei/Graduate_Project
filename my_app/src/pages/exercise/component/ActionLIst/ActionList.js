@@ -10,9 +10,4 @@ class ActionList extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   exerciseList: state.getIn(["exercise", "exerciseList"])
-// });
-
 export default ActionList;

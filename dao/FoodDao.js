@@ -57,8 +57,7 @@ function getRelateFood(req) {
 // 搜索食物
 function SearchFood(req) {
     return new Promise((resolve, reject) => {
-        console.log(1231);
-        pool.query("select * from food where food_name like ?",['%'+req.query.food_name+'%'], function (errors, results) {
+        pool.query("select * from food where food_name like ?", ['%' + req.query.food_name + '%'], function (errors, results) {
             if (results) {
                 resolve(results)
             } else {

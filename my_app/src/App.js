@@ -48,7 +48,11 @@ class App extends Component {
             <Route path="/food" exact component={Food} />
             <Route path="/food/:sort_id" exact component={FoodSortList} />
             <Route path="/food/detail/:food_id" exact component={FoodDetail} />
-            <Route path="/food/search/:food_name" exact component={FoodSearch} />
+            <Route
+              path="/food/search/:food_name"
+              exact
+              component={FoodSearch}
+            />
             <Route path="/news" exact component={News} />
             <Route path="/news/detail" exact component={NewsDetail} />
             <Route path="/implement" exact component={Implement} />

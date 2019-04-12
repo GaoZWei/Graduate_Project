@@ -8,6 +8,12 @@ router.get("/", function (req, res, next) {
     .then(response => res.json(response));
 });
 
+//根据name查询动作
+router.get(('/search'), function (req, res, next) {
+  ExerciseDao.SearchExercise(req)
+    .then(response => res.json(response))
+})
+
 // 根据id查询动作
 router.get("/:exercise_id", function (req, res, next) {
   // ExerciseDao.getExerciseById(req, results => {
@@ -20,6 +26,7 @@ router.get("/:exercise_id", function (req, res, next) {
       res.json(response)
     });
 });
+
 
 // 将动作添加到定制计划中
 
