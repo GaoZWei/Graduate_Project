@@ -138,3 +138,28 @@ export const getPlanBody = exercise_id => {
     });
   };
 };
+
+//筛选
+export const updateEx_select = (exercise_implement_id,sort_id,difficult_id)=> ({
+  type: actionTypes.UPDATE_EX_SELECTIMPLEMENT,
+  exercise_implement_id: exercise_implement_id,
+  sort_id:sort_id,
+  difficult_id:difficult_id
+});
+
+
+//筛选得出需要动作
+// const changeplanbody = result => ({
+//   type: actionTypes.CHANGE_PLANBODY,
+//   planBodyList: result
+// });
+export const sendRequestToUpdate = (exercise_implement_id,sort_id,difficult_id) => {
+  return dispatch => {
+    // axios.get
+    // fetch("/param/plan_body").then(res => {
+    //   const result = res;
+    //   dispatch(changeplanbody(result));
+    // });
+    console.log(exercise_implement_id);
+  };
+};

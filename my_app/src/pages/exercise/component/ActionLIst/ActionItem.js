@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row,Empty} from "antd";
 // import first_hand_chest_01 from "../../../../statics/chest/first_hand_chest_01.jpg";
 import { Link } from "react-router-dom";
 const { Meta } = Card;
@@ -10,6 +10,7 @@ class ActionItem extends Component {
     // console.log(exerciseList);
     return (
       <Row>
+      {/* {exerciseList.size===0?<Empty/>:''} */}
         {exerciseList.map((item, index) => {
           return (
             <Col span={6} key={item.get("exercise_id")}>

@@ -26,7 +26,15 @@ class ExerciseNavItem extends Component {
       planAimList,
       planDaysList,
       planImplementList,
-      planBodyList
+      planBodyList,
+      ex_selectImplement,
+      ex_selectBody,
+      ex_selectDifficulty,
+      pl_selectAim,
+      pl_selectDay,
+      pl_selectImplement,
+      pl_selectBody,
+      changeExerciseList
     } = this.props;
     return (
       <Fragment>
@@ -117,7 +125,18 @@ class ExerciseNavItem extends Component {
                 <Row gutter={16}>
                   {exerciseImplementList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changeExerciseList(
+                            item.get("exercise_implement_id"),
+                            ex_selectBody,
+                            ex_selectDifficulty
+                          );
+                        }}
+                      >
                         {item.get("exercise_implement_name")}
                       </Button>
                     );
@@ -129,7 +148,18 @@ class ExerciseNavItem extends Component {
                 <Row gutter={16}>
                   {exerciseFixedImplementList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changeExerciseList(
+                            item.get("exercise_implement_id"),
+                            ex_selectBody,
+                            ex_selectDifficulty
+                          );
+                        }}
+                      >
                         {item.get("exercise_implement_name")}
                       </Button>
                     );
@@ -141,7 +171,18 @@ class ExerciseNavItem extends Component {
                 <Row gutter={16}>
                   {exerciseFreeImplementList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changeExerciseList(
+                            item.get("exercise_implement_id"),
+                            ex_selectBody,
+                            ex_selectDifficulty
+                          );
+                        }}
+                      >
                         {item.get("exercise_implement_name")}
                       </Button>
                     );
@@ -155,7 +196,18 @@ class ExerciseNavItem extends Component {
                 <Row gutter={16}>
                   {exerciseBodyList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changeExerciseList(
+                            ex_selectImplement,
+                            item.get("sort_id"),
+                            ex_selectDifficulty
+                          );
+                        }}
+                      >
                         {item.get("sort_name")}
                       </Button>
                     );
@@ -169,7 +221,18 @@ class ExerciseNavItem extends Component {
                 <Row gutter={16}>
                   {exerciseDifficultList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changeExerciseList(
+                            ex_selectImplement,
+                            ex_selectBody,
+                            item.get("difficult_id")
+                          );
+                        }}
+                      >
                         {item.get("difficult_name")}
                       </Button>
                     );
@@ -202,7 +265,14 @@ const mapStateToProps = state => ({
   planAimList: state.getIn(["header", "planAimList"]),
   planDaysList: state.getIn(["header", "planDaysList"]),
   planImplementList: state.getIn(["header", "planImplementList"]),
-  planBodyList: state.getIn(["header", "planBodyList"])
+  planBodyList: state.getIn(["header", "planBodyList"]),
+  ex_selectImplement: state.getIn(["header", "ex_selectImplement"]),
+  ex_selectBody: state.getIn(["header", "ex_selectBody"]),
+  ex_selectDifficulty: state.getIn(["header", "ex_selectDifficulty"]),
+  pl_selectAim: state.getIn(["header", "pl_selectAim"]),
+  pl_selectDay: state.getIn(["header", "pl_selectDay"]),
+  pl_selectImplement: state.getIn(["header", "pl_selectImplement"]),
+  pl_selectBody: state.getIn(["header", "pl_selectBody"])
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -217,6 +287,22 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreator.getPlanDay());
     dispatch(actionCreator.getPlanImplement());
     dispatch(actionCreator.getPlanBody());
+  },
+  changeExerciseList(exercise_implement_id, sort_id, difficult_id) {
+    dispatch(
+      actionCreator.updateEx_select(
+        exercise_implement_id,
+        sort_id,
+        difficult_id
+      )
+    );
+    dispatch(
+      actionCreator.sendRequestToUpdate(
+        exercise_implement_id,
+        sort_id,
+        difficult_id
+      )
+    );
   }
 });
 export default connect(

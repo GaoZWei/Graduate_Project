@@ -42,17 +42,31 @@ function getExerciseById(req) {
 // 搜索动作
 function SearchExercise(req) {
   return new Promise((resolve, reject) => {
-      console.log(1231);
-      pool.query("select * from exercise where exercise_name like ?", ['%' + req.query.exercise_name + '%'], function (errors, results) {
-          if (results) {
-              resolve(results)
-          } else {
-              reject(errors);
-          }
-      });
+    console.log(1231);
+    pool.query("select * from exercise where exercise_name like ?", ['%' + req.query.exercise_name + '%'], function (errors, results) {
+      if (results) {
+        resolve(results)
+      } else {
+        reject(errors);
+      }
+    });
   })
 }
 
+//筛选动作
+function filterExercise(exercise_implement_id, sort_id, difficult_id) {
+  return new Promise((resolve, reject) => {
+    pool.query("SELECT * from exercise where exercise_sort=5 and exercise_difficulty=2 and exercise_sort_facility=1", [exercise_implement_id,sort_id,difficult_id],
+      function (errors, results) {
+        if (results) {
+          resolve(results);
+        } else {
+          reject(errors);
+        }
+      }
+    );
+  });
+}
 
 // 将动作添加至定制计划中
 
@@ -76,4 +90,5 @@ function getAllExerciseSort() {
 module.exports.getAllExercise = getAllExercise;
 module.exports.getExerciseById = getExerciseById;
 module.exports.SearchExercise = SearchExercise;
+module.exports.filterExercise = filterExercise;
 module.exports.getAllExerciseSort = getAllExerciseSort;
