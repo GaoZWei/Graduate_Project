@@ -42,7 +42,6 @@ function getExerciseById(req) {
 // 搜索动作
 function SearchExercise(req) {
   return new Promise((resolve, reject) => {
-    console.log(1231);
     pool.query("select * from exercise where exercise_name like ?", ['%' + req.query.exercise_name + '%'], function (errors, results) {
       if (results) {
         resolve(results)
@@ -56,16 +55,15 @@ function SearchExercise(req) {
 //筛选动作
 function filterExercise(req) {
   return new Promise((resolve, reject) => {
-    console.log(req.query.exercise_sort);
     var sql = 'SELECT * from exercise where 1=1 ';
     if (req.query.exercise_sort !== 'all') {
-      sql = sql+' and exercise_sort = ' + req.query.exercise_sort
+        sql = sql + ' and exercise_sort = ' + req.query.exercise_sort
     }
     if (req.query.exercise_sort_facility !== 'all') {
-      sql = sql+' and exercise_sort_facility = ' + req.query.exercise_sort_facility
+      sql = sql + ' and exercise_sort_facility = ' + req.query.exercise_sort_facility
     }
-    if (req.query.exercise_difficulty !=='all') {
-      sql = sql+' and exercise_difficulty = ' + req.query.exercise_difficulty
+    if (req.query.exercise_difficulty !== 'all') {
+        sql = sql + ' and exercise_difficulty = ' + req.query.exercise_difficulty
     }
     // pool.query("SELECT * from exercise where exercise_sort=? and exercise_difficulty=? and exercise_sort_facility=? ", [req.query.exercise_sort, req.query.exercise_difficulty, req.query.exercise_sort_facility],
     pool.query(sql, [],

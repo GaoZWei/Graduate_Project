@@ -124,6 +124,22 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe65d;</i>&nbsp;&nbsp;器械要求
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changeExerciseList(
+                        "all",
+                        ex_selectBody,
+                        ex_selectDifficulty
+                      );
+                    }}
+                    className={
+                      ex_selectImplement === "all" ? "ex_implement_active" : ""
+                    }
+                  >
+                    不限器械
+                  </Button>
                   {exerciseImplementList.map((item, index) => {
                     return (
                       <Button
@@ -137,6 +153,12 @@ class ExerciseNavItem extends Component {
                             ex_selectDifficulty
                           );
                         }}
+                        className={
+                          ex_selectImplement ===
+                          item.get("exercise_implement_id")
+                            ? "ex_implement_active"
+                            : ""
+                        }
                       >
                         {item.get("exercise_implement_name")}
                       </Button>
@@ -160,6 +182,12 @@ class ExerciseNavItem extends Component {
                             ex_selectDifficulty
                           );
                         }}
+                        className={
+                          ex_selectImplement ===
+                          item.get("exercise_implement_id")
+                            ? "ex_implement_active"
+                            : ""
+                        }
                       >
                         {item.get("exercise_implement_name")}
                       </Button>
@@ -183,6 +211,12 @@ class ExerciseNavItem extends Component {
                             ex_selectDifficulty
                           );
                         }}
+                        className={
+                          ex_selectImplement ===
+                          item.get("exercise_implement_id")
+                            ? "ex_implement_active"
+                            : ""
+                        }
                       >
                         {item.get("exercise_implement_name")}
                       </Button>
@@ -195,6 +229,20 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changeExerciseList(
+                        ex_selectImplement,
+                        "all",
+                        ex_selectDifficulty
+                      );
+                    }}
+                    className={ex_selectBody === "all" ? "ex_body_active" : ""}
+                  >
+                    不限部位
+                  </Button>
                   {exerciseBodyList.map((item, index) => {
                     return (
                       <Button
@@ -208,6 +256,11 @@ class ExerciseNavItem extends Component {
                             ex_selectDifficulty
                           );
                         }}
+                        className={
+                          ex_selectBody === item.get("sort_id")
+                            ? "ex_body_active"
+                            : ""
+                        }
                       >
                         {item.get("sort_name")}
                       </Button>
@@ -220,6 +273,20 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe609;</i>&nbsp;&nbsp;训练难度
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changeExerciseList(
+                        ex_selectImplement,
+                        ex_selectBody,
+                        "all"
+                      );
+                    }}
+                    className={ex_selectDifficulty === "all" ? "ex_difficult_active" : ""}
+                  >
+                    不限难度
+                  </Button>
                   {exerciseDifficultList.map((item, index) => {
                     return (
                       <Button
@@ -233,6 +300,12 @@ class ExerciseNavItem extends Component {
                             item.get("difficult_id")
                           );
                         }}
+                        className={
+                          ex_selectDifficulty ===
+                          item.get("difficult_id")
+                            ? "ex_difficult_active"
+                            : ""
+                        }
                       >
                         {item.get("difficult_name")}
                       </Button>

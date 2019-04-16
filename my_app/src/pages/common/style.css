@@ -84,9 +84,9 @@
     background-color: rgb(198, 58, 61);
 }
 
-.ant-collapse-item ant-collapse-item-active  {
+/* .ant-collapse-item .ant-collapse-item-active  {
     background-color: rgb(198, 58, 61);
-}
+} */
 
 /* plan_panel  */
 /* .plan_panel {
@@ -133,7 +133,7 @@
 .left_nav .ant-btn-sm {
     font-size: 1em;
     color: #b2b2b2;
-    background-color: #3f3f3f !important;
+    background-color: #3f3f3f ;
     border: 1px solid #3f3f3f !important;
     height: 2em;
     width: 5em;
@@ -145,13 +145,16 @@
 
 .left_nav .ant-btn-sm:hover {
     color: white;
-    background-color: #3f3f3f !important;
     border: 1px solid #3f3f3f;
 }
 
-.left_nav .ant-btn-sm::selection {
+/* .left_nav .ant-btn-sm::selection {
     background-color: yellow !important;
     color: #fff;
+} */
+.ex_implement_active ,.ex_body_active ,.ex_difficult_active{
+    background-color: #c83838!important;
+    color: white!important;
 }
 
 @font-face {

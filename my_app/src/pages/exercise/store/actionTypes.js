@@ -4,3 +4,4 @@ export const CHANGE_DETAIL_DATA='exercise/CHANGE_DETAIL_DATA'
 
 export const GET_SEARCH_DATA='exercise/GET_SEARCH_DATA'
 
+export const FILTER_EXERCISE='exercise/FILTER_EXERCISE'

@@ -17,6 +17,8 @@ export default (state = defaultState, action) => {
       return state.set("detailList", fromJS(action.detailList));
     case actionTypes.GET_SEARCH_DATA:
       return state.set("exerciseList", fromJS(action.exerciseList));
+    case actionTypes.FILTER_EXERCISE:
+      return state.set("exerciseList", fromJS(action.exerciseList));
     default:
       return state;
   }
