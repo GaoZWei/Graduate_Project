@@ -28,8 +28,7 @@ router.get("/:exercise_id", function (req, res, next) {
 });
 
 // 筛选动作
-router.get("/filter/exercise", function (req, res, next) {
-  console.log(2131);
+router.get("/filter/item", function (req, res, next) {
   ExerciseDao.filterExercise(req)
     .then(response => {
       console.log(response);

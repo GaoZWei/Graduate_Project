@@ -54,9 +54,21 @@ function SearchExercise(req) {
 }
 
 //筛选动作
-function filterExercise(exercise_implement_id, sort_id, difficult_id) {
+function filterExercise(req) {
   return new Promise((resolve, reject) => {
-    pool.query("SELECT * from exercise where exercise_sort=5 and exercise_difficulty=2 and exercise_sort_facility=1", [exercise_implement_id,sort_id,difficult_id],
+    console.log(req.query.exercise_sort);
+    var sql = 'SELECT * from exercise where 1=1 ';
+    if (req.query.exercise_sort !== 'all') {
+      sql = sql+' and exercise_sort = ' + req.query.exercise_sort
+    }
+    if (req.query.exercise_sort_facility !== 'all') {
+      sql = sql+' and exercise_sort_facility = ' + req.query.exercise_sort_facility
+    }
+    if (req.query.exercise_difficulty !=='all') {
+      sql = sql+' and exercise_difficulty = ' + req.query.exercise_difficulty
+    }
+    // pool.query("SELECT * from exercise where exercise_sort=? and exercise_difficulty=? and exercise_sort_facility=? ", [req.query.exercise_sort, req.query.exercise_difficulty, req.query.exercise_sort_facility],
+    pool.query(sql, [],
       function (errors, results) {
         if (results) {
           resolve(results);

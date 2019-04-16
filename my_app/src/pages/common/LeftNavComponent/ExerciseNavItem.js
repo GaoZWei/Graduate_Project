@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "../store";
+import { actionCreator as actionCreator1 } from "../../exercise/store";
 import "../style.css";
 // import { actionCreator } from "../store";
 import { Collapse, Row, Button } from "antd";
@@ -297,7 +298,7 @@ const mapDispatchToProps = dispatch => ({
       )
     );
     dispatch(
-      actionCreator.sendRequestToUpdate(
+      actionCreator1.sendRequestToUpdate(
         exercise_implement_id,
         sort_id,
         difficult_id
