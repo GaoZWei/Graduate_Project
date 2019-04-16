@@ -37,10 +37,38 @@ function SearchPlan(req) {
             }
         });
     })
-  }
-  
+}
+
+//筛选计划
+function filterPlan(req) {
+    return new Promise((resolve, reject) => {
+        var sql = 'SELECT * from plan where 1=1 ';
+        if (req.query.plan_aim !== 'all') {
+            sql = sql + ' and plan_aim = ' + req.query.plan_aim
+        }
+        if (req.query.plan_day !== 'all') {
+            sql = sql + ' and plan_day = ' + req.query.plan_day
+        }
+        if (req.query.plan_implement !== 'all') {
+            sql = sql + ' and plan_implement = ' + req.query.plan_implement
+        }
+        if (req.query.plan_body !== 'all') {
+            sql = sql + ' and plan_body = ' + req.query.plan_body
+        }
+        pool.query(sql, [],
+            function (errors, results) {
+                if (results) {
+                    resolve(results);
+                } else {
+                    reject(errors);
+                }
+            }
+        );
+    });
+}
 
 // 将plan添加至公共计划区
 module.exports.getPlanById = getPlanById;
 module.exports.getAllPlan = getAllPlan;
 module.exports.SearchPlan = SearchPlan;
+module.exports.filterPlan = filterPlan;

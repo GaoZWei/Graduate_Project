@@ -1,6 +1,8 @@
 import * as actionTypes from "./actionTypes";
 //immutable库
-import { fromJS } from "immutable";
+import {
+  fromJS
+} from "immutable";
 
 const defaultState = fromJS({
   planlist: [],
@@ -14,6 +16,8 @@ export default (state = defaultState, action) => {
     case actionTypes.CHANGE_PLAN_DETAIL:
       return state.set("planDetialList", fromJS(action.planDetialList));
     case actionTypes.GET_SEARCH_DATA:
+      return state.set("planlist", fromJS(action.planlist));
+    case actionTypes.FILTER_PLAN:
       return state.set("planlist", fromJS(action.planlist));
     default:
       return state;

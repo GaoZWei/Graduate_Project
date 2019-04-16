@@ -75,6 +75,7 @@
     border: none !important;
     border-radius: 0 !important;
 }
+
 /* 设置颜色变化 */
 .ant-collapse-header {
     background-color: rgb(37, 36, 37);
@@ -133,7 +134,7 @@
 .left_nav .ant-btn-sm {
     font-size: 1em;
     color: #b2b2b2;
-    background-color: #3f3f3f ;
+    background-color: #3f3f3f;
     border: 1px solid #3f3f3f !important;
     height: 2em;
     width: 5em;
@@ -152,9 +153,15 @@
     background-color: yellow !important;
     color: #fff;
 } */
-.ex_implement_active ,.ex_body_active ,.ex_difficult_active{
-    background-color: #c83838!important;
-    color: white!important;
+.ex_implement_active,
+.ex_body_active,
+.ex_difficult_active,
+.pl_aim_active,
+.pl_day_active,
+.pl_implement_active,
+.pl_body_active {
+    background-color: #c83838 !important;
+    color: white !important;
 }
 
 @font-face {

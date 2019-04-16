@@ -13,13 +13,13 @@ const defaultState = fromJS({
   planDaysList: [],
   planImplementList: [],
   planBodyList: [],
-  ex_selectImplement: 'all',
-  ex_selectBody:'all',
-  ex_selectDifficulty: 'all',
-  pl_selectAim: 0,
-  pl_selectDay: 0,
-  pl_selectImplement: 0,
-  pl_selectBody: 0
+  ex_selectImplement: "all",
+  ex_selectBody: "all",
+  ex_selectDifficulty: "all",
+  pl_selectAim: "all",
+  pl_selectDay: "all",
+  pl_selectImplement: "all",
+  pl_selectBody: "all"
 });
 
 export default (state = defaultState, action) => {
@@ -61,6 +61,13 @@ export default (state = defaultState, action) => {
         ex_selectImplement: fromJS(action.exercise_implement_id),
         ex_selectBody: fromJS(action.sort_id),
         ex_selectDifficulty: fromJS(action.difficult_id)
+      });
+    case actionTypes.UPDATE_PL_SELECTIMPLEMENT:
+      return state.merge({
+        pl_selectAim: fromJS(action.sort_id),
+        pl_selectDay: fromJS(action.day_id),
+        pl_selectImplement:fromJS(action.implement_id),
+        pl_selectBody: fromJS(action.body_id),
       });
     default:
       return state;

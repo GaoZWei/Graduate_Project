@@ -139,10 +139,23 @@ export const getPlanBody = exercise_id => {
   };
 };
 
-//筛选
-export const updateEx_select = (exercise_implement_id,sort_id,difficult_id)=> ({
+//筛选动作
+export const updateEx_select = (
+  exercise_implement_id,
+  sort_id,
+  difficult_id
+) => ({
   type: actionTypes.UPDATE_EX_SELECTIMPLEMENT,
   exercise_implement_id: exercise_implement_id,
-  sort_id:sort_id,
-  difficult_id:difficult_id
+  sort_id: sort_id,
+  difficult_id: difficult_id
+});
+
+//筛选计划
+export const updatePl_select = (sort_id, day_id, implement_id, body_id) => ({
+  type: actionTypes.UPDATE_PL_SELECTIMPLEMENT,
+  sort_id: sort_id,
+  day_id: day_id,
+  implement_id: implement_id,
+  body_id: body_id
 });

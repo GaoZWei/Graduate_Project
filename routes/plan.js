@@ -21,6 +21,15 @@ router.get('/:id', function (req, res, next) {
         });
 });
 
+// 筛选计划
+router.get("/filter/item", function (req, res, next) {
+    PlanDao.filterPlan(req)
+        .then(response => {
+            res.json(response)
+        });
+});
+
 //将计划添加至公共计划区
+
 
 module.exports = router;

@@ -3,6 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "../store";
 import { actionCreator as actionCreator1 } from "../../exercise/store";
+import { actionCreator as actionCreator2 } from "../../plan/store";
 import "../style.css";
 // import { actionCreator } from "../store";
 import { Collapse, Row, Button } from "antd";
@@ -35,7 +36,8 @@ class ExerciseNavItem extends Component {
       pl_selectDay,
       pl_selectImplement,
       pl_selectBody,
-      changeExerciseList
+      changeExerciseList,
+      changePlanList
     } = this.props;
     return (
       <Fragment>
@@ -57,9 +59,41 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe8ab;</i>&nbsp;&nbsp;训练目标
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changePlanList(
+                        "all",
+                        pl_selectDay,
+                        pl_selectImplement,
+                        pl_selectBody
+                      );
+                    }}
+                    className={pl_selectAim === "all" ? "pl_aim_active" : ""}
+                  >
+                    不限目标
+                  </Button>
                   {planAimList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changePlanList(
+                            item.get("sort_id"),
+                            pl_selectDay,
+                            pl_selectImplement,
+                            pl_selectBody
+                          );
+                        }}
+                        className={
+                          pl_selectAim === item.get("sort_id")
+                            ? "pl_aim_active"
+                            : ""
+                        }
+                      >
                         {item.get("sort_name")}
                       </Button>
                     );
@@ -71,9 +105,41 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont"> &#xe889;</i>&nbsp;&nbsp;每周训练天数
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changePlanList(
+                        pl_selectAim,
+                        "all",
+                        pl_selectImplement,
+                        pl_selectBody
+                      );
+                    }}
+                    className={pl_selectDay === "all" ? "pl_day_active" : ""}
+                  >
+                    不限天数
+                  </Button>
                   {planDaysList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changePlanList(
+                            pl_selectAim,
+                            item.get("day_id"),
+                            pl_selectImplement,
+                            pl_selectBody
+                          );
+                        }}
+                        className={
+                          pl_selectDay === item.get("day_id")
+                            ? "pl_day_active"
+                            : ""
+                        }
+                      >
                         {item.get("day_name")}
                       </Button>
                     );
@@ -85,9 +151,43 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe65d;</i>&nbsp;&nbsp;器械要求
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changePlanList(
+                        pl_selectAim,
+                        pl_selectDay,
+                        "all",
+                        pl_selectBody
+                      );
+                    }}
+                    className={
+                      pl_selectImplement === "all" ? "pl_implement_active" : ""
+                    }
+                  >
+                    不限器械
+                  </Button>
                   {planImplementList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changePlanList(
+                            pl_selectAim,
+                            pl_selectDay,
+                            item.get("implement_id"),
+                            pl_selectBody
+                          );
+                        }}
+                        className={
+                          pl_selectImplement === item.get("implement_id")
+                            ? "pl_implement_active"
+                            : ""
+                        }
+                      >
                         {item.get("implement_name")}
                       </Button>
                     );
@@ -99,9 +199,41 @@ class ExerciseNavItem extends Component {
                   <i className="iconfont">&#xe884;</i>&nbsp;&nbsp;训练部位
                 </div>
                 <Row gutter={16}>
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => {
+                      changePlanList(
+                        pl_selectAim,
+                        pl_selectDay,
+                        pl_selectImplement,
+                        "all"
+                      );
+                    }}
+                    className={pl_selectBody === "all" ? "pl_body_active" : ""}
+                  >
+                    不限部位
+                  </Button>
                   {planBodyList.map((item, index) => {
                     return (
-                      <Button size="small" type="primary" key={index}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        key={index}
+                        onClick={() => {
+                          changePlanList(
+                            pl_selectAim,
+                            pl_selectDay,
+                            pl_selectImplement,
+                            item.get("body_id")
+                          );
+                        }}
+                        className={
+                          pl_selectBody === item.get("body_id")
+                            ? "pl_body_active"
+                            : ""
+                        }
+                      >
                         {item.get("body_name")}
                       </Button>
                     );
@@ -283,7 +415,9 @@ class ExerciseNavItem extends Component {
                         "all"
                       );
                     }}
-                    className={ex_selectDifficulty === "all" ? "ex_difficult_active" : ""}
+                    className={
+                      ex_selectDifficulty === "all" ? "ex_difficult_active" : ""
+                    }
                   >
                     不限难度
                   </Button>
@@ -301,8 +435,7 @@ class ExerciseNavItem extends Component {
                           );
                         }}
                         className={
-                          ex_selectDifficulty ===
-                          item.get("difficult_id")
+                          ex_selectDifficulty === item.get("difficult_id")
                             ? "ex_difficult_active"
                             : ""
                         }
@@ -376,6 +509,14 @@ const mapDispatchToProps = dispatch => ({
         sort_id,
         difficult_id
       )
+    );
+  },
+  changePlanList(sort_id, day_id, implement_id, body_id) {
+    dispatch(
+      actionCreator.updatePl_select(sort_id, day_id, implement_id, body_id)
+    );
+    dispatch(
+      actionCreator2.sendRequestToUpdate(sort_id, day_id, implement_id, body_id)
     );
   }
 });
