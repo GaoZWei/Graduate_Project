@@ -91,7 +91,13 @@
   font-weight: bold;
   font-size: 1.1em;
 }
-
+.implement_bmi_input_name{
+  margin-top: 12%;
+  margin-left: 20%;
+}
+.implement_bmi_input_out{
+  margin-top: 5%;
+}
 .implement_bmi_input_place {
   border: 1px solid #d4d4d4;
 }
