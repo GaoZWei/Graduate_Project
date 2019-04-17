@@ -4,12 +4,14 @@ import { reducer as exerciseReducer } from "../pages/exercise/store/";
 import { reducer as planReducer } from "../pages/plan/store";
 import { reducer as mainReducer } from "../pages/login/store";
 import { reducer as foodReducer } from "../pages/food/store";
+import { reducer as implementReducer } from "../pages/implement/store";
 const reducer = combineReducers({
   header: headerReducer,
   main: mainReducer,
   exercise: exerciseReducer,
   plan: planReducer,
-  food: foodReducer
+  food: foodReducer,
+  implement: implementReducer
 });
 
 export default reducer;

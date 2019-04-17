@@ -56,7 +56,7 @@ class App extends Component {
             <Route path="/news" exact component={News} />
             <Route path="/news/detail" exact component={NewsDetail} />
             <Route path="/implement" exact component={Implement} />
-            <Route path="/implement/BMI" exact component={BMI} />
+            <Route path="/implement/:implement_id" exact component={BMI} />
             <Route path="/personal" exact component={Personal} />
             <Route path="/register" exact component={Register} />
             <Route path="/login" exact component={Login} />

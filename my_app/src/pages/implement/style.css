@@ -1,6 +1,6 @@
 /* -------健身工具主页样式------ */
 .implement_contentarea {
-  padding: 0 4%;
+  padding:0  4% 4% 4%;
   margin-top: 4%;
   background: white;
 }
@@ -32,12 +32,16 @@
 /* 列表区域 */
 .implement_listarea {
   margin-top: 1%;
+  /* margin-left: -5%; */
+}
+
+.implement_item {
+  margin-top: 6%;
 }
 
 /* 小标题 */
 .implement_topic {
   font-size: 1.2em;
-  margin-top: 2%;
   color: black;
   font-weight: bold;
 }
@@ -45,7 +49,7 @@
 .introduce {
   background: rgb(241, 241, 241);
   color: black;
-  padding: 2%;
+  padding: 3%;
 }
 
 /* 下划线 */
@@ -109,10 +113,11 @@
   cursor: pointer;
   width: 80%;
 }
+
 /* 结果区域 */
-.implement_bmi_extend_content{
+.implement_bmi_extend_content {
   background: rgb(244, 244, 244);
   font-weight: 600;
   padding: 3%;
-  margin-top:3%;
+  margin-top: 3%;
 }

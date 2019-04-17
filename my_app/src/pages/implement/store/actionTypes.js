@@ -1,0 +1,3 @@
+export const CHANGE_IMPLEMENT_DATA='implement/CHANGE_IMPLEMENT_DATA'
+
+export const GET_IMPLEMENT_DETAIL='implement/GET_IMPLEMENT_DETAIL'

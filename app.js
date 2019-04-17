@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var exercise = require('./routes/exercise');
 var food = require('./routes/food');
 var health = require('./routes/health');
+var implement = require('./routes/implement');
 var param = require('./routes/param');
 var app = express();
 
@@ -50,7 +51,7 @@ app.use('/exercise', exercise);
 app.use('/food', food);
 app.use('/health', health);
 app.use('/param', param);
-
+app.use('/implement', implement);
 
 
 // catch 404 and forward to error handler
