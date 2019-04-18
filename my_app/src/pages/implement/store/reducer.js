@@ -8,7 +8,12 @@ const defaultState = fromJS({
   height: "",
   weight: "",
   sex: "",
-  age: ""
+  age: "",
+  bmiResult: "",
+  drinkResult: "",
+  standardWeight: "",
+  heartRate: "",
+  waterResult: ""
 });
 
 export default (state = defaultState, action) => {
@@ -20,6 +25,14 @@ export default (state = defaultState, action) => {
         "implement_detailList",
         fromJS(action.implement_detailList)
       );
+    case actionTypes.UPDATE_BMI_RESULT:
+      return state.set("bmiResult", fromJS(action.bmiResult));
+    case actionTypes.UPDATE_STANDARD_RESULT:
+      return state.set("standardWeight", fromJS(action.standardWeight));
+    case actionTypes.UPDATE_HEARTRATE_RESULT:
+      return state.set("heartRate", fromJS(action.heartRate));
+    case actionTypes.UPDATE_WATER_RESULT:
+      return state.set("waterResult", fromJS(action.waterResult));
     default:
       return state;
   }

@@ -29,3 +29,24 @@ export const getImplementDetail = implement_id => {
     });
   };
 };
+
+export const updateBmiResult = bmiResult => ({
+  type: actionTypes.UPDATE_BMI_RESULT,
+  bmiResult: bmiResult
+});
+
+
+export const updateStandardResult = standardWeight => ({
+  type: actionTypes.UPDATE_STANDARD_RESULT,
+  standardWeight: standardWeight
+});
+
+export const updateHeartRateResult = heartRate => ({
+  type: actionTypes.UPDATE_HEARTRATE_RESULT,
+  heartRate: heartRate
+});
+
+export const updateWaterResult = waterResult => ({
+  type: actionTypes.UPDATE_WATER_RESULT,
+  waterResult: waterResult
+});
