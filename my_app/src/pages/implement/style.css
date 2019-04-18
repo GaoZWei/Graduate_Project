@@ -1,6 +1,6 @@
 /* -------健身工具主页样式------ */
 .implement_contentarea {
-  padding:0  4% 4% 4%;
+  padding: 0 4% 4% 4%;
   margin-top: 4%;
   background: white;
 }
@@ -91,13 +91,16 @@
   font-weight: bold;
   font-size: 1.1em;
 }
-.implement_bmi_input_name{
+
+.implement_bmi_input_name {
   margin-top: 12%;
   margin-left: 20%;
 }
-.implement_bmi_input_out{
+
+.implement_bmi_input_out {
   margin-top: 5%;
 }
+
 .implement_bmi_input_place {
   border: 1px solid #d4d4d4;
 }
@@ -126,4 +129,11 @@
   font-weight: 600;
   padding: 3%;
   margin-top: 3%;
+}
+
+.implement_result {
+  color: red;
+}
+.implement_result_prompt{
+  color: grey;
 }

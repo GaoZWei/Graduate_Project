@@ -13,10 +13,15 @@ class BMIItem extends Component {
     const {
       implement_detailList,
       getResult,
-      height,
-      weight,
-      sex,
-      age
+      // height,
+      // weight,
+      // sex,
+      // age,
+      bmiResult,
+      standardWeight,
+      heartRate,
+      waterResult,
+      basicMetaResult
     } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
@@ -196,9 +201,115 @@ class BMIItem extends Component {
                       <Col span={3} />
                     </Row>
                   </div>
-                  <div className="implement_bmi_extend_content">
-                    <li>您的身体质量指数(BMI)为19.1</li>
-                  </div>
+                  {this.props.match.params.implement_id === "1" &&
+                  bmiResult &&
+                  standardWeight &&
+                  heartRate &&
+                  basicMetaResult ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">{bmiResult}</span>
+                      </li>
+                      <li>
+                        {item.get("implement_result1")}
+                        <span className="implement_result">
+                          {standardWeight}
+                        </span>
+                      </li>
+                      <li>
+                        {item.get("implement_result2")}
+                        <span className="implement_result">{heartRate}</span>
+                      </li>
+                      <li>
+                        {item.get("implement_result3")}
+                        <span className="implement_result">
+                          {basicMetaResult}
+                        </span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {this.props.match.params.implement_id === "2" && bmiResult ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">{bmiResult}</span>
+                      </li>
+                      <ul />
+                      <h3 className="implement_result_prompt">
+                        成年人身体质量指数(BMI):
+                      </h3>
+                      <li>
+                        轻体重BMI:
+                        <span className="implement_result">BMI&gt; 18.5</span>
+                      </li>
+                      <li>
+                        健康体重BMI:
+                        <span className="implement_result">
+                          18.5&lt; =BMI&lt; 24
+                        </span>
+                      </li>
+                      <li>
+                        超重BMI:
+                        <span className="implement_result">24&lt; =BMI</span>
+                      </li>
+                      <li>
+                        肥胖BMI:
+                        <span className="implement_result"> 28&lt; =BMI</span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {this.props.match.params.implement_id === "3" && heartRate ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">{heartRate}</span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {this.props.match.params.implement_id === "4" &&
+                  basicMetaResult ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">
+                          {basicMetaResult}
+                        </span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {this.props.match.params.implement_id === "5" &&
+                  waterResult ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">{waterResult}</span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {this.props.match.params.implement_id === "6" &&
+                  standardWeight ? (
+                    <div className="implement_bmi_extend_content">
+                      <li>
+                        {item.get("implement_result")}
+                        <span className="implement_result">
+                          {standardWeight}
+                        </span>
+                      </li>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </Form>
             </div>
@@ -221,7 +332,9 @@ const mapStateToProps = state => {
     age: state.getIn(["implement", "age"]),
     bmiResult: state.getIn(["implement", "bmiResult"]),
     standardWeight: state.getIn(["implement", "standardWeight"]),
-    heartRate: state.getIn(["implement", "heartRate"])
+    heartRate: state.getIn(["implement", "heartRate"]),
+    waterResult: state.getIn(["implement", "waterResult"]),
+    basicMetaResult: state.getIn(["implement", "basicMetaResult"])
   };
 };
 const mapDispatchToProps = dispatch => ({
@@ -244,30 +357,62 @@ const mapDispatchToProps = dispatch => ({
       var standardWeight;
       var heartRate;
       var waterResult;
+      var basicMetaResult;
       //获取查询条件
-      const values = {
-        ...fieldsValue
-      };
+      // const values = {
+      //   ...fieldsValue
+      // };
       if (height != null && weight != null && sex != null && age != null) {
         if (props.match.params.implement_id === "1") {
           // 一分钟了解自己
+          //1.BMI
+          var height_small = height / 100;
+          result = weight / Math.pow(height_small, 2);
+          bmiResult = result.toFixed(2);
+          props.updateBmi(bmiResult);
+          // 2.基础代谢
+          if (sex === "男") {
+            basicMetaResult =
+              66 + 13.7 * weight + 5 * height - 6.8 * age + "大卡";
+          } else if (sex === "女") {
+            basicMetaResult =
+              65.5 + 9.6 * weight + 1.7 * height - 4.7 * age + "大卡";
+          }
+          props.updatebasicMeta(basicMetaResult);
+          // 3.心率
+          heartRate =
+            ((220 - age) * 0.6).toFixed(1) +
+            "到" +
+            ((220 - age) * 0.7).toFixed(1) +
+            "次/分钟";
+          props.updateHeartRate(heartRate);
+          //4.标准体重
+          if (sex === "男") {
+            standardWeight = height - 105;
+          } else if (sex === "女") {
+            standardWeight = height - 100;
+          }
+          props.updateStandartWeight(standardWeight);
         } else if (props.match.params.implement_id === "4") {
-          //基础代谢
+          //基础代谢率
           // 女性:65.5 + (9.6 x 体重) + (1.7 x 身高) - (4.7X年龄) (体重=kg 身高=cm)
           // 男性:66 + (13.7 x 体重) + (5.0 x 身高) - (6.8x年龄) (体重=kg 身高=cm)
           console.log(444);
-          if (sex == "男") {
-            console.log(123);
-          } else if ((sex = "女")) {
-            console.log(214);
+          if (sex === "男") {
+            basicMetaResult =
+              66 + 13.7 * weight + 5 * height - 6.8 * age + "大卡";
+          } else if (sex === "女") {
+            basicMetaResult =
+              65.5 + 9.6 * weight + 1.7 * height - 4.7 * age + "大卡";
           }
+          props.updatebasicMeta(basicMetaResult);
         }
       }
       if (height != null && weight != null && age == null && sex == null) {
         //BMI指数
         //BMI = 体重(公斤) / (身高/100)的平方
-        height = height / 100;
-        result = weight / Math.pow(height, 2);
+        var height_small1 = height / 100;
+        result = weight / Math.pow(height_small1, 2);
         bmiResult = result.toFixed(2);
         props.updateBmi(bmiResult);
       }
@@ -279,22 +424,22 @@ const mapDispatchToProps = dispatch => ({
         //例如，一个40岁男性的最大心率是180，他的燃脂心率区间是108到126次/分钟。
         heartRate =
           ((220 - age) * 0.6).toFixed(1) +
-          "到" +
+          "次/分钟到" +
           ((220 - age) * 0.7).toFixed(1) +
           "次/分钟";
         props.updateHeartRate(heartRate);
       }
       if (height == null && weight != null && age == null && sex == null) {
         //补水计算器
-        waterResult=weight*40+'毫升'
+        waterResult = weight * 40 + "毫升";
         props.updateWater(waterResult);
       }
       // 标准体重
       if (height != null && weight == null && age == null && sex != null) {
         // 男性:身高(cm)-105=标准体重(kg)；女性:身高(cm)-100=标准体重(kg)
-        if (sex == "男") {
+        if (sex === "男") {
           standardWeight = height - 105;
-        } else if ((sex = "女")) {
+        } else if (sex === "女") {
           standardWeight = height - 100;
         }
         props.updateStandartWeight(standardWeight);
@@ -313,8 +458,12 @@ const mapDispatchToProps = dispatch => ({
     const action = actionCreator.updateHeartRateResult(heartRate);
     dispatch(action);
   },
-  updateWater(waterResult){
+  updateWater(waterResult) {
     const action = actionCreator.updateWaterResult(waterResult);
+    dispatch(action);
+  },
+  updatebasicMeta(basicMetaResult) {
+    const action = actionCreator.updateBasicMetaResult(basicMetaResult);
     dispatch(action);
   }
 });

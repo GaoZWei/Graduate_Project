@@ -1,16 +1,14 @@
 export const CHANGE_IMPLEMENT_DATA='implement/CHANGE_IMPLEMENT_DATA'
 
 export const GET_IMPLEMENT_DETAIL='implement/GET_IMPLEMENT_DETAIL'
-
+//BMI指数
 export const UPDATE_BMI_RESULT='implement/UPDATE_BMI_RESULT'
-
-export const UPDATE_DRINK_RESULT='implement/UPDATE_DRINK_RESULT'
-
-// export const UPDATE_DRINK_RESULT='implement/UPDATE_DRINK_RESULT'
 //标准体重
 export const UPDATE_STANDARD_RESULT='implement/UPDATE_STANDARD_RESULT'
 // 燃脂心率
 export const UPDATE_HEARTRATE_RESULT='implement/UPDATE_HEARTRATE_RESULT'
-
+//补水计算
 export const UPDATE_WATER_RESULT='implement/UPDATE_WATER_RESULT'
+//基础代谢率
+export const UPDATE_BASICMETA_RESULT='implement/UPDATE_BASICMETA_RESULT'
 

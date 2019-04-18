@@ -10,10 +10,10 @@ const defaultState = fromJS({
   sex: "",
   age: "",
   bmiResult: "",
-  drinkResult: "",
   standardWeight: "",
   heartRate: "",
-  waterResult: ""
+  waterResult: "",
+  basicMetaResult: ""
 });
 
 export default (state = defaultState, action) => {
@@ -33,6 +33,8 @@ export default (state = defaultState, action) => {
       return state.set("heartRate", fromJS(action.heartRate));
     case actionTypes.UPDATE_WATER_RESULT:
       return state.set("waterResult", fromJS(action.waterResult));
+    case actionTypes.UPDATE_BASICMETA_RESULT:
+      return state.set("basicMetaResult", fromJS(action.basicMetaResult));
     default:
       return state;
   }

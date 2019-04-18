@@ -24,7 +24,6 @@ export const getImplementDetail = implement_id => {
     // axios.get
     fetch("/implement/" + implement_id).then(res => {
       const result = res;
-      console.log(res)
       dispatch(changeDetailData(result));
     });
   };
@@ -49,4 +48,9 @@ export const updateHeartRateResult = heartRate => ({
 export const updateWaterResult = waterResult => ({
   type: actionTypes.UPDATE_WATER_RESULT,
   waterResult: waterResult
+});
+
+export const updateBasicMetaResult = basicMetaResult => ({
+  type: actionTypes.UPDATE_BASICMETA_RESULT,
+  basicMetaResult: basicMetaResult
 });
