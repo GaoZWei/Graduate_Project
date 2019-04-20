@@ -54,7 +54,7 @@ class App extends Component {
               component={FoodSearch}
             />
             <Route path="/news" exact component={News} />
-            <Route path="/news/detail" exact component={NewsDetail} />
+            <Route path="/news/:health_id" exact component={NewsDetail} />
             <Route path="/implement" exact component={Implement} />
             <Route path="/implement/:implement_id" exact component={BMI} />
             <Route path="/personal" exact component={Personal} />

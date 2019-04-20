@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../style.css";
-// import { List,  Icon } from "antd";
+import { connect } from "react-redux";
+import { actionCreator } from "../../store";
 import { List } from "antd";
 import { Link } from "react-router-dom";
 class NewsList extends Component {
@@ -18,12 +19,7 @@ class NewsList extends Component {
           "准备好燃脂，增肌，增加力量，并在6周内彻头彻尾的达到低体脂。准备好实现最佳身材吧。准备好极速脱脂计划吧！"
       });
     }
-    // const IconText = ({ type, text }) => (
-    //   <span>
-    //     <Icon type={type} style={{ marginRight: 8 }} />
-    //     {text}
-    //   </span>
-    // );
+    const { newsList } = this.props;
     return (
       <div className="newslist_area">
         <div className="newslist_content">
@@ -36,7 +32,7 @@ class NewsList extends Component {
               },
               pageSize: 3
             }}
-            dataSource={listData}
+            dataSource={newsList}
             footer={
               <div>
                 <b>--下 面 没 有 了 呢--</b>
@@ -44,7 +40,7 @@ class NewsList extends Component {
             }
             renderItem={item => (
               <List.Item
-                key={item.title}
+                key={item.get("health_title")}
                 // actions={[
                 //   <IconText type="star-o" text="156" />,
                 //   <IconText type="like-o" text="156" />,
@@ -58,12 +54,12 @@ class NewsList extends Component {
                   />
                 }
               >
-                <Link to="/news/detail">
+                <Link to={"/news/" + item.get("health_id")}>
                   <List.Item.Meta
                     // avatar={<Avatar src={item.avatar} />}
                     // title={<a href={item.href}>{item.title}</a>}
-                    title={item.title}
-                    description={item.description}
+                    title={item.get("health_title")}
+                    description={item.get("health_description")}
                   />
                   {item.content}
                 </Link>
@@ -74,5 +70,23 @@ class NewsList extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    this.props.changeHealthData();
+  }
 }
-export default NewsList;
+
+const mapStateToProps = state => ({
+  newsList: state.getIn(["news", "newsList"])
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeHealthData() {
+    const action = actionCreator.changeHealthInfo();
+    dispatch(action);
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewsList);

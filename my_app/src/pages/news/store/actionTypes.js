@@ -1,0 +1,4 @@
+export const CHANGE_NEWS_DATA='news/CHANGE_NEWS_DATA'
+
+export const CHANGE_NEWS_DETAIL='news/CHANGE_NEWS_DETAIL'
+
