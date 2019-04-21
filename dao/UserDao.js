@@ -25,9 +25,21 @@ function register(user_name, user_account, user_password, user_age, user_sex, us
     return new Promise((resolve, reject) => {
         pool.query('INSERT INTO user (user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) VALUES (?, ?,?, ?,?, ?,?)', [user_name, user_account, user_password, user_age, user_sex, user_height, user_weight], function (errors, results) {
             if (results) {
-                resolve(results);
+                resolve(true);
             } else {
-                reject(errors);
+                reject(false);
+            }
+        })
+    })
+}
+// 检查用户名
+function checkUserAccount(user_account){
+    return new Promise((resolve, reject) => {
+        pool.query('select count(user_account) as count from user where user_account=?', [user_account], function (errors, results) {
+            if (results) {
+                resolve(results[0].count);
+            } else {
+                reject(results);
             }
         })
     })
@@ -36,3 +48,4 @@ function register(user_name, user_account, user_password, user_age, user_sex, us
 module.exports.getUserById = getUserById;
 module.exports.login = login;
 module.exports.register = register;
+module.exports.checkUserAccount = checkUserAccount;

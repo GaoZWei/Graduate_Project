@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { actionCreator } from "../../store";
+import { fetch } from "../../../../util/HttpUtil";
 import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
 import "../../style.css";
@@ -9,6 +10,67 @@ import { Input, Form, Layout, Radio, Button } from "antd";
 const RadioGroup = Radio.Group;
 const { Content } = Layout;
 class RegisterItem extends Component {
+  validateAge = (rule, value, callback) => {
+    if (value > 120 || value <= 0) {
+      callback("请填写正确年龄");
+    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+      callback("请填写正确内容");
+    }
+    callback();
+  };
+  validateHeight = (rule, value, callback) => {
+    if (value > 300 || value <= 0) {
+      callback("请填写正确身高");
+    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+      callback("请填写正确内容");
+    }
+    callback();
+  };
+
+  validateWeight = (rule, value, callback) => {
+    if (value > 300 || value <= 0) {
+      callback("请填写正确体重");
+    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+      callback("请填写正确内容");
+    }
+    callback();
+  };
+
+  validateAccount = (rule, value, callback) => {
+    if (value == null) {
+      callback("请填写账号");
+    } else if (this.checkUserAccount(value)) {
+      callback("账号已存在");
+      // if (response) {
+      //   callback("账号已存在");
+      // } else {
+      //   callback();
+      // }
+    }
+
+    // else {
+    //   this.checkUserAccount(value).then(response => {
+    //     console.log(response)
+    //     if (response) {
+    //       callback("账号已存在");
+    //     } else {
+    //       callback();
+    //     }
+    //   });
+    // }
+    callback();
+  };
+  checkUserAccount = value => {
+    // return new Promise((resolve, reject) => {
+    fetch(
+      "http://localhost:3005/users/checkUserAccount?user_account=" + value
+    ).then(response => {
+      // console.log("check:" + response != 0);
+      return response != 0;
+    });
+    // });
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { handleRegister } = this.props;
@@ -21,7 +83,13 @@ class RegisterItem extends Component {
             <Form className="login-form">
               <Form.Item>
                 {getFieldDecorator("user_account", {
-                  rules: [{ required: true, message: "请输入你的用户名" }]
+                  rules: [
+                    { required: true, message: "请输入你的用户名" },
+                    {
+                      validator: this.validateAccount
+                    }
+                  ],
+                  validateTrigger: "onBlur"
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">账号</div>
@@ -68,7 +136,12 @@ class RegisterItem extends Component {
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("user_age", {
-                  rules: [{ required: true, message: "请输入你的年龄" }]
+                  rules: [
+                    { required: true, message: "请输入你的年龄" },
+                    {
+                      validator: this.validateAge
+                    }
+                  ]
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">年龄</div>
@@ -78,20 +151,30 @@ class RegisterItem extends Component {
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("user_height", {
-                  rules: [{ required: true, message: "请输入你的身高" }]
+                  rules: [
+                    { required: true, message: "请输入你的身高" },
+                    {
+                      validator: this.validateHeight
+                    }
+                  ]
                 })(
                   <div className="register_area_formitem">
-                    <div className="register_label">身高(KG)</div>
+                    <div className="register_label">身高(CM)</div>
                     <Input placeholder="输入身高" className="register_input" />
                   </div>
                 )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("user_weight", {
-                  rules: [{ required: true, message: "请输入你的体重" }]
+                  rules: [
+                    { required: true, message: "请输入你的体重" },
+                    {
+                      validator: this.validateWeight
+                    }
+                  ]
                 })(
                   <div className="register_area_formitem">
-                    <div className="register_label">体重(CM)</div>
+                    <div className="register_label">体重(KG)</div>
                     <Input placeholder="输入体重" className="register_input" />
                   </div>
                 )}
@@ -139,7 +222,7 @@ const mapDispatchToProps = dispatch => ({
       const values = {
         ...fieldsValue
       };
-      console.log(values);
+      // console.log(values);
       dispatch(actionCreator.Register(values, props));
     });
   }

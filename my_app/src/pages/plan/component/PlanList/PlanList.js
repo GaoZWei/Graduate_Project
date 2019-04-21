@@ -42,11 +42,14 @@ class PlanList extends Component {
               pageSize: 3
             }}
             dataSource={planlist}
-            footer={
-              <div>
-                <b>--下 面 没 有 了 呢--</b>
-              </div>
-            }
+            locale={{
+              emptyText: '暂无数据'
+            }}
+            // footer={
+            //   <div>
+            //     <b>--下 面 没 有 了 呢--</b>
+            //   </div>
+            // }
             renderItem={item => (
               <List.Item
                 key={item.get("plan_id")}

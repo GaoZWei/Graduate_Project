@@ -119,7 +119,8 @@
 }
 
 .food_sortlist_content_left_list:hover {
-    border: 1px solid rgb(224, 224, 224);
+    /* border: 1px solid rgb(224, 224, 224); */
+    background-color: rgb(250, 250, 250);
 }
 
 .food_sortlist_content_right {

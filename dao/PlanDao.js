@@ -3,7 +3,7 @@ var pool = require("../db");
 // 查询所有的plan
 function getAllPlan() {
     return new Promise((resolve, reject) => {
-        pool.query("select * from plan", [], function (errors, results) {
+        pool.query("select * from plan where plan_creator=999", [], function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
