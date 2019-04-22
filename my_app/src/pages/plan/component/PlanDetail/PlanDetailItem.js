@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../../store";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "../../style.css";
-// import bg01 sfrom "../../../../statics/bg01.jpg";
 import PlanItemTable from "./PlanItemTable";
-import { Button } from "antd";
+import { Button, Popconfirm } from "antd";
 class PlanDetailItem extends Component {
   render() {
-    const { planDetialList } = this.props;
+    const { planDetialList, addToCommonPlan } = this.props;
     return (
       <div>
         {planDetialList.map((item, index) => {
@@ -40,11 +39,16 @@ class PlanDetailItem extends Component {
               </div>
               <div className="plan_detail_four">
                 <div className="add_to_plan">
+                  <Popconfirm
+                    title="确认添加到我的公共计划?"
+                    onConfirm={() => addToCommonPlan(this)}
+                  >
+                    <Button type="primary" className="add_btn" size="large">
+                      添加至我的公共计划
+                    </Button>
+                  </Popconfirm>
                   <Button type="primary" className="add_btn" size="large">
-                    添加至我的公共计划
-                  </Button>
-                  <Button type="primary" className="add_btn" size="large">
-                    查看我的公共计划
+                    <Link to="/personal">查看我的公共计划</Link>
                   </Button>
                 </div>
               </div>
@@ -65,6 +69,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getPlanDetail(plan_id) {
     dispatch(actionCreator.getPlanById(plan_id));
+  },
+  addToCommonPlan(_self) {
+    console.log(_self.props.match.params.plan_id);
   }
 });
 

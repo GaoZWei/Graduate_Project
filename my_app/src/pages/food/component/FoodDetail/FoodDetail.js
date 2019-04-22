@@ -6,10 +6,15 @@ import NavBreadcrumb from "../../../common/NavBreadcrumb";
 import Foot from "../../../common/Foot";
 import FoodTopArea from "../FoodTopArea";
 import "../../style.css";
-import { Row, Col, Layout, Button } from "antd";
+import { Row, Col, Layout, Button, Popconfirm } from "antd";
 class FoodDetail extends Component {
   render() {
-    const { fooddetailList, relateList, changeroute } = this.props;
+    const {
+      fooddetailList,
+      relateList,
+      changeroute,
+      addToFoodList
+    } = this.props;
     return (
       <Layout>
         <FoodTopArea />
@@ -134,9 +139,14 @@ class FoodDetail extends Component {
                 </div>
                 <div className="food_detail_three">
                   <div className="add_to_food">
-                    <Button type="primary" className="add_btn" size="large">
-                      添加至我的食物清单
-                    </Button>
+                    <Popconfirm
+                      title="确认添加到我的食物清单?"
+                      onConfirm={() => addToFoodList(this)}
+                    >
+                      <Button type="primary" className="add_btn" size="large">
+                        添加至我的食物清单
+                      </Button>
+                    </Popconfirm>
                     <Button type="primary" className="add_btn" size="large">
                       <Link to="/personal"> 查看我的食物清单</Link>
                     </Button>
@@ -168,40 +178,6 @@ class FoodDetail extends Component {
                         </div>
                       );
                     })}
-                    {/* <Row>
-                      <Col span={1} />
-                      <Col span={5}>
-                        <img src={rice} alt="" />
-                        <br />
-                        <div className="food_detail_content_bottom_content_name">
-                          米饭
-                        </div>
-                      </Col>
-                      <Col span={1} />
-                      <Col span={5}>
-                        <img src={rice} alt="" />
-                        <br />
-                        <div className="food_detail_content_bottom_content_name">
-                          米饭
-                        </div>
-                      </Col>
-                      <Col span={1} />
-                      <Col span={5}>
-                        <img src={rice} alt="" />
-                        <br />
-                        <div className="food_detail_content_bottom_content_name">
-                          米饭
-                        </div>
-                      </Col>
-                      <Col span={1} />
-                      <Col span={5}>
-                        <img src={rice} alt="" />
-                        <br />
-                        <div className="food_detail_content_bottom_content_name">
-                          米饭
-                        </div>
-                      </Col>
-                    </Row> */}
                   </div>
                 </div>
               </div>
@@ -242,6 +218,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(action);
     props.getRelateFood(food_id);
     props.history.push("/food/detail/" + food_id);
+  },
+  addToFoodList(_self) {
+    console.log(_self.props.match.params.food_id);
   }
 });
 export default connect(

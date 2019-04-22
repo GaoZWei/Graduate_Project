@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { Table, Popconfirm } from "antd";
 class PersonalPublic extends Component {
   render() {
+    const check = _self => {
+      console.log(_self);
+      // Modal.info({
+      //   title: `${record.title}`,
+      //   content: (
+      //     <div
+      //       dangerouslySetInnerHTML={{
+      //         __html: `${record.knowledgecontent}`
+      //       }}
+      //     />
+      //   )
+      // });
+    };
     const columns = [
       { title: "计划序号", dataIndex: "plan_number", key: "plan_number" },
       { title: "计划名称", dataIndex: "plan_name", key: "plan_name" },
@@ -13,14 +26,17 @@ class PersonalPublic extends Component {
         render: () => {
           return (
             <span>
-              <a href="/">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="javascript:;" onClick={() => check(this)}>
+                查看
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Popconfirm
                 title="确认删除?"
                 // onConfirm={deleteCollect.bind(null, record)}
               >
                 <a href="/">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </Popconfirm>
-              <a href="/">添加</a>
+              <a href="/plan">添加</a>
             </span>
           );
         }
