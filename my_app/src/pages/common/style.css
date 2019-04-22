@@ -9,7 +9,8 @@
 
 /* 登录注册链接的样式 */
 .login,
-.register {
+.register,
+.logout {
     position: fixed;
     top: 0.05%;
     color: rgb(149, 157, 165);
@@ -23,6 +24,13 @@
 
 .register {
     right: 6%;
+}
+
+.logout {
+    right: 4%;
+}
+.logout:hover{
+ cursor: pointer;
 }
 
 .loginRegister_font {
@@ -110,7 +118,8 @@
     border-radius: 0 0 0 0 !important;
 }
 
-.ant-collapse>.ant-collapse-item ,.ant-collapse-content{
+.ant-collapse>.ant-collapse-item,
+.ant-collapse-content {
     border: 0 !important;
 }
 

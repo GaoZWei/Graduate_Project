@@ -14,6 +14,8 @@ export const Login = (values, props) => {
       if (response === null || response === undefined) {
         alert("login failed");
       } else {
+        //直接操作sessionStorage
+        sessionStorage.user = JSON.stringify(result);
         dispatch(getUserData(result));
         // if (dispatch(getUserData(result))) {
         //   alert("login failed");

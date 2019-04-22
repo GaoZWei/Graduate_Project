@@ -37,9 +37,7 @@ router.get('/:user_id', function (req, res, next) {
 router.post("/login", function (req, res, next) {
   UserDao.login(req.body.account, req.body.password)
     .then((response) => {
-      // console.log(response[0].user_account);
-      // req.session.userAccount ='123'; 
-      // console.log(res.session.userAccount);
+      // req.session.user =response[0]; 
       res.json(response[0]) // response[0] = rowDataPacket
     })
 })

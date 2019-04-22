@@ -169,7 +169,16 @@ class RegisterItem extends Component {
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">年龄</div>
-                    <Input placeholder="输入年龄" className="register_input" />
+                    <Input
+                      prefix={
+                        <Icon
+                          type="exception"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="输入年龄"
+                      className="register_input"
+                    />
                   </div>
                 )}
               </Form.Item>
@@ -184,7 +193,16 @@ class RegisterItem extends Component {
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">身高(CM)</div>
-                    <Input placeholder="输入身高" className="register_input" />
+                    <Input
+                      prefix={
+                        <Icon
+                          type="exception"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="输入身高"
+                      className="register_input"
+                    />
                   </div>
                 )}
               </Form.Item>
@@ -199,7 +217,16 @@ class RegisterItem extends Component {
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">体重(KG)</div>
-                    <Input placeholder="输入体重" className="register_input" />
+                    <Input
+                      prefix={
+                        <Icon
+                          type="exception"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="输入体重"
+                      className="register_input"
+                    />
                   </div>
                 )}
               </Form.Item>

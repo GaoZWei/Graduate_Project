@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
-import { Layout, Menu } from "antd";
+import { actionCreator as actionCreator1 } from "../../pages/login/store";
+import { Layout, Menu, Popconfirm } from "antd";
 import "./style.css";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
-    const { changeNavItem, userList } = this.props;
+    const { changeNavItem, userList, logout } = this.props;
     var recent_path1 = this.props.location.pathname;
     var selectValue1 = "";
     if (recent_path1.indexOf("/exercise") > -1) {
@@ -55,14 +56,19 @@ class Nav extends Component {
             <Link to="/personal"> 个人中心</Link>
           </Menu.Item>
         </Menu>
-        {userList ==null  ? (
-          userList.map((item, index) => {
-            return (
-              <span className="login" key={index}>
-                {item.get("user_name")}
-              </span>
-            );
-          })
+        {sessionStorage.getItem("user") !== null &&
+        sessionStorage.getItem("user") !== undefined &&
+        sessionStorage.getItem("user") !== "null" ? (
+          <span>
+            <span className="login">
+              {JSON.parse(sessionStorage.getItem("user")).user_name}
+            </span>
+            <span className="logout">
+              <Popconfirm title="确认退出登录?" onConfirm={() => logout(this)}>
+                退出登录
+              </Popconfirm>
+            </span>
+          </span>
         ) : (
           <span>
             <span className="login">
@@ -80,6 +86,9 @@ class Nav extends Component {
       </Header>
     );
   }
+  componentDidMount() {
+    this.props.updateNav();
+  }
 }
 const mapStateToProps = state => {
   return {
@@ -91,6 +100,16 @@ const mapDispatchToProps = dispatch => {
   return {
     changeNavItem(item) {
       dispatch(actionCreator.changeNavItem(item));
+    },
+    updateNav() {
+      console.log(131231);
+      // localStorage
+      console.log(JSON.parse(sessionStorage.getItem("user")));
+      // dispatch(actionCreator1.getUserData());
+    },
+    logout(_self) {
+      sessionStorage.user = null;
+      _self.props.history.push("/");
     }
   };
 };
