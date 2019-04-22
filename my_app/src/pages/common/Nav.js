@@ -7,7 +7,7 @@ import "./style.css";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
-    const { changeNavItem } = this.props;
+    const { changeNavItem, userList } = this.props;
     var recent_path1 = this.props.location.pathname;
     var selectValue1 = "";
     if (recent_path1.indexOf("/exercise") > -1) {
@@ -55,23 +55,36 @@ class Nav extends Component {
             <Link to="/personal"> 个人中心</Link>
           </Menu.Item>
         </Menu>
-        <span className="login">
-          <Link to="/login" className="loginRegister_font">
-            登录
-          </Link>
-        </span>
-        <span className="register">
-          <Link to="/register" className="loginRegister_font">
-            注册
-          </Link>
-        </span>
+        {userList ==null  ? (
+          userList.map((item, index) => {
+            return (
+              <span className="login" key={index}>
+                {item.get("user_name")}
+              </span>
+            );
+          })
+        ) : (
+          <span>
+            <span className="login">
+              <Link to="/login" className="loginRegister_font">
+                登录
+              </Link>
+            </span>
+            <span className="register">
+              <Link to="/register" className="loginRegister_font">
+                注册
+              </Link>
+            </span>
+          </span>
+        )}
       </Header>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    selectValue: state.getIn(["header", "selectValue"])
+    selectValue: state.getIn(["header", "selectValue"]),
+    userList: state.getIn(["main", "userList"])
   };
 };
 const mapDispatchToProps = dispatch => {

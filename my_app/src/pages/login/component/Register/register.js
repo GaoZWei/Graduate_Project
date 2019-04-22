@@ -6,14 +6,14 @@ import { fetch } from "../../../../util/HttpUtil";
 import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
 import "../../style.css";
-import { Input, Form, Layout, Radio, Button } from "antd";
+import { Input, Form, Layout, Radio, Button, Icon } from "antd";
 const RadioGroup = Radio.Group;
 const { Content } = Layout;
 class RegisterItem extends Component {
   validateAge = (rule, value, callback) => {
     if (value > 120 || value <= 0) {
       callback("请填写正确年龄");
-    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+    } else if (/^[0-9]*$/.test(value) === false && value !== null) {
       callback("请填写正确内容");
     }
     callback();
@@ -21,7 +21,7 @@ class RegisterItem extends Component {
   validateHeight = (rule, value, callback) => {
     if (value > 300 || value <= 0) {
       callback("请填写正确身高");
-    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+    } else if (/^[0-9]*$/.test(value) === false && value !== null) {
       callback("请填写正确内容");
     }
     callback();
@@ -30,7 +30,7 @@ class RegisterItem extends Component {
   validateWeight = (rule, value, callback) => {
     if (value > 300 || value <= 0) {
       callback("请填写正确体重");
-    } else if (/^[0-9]*$/.test(value) == false && value != null) {
+    } else if (/^[0-9]*$/.test(value) === false && value !== null) {
       callback("请填写正确内容");
     }
     callback();
@@ -66,7 +66,7 @@ class RegisterItem extends Component {
       "http://localhost:3005/users/checkUserAccount?user_account=" + value
     ).then(response => {
       // console.log("check:" + response != 0);
-      return response != 0;
+      return response !== 0;
     });
     // });
   };
@@ -93,7 +93,16 @@ class RegisterItem extends Component {
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">账号</div>
-                    <Input placeholder="输入账号" className="register_input" />
+                    <Input
+                      prefix={
+                        <Icon
+                          type="user"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="输入账号"
+                      className="register_input"
+                    />
                   </div>
                 )}
               </Form.Item>
@@ -103,7 +112,16 @@ class RegisterItem extends Component {
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">昵称</div>
-                    <Input placeholder="输入昵称" className="register_input" />
+                    <Input
+                      prefix={
+                        <Icon
+                          type="lock"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="输入昵称"
+                      className="register_input"
+                    />
                   </div>
                 )}
               </Form.Item>
@@ -114,6 +132,12 @@ class RegisterItem extends Component {
                   <div className="register_area_formitem">
                     <div className="register_label">密码</div>
                     <Input
+                      prefix={
+                        <Icon
+                          type="lock"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
                       type="password"
                       placeholder="输入密码"
                       className="register_input"

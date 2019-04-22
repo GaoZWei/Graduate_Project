@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-// import { post } from "../../../../util/HttpUtil";
 import { actionCreator } from "../../store";
 import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
 import "../../style.css";
-import { Input, Form, Layout, Button } from "antd";
+import { Input, Form, Layout, Button, Icon } from "antd";
 const { Content } = Layout;
 class LoginItem extends Component {
   render() {
@@ -27,6 +26,12 @@ class LoginItem extends Component {
                     <div className="login_area_formitem">
                       <div className="register_label">账号</div>
                       <Input
+                        prefix={
+                          <Icon
+                            type="user"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
                         placeholder="输入用户名"
                         className="register_input"
                       />
@@ -40,6 +45,12 @@ class LoginItem extends Component {
                     <div className="login_area_formitem">
                       <div className="register_label">密码</div>
                       <Input
+                        prefix={
+                          <Icon
+                            type="lock"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
                         type="password"
                         placeholder="输入密码"
                         className="register_input"
@@ -78,22 +89,9 @@ class LoginItem extends Component {
     );
   }
 }
-// mapStateToProps=()=>{
 
-// }
 const mapDispatchToProps = dispatch => ({
   handleLogin(props, e) {
-    // post("http://localhost:3005/users/login", {
-    //   account: "123",
-    //   password: "123"
-    // }).then(response => {
-    //   console.log(response);
-    //   if (response === null || response === undefined) {
-    //     alert("login failed");
-    //   } else {
-    //     props.history.push("/");
-    //   }
-    // });
     if (e) e.preventDefault();
     const { form } = props;
     console.log(props);
@@ -105,23 +103,9 @@ const mapDispatchToProps = dispatch => ({
       //获取查询条件
       const values = {
         ...fieldsValue
-        // lastOnlineTime:
-        //   rangeValue && rangeValue.length > 1
-        //     ? [
-        //         rangeValue[0].format("YYYY-MM-DD"),
-        //         rangeValue[1].format("YYYY-MM-DD")
-        //       ]
-        //     : null,
-        // userQueryLike: userQueryLike ? userQueryLike.trim() : userQueryLike
       };
       console.log(values);
       dispatch(actionCreator.Login(values, props));
-      // dispatch({
-      //   type: "userManageModel/getUserList",
-      //   payload: {
-      //     values: values,
-      //   }
-      // });
     });
   }
 });
@@ -131,28 +115,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(withRouter(Login));
-
-// <div className="login_area_content2">
-// <div className="login_area_formitem">
-//   <div className="register_label">账号</div>
-//   <Input placeholder="输入用户名" className="register_input" />
-// </div>
-// <div className="login_area_formitem">
-//   <div className="register_label">密码</div>
-//   <Input
-//     type="password"
-//     placeholder="输入密码"
-//     className="register_input"
-//   />
-// </div>
-// <div>
-//   <div className="register_submit">
-//     <Button type="primary" className="register_btn" size="large" onClick={handleLogin(this.props)}>
-//       登录
-//     </Button>
-//     <Button type="primary" className="register_btn" size="large">
-//       注册
-//     </Button>
-//   </div>
-// </div>
-// </div>

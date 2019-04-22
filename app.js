@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var api = require('./routes/api');
@@ -40,6 +41,22 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+
+// 使用 session 中间件
+app.use(session({
+  name: 'session',
+  secret: 'secret', // 对session id 相关的cookie 进行签名
+  resave: true,
+  saveUninitialized: false, // 是否保存未初始化的会话
+  cookie: {
+    maxAge: 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
+  },
+}));
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  // res.locals.user = req.session.user || {};
+  next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 中间件
@@ -52,6 +69,7 @@ app.use('/food', food);
 app.use('/health', health);
 app.use('/param', param);
 app.use('/implement', implement);
+
 
 
 // catch 404 and forward to error handler

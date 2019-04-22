@@ -1,7 +1,7 @@
-// import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { fetch } from "../../../util/HttpUtil";
-// import { fromJS } from "immutable";
+import {
+  fetch
+} from "../../../util/HttpUtil";
 
 const changehomeData = result => ({
   type: actionTypes.CHANGE_EXERCISE_DATA,
@@ -61,14 +61,26 @@ export const sendRequestToUpdate = (
   return dispatch => {
     fetch(
       "/exercise/filter/item?exercise_sort_facility=" +
-        exercise_implement_id +
-        "&exercise_sort=" +
-        sort_id +
-        "&exercise_difficulty=" +
-        difficult_id
+      exercise_implement_id +
+      "&exercise_sort=" +
+      sort_id +
+      "&exercise_difficulty=" +
+      difficult_id
     ).then(res => {
       const result = res;
       dispatch(getfilterData(result));
     });
   };
 };
+
+//显示模态框
+export const showModal = () => ({
+  type: actionTypes.SHOW_MODAL,
+  value:true
+})
+
+//隐藏模态框
+export const hideModal = () => ({
+  type: actionTypes.HIDE_MODAL,
+  value:false
+})

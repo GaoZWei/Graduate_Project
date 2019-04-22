@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../../store";
-import { withRouter } from "react-router-dom";
-import { Col, Row, Button, Divider } from "antd";
+import { withRouter, Link } from "react-router-dom";
+import { Col, Row, Button, Divider, Modal } from "antd";
 import "../../style.css";
+import ActionForm from "./ActionForm";
 import num01 from "../../../../statics/01.jpg";
 import num02 from "../../../../statics/02.jpg";
 import num001 from "../../../../statics/001.png";
 import num002 from "../../../../statics/002.png";
 class ActionBasic extends Component {
   render() {
-    const { detailList } = this.props;
+    const {
+      detailList,
+      showModal,
+      modelVisible,
+      hideModal,
+      handleOK
+    } = this.props;
     return (
       <div>
         {detailList.map((item, index) => {
@@ -34,11 +41,15 @@ class ActionBasic extends Component {
                       }}
                     />
                     <span className="action_main">主要肌肉群:</span>
-                    <span className="action_main_sort">胸大肌{item.get("exercise_sort_aim")}</span>
+                    <span className="action_main_sort">
+                      胸大肌{item.get("exercise_sort_aim")}
+                    </span>
                   </Row>
                   <Row>
                     <span className="action_level">级别:</span>
-                    <span className="action_level_sort">{item.get("exercise_difficulty")}</span>
+                    <span className="action_level_sort">
+                      {item.get("exercise_difficulty")}
+                    </span>
                     <Divider
                       type="vertical"
                       style={{
@@ -48,11 +59,15 @@ class ActionBasic extends Component {
                       }}
                     />
                     <span className="action_other">其他肌肉:</span>
-                    <span className="action_other_sort">肱三头肌{item.get("exercise_sort_other")}</span>
+                    <span className="action_other_sort">
+                      肱三头肌{item.get("exercise_sort_other")}
+                    </span>
                   </Row>
                   <Row>
                     <span className="action_implement">器械要求:</span>
-                    <span className="action_implement_sort">徒手训练{item.get("exercise_sort_facility")}</span>
+                    <span className="action_implement_sort">
+                      徒手训练{item.get("exercise_sort_facility")}
+                    </span>
                   </Row>
                 </div>
               </div>
@@ -92,18 +107,36 @@ class ActionBasic extends Component {
                       <p>
                         2、双手与肩同宽，始终保持腰背挺直，控制肘部紧贴身体两侧
                       </p> */}
-                      <p>  {item.get("exercise_description")} </p>
+                      <p> {item.get("exercise_description")} </p>
                     </div>
                   </Col>
                 </Row>
               </div>
               <div className="action_basic_four">
                 <div className="add_to_plan">
-                  <Button type="primary" className="add_btn" size="large">
+                  <Button
+                    type="primary"
+                    className="add_btn"
+                    size="large"
+                    onClick={() => showModal(item.get("exercise_id"))}
+                  >
                     添加至我的计划
                   </Button>
+                  <Modal
+                    title="请选择添加属性"
+                    visible={modelVisible}
+                    onOk={() => handleOK(this)}
+                    onCancel={hideModal}
+                    okText="确认"
+                    cancelText="取消"
+                  >
+                    {/* <p>请选择日期</p>
+                    <p>Bla bla ...</p>
+                    <p>Bla bla ...</p> */}
+                    <ActionForm ref="getFormValue" />
+                  </Modal>
                   <Button type="primary" className="add_btn" size="large">
-                    查看已有计划
+                    <Link to="/personal"> 查看已有计划</Link>
                   </Button>
                 </div>
               </div>
@@ -118,11 +151,29 @@ class ActionBasic extends Component {
   }
 }
 const mapStateToProps = state => ({
-  detailList: state.getIn(["exercise", "detailList"])
+  detailList: state.getIn(["exercise", "detailList"]),
+  modelVisible: state.getIn(["exercise", "modelVisible"]),
+  hideModal: state.getIn(["exercise", "hideModal"])
 });
 const mapDispatchToProps = dispatch => ({
   getExerciseDetail(exercise_id) {
     dispatch(actionCreator.getExerciseDetail(exercise_id));
+  },
+  showModal(exercise_id) {
+    dispatch(actionCreator.showModal());
+  },
+  hideModal(exercise_id) {
+    dispatch(actionCreator.hideModal());
+  },
+  handleOK(props) {
+    console.log(props)
+    console.log(props.props.match.params.exercise_id)
+    let demo = props.refs.getFormValue;
+    demo.validateFields((err, values) => {
+      if (!err) {
+        console.log(values); //这里可以拿到数据
+      }
+    });
   }
 });
 

@@ -17,7 +17,8 @@ export const Login = (values, props) => {
         dispatch(getUserData(result));
         // if (dispatch(getUserData(result))) {
         //   alert("login failed");
-        //   props.history.push("/");
+        message.success("登录成功");
+        props.history.push("/");
         // }
       }
     });
