@@ -10,7 +10,7 @@ export const Login = (values, props) => {
   return dispatch => {
     post("http://localhost:3005/users/login", values).then(response => {
       const result = response;
-      console.log(response);
+      // console.log(response);
       if (response === null || response === undefined) {
         alert("login failed");
       } else {

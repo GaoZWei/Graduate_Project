@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
-import { actionCreator as actionCreator1 } from "../../pages/login/store";
 import { Layout, Menu, Popconfirm } from "antd";
 import "./style.css";
 const { Header } = Layout;
 class Nav extends Component {
   render() {
-    const { changeNavItem, userList, logout } = this.props;
+    const { changeNavItem, logout } = this.props;
     var recent_path1 = this.props.location.pathname;
     var selectValue1 = "";
     if (recent_path1.indexOf("/exercise") > -1) {
@@ -102,7 +101,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreator.changeNavItem(item));
     },
     updateNav() {
-      console.log(131231);
       // localStorage
       console.log(JSON.parse(sessionStorage.getItem("user")));
       // dispatch(actionCreator1.getUserData());

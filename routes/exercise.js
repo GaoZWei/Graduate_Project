@@ -1,9 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var ExerciseDao = require("../dao/ExerciseDao");
-
+// var exerciseModel = require("../models/ExerciseModel").exercise
 // 获取所有动作
 router.get("/", function (req, res, next) {
+  // exerciseModel.exercise_name = req.body.exercise_name
+  // console.log(exerciseModel.exercise_name);
   ExerciseDao.getAllExercise()
     .then(response => res.json(response));
 });

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var UserDao = require('../dao/UserDao');
-
+var userModel = require("../models/UserModel").User
 // router.use(function(req,res,next){
 //   res.locals.fun='plan';
 //   console.log(res.locals.fun);
@@ -35,7 +35,8 @@ router.get('/:user_id', function (req, res, next) {
 
 // 登录
 router.post("/login", function (req, res, next) {
-  UserDao.login(req.body.account, req.body.password)
+  var user = new userModel('',req.body.user_account,req.body.user_password,'','','','');
+  UserDao.login(user)
     .then((response) => {
       // req.session.user =response[0]; 
       res.json(response[0]) // response[0] = rowDataPacket
@@ -44,7 +45,16 @@ router.post("/login", function (req, res, next) {
 
 // 注册
 router.post("/register", function (req, res, next) {
-  UserDao.register(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight)
+  var user = new userModel(req.body.user_name,req.body.user_account,req.body.user_password,req.body.user_age,req.body.user_sex,req.body.user_height,req.body.user_weight);
+  console.log(user.user_name);
+  // userModel.user_name=req.body.user_name;
+  // userModel.user_account=req.body.user_account;
+  // userModel.user_password=req.body.user_password;
+  // userModel.user_age=req.body.user_age;
+  // userModel.user_sex=req.body.user_sex;
+  // userModel.user_height=userModelreq.body.user_height;
+  // userModel.user_weight=req.body.user_weight;
+  UserDao.register(user)
     .then((response) => {
       if (response) {
         console.log('true');

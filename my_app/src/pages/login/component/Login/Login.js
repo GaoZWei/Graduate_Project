@@ -20,7 +20,7 @@ class LoginItem extends Component {
             <div className="login_area_content2">
               <Form className="login-form">
                 <Form.Item>
-                  {getFieldDecorator("account", {
+                  {getFieldDecorator("user_account", {
                     rules: [{ required: true, message: "请输入你的用户名" }]
                   })(
                     <div className="login_area_formitem">
@@ -39,7 +39,7 @@ class LoginItem extends Component {
                   )}
                 </Form.Item>
                 <Form.Item>
-                  {getFieldDecorator("password", {
+                  {getFieldDecorator("user_password", {
                     rules: [{ required: true, message: "请输入你的密码" }]
                   })(
                     <div className="login_area_formitem">

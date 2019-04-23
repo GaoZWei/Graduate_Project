@@ -8,9 +8,9 @@ function getUserById(req, callback) {
 }
 
 // 登录
-function login(account, password) {
+function login(user) {
     return new Promise((resolve, reject) => {
-        pool.query('select * from user where user_account=? AND user_password=?', [account, password], function (errors, results) {
+        pool.query('select * from user where user_account=? AND user_password=?', [user.user_account, user.user_password], function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -21,9 +21,9 @@ function login(account, password) {
 }
 
 // 注册
-function register(user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) {
+function register(userModel) {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO user (user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) VALUES (?, ?,?, ?,?, ?,?)', [user_name, user_account, user_password, user_age, user_sex, user_height, user_weight], function (errors, results) {
+        pool.query('INSERT INTO user (user_name, user_account, user_password, user_age, user_sex, user_height, user_weight) VALUES (?, ?,?, ?,?, ?,?)', [userModel.user_name, userModel.user_account, userModel.user_password, userModel.user_age, userModel.user_sex, userModel.user_height, userModel.user_weight], function (errors, results) {
             if (results) {
                 resolve(true);
             } else {
@@ -46,6 +46,6 @@ function checkUserAccount(user_account){
 }
 
 module.exports.getUserById = getUserById;
-module.exports.login = login;
 module.exports.register = register;
+module.exports.login = login;
 module.exports.checkUserAccount = checkUserAccount;
