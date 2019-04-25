@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
+import Login from "../login/component/Login/Login";
 import NavBreadcrumb from "../common/NavBreadcrumb";
 import PersonalPublic from "./component/PersonalPublic";
 import PersonalCustomize from "./component/PersonalCustomize";
@@ -13,31 +14,37 @@ const { Content } = Layout;
 class Personal extends Component {
   render() {
     return (
-      <Layout>
-        <Nav />
-        <Content className="personal_content">
-          <div className="personal_content_navbread">
-            <NavBreadcrumb />
-          </div>
-          <div className="personal_content_main">
-            <Row>
-              {/* <Col span={2} /> */}
-              <Col span={14}>
-                <PersonalPublic />
-                <br />
-                <PersonalCustomize />
-                <br />
-                <PersonalFoodList />
-              </Col>
-              <Col span={1} />
-              <Col span={8}>
-                <PersonalMessage />
-              </Col>
-            </Row>
-          </div>
-        </Content>
-        <Foot />
-      </Layout>
+      <div>
+        {JSON.parse(sessionStorage.getItem("user")) != null ? (
+          <Layout>
+            <Nav />
+            <Content className="personal_content">
+              <div className="personal_content_navbread">
+                <NavBreadcrumb />
+              </div>
+              <div className="personal_content_main">
+                <Row>
+                  {/* <Col span={2} /> */}
+                  <Col span={14}>
+                    <PersonalPublic />
+                    <br />
+                    <PersonalCustomize />
+                    <br />
+                    <PersonalFoodList />
+                  </Col>
+                  <Col span={1} />
+                  <Col span={8}>
+                    <PersonalMessage />
+                  </Col>
+                </Row>
+              </div>
+            </Content>
+            <Foot />
+          </Layout>
+        ) : (
+          <Login />
+        )}
+      </div>
     );
   }
 }

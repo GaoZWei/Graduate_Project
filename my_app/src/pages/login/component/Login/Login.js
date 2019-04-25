@@ -94,7 +94,6 @@ const mapDispatchToProps = dispatch => ({
   handleLogin(props, e) {
     if (e) e.preventDefault();
     const { form } = props;
-    console.log(props);
     form.validateFields((err, fieldsValue) => {
       if (err) return;
       //获取输入的值
@@ -104,7 +103,6 @@ const mapDispatchToProps = dispatch => ({
       const values = {
         ...fieldsValue
       };
-      console.log(values);
       dispatch(actionCreator.Login(values, props));
     });
   }

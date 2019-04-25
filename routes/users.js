@@ -35,25 +35,21 @@ router.get('/:user_id', function (req, res, next) {
 
 // 登录
 router.post("/login", function (req, res, next) {
-  var user = new userModel('',req.body.user_account,req.body.user_password,'','','','');
+  var user = new userModel('', req.body.user_account, req.body.user_password, '', '', '', '');
   UserDao.login(user)
     .then((response) => {
-      // req.session.user =response[0]; 
-      res.json(response[0]) // response[0] = rowDataPacket
+      console.log(response);
+      if (response[0] == null) {
+        res.send('false')
+      } else {
+        res.json(response[0])
+      } // response[0] = rowDataPacket
     })
 })
 
 // 注册
 router.post("/register", function (req, res, next) {
-  var user = new userModel(req.body.user_name,req.body.user_account,req.body.user_password,req.body.user_age,req.body.user_sex,req.body.user_height,req.body.user_weight);
-  console.log(user.user_name);
-  // userModel.user_name=req.body.user_name;
-  // userModel.user_account=req.body.user_account;
-  // userModel.user_password=req.body.user_password;
-  // userModel.user_age=req.body.user_age;
-  // userModel.user_sex=req.body.user_sex;
-  // userModel.user_height=userModelreq.body.user_height;
-  // userModel.user_weight=req.body.user_weight;
+  var user = new userModel(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight);
   UserDao.register(user)
     .then((response) => {
       if (response) {

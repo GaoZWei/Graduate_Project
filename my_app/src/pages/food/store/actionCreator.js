@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
-import { fetch } from "../../../util/HttpUtil";
-
+import { fetch, post } from "../../../util/HttpUtil";
+import { message } from "antd";
 // 获取食物分类
 const changefoodSort = result => ({
   type: actionTypes.GET_FOOD_SORT_DATA,
@@ -67,6 +67,20 @@ export const getSearchFood =food_name=> {
     fetch("/food/search?food_name=" + encodeURI(food_name)).then(res => {
       const result = res;
       dispatch(getsearchFood(result));
+    });
+  };
+};
+
+//添加食物列表
+export const addFoodList = (values, props) => {
+  return dispatch => {
+    post("http://localhost:3005/food/add/item", values).then(response => {
+      if (response === null || response === undefined) {
+        message.error("添加失败");
+      } else {
+        message.success("添加成功");
+        props.props.history.push("/personal");
+      }
     });
   };
 };

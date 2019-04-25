@@ -67,6 +67,18 @@ function SearchFood(req) {
     })
 }
 
+//添加食物列表
+function addFoodList(food_reflect){
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO user_food_reflect (user_id, food_id) VALUES (?,?)', [food_reflect.user_id,food_reflect.food_id], function (errors, results) {
+            if (results) {
+                resolve(results);
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
 
 // 查询food表
 function getAllFood(res) {
@@ -81,4 +93,5 @@ module.exports.getFoodBySort = getFoodBySort;
 module.exports.getFoodById = getFoodById;
 module.exports.getRelateFood = getRelateFood;
 module.exports.SearchFood = SearchFood;
+module.exports.addFoodList = addFoodList;
 module.exports.getAllFood = getAllFood;

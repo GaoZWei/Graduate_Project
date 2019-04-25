@@ -11,17 +11,15 @@ export const Login = (values, props) => {
     post("http://localhost:3005/users/login", values).then(response => {
       const result = response;
       // console.log(response);
-      if (response === null || response === undefined) {
-        alert("login failed");
+      if (response === null || response === undefined || response === false) {
+        message.error("登录失败,请重新登录");
+        // props.match.path=(props.match.path);
       } else {
         //直接操作sessionStorage
         sessionStorage.user = JSON.stringify(result);
         dispatch(getUserData(result));
-        // if (dispatch(getUserData(result))) {
-        //   alert("login failed");
         message.success("登录成功");
         props.history.push("/");
-        // }
       }
     });
   };

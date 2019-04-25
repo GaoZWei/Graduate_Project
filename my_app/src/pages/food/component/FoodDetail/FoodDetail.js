@@ -220,7 +220,15 @@ const mapDispatchToProps = dispatch => ({
     props.history.push("/food/detail/" + food_id);
   },
   addToFoodList(_self) {
-    console.log(_self.props.match.params.food_id);
+    if (JSON.parse(sessionStorage.getItem("user")) != null) {
+      var user_food = {
+        user_id: JSON.parse(sessionStorage.getItem("user")).user_id,
+        food_id: _self.props.match.params.food_id
+      };
+      dispatch(actionCreator.addFoodList(user_food, _self));
+    } else {
+      _self.props.history.push("/login");
+    }
   }
 });
 export default connect(
