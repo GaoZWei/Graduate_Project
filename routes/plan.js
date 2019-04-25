@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var PlanDao = require('../dao/planDao');
-
+var Plan=require('../models/PlanModel')
 // 获取所有计划
 router.get("/", function (req, res, next) {
     PlanDao.getAllPlan()
@@ -30,6 +30,12 @@ router.get("/filter/item", function (req, res, next) {
 });
 
 //将计划添加至公共计划区
-
+router.post("/add/item", function (req, res, next) {
+    var plan_reflect = new Plan.Plan_Reflect(req.body.user_id,req.body.plan_id);
+    PlanDao.addCommonPlan(plan_reflect)
+        .then(response => {
+            res.json(response)
+        });
+});
 
 module.exports = router;

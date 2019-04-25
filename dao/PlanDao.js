@@ -67,8 +67,22 @@ function filterPlan(req) {
     });
 }
 
+//添加公共计划
+function addCommonPlan(plan_reflect){
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO user_plan_reflect (user_id, plan_id) VALUES (?,?)', [plan_reflect.user_id,plan_reflect.plan_id], function (errors, results) {
+            if (results) {
+                resolve(results);
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+
 // 将plan添加至公共计划区
 module.exports.getPlanById = getPlanById;
 module.exports.getAllPlan = getAllPlan;
 module.exports.SearchPlan = SearchPlan;
 module.exports.filterPlan = filterPlan;
+module.exports.addCommonPlan = addCommonPlan;

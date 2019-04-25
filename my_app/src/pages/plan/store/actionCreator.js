@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
-import { fetch } from "../../../util/HttpUtil";
-
+import { fetch, post } from "../../../util/HttpUtil";
+import { message } from "antd";
 // 计划列表
 const changeplanData = result => ({
   type: actionTypes.CHANGE_PLAN_DATA,
@@ -62,6 +62,23 @@ export const sendRequestToUpdate = (sort_id, day_id, implement_id, body_id) => {
     ).then(res => {
       const result = res;
       dispatch(getfilterData(result));
+    });
+  };
+};
+//添加公共计划
+// const getUserData = result => ({
+//   type: actionTypes.GET_USER_DATA,
+//   userList: result
+// });
+export const addCommonPlan = (values, props) => {
+  return dispatch => {
+    post("http://localhost:3005/plan/add/item", values).then(response => {
+      if (response === null || response === undefined) {
+        alert("添加失败");
+      } else {
+        message.success("添加成功");
+        props.props.history.push("/personal");
+      }
     });
   };
 };

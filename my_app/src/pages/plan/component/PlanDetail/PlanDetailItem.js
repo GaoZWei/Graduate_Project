@@ -71,7 +71,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreator.getPlanById(plan_id));
   },
   addToCommonPlan(_self) {
-    console.log(_self.props.match.params.plan_id);
+    if (JSON.parse(sessionStorage.getItem("user")) != null) {
+      var user_plan = {
+        user_id: JSON.parse(sessionStorage.getItem("user")).user_id,
+        plan_id: _self.props.match.params.plan_id
+      };
+      dispatch(actionCreator.addCommonPlan(user_plan, _self));
+    } else {
+      _self.props.history.push("/login");
+    }
   }
 });
 
