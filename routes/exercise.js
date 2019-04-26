@@ -40,6 +40,13 @@ router.get("/filter/item", function (req, res, next) {
 
 
 // 将动作添加到定制计划中
+router.post("/add/item", function (req, res, next) {
+  // var plan_reflect = new Plan.Plan_Reflect(req.body.user_id,req.body.plan_id);
+  // PlanDao.addCommonPlan(plan_reflect)
+  //     .then(response => {
+  //         res.json(response)
+  //     });
+});
 
 
 module.exports = router;

@@ -15,8 +15,11 @@ function getAllPlan() {
 
 // 查询plan表
 function getPlanById(req) {
+    var sql1 = "select * from plan where plan_id=" + req.params.id;
+    var sql2 = "select * from plan_detail where plan_id=" + req.params.id;
     return new Promise((resolve, reject) => {
-        pool.query('select * from plan where plan_id=?', [req.params.id], function (errors, results) {
+        pool.query(sql1 + ";" + sql2 + ";", [], function (errors, results) {
+            console.log(results);
             if (results) {
                 resolve(results);
             } else {
@@ -68,9 +71,9 @@ function filterPlan(req) {
 }
 
 //添加公共计划
-function addCommonPlan(plan_reflect){
+function addCommonPlan(plan_reflect) {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO user_plan_reflect (user_id, plan_id) VALUES (?,?)', [plan_reflect.user_id,plan_reflect.plan_id], function (errors, results) {
+        pool.query('INSERT INTO user_plan_reflect (user_id, plan_id) VALUES (?,?)', [plan_reflect.user_id, plan_reflect.plan_id], function (errors, results) {
             if (results) {
                 resolve(results);
             } else {

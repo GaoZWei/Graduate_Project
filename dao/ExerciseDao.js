@@ -79,7 +79,17 @@ function filterExercise(req) {
 }
 
 // 将动作添加至定制计划中
-
+function addPersonalPlan(plan_reflect){
+  // return new Promise((resolve, reject) => {
+  //     pool.query('INSERT INTO user_plan_reflect (user_id, plan_id) VALUES (?,?)', [plan_reflect.user_id,plan_reflect.plan_id], function (errors, results) {
+  //         if (results) {
+  //             resolve(results);
+  //         } else {
+  //             reject(errors);
+  //         }
+  //     })
+  // })
+}
 
 
 // 取得所有健身动作分类
@@ -101,4 +111,5 @@ module.exports.getAllExercise = getAllExercise;
 module.exports.getExerciseById = getExerciseById;
 module.exports.SearchExercise = SearchExercise;
 module.exports.filterExercise = filterExercise;
+module.exports.addPersonalPlan = addPersonalPlan;
 module.exports.getAllExerciseSort = getAllExerciseSort;

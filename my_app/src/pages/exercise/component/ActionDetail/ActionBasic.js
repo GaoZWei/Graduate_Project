@@ -165,12 +165,12 @@ const mapDispatchToProps = dispatch => ({
   hideModal(exercise_id) {
     dispatch(actionCreator.hideModal());
   },
-  handleOK(props) {
-    console.log(props)
-    console.log(props.props.match.params.exercise_id)
-    let demo = props.refs.getFormValue;
+  handleOK(_self) {
+    console.log(_self.props.match.params.exercise_id);
+    let demo = _self.refs.getFormValue;
     demo.validateFields((err, values) => {
       if (!err) {
+        values.user_id = _self.props.match.params.exercise_id;
         console.log(values); //这里可以拿到数据
       }
     });
