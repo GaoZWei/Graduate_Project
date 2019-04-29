@@ -30,7 +30,8 @@ class ActionBasic extends Component {
                   <Row>
                     <span className="action_type">类型:</span>
                     <span className="action_type_sort">
-                      上肢 {item.get("exercise_sort")}
+                      上肢 
+                      {/* {item.get("exercise_sort")} */}
                     </span>
                     <Divider
                       type="vertical"
@@ -42,13 +43,13 @@ class ActionBasic extends Component {
                     />
                     <span className="action_main">主要肌肉群:</span>
                     <span className="action_main_sort">
-                      胸大肌{item.get("exercise_sort_aim")}
+                     {item.get("sort_name")}
                     </span>
                   </Row>
                   <Row>
                     <span className="action_level">级别:</span>
                     <span className="action_level_sort">
-                      {item.get("exercise_difficulty")}
+                      {item.get("difficult_name")}
                     </span>
                     <Divider
                       type="vertical"
@@ -60,13 +61,14 @@ class ActionBasic extends Component {
                     />
                     <span className="action_other">其他肌肉:</span>
                     <span className="action_other_sort">
-                      肱三头肌{item.get("exercise_sort_other")}
+                      肱三头肌
+                      {/* {item.get("exercise_sort_other")} */}
                     </span>
                   </Row>
                   <Row>
                     <span className="action_implement">器械要求:</span>
                     <span className="action_implement_sort">
-                      徒手训练{item.get("exercise_sort_facility")}
+                   {item.get("exercise_implement_name")}
                     </span>
                   </Row>
                 </div>

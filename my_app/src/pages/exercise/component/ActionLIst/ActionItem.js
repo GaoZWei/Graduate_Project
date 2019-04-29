@@ -40,9 +40,9 @@ class ActionItem extends Component {
                         // title={item.exercise_name}
                         title={item.get("exercise_name")}
                         description={
-                          item.get("exercise_difficulty") +
+                          item.get("difficult_name") +
                           " " +
-                          item.get("exercise_sort")
+                          item.get("sort_name")
                         }
                       />
                     </Card>
