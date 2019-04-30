@@ -18,7 +18,7 @@ function getAllFoodSort() {
 function getFoodBySort(req) {
     return new Promise((resolve, reject) => {
         // select * from food where sort_id=?
-        pool.query("select * from food,food_sort where food.sort_id=food_sort.sort_id=?", [req.params.sort_id], function (errors, results) {
+        pool.query("select * from food where sort_id=?", [req.params.sort_id], function (errors, results) {
             if (results) {
                 resolve(results)
             } else {

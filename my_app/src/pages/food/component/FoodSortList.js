@@ -45,7 +45,7 @@ class FoodSortList extends Component {
                         <List.Item className="food_sortlist_content_left_list">
                           <List.Item.Meta
                             avatar={
-                              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                              <Avatar src={item.get("food_pic")}/>
                             }
                             title={item.get("food_name")}
                             description={
@@ -75,7 +75,7 @@ class FoodSortList extends Component {
                     }}
                   />
                   <div className="food_sort_item">
-                    <Link to="/"> 蛋类, 肉类, 肉制品 </Link>
+                    <Link to="/food/2"> 蛋类, 肉类, 肉制品 </Link>
                   </div>
                   <hr
                     style={{
@@ -85,7 +85,7 @@ class FoodSortList extends Component {
                     }}
                   />
                   <div className="food_sort_item">
-                    <Link to="/"> 蔬果和菌藻, 坚果, 大豆及制品, 饮料 </Link>
+                    <Link to="/food/4"> 蔬果和菌藻, 坚果, 大豆及制品, 饮料 </Link>
                   </div>
                   <hr
                     style={{
@@ -95,7 +95,7 @@ class FoodSortList extends Component {
                     }}
                   />
                   <div className="food_sort_item">
-                    <Link to="/">
+                    <Link to="/food/6">
                       食用油, 油脂及制品, 调味品, 零食, 点心, 冷饮
                     </Link>
                   </div>
