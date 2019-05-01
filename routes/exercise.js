@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var ExerciseDao = require("../dao/ExerciseDao");
-// var exerciseModel = require("../models/ExerciseModel").exercise
+var Exercise = require("../models/ExerciseModel")
 // 获取所有动作
 router.get("/", function (req, res, next) {
   // exerciseModel.exercise_name = req.body.exercise_name
@@ -41,11 +41,11 @@ router.get("/filter/item", function (req, res, next) {
 
 // 将动作添加到定制计划中
 router.post("/add/item", function (req, res, next) {
-  // var plan_reflect = new Plan.Plan_Reflect(req.body.user_id,req.body.plan_id);
-  // PlanDao.addCommonPlan(plan_reflect)
-  //     .then(response => {
-  //         res.json(response)
-  //     });
+  var exercise_add = new Exercise.ExerciseAdd(req.body.user_id,req.body.exercise_id,req.body.plan_day, req.body.exercise_groups, req.body.exercise_times);
+  ExerciseDao.addPersonalPlan(exercise_add)
+      .then(response => {
+          res.json(response)
+      });
 });
 
 

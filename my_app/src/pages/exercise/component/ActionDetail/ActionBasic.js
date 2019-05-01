@@ -120,7 +120,7 @@ class ActionBasic extends Component {
                     type="primary"
                     className="add_btn"
                     size="large"
-                    onClick={() => showModal(item.get("exercise_id"))}
+                    onClick={() => showModal()}
                   >
                     添加至我的计划
                   </Button>
@@ -161,10 +161,10 @@ const mapDispatchToProps = dispatch => ({
   getExerciseDetail(exercise_id) {
     dispatch(actionCreator.getExerciseDetail(exercise_id));
   },
-  showModal(exercise_id) {
+  showModal() {
     dispatch(actionCreator.showModal());
   },
-  hideModal(exercise_id) {
+  hideModal() {
     dispatch(actionCreator.hideModal());
   },
   handleOK(_self) {
@@ -172,8 +172,14 @@ const mapDispatchToProps = dispatch => ({
     let demo = _self.refs.getFormValue;
     demo.validateFields((err, values) => {
       if (!err) {
-        values.user_id = _self.props.match.params.exercise_id;
-        console.log(values); //这里可以拿到数据
+        if (JSON.parse(sessionStorage.getItem("user")) != null) {
+          values.exercise_id = _self.props.match.params.exercise_id;
+          values.user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
+          console.log(values); //这里可以拿到数据 
+          dispatch(actionCreator.addPersonalPlan(values, _self));
+        } else {
+          _self.props.history.push("/login");
+        }
       }
     });
   }

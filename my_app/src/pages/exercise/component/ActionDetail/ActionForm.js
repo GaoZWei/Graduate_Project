@@ -8,29 +8,8 @@ class ActionFormItem extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form>
-        {/* <FormItem>
-          {getFieldDecorator("userName", {
-            rules: [{ required: true, message: "--" }]
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Username"
-            />
-          )}
-        </FormItem>
-        <FormItem>
-          {getFieldDecorator("password", {
-            rules: [{ required: true, message: "--" }]
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
-              placeholder="Password"
-            />
-          )}
-        </FormItem> */}
         <Form.Item label="请选择锻炼时间" hasFeedback>
-          {getFieldDecorator("day", {
+          {getFieldDecorator("plan_day", {
             rules: [{ required: true, message: "请选择锻炼时间!" }]
           })(
             <Select placeholder="请选择锻炼时间">
@@ -45,7 +24,7 @@ class ActionFormItem extends Component {
           )}
         </Form.Item>
         <FormItem label="请输入锻炼组数">
-          {getFieldDecorator("group", {
+          {getFieldDecorator("exercise_groups", {
             rules: [{ required: true, message: "请输入锻炼组数!" }]
           })(
             <Select placeholder="请选择锻炼组数">
@@ -59,7 +38,7 @@ class ActionFormItem extends Component {
           )}
         </FormItem>
         <FormItem label="请输入每组个数">
-          {getFieldDecorator("times", {
+          {getFieldDecorator("exercise_times", {
             rules: [{ required: true, message: "请输入每组个数!" }]
           })(<Input placeholder="请输入每组个数" />)}
         </FormItem>
