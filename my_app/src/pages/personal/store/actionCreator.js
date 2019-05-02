@@ -10,7 +10,7 @@ export const getUserBasicMessage = user_id => {
   return dispatch => {
     fetch("/users/" + user_id).then(res => {
       const result = res;
-      dispatch(changeUserBasic(result));
+      dispatch(changeUserBasic(result.basicMessage));
     });
   };
 };

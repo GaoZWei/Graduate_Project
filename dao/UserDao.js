@@ -24,6 +24,63 @@ function getUserBasicById(req) {
     })
 }
 
+//获取用户的公共计划
+function getUserCommonPlanById(req) {
+    return new Promise((resolve, reject) => {
+        var sql1 = 'select * from plan where plan_id in (select distinct plan_id from user_plan_reflect where user_id = ?)';
+        pool.query(sql1, [req[0].user_id,req[0].user_id], function (errors, results) {
+            if (results) {
+                resolve([req,results]);
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+//获取用户的定制计划
+function getUserPersonalPlanById(req) {
+    // return new Promise((resolve, reject) => {
+    //     var sql1 = 'select count(food_id) as food_num from user_food_reflect where user_id=?';
+    //     var sql2 = 'select count(plan_id) as common_plan_num from user_plan_reflect where user_id=?';
+    //     var sql3 = 'UPDATE user SET user_common_plan =?, user_food_list = ? WHERE user_id = ?';
+    //     var sql4 = 'select * from user where user_id=?'
+    //     pool.query(sql1 + ';' + sql2 + ';', [req.params.user_id, req.params.user_id], function (errors, results) {
+    //         var food_num = results[0][0].food_num;
+    //         var common_plan_num = results[1][0].common_plan_num;
+    //         pool.query(sql3, [common_plan_num, food_num, req.params.user_id], function (errors, results) {
+    //             pool.query(sql4, [req.params.user_id], function (errors, results) {
+    //                 if (results) {
+    //                     resolve(results);
+    //                 } else {
+    //                     reject(errors);
+    //                 }
+    //             })
+    //         })
+    //     })
+    // })
+}
+//获取用户的食物清单
+function getUserFoodListById(req) {
+    // return new Promise((resolve, reject) => {
+    //     var sql1 = 'select count(food_id) as food_num from user_food_reflect where user_id=?';
+    //     var sql2 = 'select count(plan_id) as common_plan_num from user_plan_reflect where user_id=?';
+    //     var sql3 = 'UPDATE user SET user_common_plan =?, user_food_list = ? WHERE user_id = ?';
+    //     var sql4 = 'select * from user where user_id=?'
+    //     pool.query(sql1 + ';' + sql2 + ';', [req.params.user_id, req.params.user_id], function (errors, results) {
+    //         var food_num = results[0][0].food_num;
+    //         var common_plan_num = results[1][0].common_plan_num;
+    //         pool.query(sql3, [common_plan_num, food_num, req.params.user_id], function (errors, results) {
+    //             pool.query(sql4, [req.params.user_id], function (errors, results) {
+    //                 if (results) {
+    //                     resolve(results);
+    //                 } else {
+    //                     reject(errors);
+    //                 }
+    //             })
+    //         })
+    //     })
+    // })
+}
 // 登录
 function login(user) {
     return new Promise((resolve, reject) => {
@@ -63,6 +120,9 @@ function checkUserAccount(user_account) {
 }
 
 module.exports.getUserBasicById = getUserBasicById;
+module.exports.getUserCommonPlanById = getUserCommonPlanById;
+module.exports.getUserPersonalPlanById = getUserPersonalPlanById;
+module.exports.getUserFoodListById = getUserFoodListById;
 module.exports.register = register;
 module.exports.login = login;
 module.exports.checkUserAccount = checkUserAccount;

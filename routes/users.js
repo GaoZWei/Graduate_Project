@@ -19,10 +19,25 @@ router.get("/checkUserAccount", function (req, res, next) {
 
 // 根据id获取用户信息
 router.get('/:user_id', function (req, res, next) {
+  result = {
+    basicMessage: [],
+    commonPlan: [],
+    personalPlan: [],
+    foodList: []
+  }
   UserDao.getUserBasicById(req)
-  .then((response) => {
-    res.json(response) // response[0] = rowDataPacket
-  })
+    .then(UserDao.getUserCommonPlanById)
+    .then(function (results) {
+      console.log(123132123131231)
+      // console.log(results)
+      result.basicMessage=results[0]
+      result.commonPlan=results[1]
+      console.log(result.commonPlan)
+      res.json(result)
+    })
+  // .then((response) => {
+  //   res.json(response) // response[0] = rowDataPacket
+  // })
 });
 
 // 登录
