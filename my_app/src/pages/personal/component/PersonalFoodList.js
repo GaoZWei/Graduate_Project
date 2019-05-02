@@ -1,56 +1,38 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actionCreator } from "../store";
+import { withRouter, Link } from "react-router-dom";
 import { Table, Popconfirm } from "antd";
 class PersonalFoodList extends Component {
   render() {
-    // var planDetialTableArr = planDetialTable.toJS();
+    const { userFoodList, deleteItem } = this.props;
+    var userFoodListArr = userFoodList.toJS();
     const columns = [
-      // { title: "食物序号", dataIndex: "food_number", key: "food_number" },
       { title: "食物名称", dataIndex: "food_name", key: "food_name" },
-      { title: "食物热量", dataIndex: "food_hot", key: "food_hot" },
+      { title: "食物热量", dataIndex: "food_hots", key: "food_hots" },
       {
         title: "操作",
         dataIndex: "",
         key: "x",
-        render: () => {
+        render: (text, record) => {
           return (
             <span>
-              <a href="/">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Link to={"/food/detail/" + record.food_id}>
+                {/* onClick={() => check(record, this)} */}
+                查看
+              </Link>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Popconfirm
                 title="确认删除?"
-                // onConfirm={deleteCollect.bind(null, record)}
+                onConfirm={() => deleteItem(record, this)}
               >
                 <a href="/">删除</a>{" "}
               </Popconfirm>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="/">添加</a>
+              <a href="/food">添加</a>
             </span>
           );
         }
-      }
-    ];
-
-    const data = [
-      {
-        key: 1,
-        food_number: 1,
-        food_name: "食物一",
-        food_hot: "热量1",
-        description: "这是食物1的介绍"
-      },
-      {
-        key: 2,
-        food_number: 2,
-        food_name: "食物二",
-        food_hot: "热量2",
-        description: "这是食物2的介绍"
-      },
-      {
-        key: 3,
-        food_number: 3,
-        food_name: "食物三",
-        food_hot: "热量3",
-
-        description: "这是食物3的介绍"
       }
     ];
     return (
@@ -60,13 +42,27 @@ class PersonalFoodList extends Component {
           <Table
             columns={columns}
             expandedRowRender={record => (
-              <p style={{ margin: 0 }}>{record.description}</p>
+              <p style={{ margin: 0 }}>{record.food_description}</p>
             )}
-            dataSource={data}
+            dataSource={userFoodListArr}
           />
         </div>
       </div>
     );
   }
 }
-export default PersonalFoodList;
+
+const mapStateToProps = state => ({
+  userFoodList: state.getIn(["personal", "userFoodList"])
+});
+const mapDispatchToProps = dispatch => ({
+  deleteItem(record) {
+    var food_id = record.food_id;
+    var user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
+    dispatch(actionCreator.deleteFoodList(food_id, user_id));
+  }
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(PersonalFoodList));

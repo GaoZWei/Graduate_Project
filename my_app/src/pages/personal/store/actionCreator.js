@@ -34,10 +34,26 @@ export const deleteCommonPlan = (plan_id, user_id) => {
       res => {
         if ((res = "ok")) {
           dispatch(getUserBasicMessage(user_id));
+          message.success("删除成功");
         } else {
           message.error("删除失败");
         }
       }
     );
+  };
+};
+
+export const deleteFoodList = (food_id, user_id) => {
+  return dispatch => {
+    fetch(
+      "/users/delete/item1?food_id=" + food_id + "&user_id=" + user_id
+    ).then(res => {
+      if ((res = "ok")) {
+        dispatch(getUserBasicMessage(user_id));
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
   };
 };

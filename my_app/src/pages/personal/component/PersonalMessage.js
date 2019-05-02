@@ -113,9 +113,6 @@ class PersonalMessage extends Component {
 }
 const mapStateToProps = state => ({
   userBasicList: state.getIn(["personal", "userBasicList"])
-  // userCommomPlanList: state.getIn(["personal", "userCommomPlanList"]),
-  // userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"]),
-  // userFoodList: state.getIn(["personal", "userFoodList"])
 });
 export default connect(
   mapStateToProps,

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+// import { actionCreator } from "../store";
 import { Table ,Popconfirm} from "antd";
 class PersonalCustomize extends Component {
   render() {
@@ -72,4 +74,11 @@ class PersonalCustomize extends Component {
     );
   }
 }
-export default PersonalCustomize;
+const mapStateToProps = state => ({
+  userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"]),
+});
+export default connect(
+  mapStateToProps,
+  null
+)(PersonalCustomize);
+

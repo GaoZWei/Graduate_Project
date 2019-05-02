@@ -46,6 +46,14 @@ router.get('/delete/item', function (req, res, next) {
     })
 });
 
+//删除食物列表
+router.get('/delete/item1', function (req, res, next) {
+  UserDao.deleteUserFoodListById(req)
+    .then((response) => {
+      res.send('ok')
+    })
+});
+
 // 登录
 router.post("/login", function (req, res, next) {
   var user = new userModel('', req.body.user_account, req.body.user_password, '', '', '', '');

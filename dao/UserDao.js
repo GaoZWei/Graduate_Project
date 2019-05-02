@@ -77,6 +77,22 @@ function getUserFoodListById(req) {
         })
     })
 }
+
+//删除用户的食物清单
+function deleteUserFoodListById(req) {
+    return new Promise((resolve, reject) => {
+        var sql1 = 'DELETE from user_food_reflect where user_id=? and food_id=?';
+        pool.query(sql1, [req.query.user_id,req.query.food_id], function (errors, results) {
+            if (results) {
+                resolve('ok');
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+
+
 // 登录
 function login(user) {
     return new Promise((resolve, reject) => {
@@ -120,6 +136,7 @@ module.exports.getUserCommonPlanById = getUserCommonPlanById;
 module.exports.deleteUserCommonPlanById = deleteUserCommonPlanById;
 module.exports.getUserPersonalPlanById = getUserPersonalPlanById;
 module.exports.getUserFoodListById = getUserFoodListById;
+module.exports.deleteUserFoodListById = deleteUserFoodListById;
 module.exports.register = register;
 module.exports.login = login;
 module.exports.checkUserAccount = checkUserAccount;
