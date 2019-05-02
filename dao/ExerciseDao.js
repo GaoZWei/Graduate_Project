@@ -81,14 +81,18 @@ function filterExercise(req) {
 // 将动作添加至定制计划中
 function addPersonalPlan(exercise_add) {
   return new Promise((resolve, reject) => {
-    var sql1='insert into plan_detail (plan_id,plan_day,exercise_id,exercise_groups,exercise_times) VALUES (2,?,?,?,?)';
-    var sql2='insert INTO plan (plan_id,plan_creator) VALUES (2,?)';
-    pool.query(sql1+';'+sql2+';', [exercise_add.plan_day, exercise_add.exercise_id, exercise_add.exercise_groups, exercise_add.exercise_times,exercise_add.user_id], function (errors, results) {
-      if (results) {
-        resolve(results);
-      } else {
-        reject(errors);
-      }
+    var sql1 = 'insert into plan (plan_creator) values (?)';
+    var sql2 = 'select plan_id from plan where plan_creator=?';
+    var sql3 = 'insert into plan_detail (plan_id,plan_day,exercise_id,exercise_groups,exercise_times) VALUES (?,?,?,?,?)';
+    pool.query(sql1 + ';' + sql2 + ';', [exercise_add.user_id], function (errors, results) {
+      console.log(results[0].insertId);
+      pool.query(sql3, [results[0].insertId, exercise_add.plan_day, exercise_add.exercise_id, exercise_add.exercise_groups, exercise_add.exercise_times, exercise_add.user_id], function (errors, results) {
+        if (results) {
+          resolve(results);
+        } else {
+          reject(errors);
+        }
+      })
     })
   })
 }

@@ -1,0 +1,1 @@
+export const CHANGE_EXERCISE_DATA='exercise/CHANGE_EXERCISE_DATA'
