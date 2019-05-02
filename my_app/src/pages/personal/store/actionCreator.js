@@ -23,6 +23,31 @@ export const getUserBasicMessage = user_id => {
 // 给表格项加key
 const utilPlan = obj => {
   for (var i = 0; i < obj.length; i++) {
+    switch (obj[i].plan_day) {
+      case '1':
+        obj[i].plan_day = '星期一'
+        break;
+      case '2':
+        obj[i].plan_day = '星期二'
+        break;
+      case '3':
+        obj[i].plan_day = '星期三'
+        break;
+      case '4':
+        obj[i].plan_day = '星期四'
+        break;
+      case '5':
+        obj[i].plan_day = '星期五'
+        break;
+      case '6':
+        obj[i].plan_day = '星期六'
+        break;
+      case '7':
+        obj[i].plan_day = '星期日'
+        break;
+      default:
+        break;
+    }
     obj[i].key = i;
   }
   return obj;

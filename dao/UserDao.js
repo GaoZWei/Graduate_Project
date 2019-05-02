@@ -41,7 +41,7 @@ function getUserCommonPlanById(req) {
 function deleteUserCommonPlanById(req) {
     return new Promise((resolve, reject) => {
         var sql1 = 'DELETE from user_plan_reflect where user_id=? and plan_id=?';
-        pool.query(sql1, [req.query.user_id,req.query.plan_id], function (errors, results) {
+        pool.query(sql1, [req.query.user_id, req.query.plan_id], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {
@@ -53,8 +53,9 @@ function deleteUserCommonPlanById(req) {
 //获取用户的定制计划
 function getUserPersonalPlanById(req) {
     return new Promise((resolve, reject) => {
-        var sql1 = 'SELECT * from plan_detail where plan_id in (select plan_id from plan where plan_creator=?)';
-        pool.query(sql1, [req[0][0][0].user_id, req[0][0][0].user_id], function (errors, results) {
+        // var sql1 = 'SELECT * from plan_detail where plan_id in (select plan_id from plan where plan_creator=?)';
+        var sql2 = "SELECT * from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) "
+        pool.query(sql2, [req[0][0][0].user_id], function (errors, results) {
             if (results) {
                 resolve([req, results]);
             } else {
@@ -82,7 +83,7 @@ function getUserFoodListById(req) {
 function deleteUserFoodListById(req) {
     return new Promise((resolve, reject) => {
         var sql1 = 'DELETE from user_food_reflect where user_id=? and food_id=?';
-        pool.query(sql1, [req.query.user_id,req.query.food_id], function (errors, results) {
+        pool.query(sql1, [req.query.user_id, req.query.food_id], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {

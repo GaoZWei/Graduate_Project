@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { actionCreator } from "../store";
-import { Table ,Popconfirm} from "antd";
+import { Table, Popconfirm } from "antd";
 class PersonalCustomize extends Component {
   render() {
-    // var planDetialTableArr = planDetialTable.toJS();
+    const { userPersonalPlanList } = this.props;
+    var userPersonalPlanListArr = userPersonalPlanList.toJS();
+    console.log(userPersonalPlanListArr);
     const columns = [
       // { title: "计划序号", dataIndex: "plan_number", key: "plan_number" },
-      { title: "计划日期", dataIndex: "plan_date", key: "plan_date" },
+      { title: "计划日期", dataIndex: "plan_day", key: "plan_date" },
       { title: "计划名称", dataIndex: "plan_name", key: "plan_name" },
       {
         title: "操作",
@@ -17,45 +19,17 @@ class PersonalCustomize extends Component {
           return (
             <span>
               <a href="/">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Popconfirm
+              {/* <Popconfirm
                 title="确认删除?"
-                // onConfirm={deleteCollect.bind(null, record)}
               >
                 <a href="/">删除</a>{" "}
-              </Popconfirm>
+              </Popconfirm> */}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="/">添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/exercise">添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a href="/">设置组数</a>
             </span>
           );
         }
-      }
-    ];
-
-    const data = [
-      {
-        key: 1,
-        plan_number: 1,
-        plan_date: "星期一",
-        plan_name: "健身计划1",
-
-        description: "这是健身计划1的介绍"
-      },
-      {
-        key: 2,
-        plan_number: 2,
-        plan_date: "星期二",
-        plan_name: "健身计划2",
-
-        description: "这是健身计划2的介绍"
-      },
-      {
-        key: 3,
-        plan_number: 3,
-        plan_date: "星期三",
-        plan_name: "健身计划3",
-
-        description: "这是健身计划3的介绍"
       }
     ];
     return (
@@ -65,9 +39,20 @@ class PersonalCustomize extends Component {
           <Table
             columns={columns}
             expandedRowRender={record => (
-              <p style={{ margin: 0 }}>{record.description}</p>
+              <p style={{ margin: 0 }}>
+                {record.exercise_name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 组数:
+                {record.exercise_groups}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每组个数:
+                {record.exercise_times}
+                <Popconfirm
+                  title="确认删除?"
+                  // onConfirm={deleteCollect.bind(null, record)}
+                >
+                  <a href="/">删除</a>
+                </Popconfirm>
+              </p>
             )}
-            dataSource={data}
+            dataSource={userPersonalPlanListArr}
           />
         </div>
       </div>
@@ -75,10 +60,9 @@ class PersonalCustomize extends Component {
   }
 }
 const mapStateToProps = state => ({
-  userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"]),
+  userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"])
 });
 export default connect(
   mapStateToProps,
   null
 )(PersonalCustomize);
-
