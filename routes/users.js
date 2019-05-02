@@ -22,22 +22,28 @@ router.get('/:user_id', function (req, res, next) {
   result = {
     basicMessage: [],
     commonPlan: [],
+    foodList: [],
     personalPlan: [],
-    foodList: []
   }
   UserDao.getUserBasicById(req)
     .then(UserDao.getUserCommonPlanById)
+    .then(UserDao.getUserFoodListById)
+    .then(UserDao.getUserPersonalPlanById)
     .then(function (results) {
-      console.log(123132123131231)
-      // console.log(results)
-      result.basicMessage=results[0]
-      result.commonPlan=results[1]
-      console.log(result.commonPlan)
+      result.basicMessage = results[0][0][0]
+      result.commonPlan = results[0][0][1]
+      result.foodList = results[0][1]
+      result.personalPlan = results[1]
       res.json(result)
     })
-  // .then((response) => {
-  //   res.json(response) // response[0] = rowDataPacket
-  // })
+});
+
+//删除公共计划
+router.get('/delete/item', function (req, res, next) {
+  UserDao.deleteUserCommonPlanById(req)
+    .then((response) => {
+      res.send('ok')
+    })
 });
 
 // 登录

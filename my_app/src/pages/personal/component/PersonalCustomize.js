@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Table ,Popconfirm} from "antd";
 class PersonalCustomize extends Component {
   render() {
+    // var planDetialTableArr = planDetialTable.toJS();
     const columns = [
       // { title: "计划序号", dataIndex: "plan_number", key: "plan_number" },
       { title: "计划日期", dataIndex: "plan_date", key: "plan_date" },

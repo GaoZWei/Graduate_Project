@@ -102,7 +102,7 @@ const mapDispatchToProps = dispatch => {
     },
     updateNav() {
       // localStorage
-      console.log(JSON.parse(sessionStorage.getItem("user")));
+      // console.log(JSON.parse(sessionStorage.getItem("user")));
       // dispatch(actionCreator1.getUserData());
     },
     logout(_self) {

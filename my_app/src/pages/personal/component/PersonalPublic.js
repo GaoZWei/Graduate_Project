@@ -1,38 +1,43 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter,Link } from "react-router-dom";
+import { actionCreator } from "../store";
 import { Table, Popconfirm } from "antd";
 class PersonalPublic extends Component {
   render() {
-    const check = _self => {
-      console.log(_self);
-      // Modal.info({
-      //   title: `${record.title}`,
-      //   content: (
-      //     <div
-      //       dangerouslySetInnerHTML={{
-      //         __html: `${record.knowledgecontent}`
-      //       }}
-      //     />
-      //   )
-      // });
-    };
+    const { userCommomPlanList, deleteItem } = this.props;
+    var userCommomPlanListArr = userCommomPlanList.toJS();
+    // const check = (record, _self) => {
+    //   // Modal.info({
+    //   //   title: `${_self.plan_name}`,
+    //   //   content: (
+    //   //     <div
+    //   //       dangerouslySetInnerHTML={{
+    //   //         __html: `${_self.plan_description}`
+    //   //       }}
+    //   //     />
+    //   //   )
+    //   // });
+    //   _self.props.history.push("/plan/" + record.plan_id);
+    // };
     const columns = [
-      { title: "计划序号", dataIndex: "plan_number", key: "plan_number" },
+      { title: "计划序号", dataIndex: "plan_id", key: "plan_number" },
       { title: "计划名称", dataIndex: "plan_name", key: "plan_name" },
-      //   { title: "Address", dataIndex: "address", key: "address" },
       {
         title: "操作",
         dataIndex: "",
         key: "x",
-        render: () => {
+        render: (text, record) => {
           return (
             <span>
-              <a href="javascript:;" onClick={() => check(this)}>
+              <Link to={'/plan/'+record.plan_id}>
+              {/* onClick={() => check(record, this)} */}
                 查看
-              </a>
+              </Link>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Popconfirm
                 title="确认删除?"
-                // onConfirm={deleteCollect.bind(null, record)}
+                onConfirm={() => deleteItem(record, this)}
               >
                 <a href="/">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </Popconfirm>
@@ -42,45 +47,34 @@ class PersonalPublic extends Component {
         }
       }
     ];
-
-    const data = [
-      {
-        key: 1,
-        plan_number: 1,
-        plan_name: "健身计划1",
-        address: "健身计划1",
-        description: "这是健身计划1的介绍"
-      },
-      {
-        key: 2,
-        plan_number: 2,
-        plan_name: "健身计划2",
-        address: "London No. 1 Lake Park",
-        description: "这是健身计划2的介绍"
-      },
-      {
-        key: 3,
-        plan_number: 3,
-        plan_name: "健身计划3",
-        address: "Sidney No. 1 Lake Park",
-        description: "这是健身计划3的介绍"
-      }
-    ];
     return (
       <div className="personal_public_plan">
         <div className="personal_public_plan_title">我的公共计划</div>
-
         <div>
           <Table
             columns={columns}
             expandedRowRender={record => (
-              <p style={{ margin: 0 }}>{record.description}</p>
+              <p style={{ margin: 0 }}>{record.plan_description}</p>
             )}
-            dataSource={data}
+            dataSource={userCommomPlanListArr}
           />
         </div>
       </div>
     );
   }
 }
-export default PersonalPublic;
+
+const mapStateToProps = state => ({
+  userCommomPlanList: state.getIn(["personal", "userCommomPlanList"])
+});
+const mapDispatchToProps = dispatch => ({
+  deleteItem(record) {
+    var plan_id = record.plan_id;
+    var user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
+    dispatch(actionCreator.deleteCommonPlan(plan_id, user_id));
+  }
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(PersonalPublic));

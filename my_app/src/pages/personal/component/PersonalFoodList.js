@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Table, Popconfirm } from "antd";
 class PersonalFoodList extends Component {
   render() {
+    // var planDetialTableArr = planDetialTable.toJS();
     const columns = [
       // { title: "食物序号", dataIndex: "food_number", key: "food_number" },
       { title: "食物名称", dataIndex: "food_name", key: "food_name" },
