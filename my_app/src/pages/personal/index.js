@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actionCreator } from "./store";
 import Nav from "../common/Nav";
 import Foot from "../common/Foot";
-import Login from "../login/component/Login/Login";
 import NavBreadcrumb from "../common/NavBreadcrumb";
 import PersonalPublic from "./component/PersonalPublic";
 import PersonalCustomize from "./component/PersonalCustomize";
@@ -42,10 +43,26 @@ class Personal extends Component {
             <Foot />
           </Layout>
         ) : (
-          <Login />
+          ""
         )}
       </div>
     );
   }
+  componentDidMount() {
+    this.props.getUserMessage(this);
+  }
 }
-export default withRouter(Personal);
+const mapDispatchToProps = dispatch => ({
+  getUserMessage(_self) {
+    if (JSON.parse(sessionStorage.getItem("user")) != null) {
+      var user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
+      dispatch(actionCreator.getUserBasicMessage(user_id));
+    } else {
+      _self.props.history.push("/login");
+    }
+  }
+});
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(Personal));

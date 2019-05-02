@@ -1,73 +1,17 @@
 import * as actionTypes from "./actionTypes";
-import { fetch, post } from "../../../util/HttpUtil";
-import { message } from "antd";
-// 动作列表
-const changehomeData = result => ({
-  type: actionTypes.CHANGE_EXERCISE_DATA,
-  exerciseList: result
-});
+import { fetch} from "../../../util/HttpUtil";
 
-export const changeHomeInfo = () => {
-  return dispatch => {
-    fetch("/exercise").then(res => {
-      const result = res;
-      dispatch(changehomeData(result));
-    });
-  };
-};
 // 动作详情
-const changeDetailData = result => ({
-  type: actionTypes.CHANGE_DETAIL_DATA,
-  detailList: result
+const changeUserBasic= result => ({
+  type: actionTypes.GET_USER_BASIC,
+  userBasicList: result
 });
-export const getExerciseDetail = exercise_id => {
+export const getUserBasicMessage = user_id => {
   return dispatch => {
-    // axios.get
-    fetch("/exercise/" + exercise_id).then(res => {
+    fetch("/users/" + user_id).then(res => {
       const result = res;
-      dispatch(changeDetailData(result));
+      dispatch(changeUserBasic(result));
     });
   };
 };
 
-// 搜索动作
-const getSearchData = result => ({
-  type: actionTypes.GET_SEARCH_DATA,
-  exerciseList: result
-});
-export const getSearchExercise = exercise_name => {
-  return dispatch => {
-    // axios.get
-    fetch("/exercise/search?exercise_name=" + encodeURI(exercise_name)).then(
-      res => {
-        const result = res;
-        dispatch(getSearchData(result));
-      }
-    );
-  };
-};
-
-//筛选得出需要动作
-const getfilterData = result => ({
-  type: actionTypes.FILTER_EXERCISE,
-  exerciseList: result
-});
-export const sendRequestToUpdate = (
-  exercise_implement_id,
-  sort_id,
-  difficult_id
-) => {
-  return dispatch => {
-    fetch(
-      "/exercise/filter/item?exercise_sort_facility=" +
-        exercise_implement_id +
-        "&exercise_sort=" +
-        sort_id +
-        "&exercise_difficulty=" +
-        difficult_id
-    ).then(res => {
-      const result = res;
-      dispatch(getfilterData(result));
-    });
-  };
-};

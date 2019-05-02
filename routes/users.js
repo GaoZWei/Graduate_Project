@@ -2,15 +2,6 @@ var express = require('express');
 var router = express.Router();
 var UserDao = require('../dao/UserDao');
 var userModel = require("../models/UserModel").User
-// router.use(function(req,res,next){
-//   res.locals.fun='plan';
-//   console.log(res.locals.fun);
-//   if(req.session.user&&req.session.user.ident=='1'){
-//     next();
-//   }else{
-//     res.redirect("/");
-//   }
-// })
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -28,8 +19,9 @@ router.get("/checkUserAccount", function (req, res, next) {
 
 // 根据id获取用户信息
 router.get('/:user_id', function (req, res, next) {
-  UserDao.getUserById(req, function (results) {
-    res.json(results)
+  UserDao.getUserBasicById(req)
+  .then((response) => {
+    res.json(response) // response[0] = rowDataPacket
   })
 });
 

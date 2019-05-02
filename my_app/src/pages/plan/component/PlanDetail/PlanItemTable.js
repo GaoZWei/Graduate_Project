@@ -3,7 +3,7 @@ import "../../style.css";
 import { connect } from "react-redux";
 // import { actionCreator } from "../../store";
 // import { toJS } from "immutable";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import { Table, Tag, Col, Row } from "antd";
 class PlanDetailItemTable extends Component {
   render() {
