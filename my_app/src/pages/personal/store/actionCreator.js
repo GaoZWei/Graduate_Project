@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { fetch } from "../../../util/HttpUtil";
+import { fetch, post } from "../../../util/HttpUtil";
 import { message } from "antd";
 // 动作详情
 const changeUserBasic = result => ({
@@ -94,7 +94,7 @@ export const deleteFoodList = (food_id, user_id) => {
   };
 };
 //删除定制计划
-export const deletePersonalPlan = (plan_id, exercise_id,user_id) => {
+export const deletePersonalPlan = (plan_id, exercise_id, user_id) => {
   return dispatch => {
     fetch(
       "/users/delete/item2?plan_id=" + plan_id + "&exercise_id=" + exercise_id
@@ -104,6 +104,34 @@ export const deletePersonalPlan = (plan_id, exercise_id,user_id) => {
         message.success("删除成功");
       } else {
         message.error("删除失败");
+      }
+    });
+  };
+};
+
+//显示模态框
+export const showModal = tag => ({
+  type: actionTypes.SHOW_MODAL,
+  value: true,
+  tag: tag
+});
+
+//隐藏模态框
+export const hideModal = () => ({
+  type: actionTypes.HIDE_MODAL,
+  value: false
+});
+
+//更新定制计划
+export const updatePersonalPlan = (values, user_id) => {
+  return dispatch => {
+    post("/users/update/item", values).then(res => {
+      if ((res = "ok")) {
+        dispatch(hideModal())
+        message.success("修改成功");
+        dispatch(getUserBasicMessage(user_id));
+      } else {
+        message.error("修改失败");
       }
     });
   };

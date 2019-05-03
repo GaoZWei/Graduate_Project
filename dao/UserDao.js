@@ -65,6 +65,35 @@ function getUserPersonalPlanById(req) {
         })
     })
 }
+//删除用户的定制计划
+function deleteUserPersonalPlanById(req) {
+    console.log(req.query);
+    return new Promise((resolve, reject) => {
+        var sql1 = 'delete FROM plan_detail where plan_id=? and exercise_id=?';
+        pool.query(sql1, [req.query.plan_id, req.query.exercise_id], function (errors, results) {
+            if (results) {
+                resolve('ok');
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+
+//修改定制计划
+function updateUserPersonalPlanById(plan_detail) {
+    return new Promise((resolve, reject) => {
+        var sql3 = "UPDATE plan_detail set plan_day=?,exercise_id=?,exercise_groups=?,exercise_times=? WHERE plan_id=?"
+        pool.query(sql3, [plan_detail.plan_day, plan_detail.exercise_id, plan_detail.exercise_groups, plan_detail.exercise_times, plan_detail.plan_id], function (errors, results) {
+            if (results) {
+                resolve('ok');
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+
 //获取用户的食物清单
 function getUserFoodListById(req) {
     // console.log(req[0][0].user_id);
@@ -85,21 +114,6 @@ function deleteUserFoodListById(req) {
     return new Promise((resolve, reject) => {
         var sql1 = 'DELETE from user_food_reflect where user_id=? and food_id=?';
         pool.query(sql1, [req.query.user_id, req.query.food_id], function (errors, results) {
-            if (results) {
-                resolve('ok');
-            } else {
-                reject(errors);
-            }
-        })
-    })
-}
-
-//删除用户的定制计划
-function deleteUserPersonalPlanById(req) {
-    console.log(req.query);
-    return new Promise((resolve, reject) => {
-        var sql1 = 'delete FROM plan_detail where plan_id=? and exercise_id=?';
-        pool.query(sql1, [req.query.plan_id, req.query.exercise_id], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {
@@ -153,6 +167,7 @@ module.exports.getUserCommonPlanById = getUserCommonPlanById;
 module.exports.deleteUserCommonPlanById = deleteUserCommonPlanById;
 module.exports.getUserPersonalPlanById = getUserPersonalPlanById;
 module.exports.deleteUserPersonalPlanById = deleteUserPersonalPlanById;
+module.exports.updateUserPersonalPlanById = updateUserPersonalPlanById;
 module.exports.getUserFoodListById = getUserFoodListById;
 module.exports.deleteUserFoodListById = deleteUserFoodListById;
 module.exports.register = register;

@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var UserDao = require('../dao/UserDao');
-var userModel = require("../models/UserModel").User
-
+var userModel = require("../models/UserModel")
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
@@ -62,9 +61,18 @@ router.get('/delete/item2', function (req, res, next) {
     })
 });
 
+//修改定制计划
+router.post('/update/item', function (req, res, next) {
+  var plan_detail = new userModel.PersonalPlan(req.body.exercise_groups, req.body.exercise_id, req.body.exercise_times, req.body.plan_day, req.body.plan_id);
+  UserDao.updateUserPersonalPlanById(plan_detail)
+    .then((response) => {
+      res.send('ok')
+    })
+});
+
 // 登录
 router.post("/login", function (req, res, next) {
-  var user = new userModel('', req.body.user_account, req.body.user_password, '', '', '', '');
+  var user = new userModel.User('', req.body.user_account, req.body.user_password, '', '', '', '');
   UserDao.login(user)
     .then((response) => {
       console.log(response);

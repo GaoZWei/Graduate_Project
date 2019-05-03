@@ -11,4 +11,16 @@ User.prototype = {
     constructor: User
 }
 
+function PersonalPlan(exercise_groups, exercise_id, exercise_times, plan_day, plan_id) {
+    this.exercise_groups = exercise_groups
+    this.exercise_id = exercise_id
+    this.exercise_times = exercise_times
+    this.plan_day = plan_day
+    this.plan_id = plan_id
+}
+PersonalPlan.prototype = {
+    constructor: PersonalPlan
+}
+
 module.exports.User = User;
+module.exports.PersonalPlan = PersonalPlan;

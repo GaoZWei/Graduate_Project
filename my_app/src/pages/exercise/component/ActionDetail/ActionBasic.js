@@ -168,14 +168,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreator.hideModal());
   },
   handleOK(_self) {
-    console.log(_self.props.match.params.exercise_id);
+    // console.log(_self.props.match.params.exercise_id);
     let demo = _self.refs.getFormValue;
     demo.validateFields((err, values) => {
       if (!err) {
         if (JSON.parse(sessionStorage.getItem("user")) != null) {
           values.exercise_id = _self.props.match.params.exercise_id;
           values.user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
-          console.log(values); //这里可以拿到数据 
+          // console.log(values); //这里可以拿到数据 
           dispatch(actionCreator.addPersonalPlan(values, _self));
         } else {
           _self.props.history.push("/login");

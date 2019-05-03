@@ -6,7 +6,9 @@ const defaultState = fromJS({
   userBasicList: [],
   userCommomPlanList: [],
   userPersonalPlanList: [],
-  userFoodList: []
+  userFoodList: [],
+  modelVisible: false,
+  recentExercise_id: ""
 });
 
 export default (state = defaultState, action) => {
@@ -17,6 +19,18 @@ export default (state = defaultState, action) => {
         userCommomPlanList: fromJS(action.userCommomPlanList),
         userPersonalPlanList: fromJS(action.userPersonalPlanList),
         userFoodList: fromJS(action.userFoodList)
+      });
+    case actionTypes.SHOW_MODAL:
+      // return state.set("modelVisible", action.value);
+      return state.merge({
+        modelVisible: action.value,
+        recentExercise_id: action.tag
+      });
+    case actionTypes.HIDE_MODAL:
+      // return state.set("modelVisible", action.value);
+      return state.merge({
+        modelVisible: action.value,
+        recentExercise_id: ""
       });
     default:
       return state;
