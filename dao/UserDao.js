@@ -54,8 +54,9 @@ function deleteUserCommonPlanById(req) {
 function getUserPersonalPlanById(req) {
     return new Promise((resolve, reject) => {
         // var sql1 = 'SELECT * from plan_detail where plan_id in (select plan_id from plan where plan_creator=?)';
-        var sql2 = "SELECT * from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) "
-        pool.query(sql2, [req[0][0][0].user_id], function (errors, results) {
+        // var sql2 = "SELECT * from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) "
+        var sql3 = "SELECT * ,group_concat(plan_detail.exercise_id) as group_exercise_id,group_concat(exercise.exercise_name)  as group_exercise_name ,group_concat(plan_detail.exercise_groups) as group_exercise_group,group_concat(plan_detail.exercise_times) as group_exercise_times from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) GROUP by plan_day"
+        pool.query(sql3, [req[0][0][0].user_id], function (errors, results) {
             if (results) {
                 resolve([req, results]);
             } else {
@@ -84,6 +85,21 @@ function deleteUserFoodListById(req) {
     return new Promise((resolve, reject) => {
         var sql1 = 'DELETE from user_food_reflect where user_id=? and food_id=?';
         pool.query(sql1, [req.query.user_id, req.query.food_id], function (errors, results) {
+            if (results) {
+                resolve('ok');
+            } else {
+                reject(errors);
+            }
+        })
+    })
+}
+
+//删除用户的定制计划
+function deleteUserPersonalPlanById(req) {
+    console.log(req.query);
+    return new Promise((resolve, reject) => {
+        var sql1 = 'delete FROM plan_detail where plan_id=? and exercise_id=?';
+        pool.query(sql1, [req.query.plan_id, req.query.exercise_id], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {
@@ -136,6 +152,7 @@ module.exports.getUserBasicById = getUserBasicById;
 module.exports.getUserCommonPlanById = getUserCommonPlanById;
 module.exports.deleteUserCommonPlanById = deleteUserCommonPlanById;
 module.exports.getUserPersonalPlanById = getUserPersonalPlanById;
+module.exports.deleteUserPersonalPlanById = deleteUserPersonalPlanById;
 module.exports.getUserFoodListById = getUserFoodListById;
 module.exports.deleteUserFoodListById = deleteUserFoodListById;
 module.exports.register = register;

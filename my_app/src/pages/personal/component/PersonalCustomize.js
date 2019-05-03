@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { actionCreator } from "../store";
-import { Table, Popconfirm } from "antd";
+import { withRouter } from "react-router-dom";
+import { actionCreator } from "../store";
+import { Table, Popconfirm, Row, Col } from "antd";
 class PersonalCustomize extends Component {
   render() {
-    const { userPersonalPlanList } = this.props;
+    const { userPersonalPlanList, deleteItem } = this.props;
     var userPersonalPlanListArr = userPersonalPlanList.toJS();
-    console.log(userPersonalPlanListArr);
     const columns = [
-      // { title: "计划序号", dataIndex: "plan_number", key: "plan_number" },
       { title: "计划日期", dataIndex: "plan_day", key: "plan_date" },
-      { title: "计划名称", dataIndex: "plan_name", key: "plan_name" },
       {
         title: "操作",
         dataIndex: "",
@@ -18,15 +16,7 @@ class PersonalCustomize extends Component {
         render: () => {
           return (
             <span>
-              <a href="/">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              {/* <Popconfirm
-                title="确认删除?"
-              >
-                <a href="/">删除</a>{" "}
-              </Popconfirm> */}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="/exercise">添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="/">设置组数</a>
+              <a href="/exercise">添加</a>
             </span>
           );
         }
@@ -39,18 +29,69 @@ class PersonalCustomize extends Component {
           <Table
             columns={columns}
             expandedRowRender={record => (
-              <p style={{ margin: 0 }}>
-                {record.exercise_name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 组数:
-                {record.exercise_groups}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每组个数:
-                {record.exercise_times}
-                <Popconfirm
-                  title="确认删除?"
-                  // onConfirm={deleteCollect.bind(null, record)}
-                >
-                  <a href="/">删除</a>
-                </Popconfirm>
-              </p>
+              <div style={{ margin: 0 }}>
+                <Row>
+                  <Col span={6}>
+                    {record.group_name.map(tag => {
+                      var random2 = new Date() + Math.random();
+                      return (
+                        <div key={random2}>
+                          {tag}
+                          (组数):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <br />
+                        </div>
+                      );
+                    })}
+                  </Col>
+                  <Col span={4}>
+                    {record.group_group.map(tag => {
+                      var random3 = new Date() + Math.random();
+                      return (
+                        <div key={random3}>
+                          {tag}组<br />
+                        </div>
+                      );
+                    })}
+                  </Col>
+                  <Col span={5}>
+                    {record.group_times.map(tag => {
+                      var random4 = new Date() + Math.random();
+                      return (
+                        <div key={random4}>
+                          每组个数:
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <br />
+                        </div>
+                      );
+                    })}
+                  </Col>
+                  <Col span={5}>
+                    {record.group_times.map(tag => {
+                      var random5 = new Date() + Math.random();
+                      return (
+                        <div key={random5}>
+                          {tag}个<br />
+                        </div>
+                      );
+                    })}
+                  </Col>
+                  <Col>
+                    {record.group_id.map(tag => {
+                      var random5 = new Date() + Math.random();
+                      return (
+                        <Popconfirm
+                          title="确认删除?"
+                          onConfirm={() => deleteItem(record, tag)}
+                          key={random5}
+                        >
+                          <a href="/">删除</a>
+                          <br />
+                        </Popconfirm>
+                      );
+                    })}
+                  </Col>
+                </Row>
+              </div>
             )}
             dataSource={userPersonalPlanListArr}
           />
@@ -62,7 +103,14 @@ class PersonalCustomize extends Component {
 const mapStateToProps = state => ({
   userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"])
 });
+const mapDispatchToProps = dispatch => ({
+  deleteItem(record, tag) {
+    var user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
+    dispatch(actionCreator.deletePersonalPlan(record.plan_id, tag, user_id));
+  }
+});
+
 export default connect(
   mapStateToProps,
-  null
-)(PersonalCustomize);
+  mapDispatchToProps
+)(withRouter(PersonalCustomize));

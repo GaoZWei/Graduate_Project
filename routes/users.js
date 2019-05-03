@@ -54,6 +54,14 @@ router.get('/delete/item1', function (req, res, next) {
     })
 });
 
+//删除定制计划
+router.get('/delete/item2', function (req, res, next) {
+  UserDao.deleteUserPersonalPlanById(req)
+    .then((response) => {
+      res.send('ok')
+    })
+});
+
 // 登录
 router.post("/login", function (req, res, next) {
   var user = new userModel('', req.body.user_account, req.body.user_password, '', '', '', '');
