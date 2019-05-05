@@ -7,7 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var api = require('./routes/api');
-// var index = require('./routes/index');
+var main = require('./routes/main');
 var plan = require('./routes/plan');
 var users = require('./routes/users');
 var exercise = require('./routes/exercise');
@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 中间件
 app.use('/api', api);
-// app.use('/', index);
+app.use('/main', main);
 app.use('/plan', plan);
 app.use('/users', users);
 app.use('/exercise', exercise);

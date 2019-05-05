@@ -34,19 +34,12 @@ class Exercise extends Component {
     this.props.changeHomeData();
   }
 }
-// const mapStateToProps = state => {
-//   return {
-//     exerciseList: state.getIn(["exercise", "exerciseList"])
-//   };
-// };
 const mapDispatchToProps = dispatch => ({
   changeHomeData() {
-    const action = actionCreator.changeHomeInfo();
-    dispatch(action);
+    dispatch(actionCreator.changeHomeInfo());
   }
 });
 export default connect(
-  // mapStateToProps,
   null,
   mapDispatchToProps
 )(Exercise);

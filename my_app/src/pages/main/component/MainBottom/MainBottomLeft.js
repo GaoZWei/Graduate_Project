@@ -1,21 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../style.css";
 import { List } from "antd";
 class MainBottomLeft extends Component {
   render() {
-    const data = [
-      "Racing car sprays burning fuel into crowd.",
-      "Japanese princess to wed commoner.",
-      "Australian walks 100km after outback crash.",
-      "Man charged over missing wedding girl.",
-      "Los Angeles battles huge wildfires."
-    ];
-
+    const { planList } = this.props;
     return (
       <div>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp;健身计划<Link to="/" className="more_link"> 查看更多-></Link>
+          &nbsp;&nbsp;健身计划
+          <Link to="/plan" className="more_link">
+            查看更多->
+          </Link>
         </div>
         <div className="index_middle_content_left_list">
           <List
@@ -23,10 +20,12 @@ class MainBottomLeft extends Component {
             // header={<div>Header</div>}
             // footer={<div>Footer</div>}
             bordered
-            dataSource={data}
+            dataSource={planList}
             renderItem={item => (
               <List.Item>
-                <Link to="/">{item} </Link>
+                <Link to={"/plan/" + item.get("plan_id")}>
+                  {item.get("plan_description")}
+                </Link>
               </List.Item>
             )}
           />
@@ -35,4 +34,11 @@ class MainBottomLeft extends Component {
     );
   }
 }
-export default MainBottomLeft;
+const mapStateToProps = state => ({
+  planList: state.getIn(["index", "planList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainBottomLeft);

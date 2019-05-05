@@ -1,21 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../style.css";
 import { List } from "antd";
 class MainBottomLeftSecond extends Component {
   render() {
-    const data = [
-      "Racing car sprays burning fuel into crowd.",
-      "Japanese princess to wed commoner.",
-      "Australian walks 100km after outback crash.",
-      "Man charged over missing wedding girl.",
-      "Los Angeles battles huge wildfires."
-    ];
-
+    const { foodKnowledgeList } = this.props;
     return (
       <div>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp;食物百科<Link to="/" className="more_link"> 查看更多-></Link>
+          &nbsp;&nbsp;食物百科
+          <Link to="/" className="more_link">
+            查看更多->
+          </Link>
         </div>
         <div className="index_middle_content_left_list">
           <List
@@ -23,10 +20,12 @@ class MainBottomLeftSecond extends Component {
             // header={<div>Header</div>}
             // footer={<div>Footer</div>}
             bordered
-            dataSource={data}
+            dataSource={foodKnowledgeList}
             renderItem={item => (
               <List.Item>
-                <Link to="/">{item} </Link>
+                <Link to={"/news/" + item.get("health_id")}>
+                  {item.get("health_title")}
+                </Link>
               </List.Item>
             )}
           />
@@ -35,4 +34,11 @@ class MainBottomLeftSecond extends Component {
     );
   }
 }
-export default MainBottomLeftSecond;
+const mapStateToProps = state => ({
+  foodKnowledgeList: state.getIn(["index", "foodKnowledgeList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainBottomLeftSecond);

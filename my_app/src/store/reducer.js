@@ -7,6 +7,7 @@ import { reducer as foodReducer } from "../pages/food/store";
 import { reducer as newsReducer } from "../pages/news/store";
 import { reducer as implementReducer } from "../pages/implement/store";
 import { reducer as personalReducer } from "../pages/personal/store";
+import { reducer as indexReducer } from "../pages/main/store";
 const reducer = combineReducers({
   header: headerReducer,
   main: mainReducer,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   food: foodReducer,
   implement: implementReducer,
   news: newsReducer,
-  personal: personalReducer
+  personal: personalReducer,
+  index: indexReducer
 });
 
 export default reducer;

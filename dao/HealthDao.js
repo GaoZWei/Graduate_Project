@@ -26,6 +26,33 @@ function getHealthById(req) {
     });
 }
 
+//获取主页热点新闻
+function getMainHotHealth(res) {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from health where is_hot=1", [], function (errors, results) {
+            if (results) {
+                resolve(results)
+            } else {
+                reject(errors);
+            }
+        });
+    });
+}
+//获取主页食物百科
+function getMainFoodKnowledge(res) {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from health where is_food_knowledge=1", [], function (errors, results) {
+            if (results) {
+                resolve(results)
+            } else {
+                reject(errors);
+            }
+        });
+    });
+}
+
 
 module.exports.getAllHealth = getAllHealth;
 module.exports.getHealthById = getHealthById;
+module.exports.getMainHotHealth = getMainHotHealth;
+module.exports.getMainFoodKnowledge = getMainFoodKnowledge;

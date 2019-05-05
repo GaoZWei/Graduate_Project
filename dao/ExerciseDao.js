@@ -5,15 +5,19 @@ function getAllExercise() {
   return new Promise((resolve, reject) => {
     pool.query("select * from exercise_sort,exercise_difficult,exercise where exercise.exercise_sort=exercise_sort.sort_id and exercise.exercise_difficulty=exercise_difficult.difficult_id", [], function (errors, results) {
       if (results) {
-        // var data = new Array();  
-        // var row = 0;
-        // for(var i=0;i<results.length;i++){
-        //   data[row].push(results[i]);
-        //   if(i+1 % 4 === 0){
-        //       row++;  
-        //   }
-        // }
-        // console.log(data)
+        resolve(results);
+      } else {
+        reject(errors);
+      }
+    });
+  });
+}
+
+//获取主页热门动作
+function getMainExercise() {
+  return new Promise((resolve, reject) => {
+    pool.query("select * from exercise_sort,exercise_difficult,exercise where exercise.exercise_sort=exercise_sort.sort_id and exercise.exercise_difficulty=exercise_difficult.difficult_id and is_main=1", [], function (errors, results) {
+      if (results) {
         resolve(results);
       } else {
         reject(errors);
@@ -114,6 +118,7 @@ function getAllExerciseSort() {
 }
 
 module.exports.getAllExercise = getAllExercise;
+module.exports.getMainExercise = getMainExercise;
 module.exports.getExerciseById = getExerciseById;
 module.exports.SearchExercise = SearchExercise;
 module.exports.filterExercise = filterExercise;

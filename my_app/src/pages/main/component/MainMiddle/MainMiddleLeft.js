@@ -1,21 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../style.css";
 import { List } from "antd";
 class MainMiddleLeft extends Component {
   render() {
-    const data = [
-      "Racing car sprays burning fuel into crowd.",
-      "Japanese princess to wed commoner.",
-      "Australian walks 100km after outback crash.",
-      "Man charged over missing wedding girl.",
-      "Los Angeles battles huge wildfires."
-    ];
-
+    const { hotList } = this.props;
     return (
       <div>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp;热 点 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <Link to="/" className="more_link"> 查看更多-></Link>
+          &nbsp;&nbsp;热&nbsp;门
+          <Link to="/" className="more_link">
+            查看更多->
+          </Link>
         </div>
         <div className="index_middle_content_left_list">
           <List
@@ -23,10 +20,12 @@ class MainMiddleLeft extends Component {
             // header={<div>Header</div>}
             // footer={<div>Footer</div>}
             bordered
-            dataSource={data}
+            dataSource={hotList}
             renderItem={item => (
               <List.Item>
-                <Link to="/">{item} </Link>
+                <Link to={"/news/" + item.get("health_id")}>
+                  {item.get("health_title")}
+                </Link>
               </List.Item>
             )}
           />
@@ -35,4 +34,11 @@ class MainMiddleLeft extends Component {
     );
   }
 }
-export default MainMiddleLeft;
+const mapStateToProps = state => ({
+  hotList: state.getIn(["index", "hotList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainMiddleLeft);

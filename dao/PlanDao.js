@@ -12,6 +12,18 @@ function getAllPlan() {
         });
     });
 }
+//获取主页plan
+function getMainPlan() {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from plan where plan_creator=999 and is_main=1", [], function (errors, results) {
+            if (results) {
+                resolve(results);
+            } else {
+                reject(errors);
+            }
+        });
+    });
+}
 
 // 查询plan表
 function getPlanById(req) {
@@ -88,6 +100,7 @@ function addCommonPlan(plan_reflect) {
 // 将plan添加至公共计划区
 module.exports.getPlanById = getPlanById;
 module.exports.getAllPlan = getAllPlan;
+module.exports.getMainPlan = getMainPlan;
 module.exports.SearchPlan = SearchPlan;
 module.exports.filterPlan = filterPlan;
 module.exports.addCommonPlan = addCommonPlan;
