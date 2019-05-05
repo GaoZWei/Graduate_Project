@@ -86,7 +86,7 @@ router.post("/login", function (req, res, next) {
 
 // 注册
 router.post("/register", function (req, res, next) {
-  var user = new userModel(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight);
+  var user = new userModel.User(req.body.user_name, req.body.user_account, req.body.user_password, req.body.user_age, req.body.user_sex, req.body.user_height, req.body.user_weight);
   UserDao.register(user)
     .then((response) => {
       if (response) {

@@ -19,7 +19,7 @@ class RegisterItem extends Component {
     callback();
   };
   validateHeight = (rule, value, callback) => {
-    if (value > 300 || value <= 0) {
+    if (value > 300 || value <= 30) {
       callback("请填写正确身高");
     } else if (/^[0-9]*$/.test(value) === false && value !== null) {
       callback("请填写正确内容");
@@ -28,7 +28,7 @@ class RegisterItem extends Component {
   };
 
   validateWeight = (rule, value, callback) => {
-    if (value > 300 || value <= 0) {
+    if (value > 300 || value <= 8) {
       callback("请填写正确体重");
     } else if (/^[0-9]*$/.test(value) === false && value !== null) {
       callback("请填写正确内容");
@@ -36,39 +36,22 @@ class RegisterItem extends Component {
     callback();
   };
 
-  validateAccount = (rule, value, callback) => {
+  validateAccount = async (rule, value, callback) => {
     if (value == null) {
       callback("请填写账号");
-    } else if (this.checkUserAccount(value)) {
-      callback("账号已存在");
-      // if (response) {
-      //   callback("账号已存在");
-      // } else {
-      //   callback();
-      // }
+    } else {
+      var result = await this.checkUserAccount(value);
+      if (result !== 0) {
+        callback("账号已存在");
+      }
     }
 
-    // else {
-    //   this.checkUserAccount(value).then(response => {
-    //     console.log(response)
-    //     if (response) {
-    //       callback("账号已存在");
-    //     } else {
-    //       callback();
-    //     }
-    //   });
-    // }
     callback();
   };
-  checkUserAccount = value => {
-    // return new Promise((resolve, reject) => {
-    fetch(
+  checkUserAccount = async value => {
+    return await fetch(
       "http://localhost:3005/users/checkUserAccount?user_account=" + value
-    ).then(response => {
-      // console.log("check:" + response != 0);
-      return response !== 0;
-    });
-    // });
+    );
   };
 
   render() {
@@ -89,7 +72,8 @@ class RegisterItem extends Component {
                       validator: this.validateAccount
                     }
                   ],
-                  validateTrigger: "onBlur"
+                  validateFirst: true,
+                  validateTrigger: "onChange"
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">账号</div>
@@ -165,7 +149,8 @@ class RegisterItem extends Component {
                     {
                       validator: this.validateAge
                     }
-                  ]
+                  ],
+                  validateFirst: true
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">年龄</div>
@@ -189,7 +174,8 @@ class RegisterItem extends Component {
                     {
                       validator: this.validateHeight
                     }
-                  ]
+                  ],
+                  validateFirst: true
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">身高(CM)</div>
@@ -213,7 +199,8 @@ class RegisterItem extends Component {
                     {
                       validator: this.validateWeight
                     }
-                  ]
+                  ],
+                  validateFirst: true
                 })(
                   <div className="register_area_formitem">
                     <div className="register_label">体重(KG)</div>
