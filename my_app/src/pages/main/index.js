@@ -35,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreator.changeFoodKnowledgeInfo());
     //健身计划
     dispatch(actionCreator.changePlanInfo());
+    //饮食知识
+    dispatch(actionCreator.changeFoodInfo());
+    //健康知识
+    dispatch(actionCreator.changeHealthInfo()); 
   }
 });
 export default connect(

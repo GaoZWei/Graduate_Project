@@ -7,6 +7,14 @@
     background-color: rgb(32, 32, 34)
 }
 
+.logo {
+    position: fixed;
+    top: 0.05%;
+    color: rgb(149, 157, 165);
+    font-size: 20px;
+    z-Index: 100;
+}
+
 /* 登录注册链接的样式 */
 .login,
 .register,
@@ -29,8 +37,9 @@
 .logout {
     right: 4%;
 }
-.logout:hover{
- cursor: pointer;
+
+.logout:hover {
+    cursor: pointer;
 }
 
 .loginRegister_font {

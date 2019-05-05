@@ -25,12 +25,22 @@ class Nav extends Component {
     }
     return (
       <Header className="navHead">
+        <div className="logo">
+          {/* style={{ display: "inline-block" }} */}
+          <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            Change健身系统
+          </Link>
+        </div>
         <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={[selectValue1]}
           // selectedKeys={[selectValue]}
-          style={{ lineHeight: "64px", backgroundColor: "rgb(32,32,34)" }}
+          style={{
+            lineHeight: "64px",
+            backgroundColor: "rgb(32,32,34)",
+            marginLeft: "15%"
+          }}
         >
           {/* <div className="logo" style={{ display: "inline-block" }}>
             --------- Change健身系统 --------- &nbsp;

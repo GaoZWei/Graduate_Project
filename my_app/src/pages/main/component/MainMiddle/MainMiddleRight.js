@@ -1,48 +1,36 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../style.css";
 import { List, Card } from "antd";
+const { Meta } = Card;
 class MainMiddleRight extends Component {
   render() {
-    const data = [
-      {
-        title: "Title 1"
-      },
-      {
-        title: "Title 2"
-      },
-      {
-        title: "Title 3"
-      },
-      {
-        title: "Title 4"
-      },
-      {
-        title: "Title 1"
-      },
-      {
-        title: "Title 2"
-      },
-      {
-        title: "Title 3"
-      },
-      {
-        title: "Title 4"
-      }
-    ];
+    const { healthList } = this.props;
     return (
       <Fragment>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp;推 荐 &nbsp;&nbsp; &nbsp;&nbsp;<Link to="/" className="more_link"> 查看更多-></Link>
+          &nbsp; 健康知识
+          <Link to="/news" className="more_link">
+            查看更多->
+          </Link>
         </div>
         <div className="index_middle_content_right_list">
-          {/* 这里是健身的知识列表 */}
           <List
-            grid={{ gutter: 16, column: 4 }}
-            dataSource={data}
-            renderItem={item => (
+            grid={{ gutter: 12, column: 2 }}
+            dataSource={healthList}
+            renderItem={(item, index) => (
               <List.Item>
-                <Card title={item.title}>内容区</Card>
+                <Link key={index} to={"/news/" + item.get("health_id")}>
+                  <Card
+                    hoverable
+                    style={{ width: "80%", height: "210px", marginTop: "6%" }}
+                    cover={<img alt="example" src={item.get("health_content_first")} />}
+                    key={item.get("health_id")}
+                  >
+                    <Meta title={item.get("health_title")} />
+                  </Card>
+                </Link>
               </List.Item>
             )}
           />
@@ -51,4 +39,12 @@ class MainMiddleRight extends Component {
     );
   }
 }
-export default MainMiddleRight;
+
+const mapStateToProps = state => ({
+  healthList: state.getIn(["index", "healthList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainMiddleRight);

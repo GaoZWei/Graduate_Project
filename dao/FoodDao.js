@@ -13,7 +13,18 @@ function getAllFoodSort() {
             });
     });
 }
-
+//获取主页所有食物
+function getMainFood(req) {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from food where is_main=1", [], function (errors, results) {
+            if (results) {
+                resolve(results)
+            } else {
+                reject(errors);
+            }
+        });
+    });
+}
 // 根据sort_id查询食物列表
 function getFoodBySort(req) {
     return new Promise((resolve, reject) => {
@@ -89,6 +100,7 @@ function getAllFood(res) {
 }
 
 module.exports.getAllFoodSort = getAllFoodSort;
+module.exports.getMainFood = getMainFood;
 module.exports.getFoodBySort = getFoodBySort;
 module.exports.getFoodById = getFoodById;
 module.exports.getRelateFood = getRelateFood;

@@ -50,9 +50,22 @@ function getMainFoodKnowledge(res) {
         });
     });
 }
+//获取主页健康知识
+function getMainHealthKnowledge(res) {
+    return new Promise((resolve, reject) => {
+        pool.query("select * from health where is_health=1", [], function (errors, results) {
+            if (results) {
+                resolve(results)
+            } else {
+                reject(errors);
+            }
+        });
+    });
+}
 
 
 module.exports.getAllHealth = getAllHealth;
 module.exports.getHealthById = getHealthById;
 module.exports.getMainHotHealth = getMainHotHealth;
 module.exports.getMainFoodKnowledge = getMainFoodKnowledge;
+module.exports.getMainHealthKnowledge = getMainHealthKnowledge;
