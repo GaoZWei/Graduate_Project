@@ -8,6 +8,7 @@ import { reducer as newsReducer } from "../pages/news/store";
 import { reducer as implementReducer } from "../pages/implement/store";
 import { reducer as personalReducer } from "../pages/personal/store";
 import { reducer as indexReducer } from "../pages/main/store";
+import { reducer as adminReducer } from "../pages/admin/store";
 const reducer = combineReducers({
   header: headerReducer,
   main: mainReducer,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   implement: implementReducer,
   news: newsReducer,
   personal: personalReducer,
-  index: indexReducer
+  index: indexReducer,
+  admin: adminReducer
 });
 
 export default reducer;

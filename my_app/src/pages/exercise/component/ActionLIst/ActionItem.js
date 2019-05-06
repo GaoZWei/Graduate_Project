@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Col, Row, List, Pagination } from "antd";
+import { Card, Row, List } from "antd";
 // import first_hand_chest_01 from "../../../../statics/chest/first_hand_chest_01.jpg";
 import { Link } from "react-router-dom";
 const { Meta } = Card;

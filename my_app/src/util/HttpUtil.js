@@ -54,3 +54,11 @@ export function post(url, data) {
             })
     })
 }
+
+//key
+export const util = obj => {
+    for (var i = 0; i < obj.length; i++) {
+      obj[i].key = i;
+    }
+    return obj;
+  };

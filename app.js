@@ -15,6 +15,7 @@ var food = require('./routes/food');
 var health = require('./routes/health');
 var implement = require('./routes/implement');
 var param = require('./routes/param');
+var admin = require('./routes/admin');
 var app = express();
 
 // 模板引擎设置,没用
@@ -69,6 +70,7 @@ app.use('/food', food);
 app.use('/health', health);
 app.use('/param', param);
 app.use('/implement', implement);
+app.use('/admin', admin);
 
 
 

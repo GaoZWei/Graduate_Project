@@ -17,20 +17,15 @@ import NewsDetail from "./pages/news/component/NewsDetail/NewsDetail";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
 import BMI from "./pages/implement/component/ImplementItem/BMI";
+import Admin from "./pages/admin/index";
+import AdminExerciseTable from "./pages/admin/component/AdminExerciseTable";
+import AdminPlanTable from "./pages/admin/component/AdminPlanTable";
+import AdminFoodTable from "./pages/admin/component/AdminFoodTable";
+import AdminHealthTable from "./pages/admin/component/AdminHealthTable";
+import AdminImplementTable from "./pages/admin/component/AdminImplementTable";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = { users: [] };
-  }
-  // fetchUsers() {
-  //   return fetch("api/users", { accpet: "application/json" }).then(res => {
-  //     return res.json().then(json => {
-  //       this.setState({ users: json });
-  //     });
-  //   });
-  // }
   render() {
     return (
       <Provider store={store}>
@@ -60,22 +55,15 @@ class App extends Component {
             <Route path="/personal" exact component={Personal} />
             <Route path="/register" exact component={Register} />
             <Route path="/login" exact component={Login} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/admin/exercise" exact component={AdminExerciseTable} />
+            <Route path="/admin/plan" exact component={AdminPlanTable} />
+            <Route path="/admin/food" exact component={AdminFoodTable} />
+            <Route path="/admin/health" exact component={AdminHealthTable} />
+            <Route path="/admin/implement" exact component={AdminImplementTable} />
           </div>
         </BrowserRouter>
       </Provider>
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <h1 className="App-title">Welcome</h1>
-      //   </header>
-      //   <Button type="primary">Button</Button>
-      //   <p className="App-intro" onClick={this.fetchUsers.bind(this)}>
-      //     To get started, edit <code>src/App.js</code> and save to reload.
-      //   </p>
-      //   {this.state.users.map((user, index) => {
-      //     return (<h1 key={index}>{user.name}</h1>)
-      //   })}
-      // </div>
     );
   }
 }
