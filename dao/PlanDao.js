@@ -32,7 +32,7 @@ function getPlanById(req) {
     var sql3 = "SELECT * ,group_concat(plan_detail.exercise_id) as group_exercise_id,group_concat(exercise.exercise_name)  as group_exercise_name ,group_concat(plan_detail.exercise_groups) as group_exercise_group,group_concat(plan_detail.exercise_times) as group_exercise_times from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id where plan_id=? GROUP BY plan_detail.plan_day order by plan_day";
     return new Promise((resolve, reject) => {
         // pool.query(sql1 + ";" + sql2 + ";", [], function (errors, results) {
-        pool.query(sql1 + ';' + sql3 + ";", [req.params.id], function (errors, results) {
+        pool.query(sql1 + ';' + sql3 + ";", [req.params.id,req.params.id], function (errors, results) {
             console.log(results);
             if (results) {
                 resolve(results);

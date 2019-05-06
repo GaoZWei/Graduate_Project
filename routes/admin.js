@@ -72,6 +72,21 @@ router.get("/select/plan_body", function (req, res, next) {
         .then(response => res.json(response));
 });
 
+//删除食物项
+router.get('/delete/item1', function (req, res, next) {
+    AdminDeleteDao.deleteFoodById(req)
+      .then((response) => {
+        res.send('ok')
+      })
+  });
+  //删除动作项
+router.get('/delete/item2', function (req, res, next) {
+    AdminDeleteDao.deleteExerciseById(req)
+      .then((response) => {
+        res.send('ok')
+      })
+  });
+
 
 
 module.exports = router;

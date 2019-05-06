@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import { fetch, post, util } from "../../../util/HttpUtil";
 import { fromJS } from "immutable";
+import { message } from "antd";
 // 修改导航的panel
 export const changeNavItem = item => ({
   type: actionTypes.CHANGE_NAV,
@@ -51,6 +52,7 @@ export const getPlanInfo = () => {
     });
   };
 };
+
 //健康表格
 const gethealthData = result => ({
   type: actionTypes.GET_HEALTH_DATA,
@@ -78,3 +80,74 @@ export const getImplementInfo = () => {
     });
   };
 };
+
+//删除食物项
+export const deleteFoodList = food_id => {
+  return dispatch => {
+    fetch("/admin/delete/item1?food_id=" + food_id).then(res => {
+      if ((res = "ok")) {
+        dispatch(getFoodInfo());
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
+  };
+};
+
+//删除动作项
+export const deleteExerciseList = exercise_id => {
+  return dispatch => {
+    fetch("/admin/delete/item2?exercise_id=" + exercise_id).then(res => {
+      if ((res = "ok")) {
+        console.log(2131231)
+        dispatch(getExerciseInfo());
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
+  };
+};
+
+// //删除计划项
+// export const deleteFoodList = food_id => {
+//   return dispatch => {
+//     fetch("/admin/delete/item3?food_id=" + food_id).then(res => {
+//       if ((res = "ok")) {
+//         dispatch(getFoodInfo());
+//         message.success("删除成功");
+//       } else {
+//         message.error("删除失败");
+//       }
+//     });
+//   };
+// };
+
+// //删除健身工具项
+// export const deleteFoodList = food_id => {
+//   return dispatch => {
+//     fetch("/admin/delete/item1?food_id=" + food_id).then(res => {
+//       if ((res = "ok")) {
+//         dispatch(getFoodInfo());
+//         message.success("删除成功");
+//       } else {
+//         message.error("删除失败");
+//       }
+//     });
+//   };
+// };
+
+// //删除健康知识项
+// export const deleteFoodList = food_id => {
+//   return dispatch => {
+//     fetch("/admin/delete/item1?food_id=" + food_id).then(res => {
+//       if ((res = "ok")) {
+//         dispatch(getFoodInfo());
+//         message.success("删除成功");
+//       } else {
+//         message.error("删除失败");
+//       }
+//     });
+//   };
+// };

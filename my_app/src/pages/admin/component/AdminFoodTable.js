@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../store";
 import AdminNav from "../component/AdminNav";
-import { Table, Divider, Layout, Row, Col } from "antd";
+import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
 class AdminExerciseTable extends Component {
   render() {
-    const { foodList } = this.props;
+    const { foodList, deleteItem } = this.props;
     var foodListArr = foodList.toJS();
     const columns = [
       {
@@ -38,7 +38,13 @@ class AdminExerciseTable extends Component {
         key: "action",
         render: (text, record) => (
           <span>
-            <a href="javascript:;"> 删除 </a>
+            <Popconfirm
+              title="确认删除?"
+              onConfirm={() => deleteItem(record, this)}
+            >
+              <a href="/">删除</a>{" "}
+            </Popconfirm>
+
             <Divider type="vertical" />
             <a href="javascript:;"> 修改 </a>
             <Divider type="vertical" />
@@ -116,6 +122,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getFoodData() {
     dispatch(actionCreator.getFoodInfo());
+  },
+  deleteItem(record) {
+    var food_id = record.food_id;
+    dispatch(actionCreator.deleteFoodList(food_id));
   }
 });
 export default connect(
