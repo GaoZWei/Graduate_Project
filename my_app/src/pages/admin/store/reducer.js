@@ -7,7 +7,9 @@ const defaultState = fromJS({
   foodList: [],
   planList: [],
   healthList: [],
-  implementList: []
+  implementList: [],
+  modelVisible: false,
+  temporaryData: []
 });
 
 export default (state = defaultState, action) => {
@@ -22,6 +24,12 @@ export default (state = defaultState, action) => {
       return state.set("healthList", fromJS(action.healthList));
     case actionTypes.GET_IMPLEMENT_DATA:
       return state.set("implementList", fromJS(action.implementList));
+    case actionTypes.SHOW_MODAL:
+      return state.set("modelVisible", action.value);
+    case actionTypes.HIDE_MODAL:
+      return state.set("modelVisible", action.value);
+    case actionTypes.UPDATE_TEMPORARY:
+      return state.set("temporaryData", action.temporaryData);
     default:
       return state;
   }

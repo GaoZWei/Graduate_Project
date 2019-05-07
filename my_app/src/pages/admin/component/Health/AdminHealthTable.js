@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../store";
-import AdminNav from "../component/AdminNav";
+import { actionCreator } from "../../store";
+import AdminNav from "../../component/AdminNav";
 import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
 class AdminHealthTable extends Component {
   render() {

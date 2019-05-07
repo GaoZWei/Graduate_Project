@@ -18,11 +18,11 @@ import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
 import BMI from "./pages/implement/component/ImplementItem/BMI";
 import Admin from "./pages/admin/index";
-import AdminExerciseTable from "./pages/admin/component/AdminExerciseTable";
-import AdminPlanTable from "./pages/admin/component/AdminPlanTable";
-import AdminFoodTable from "./pages/admin/component/AdminFoodTable";
-import AdminHealthTable from "./pages/admin/component/AdminHealthTable";
-import AdminImplementTable from "./pages/admin/component/AdminImplementTable";
+import AdminExerciseTable from "./pages/admin/component/Exercise/AdminExerciseTable";
+import AdminPlanTable from "./pages/admin/component/Plan/AdminPlanTable";
+import AdminFoodTable from "./pages/admin/component/Food/AdminFoodTable";
+import AdminHealthTable from "./pages/admin/component/Health/AdminHealthTable";
+import AdminImplementTable from "./pages/admin/component/Implement/AdminImplementTable";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {

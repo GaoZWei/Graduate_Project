@@ -1,37 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../store";
-import AdminNav from "../component/AdminNav";
+import { actionCreator } from "../../store";
+import AdminNav from "../../component/AdminNav";
 import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
 class AdminExerciseTable extends Component {
   render() {
-    const { foodList, deleteItem } = this.props;
-    var foodListArr = foodList.toJS();
+    const { exerciseList, deleteItem } = this.props;
+    var exerciseListArr = exerciseList.toJS();
     const columns = [
       {
-        title: "食物名",
-        dataIndex: "food_name",
+        title: "动作名",
+        dataIndex: "exercise_name",
         render: text => <a href="javascript:;"> {text} </a>
       },
       {
-        title: "分类",
-        dataIndex: "sort_id"
+        title: "动作分类",
+        dataIndex: "exercise_sort"
       },
       {
-        title: "热量",
-        dataIndex: "food_hots"
+        title: "动作难度",
+        dataIndex: "exercise_difficulty"
       },
       {
-        title: "蛋白质含量",
-        dataIndex: "food_protein"
+        title: "所需器械",
+        dataIndex: "exercise_sort_facility"
       },
       {
-        title: "碳水化合物",
-        dataIndex: "food_carbohydrate"
-      },
-      {
-        title: "脂肪",
-        dataIndex: "food_fat"
+        title: "目标肌肉",
+        dataIndex: "exercise_sort_aim"
       },
       {
         title: "操作",
@@ -44,7 +40,6 @@ class AdminExerciseTable extends Component {
             >
               <a href="/">删除</a>{" "}
             </Popconfirm>
-
             <Divider type="vertical" />
             <a href="javascript:;"> 修改 </a>
             <Divider type="vertical" />
@@ -63,43 +58,35 @@ class AdminExerciseTable extends Component {
               <div>
                 <Table
                   columns={columns}
-                  dataSource={foodListArr}
+                  dataSource={exerciseListArr}
                   bordered
-                  title={() => "食物信息"}
+                  title={() => "动作信息"}
                   footer={() => "Footer"}
                   expandedRowRender={record => (
                     <div>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">蛋白质占比:</span>
-                        {record.protein_account}
+                        <span className="expand_title">动作描述:</span>
+                        {record.exercise_description}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">碳水化合物占比:</span>
-                        {record.carbohydrate_account}
+                        <span className="expand_title">动作主要图片:</span>
+                        {record.exercise_pic_main}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">脂肪占比:</span>
-                        {record.fat_account}
+                        <span className="expand_title">动作第一张图:</span>
+                        {record.exercise_pic_first}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">度量单位:</span>
-                        {record.measure_unit}
+                        <span className="expand_title">动作第二张图:</span>
+                        {record.exercise_pic_second}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">单位结果:</span>
-                        {record.measure_calorie}
+                        <span className="expand_title">动作视频:</span>
+                        {record.exercise_video}
                       </p>
                       <p style={{ margin: 0 }}>
                         <span className="expand_title">主页显示:</span>
                         {record.is_main}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">食物图片:</span>
-                        {record.food_pic}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">描述:</span>
-                        {record.food_description}
                       </p>
                     </div>
                   )}
@@ -113,19 +100,19 @@ class AdminExerciseTable extends Component {
     );
   }
   componentDidMount() {
-    this.props.getFoodData();
+    this.props.getExerciseData();
   }
 }
 const mapStateToProps = state => ({
-  foodList: state.getIn(["admin", "foodList"])
+  exerciseList: state.getIn(["admin", "exerciseList"])
 });
 const mapDispatchToProps = dispatch => ({
-  getFoodData() {
-    dispatch(actionCreator.getFoodInfo());
+  getExerciseData() {
+    dispatch(actionCreator.getExerciseInfo());
   },
   deleteItem(record) {
-    var food_id = record.food_id;
-    dispatch(actionCreator.deleteFoodList(food_id));
+    var exercise_id = record.exercise_id;
+    dispatch(actionCreator.deleteExerciseList(exercise_id));
   }
 });
 export default connect(

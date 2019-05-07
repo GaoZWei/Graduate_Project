@@ -155,7 +155,6 @@ class ActionBasic extends Component {
 const mapStateToProps = state => ({
   detailList: state.getIn(["exercise", "detailList"]),
   modelVisible: state.getIn(["exercise", "modelVisible"]),
-  hideModal: state.getIn(["exercise", "hideModal"])
 });
 const mapDispatchToProps = dispatch => ({
   getExerciseDetail(exercise_id) {

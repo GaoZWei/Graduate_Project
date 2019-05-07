@@ -1,33 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../store";
-import AdminNav from "../component/AdminNav";
+import { actionCreator } from "../../store";
+import AdminNav from "../../component/AdminNav";
 import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
-class AdminPlanTable extends Component {
+class AdminImplementTable extends Component {
   render() {
-    const { planList, deleteItem } = this.props;
-    var planListArr = planList.toJS();
+    const { implementList, deleteItem } = this.props;
+    var implementListArr = implementList.toJS();
     const columns = [
       {
-        title: "计划名",
-        dataIndex: "plan_name",
-        render: text => <a href="javascript:;"> {text} </a>
+        title: "健身工具标题",
+        dataIndex: "implement_title"
       },
       {
-        title: "计划目标",
-        dataIndex: "plan_aim"
+        title: "输入身高",
+        dataIndex: "input_height"
       },
       {
-        title: "计划日期",
-        dataIndex: "plan_day"
+        title: "输入体重",
+        dataIndex: "input_weight"
       },
       {
-        title: "计划器械",
-        dataIndex: "plan_implement"
+        title: "输入年龄",
+        dataIndex: "input_age"
       },
       {
-        title: "目标肌肉",
-        dataIndex: "plan_body"
+        title: "输入性别",
+        dataIndex: "input_sex"
       },
       {
         title: "操作",
@@ -58,31 +57,23 @@ class AdminPlanTable extends Component {
               <div>
                 <Table
                   columns={columns}
-                  dataSource={planListArr}
+                  dataSource={implementListArr}
                   bordered
-                  title={() => "计划信息"}
+                  title={() => "健康知识信息"}
                   footer={() => "Footer"}
                   expandedRowRender={record => (
                     <div>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划图片:</span>
-                        {record.plan_pic}
+                        <span className="expand_title">描述:</span>
+                        {record.implement_description}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划描述:</span>
-                        {record.plan_description}
+                        <span className="expand_title">内容:</span>
+                        {record.implement_content}
                       </p>
                       <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划内容:</span>
-                        {record.plan_content}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划创建者:</span>
-                        {record.plan_creator}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">主页显示:</span>
-                        {record.is_main}
+                        <span className="expand_title">图片:</span>
+                        {record.implement_pic}
                       </p>
                     </div>
                   )}
@@ -96,22 +87,22 @@ class AdminPlanTable extends Component {
     );
   }
   componentDidMount() {
-    this.props.getPlanData();
+    this.props.getImplementData();
   }
 }
 const mapStateToProps = state => ({
-  planList: state.getIn(["admin", "planList"])
+  implementList: state.getIn(["admin", "implementList"])
 });
 const mapDispatchToProps = dispatch => ({
-  getPlanData() {
-    dispatch(actionCreator.getPlanInfo());
+  getImplementData() {
+    dispatch(actionCreator.getImplementInfo());
   },
   deleteItem(record) {
-    var plan_id = record.plan_id;
-    dispatch(actionCreator.deletePlan(plan_id));
+    var implement_id = record.implement_id;
+    dispatch(actionCreator.deleteImplement(implement_id));
   }
 });
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AdminPlanTable);
+)(AdminImplementTable);

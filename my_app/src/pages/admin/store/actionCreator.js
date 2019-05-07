@@ -151,3 +151,20 @@ export const deleteHealth = health_id => {
     });
   };
 };
+
+//显示模态框
+export const showModal = () => ({
+  type: actionTypes.SHOW_MODAL,
+  value: true
+});
+
+//隐藏模态框
+export const hideModal = () => ({
+  type: actionTypes.HIDE_MODAL,
+  value: false
+});
+
+export const updateTemporaryData=(temporaryData)=>({
+  type: actionTypes.UPDATE_TEMPORARY,
+  temporaryData: temporaryData
+})

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AdminNav from "./component/AdminNav";
-import AdminExerciseTable from "./component/AdminImplementTable";
 import { Layout, Col, Row } from "antd";
 class Admin extends Component {
   render() {
