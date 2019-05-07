@@ -1,39 +1,5 @@
 var pool = require("../db");
 
-// 删除exercise_difficult
-function delExercise_diff(Exercise_diff) {
-  return new Promise((resolve, reject) => {
-    pool.query(
-      "delete from exercise_difficult where difficult_id=?",
-      [Exercise_diff.difficult_id],
-      function(errors, results) {
-        if (results) {
-          resolve(results);
-        } else {
-          reject(errors);
-        }
-      }
-    );
-  });
-}
-
-// 删除exercise_implement
-function delExercise_imp(Exercise_imp) {
-  return new Promise((resolve, reject) => {
-    pool.query(
-      "delete from exercise_implement where exercise_implement_id=?",
-      [Exercise_imp.exercise_implement_id],
-      function(errors, results) {
-        if (results) {
-          resolve(results);
-        } else {
-          reject(errors);
-        }
-      }
-    );
-  });
-}
-
 // 删除exercise_id
 function deleteExerciseById(req) {
   return new Promise((resolve, reject) => {
@@ -68,12 +34,12 @@ function deleteFoodById(req) {
   });
 }
 
-// 删除plan_body
-function delPlan_body(Plan_body) {
+// 删除implement_id
+function deleteImplementById(req) {
   return new Promise((resolve, reject) => {
     pool.query(
-      "delete from plan_body where body_id=?",
-      [Plan_body.body_id],
+      "delete from implement where implement_id=?",
+      [req.query.implement_id],
       function(errors, results) {
         if (results) {
           resolve(results);
@@ -85,12 +51,28 @@ function delPlan_body(Plan_body) {
   });
 }
 
-// 删除plan_days
-function delPlan_days(Plan_days) {
+// 删除health_id
+function deleteHealthById(req) {
   return new Promise((resolve, reject) => {
     pool.query(
-      "delete from  plan_days where day_id=?",
-      [Plan_days.day_id],
+      "delete from  health where health_id=?",
+      [req.query.health_id],
+      function(errors, results) {
+        if (results) {
+          resolve(results);
+        } else {
+          reject(errors);
+        }
+      }
+    );
+  });
+}
+// 删除health_id
+function deletePlanById(req) {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      "delete from  plan where plan_id=?",
+      [req.query.plan_id],
       function(errors, results) {
         if (results) {
           resolve(results);
@@ -102,9 +84,9 @@ function delPlan_days(Plan_days) {
   });
 }
 
-module.exports.delExercise_diff = delExercise_diff;
-module.exports.delExercise_imp = delExercise_imp;
+
 module.exports.deleteFoodById = deleteFoodById;
 module.exports.deleteExerciseById = deleteExerciseById;
-module.exports.delPlan_body = delPlan_body;
-module.exports.delPlan_days = delPlan_days;
+module.exports.deleteImplementById = deleteImplementById;
+module.exports.deleteHealthById = deleteHealthById;
+module.exports.deletePlanById = deletePlanById;

@@ -75,18 +75,38 @@ router.get("/select/plan_body", function (req, res, next) {
 //删除食物项
 router.get('/delete/item1', function (req, res, next) {
     AdminDeleteDao.deleteFoodById(req)
-      .then((response) => {
-        res.send('ok')
-      })
-  });
-  //删除动作项
+        .then((response) => {
+            res.send('ok')
+        })
+});
+//删除动作项
 router.get('/delete/item2', function (req, res, next) {
     AdminDeleteDao.deleteExerciseById(req)
-      .then((response) => {
-        res.send('ok')
-      })
-  });
-
+        .then((response) => {
+            res.send('ok')
+        })
+});
+//删除工具项
+router.get('/delete/item3', function (req, res, next) {
+    AdminDeleteDao.deleteImplementById(req)
+        .then((response) => {
+            res.send('ok')
+        })
+});
+//删除健康知识项
+router.get('/delete/item4', function (req, res, next) {
+    AdminDeleteDao.deleteHealthById(req)
+        .then((response) => {
+            res.send('ok')
+        })
+});
+//删除计划项
+router.get('/delete/item5', function (req, res, next) {
+    AdminDeleteDao.deletePlanById(req)
+        .then((response) => {
+            res.send('ok')
+        })
+});
 
 
 module.exports = router;

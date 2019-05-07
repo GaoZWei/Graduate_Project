@@ -110,44 +110,44 @@ export const deleteExerciseList = exercise_id => {
   };
 };
 
-// //删除计划项
-// export const deleteFoodList = food_id => {
-//   return dispatch => {
-//     fetch("/admin/delete/item3?food_id=" + food_id).then(res => {
-//       if ((res = "ok")) {
-//         dispatch(getFoodInfo());
-//         message.success("删除成功");
-//       } else {
-//         message.error("删除失败");
-//       }
-//     });
-//   };
-// };
+//删除计划项
+export const deletePlan = plan_id => {
+  return dispatch => {
+    fetch("/admin/delete/item5?plan_id=" + plan_id).then(res => {
+      if ((res = "ok")) {
+        dispatch(getPlanInfo());
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
+  };
+};
 
-// //删除健身工具项
-// export const deleteFoodList = food_id => {
-//   return dispatch => {
-//     fetch("/admin/delete/item1?food_id=" + food_id).then(res => {
-//       if ((res = "ok")) {
-//         dispatch(getFoodInfo());
-//         message.success("删除成功");
-//       } else {
-//         message.error("删除失败");
-//       }
-//     });
-//   };
-// };
+//删除健身工具项
+export const deleteImplement = implement_id => {
+  return dispatch => {
+    fetch("/admin/delete/item3?implement_id=" + implement_id).then(res => {
+      if ((res = "ok")) {
+        dispatch(getImplementInfo());
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
+  };
+};
 
-// //删除健康知识项
-// export const deleteFoodList = food_id => {
-//   return dispatch => {
-//     fetch("/admin/delete/item1?food_id=" + food_id).then(res => {
-//       if ((res = "ok")) {
-//         dispatch(getFoodInfo());
-//         message.success("删除成功");
-//       } else {
-//         message.error("删除失败");
-//       }
-//     });
-//   };
-// };
+//删除健康知识项
+export const deleteHealth = health_id => {
+  return dispatch => {
+    fetch("/admin/delete/item4?health_id=" + health_id).then(res => {
+      if ((res = "ok")) {
+        dispatch(getHealthInfo());
+        message.success("删除成功");
+      } else {
+        message.error("删除失败");
+      }
+    });
+  };
+};

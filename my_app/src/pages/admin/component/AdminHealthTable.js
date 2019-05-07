@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../store";
 import AdminNav from "../component/AdminNav";
-import { Table, Divider, Layout, Row, Col } from "antd";
+import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
 class AdminHealthTable extends Component {
   render() {
-    const { healthList } = this.props;
+    const { healthList, deleteItem } = this.props;
     var healthListArr = healthList.toJS();
     const columns = [
       {
@@ -21,7 +21,12 @@ class AdminHealthTable extends Component {
         key: "action",
         render: (text, record) => (
           <span>
-            <a href="javascript:;"> 删除 </a>
+            <Popconfirm
+              title="确认删除?"
+              onConfirm={() => deleteItem(record, this)}
+            >
+              <a href="/">删除</a>
+            </Popconfirm>
             <Divider type="vertical" />
             <a href="javascript:;"> 修改 </a>
             <Divider type="vertical" />
@@ -111,6 +116,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getHealthData() {
     dispatch(actionCreator.getHealthInfo());
+  },
+  deleteItem(record) {
+    var health_id = record.health_id;
+    dispatch(actionCreator.deleteHealth(health_id));
   }
 });
 export default connect(
