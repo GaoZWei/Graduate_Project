@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var ParamController = require("../control/ParamController");
+var ParamController = require("../controller/ParamController");
 
 //动作库区
 router.get("/exercise_implement", ParamController.getAllExerciseImplement);

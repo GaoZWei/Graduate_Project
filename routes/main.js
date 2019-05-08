@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var MainController = require("../control/MainController");
+var MainController = require("../controller/MainController");
 //获取所有热点新闻
 router.get("/health/hot", MainController.getMainHotHealth);
 

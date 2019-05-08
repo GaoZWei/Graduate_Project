@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserController = require("../control/UserController")
+var UserController = require("../controller/UserController")
 
 //校验用户名
 router.get("/checkUserAccount", UserController.checkUserAccount)

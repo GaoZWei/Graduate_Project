@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var PlanController = require('../control/PlanController')
+var PlanController = require('../controller/PlanController')
 
 // 获取所有计划
 router.get("/", PlanController.getAllPlan);

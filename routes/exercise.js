@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var ExerciseController = require("../control/ExerciseController")
+var ExerciseController = require("../controller/ExerciseController")
 
 // 获取所有动作
 router.get("/", ExerciseController.getAllExercise);

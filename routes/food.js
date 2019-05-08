@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var FoodController = require("../control/FoodController")
+var FoodController = require("../controller/FoodController")
 // 获取食物分类
 router.get('/', FoodController.getAllFoodSort);
 

@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var ImplementController = require("../control/ImplementController");
+var ImplementController = require("../controller/ImplementController");
 
 // 获取所有工具
 router.get("/", ImplementController.getAllImplement);

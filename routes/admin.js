@@ -4,7 +4,7 @@ var AdminSelectDao = require("../dao/AdminSelectDao");
 var AdminInsertDao = require("../dao/AdminInsertDao");
 var AdminDeleteDao = require("../dao/AdminDeleteDao");
 var AdminUpdateDao = require("../dao/AdminUpdateDao");
-var AdminController = require("../control/AdminController")
+var AdminController = require("../controller/AdminController")
 
 // 获取所有动作
 router.get("/select/exercise", AdminController.getAllExercise);

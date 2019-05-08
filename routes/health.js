@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var HealthController = require('../control/HealthController');
+var HealthController = require('../controller/HealthController');
 
 // 获取所有健康信息
 router.get('/', HealthController.getAllHealth);
