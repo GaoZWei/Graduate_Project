@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
-var api = require('./routes/api');
 var main = require('./routes/main');
 var plan = require('./routes/plan');
 var users = require('./routes/users');
@@ -61,7 +60,6 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 中间件
-app.use('/api', api);
 app.use('/main', main);
 app.use('/plan', plan);
 app.use('/users', users);

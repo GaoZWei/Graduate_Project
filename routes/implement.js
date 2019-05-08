@@ -1,19 +1,11 @@
 var express = require("express");
 var router = express.Router();
-var ImplementDao = require("../dao/ImplementDao");
+var ImplementController = require("../control/ImplementController");
 
 // 获取所有工具
-router.get("/", function (req, res, next) {
-    ImplementDao.getAllImplement()
-        .then(response => res.json(response));
-});
+router.get("/", ImplementController.getAllImplement);
 
 // 根据id查询工具
-router.get("/:implement_id", function (req, res, next) {
-    ImplementDao.getImplementById(req)
-        .then(response => {
-            res.json(response)
-        });
-});
+router.get("/:implement_id", ImplementController.getImplementById);
 
 module.exports = router;
