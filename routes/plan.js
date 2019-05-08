@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var PlanController = require('../control/PlanController')
+
 // 获取所有计划
 router.get("/", PlanController.getAllPlan);
+
 //根据name查询动作
 router.get(('/search'), PlanController.SearchPlan)
 
