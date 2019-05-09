@@ -223,10 +223,8 @@ export const insertExerciseMessage = values => {
   };
 };
 
-
 //更新健康知识
 export const updateHealthMessage = values => {
-  console.log(values)
   return dispatch => {
     post("/admin/update/item2", values).then(res => {
       if ((res = "ok")) {

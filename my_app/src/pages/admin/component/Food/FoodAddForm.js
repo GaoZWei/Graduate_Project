@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../../store";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Input, Select} from "antd";
 const FormItem = Form.Item;
-const { Option } = Select;
+// const { Option } = Select;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class FoodAddFormItem extends Component {
   render() {
@@ -11,20 +10,6 @@ class FoodAddFormItem extends Component {
     const { temporaryData } = this.props;
     return (
       <Form ref="formItem">
-        {/* <FormItem label="请输入锻炼组数">
-          {getFieldDecorator("food_name", {
-            rules: [{ required: true, message: "请输入锻炼组数!" }]
-          })(
-            <Select placeholder="请选择锻炼组数">
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-              <Option value="5">5</Option>
-              <Option value="6">6</Option>
-            </Select>
-          )}
-        </FormItem> */}
         <FormItem label="请输入食物名">
           {getFieldDecorator("food_name", {
             rules: [{ required: true, message: "请输入食物名!" }],

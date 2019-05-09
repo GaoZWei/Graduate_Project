@@ -1,50 +1,112 @@
 import React, { Component } from "react";
-import { Form, Input, Select } from "antd";
+import { connect } from "react-redux";
+import { actionCreator } from "../../store";
+import { Form, Input, Select, Button } from "antd";
 const FormItem = Form.Item;
 const { Option } = Select;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
-class ActionFormItem extends Component {
+class HealthAddFormItem extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { temporaryData } = this.props;
     return (
-      <Form>
-        <Form.Item label="请选择锻炼时间" hasFeedback>
-          {getFieldDecorator("plan_day", {
-            rules: [{ required: true, message: "请选择锻炼时间!" }]
-          })(
-            <Select placeholder="请选择锻炼时间">
-              <Option value="1">星期一</Option>
-              <Option value="2">星期二</Option>
-              <Option value="3">星期三</Option>
-              <Option value="4">星期四</Option>
-              <Option value="5">星期五</Option>
-              <Option value="6">星期六</Option>
-              <Option value="7">星期日</Option>
-            </Select>
-          )}
-        </Form.Item>
-        <FormItem label="请输入锻炼组数">
-          {getFieldDecorator("exercise_groups", {
-            rules: [{ required: true, message: "请输入锻炼组数!" }]
-          })(
-            <Select placeholder="请选择锻炼组数">
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-              <Option value="5">5</Option>
-              <Option value="6">6</Option>
-            </Select>
-          )}
+      <Form ref="formItem">
+        <FormItem label="请输入健康分类">
+          {getFieldDecorator("health_sort", {
+            rules: [{ required: true, message: "请输入健康分类!" }],
+            initialValue: temporaryData != null ? temporaryData.health_sort : ""
+          })(<Input placeholder="请输入健康分类" />)}
         </FormItem>
-        <FormItem label="请输入每组个数">
-          {getFieldDecorator("exercise_times", {
-            rules: [{ required: true, message: "请输入每组个数!" }]
-          })(<Input placeholder="请输入每组个数" />)}
+        <FormItem label="请选择健康知识标题">
+          {getFieldDecorator("health_title", {
+            rules: [{ required: true, message: "请选择健康知识标题!" }],
+            initialValue: temporaryData != null ? temporaryData.health_title : ""
+          })(<Input placeholder="请选择健康知识标题" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识描述">
+          {getFieldDecorator("health_description", {
+            rules: [{ required: true, message: "请输入健康知识描述!" }],
+            initialValue: temporaryData != null ? temporaryData.health_description : ""
+          })(<Input placeholder="请输入健康知识描述" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识内容一">
+          {getFieldDecorator("health_content_first", {
+            rules: [{ required: true, message: "请输入健康知识内容一!" }],
+            initialValue: temporaryData != null ? temporaryData.health_content_first : ""
+          })(<Input placeholder="请输入健康知识内容一" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识内容二">
+          {getFieldDecorator("health_content_second", {
+            rules: [{ required: true, message: "请输入健康知识内容二!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.health_content_second : ""
+          })(<Input placeholder="请输入健康知识内容二" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识内容三">
+          {getFieldDecorator("health_content_third", {
+            rules: [{ required: true, message: "请输入健康知识内容三!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.health_content_third : ""
+          })(<Input placeholder="请输入健康知识内容三" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识图片一">
+          {getFieldDecorator("health_img_first", {
+            rules: [{ required: true, message: "请输入健康知识图片一!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.health_img_first : ""
+          })(<Input placeholder="请输入健康知识图片一" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识图片二">
+          {getFieldDecorator("health_img_second", {
+            rules: [{ required: true, message: "请输入健康知识图片二!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.health_img_second : ""
+          })(<Input placeholder="请输入健康知识图片二" />)}
+        </FormItem>
+        <FormItem label="请输入健康知识图片三">
+          {getFieldDecorator("health_img_third", {
+            rules: [{ required: true, message: "请输入健康知识图片三!" }],
+            initialValue: temporaryData != null ? temporaryData.health_img_third : ""
+          })(<Input placeholder="请输入健康知识图片三" />)}
+        </FormItem>
+        <FormItem label="是否主页显示">
+          {getFieldDecorator("is_main", {
+            rules: [{ required: true, message: "是否主页显示!" }],
+            initialValue: temporaryData != null ? temporaryData.is_main : ""
+          })(<Input placeholder="是否主页显示" />)}
+        </FormItem>
+        <FormItem label="是否热点">
+          {getFieldDecorator("is_hot", {
+            rules: [{ required: true, message: "是否热点!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.is_hot : ""
+          })(<Input placeholder="是否热点" />)}
+        </FormItem>
+        <FormItem label="是否健康信息">
+          {getFieldDecorator("is_health", {
+            rules: [{ required: true, message: "是否健康信息!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.is_health : ""
+          })(<Input placeholder="是否健康信息" />)}
+        </FormItem>
+        <FormItem label="是否食物知识">
+          {getFieldDecorator("is_food_knowledge", {
+            rules: [{ required: true, message: "是否食物知识!" }],
+            initialValue:
+              temporaryData != null ? temporaryData.is_food_knowledge : ""
+          })(<Input placeholder="是否食物知识" />)}
         </FormItem>
       </Form>
     );
   }
+  componentDidMount() {
+    this.props.onBindChild(this);
+  }
 }
-const ActionForm = Form.create()(ActionFormItem);
-export default ActionForm;
+const HealthAddForm = Form.create()(HealthAddFormItem);
+
+const mapStateToProps = state => ({
+  temporaryData: state.getIn(["admin", "temporaryData"])
+});
+
+export default connect(mapStateToProps)(HealthAddForm);

@@ -2,10 +2,30 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../../store";
 import AdminNav from "../../component/AdminNav";
-import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
+import HealthAddForm from "./HealthAddForm";
+import {
+  Table,
+  Divider,
+  Layout,
+  Row,
+  Col,
+  Popconfirm,
+  Modal,
+  Button
+} from "antd";
 class AdminHealthTable extends Component {
+  onBindChild = ref => {
+    this.child = ref;
+  };
   render() {
-    const { healthList, deleteItem } = this.props;
+    const {
+      healthList,
+      deleteItem,
+      showModal,
+      modelVisible,
+      hideModal,
+      handleOK
+    } = this.props;
     var healthListArr = healthList.toJS();
     const columns = [
       {
@@ -28,9 +48,9 @@ class AdminHealthTable extends Component {
               <a href="/">删除</a>
             </Popconfirm>
             <Divider type="vertical" />
-            <a href="javascript:;"> 修改 </a>
-            <Divider type="vertical" />
-            <a href="javascript:;"> 增加 </a>
+            <a href="javascript:;" onClick={() => showModal(record, this)}>
+              修改
+            </a>
           </span>
         )
       }
@@ -47,7 +67,21 @@ class AdminHealthTable extends Component {
                   columns={columns}
                   dataSource={healthListArr}
                   bordered
-                  title={() => "健康知识信息"}
+                  title={() => (
+                    <div>
+                      <Row>
+                        <Col span={22}>健康知识信息</Col>
+                        <Col span={2}>
+                          <Button
+                            type="primary"
+                            onClick={() => showModal({}, this)}
+                          >
+                            增加
+                          </Button>
+                        </Col>
+                      </Row>
+                    </div>
+                  )}
                   footer={() => "Footer"}
                   expandedRowRender={record => (
                     <div>
@@ -98,6 +132,16 @@ class AdminHealthTable extends Component {
                     </div>
                   )}
                 />
+                <Modal
+                  title="请选择添加/修改属性"
+                  visible={modelVisible}
+                  onOk={() => handleOK(this)}
+                  onCancel={() => hideModal(this)}
+                  okText="确认"
+                  cancelText="取消"
+                >
+                  <HealthAddForm onBindChild={this.onBindChild} />
+                </Modal>
               </div>
             </Col>
             <Col span={2} />
@@ -111,7 +155,9 @@ class AdminHealthTable extends Component {
   }
 }
 const mapStateToProps = state => ({
-  healthList: state.getIn(["admin", "healthList"])
+  healthList: state.getIn(["admin", "healthList"]),
+  modelVisible: state.getIn(["admin", "modelVisible"]),
+  temporaryData: state.getIn(["admin", "temporaryData"])
 });
 const mapDispatchToProps = dispatch => ({
   getHealthData() {
@@ -120,6 +166,35 @@ const mapDispatchToProps = dispatch => ({
   deleteItem(record) {
     var health_id = record.health_id;
     dispatch(actionCreator.deleteHealth(health_id));
+  },
+  showModal(record, _self) {
+    dispatch(actionCreator.updateTemporaryData(record));
+    dispatch(actionCreator.showModal());
+  },
+  hideModal(_self) {
+    dispatch(actionCreator.updateTemporaryData({}));
+    _self.child.props.form.resetFields();
+    dispatch(actionCreator.hideModal());
+  },
+  //提交结果,高级绑定
+  handleOK(_self) {
+    console.log(_self.props.temporaryData);
+    // console.log(_self.child.props.form)
+    _self.child.props.form.validateFields((err, values) => {
+      if (!err) {
+        if (_self.props.temporaryData.health_id != null) {
+          console.log("修改");
+          values.health_id = _self.props.temporaryData.health_id;
+          dispatch(actionCreator.updateHealthMessage(values));
+        } else {
+          console.log("添加");
+          dispatch(actionCreator.insertHealthMessage(values));
+        }
+      }
+    });
+    //清空输入框内容
+    _self.child.props.form.resetFields();
+    _self.props.hideModal(_self);
   }
 });
 export default connect(
