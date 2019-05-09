@@ -2,16 +2,35 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../../store";
 import AdminNav from "../../component/AdminNav";
-import { Table, Divider, Layout, Row, Col, Popconfirm } from "antd";
+import ExerciseAddForm from "./ExerciseAddForm";
+import {
+  Table,
+  Divider,
+  Layout,
+  Row,
+  Col,
+  Popconfirm,
+  Modal,
+  Button
+} from "antd";
 class AdminExerciseTable extends Component {
+  onBindChild = ref => {
+    this.child = ref;
+  };
   render() {
-    const { exerciseList, deleteItem } = this.props;
+    const {
+      exerciseList,
+      deleteItem,
+      showModal,
+      modelVisible,
+      hideModal,
+      handleOK
+    } = this.props;
     var exerciseListArr = exerciseList.toJS();
     const columns = [
       {
         title: "动作名",
-        dataIndex: "exercise_name",
-        render: text => <a href="javascript:;"> {text} </a>
+        dataIndex: "exercise_name"
       },
       {
         title: "动作分类",
@@ -38,12 +57,12 @@ class AdminExerciseTable extends Component {
               title="确认删除?"
               onConfirm={() => deleteItem(record, this)}
             >
-              <a href="/">删除</a>{" "}
+              <a href="/">删除</a>
             </Popconfirm>
             <Divider type="vertical" />
-            <a href="javascript:;"> 修改 </a>
-            <Divider type="vertical" />
-            <a href="javascript:;"> 增加 </a>
+            <a href="javascript:;" onClick={() => showModal(record, this)}>
+              修改
+            </a>
           </span>
         )
       }
@@ -60,7 +79,21 @@ class AdminExerciseTable extends Component {
                   columns={columns}
                   dataSource={exerciseListArr}
                   bordered
-                  title={() => "动作信息"}
+                  title={() => (
+                    <div>
+                      <Row>
+                        <Col span={22}>动作信息</Col>
+                        <Col span={2}>
+                          <Button
+                            type="primary"
+                            onClick={() => showModal({}, this)}
+                          >
+                            增加
+                          </Button>
+                        </Col>
+                      </Row>
+                    </div>
+                  )}
                   footer={() => "Footer"}
                   expandedRowRender={record => (
                     <div>
@@ -91,6 +124,16 @@ class AdminExerciseTable extends Component {
                     </div>
                   )}
                 />
+                <Modal
+                  title="请选择添加/修改属性"
+                  visible={modelVisible}
+                  onOk={() => handleOK(this)}
+                  onCancel={() => hideModal(this)}
+                  okText="确认"
+                  cancelText="取消"
+                >
+                  <ExerciseAddForm onBindChild={this.onBindChild} />
+                </Modal>
               </div>
             </Col>
             <Col span={2} />
@@ -104,7 +147,9 @@ class AdminExerciseTable extends Component {
   }
 }
 const mapStateToProps = state => ({
-  exerciseList: state.getIn(["admin", "exerciseList"])
+  exerciseList: state.getIn(["admin", "exerciseList"]),
+  modelVisible: state.getIn(["admin", "modelVisible"]),
+  temporaryData: state.getIn(["admin", "temporaryData"])
 });
 const mapDispatchToProps = dispatch => ({
   getExerciseData() {
@@ -113,6 +158,34 @@ const mapDispatchToProps = dispatch => ({
   deleteItem(record) {
     var exercise_id = record.exercise_id;
     dispatch(actionCreator.deleteExerciseList(exercise_id));
+  },
+  showModal(record, _self) {
+    dispatch(actionCreator.updateTemporaryData(record));
+    dispatch(actionCreator.showModal());
+  },
+  hideModal(_self) {
+    dispatch(actionCreator.updateTemporaryData({}));
+    _self.child.props.form.resetFields();
+    dispatch(actionCreator.hideModal());
+  },
+  //提交结果,高级绑定
+  handleOK(_self) {
+    console.log(_self.props.temporaryData);
+    _self.child.props.form.validateFields((err, values) => {
+      if (!err) {
+        if (_self.props.temporaryData.exercise_id != null) {
+          console.log("修改");
+          values.exercise_id = _self.props.temporaryData.exercise_id;
+          dispatch(actionCreator.updateExerciseMessage(values));
+        } else {
+          console.log("添加");
+          dispatch(actionCreator.insertExerciseMessage(values));
+        }
+      }
+    });
+    //清空输入框内容
+    _self.child.props.form.resetFields();
+    _self.props.hideModal(_self);
   }
 });
 export default connect(

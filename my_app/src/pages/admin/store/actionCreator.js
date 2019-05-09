@@ -100,7 +100,6 @@ export const deleteExerciseList = exercise_id => {
   return dispatch => {
     fetch("/admin/delete/item2?exercise_id=" + exercise_id).then(res => {
       if ((res = "ok")) {
-        console.log(2131231);
         dispatch(getExerciseInfo());
         message.success("删除成功");
       } else {
@@ -196,4 +195,122 @@ export const insertFoodMessage = values => {
     });
   };
 };
+
+//更新动作
+export const updateExerciseMessage = values => {
+  return dispatch => {
+    post("/admin/update/item1", values).then(res => {
+      if ((res = "ok")) {
+        message.success("修改成功");
+        dispatch(getExerciseInfo());
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+};
+//添加动作
+export const insertExerciseMessage = values => {
+  return dispatch => {
+    post("/admin/insert/item1", values).then(res => {
+      if ((res = "ok")) {
+        message.success("添加成功");
+        dispatch(getExerciseInfo());
+      } else {
+        message.error("添加失败");
+      }
+    });
+  };
+};
+
+
+//更新健康知识
+export const updateHealthMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/update/item2", values).then(res => {
+      if ((res = "ok")) {
+        message.success("修改成功");
+        dispatch(getHealthInfo());
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+};
+//添加健康知识
+export const insertHealthMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/insert/item2", values).then(res => {
+      if ((res = "ok")) {
+        message.success("添加成功");
+        dispatch(getHealthInfo());
+      } else {
+        message.error("添加失败");
+      }
+    });
+  };
+};
+
+
+//更新健身工具
+export const updateImplementMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/update/item3", values).then(res => {
+      if ((res = "ok")) {
+        message.success("修改成功");
+        dispatch(getImplementInfo());
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+};
+//添加健身工具
+export const insertImplementMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/insert/item3", values).then(res => {
+      if ((res = "ok")) {
+        message.success("添加成功");
+        dispatch(getImplementInfo());
+      } else {
+        message.error("添加失败");
+      }
+    });
+  };
+};
+
+
+//更新健身计划
+export const updatePlanMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/update/item4", values).then(res => {
+      if ((res = "ok")) {
+        message.success("修改成功");
+        dispatch(getPlanInfo());
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+};
+//添加健身计划
+export const insertPlanMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/insert/item4", values).then(res => {
+      if ((res = "ok")) {
+        message.success("添加成功");
+        dispatch(getPlanInfo());
+      } else {
+        message.error("添加失败");
+      }
+    });
+  };
+};
+
 
