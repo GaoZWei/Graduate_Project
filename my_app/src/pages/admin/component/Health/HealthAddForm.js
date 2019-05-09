@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../../store";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Input } from "antd";
 const FormItem = Form.Item;
-const { Option } = Select;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class HealthAddFormItem extends Component {
   render() {

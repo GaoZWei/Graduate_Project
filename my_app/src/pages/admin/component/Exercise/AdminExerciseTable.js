@@ -60,9 +60,12 @@ class AdminExerciseTable extends Component {
               <a href="/">删除</a>
             </Popconfirm>
             <Divider type="vertical" />
-            <a href="javascript:;" onClick={() => showModal(record, this)}>
-              修改
-            </a>
+            <Popconfirm
+              title="确认修改?"
+              onConfirm={() => showModal(record, this)}
+            >
+              <a href="/">修改</a>
+            </Popconfirm>
           </span>
         )
       }

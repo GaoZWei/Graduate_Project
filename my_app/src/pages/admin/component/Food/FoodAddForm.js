@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Select} from "antd";
+import { Form, Input} from "antd";
 const FormItem = Form.Item;
-// const { Option } = Select;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class FoodAddFormItem extends Component {
   render() {

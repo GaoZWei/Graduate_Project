@@ -96,14 +96,16 @@ class PersonalCustomize extends Component {
                             <Tag color="volcano">删除</Tag>
                             &nbsp;&nbsp;&nbsp;
                           </Popconfirm>
-                          <Tag color="green">
-                            <a
-                              onClick={() => showModal(tag)}
-                              style={{ color: "green" }}
-                            >
-                              修改
-                            </a>
-                          </Tag>
+                          <Popconfirm
+                            title="确认删除?"
+                            onConfirm={() => showModal(tag)}
+                          >
+                            <Tag color="green">
+                              <a href="/" style={{ color: "green" }}>
+                                修改
+                              </a>
+                            </Tag>
+                          </Popconfirm>
                           <br />
                         </div>
                       );

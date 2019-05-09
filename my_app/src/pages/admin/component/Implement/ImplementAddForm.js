@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Input} from "antd";
 const FormItem = Form.Item;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class ImplementAddFormItem extends Component {
