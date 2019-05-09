@@ -100,7 +100,7 @@ export const deleteExerciseList = exercise_id => {
   return dispatch => {
     fetch("/admin/delete/item2?exercise_id=" + exercise_id).then(res => {
       if ((res = "ok")) {
-        console.log(2131231)
+        console.log(2131231);
         dispatch(getExerciseInfo());
         message.success("删除成功");
       } else {
@@ -163,8 +163,37 @@ export const hideModal = () => ({
   type: actionTypes.HIDE_MODAL,
   value: false
 });
-
-export const updateTemporaryData=(temporaryData)=>({
+// 更新暂存区数据
+export const updateTemporaryData = temporaryData => ({
   type: actionTypes.UPDATE_TEMPORARY,
   temporaryData: temporaryData
-})
+});
+//更新食物
+export const updateFoodMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/update/item", values).then(res => {
+      if ((res = "ok")) {
+        message.success("修改成功");
+        dispatch(getFoodInfo());
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+};
+//添加食物
+export const insertFoodMessage = values => {
+  console.log(values)
+  return dispatch => {
+    post("/admin/insert/item", values).then(res => {
+      if ((res = "ok")) {
+        message.success("添加成功");
+        dispatch(getFoodInfo());
+      } else {
+        message.error("添加失败");
+      }
+    });
+  };
+};
+

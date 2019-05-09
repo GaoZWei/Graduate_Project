@@ -139,7 +139,7 @@ class AdminExerciseTable extends Component {
                   )}
                 />
                 <Modal
-                  title="请选择添加属性"
+                  title="请选择添加/修改属性"
                   visible={modelVisible}
                   onOk={() => handleOK(this)}
                   onCancel={() => hideModal(this)}
@@ -184,12 +184,21 @@ const mapDispatchToProps = dispatch => ({
   },
   //提交结果,高级绑定
   handleOK(_self) {
+    console.log(_self.props.temporaryData);
     // console.log(_self.child.props.form)
     _self.child.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values);
+        if (_self.props.temporaryData.food_id != null) {
+          console.log("修改");
+          values.food_id = _self.props.temporaryData.food_id;
+          dispatch(actionCreator.updateFoodMessage(values));
+        } else {
+          console.log("添加");
+          dispatch(actionCreator.insertFoodMessage(values));
+        }
       }
     });
+    //清空输入框内容
     _self.child.props.form.resetFields();
     _self.props.hideModal(_self);
   }

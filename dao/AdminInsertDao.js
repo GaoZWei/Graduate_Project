@@ -1,22 +1,11 @@
 var pool = require("../db");
 
-// 添加exercise_difficult
-function addExercise_diff(Exercise_diff){
-    return new Promise((resolve, reject) => {                     
-        pool.query('INSERT INTO exercise_difficult (difficult_id, difficult_name) SELECT MAX(difficult_id)+1,? FROM exercise_difficult', [Exercise_diff.difficult_name], function (errors, results) {
-            if (results) {
-                resolve(results);
-            } else {
-                reject(errors);
-            }
-        })
-    })
- }
-
-// 添加exercise_implement
-function addExercise_imp(Exercise_imp){
+// 添加食物
+function insertFood(req){
+    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
     return new Promise((resolve, reject) => {                 
-        pool.query('INSERT INTO exercise_implement (exercise_implement_id, exercise_implement_name, exercise_implement_flag) SELECT MAX(exercise_implement_id)+1,?,?FROM exercise_implement', [Exercise_imp.exercise_implement_name,Exercise_imp.exercise_implement_flag], function (errors, results) {
+        pool.query(sql, reqParam, function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -25,11 +14,12 @@ function addExercise_imp(Exercise_imp){
         })
     })
  }
-
-// 添加exercise_sort
-function addExercise_sort(Exercise_sort){
+ // 添加健身动作
+function insertExercise(req){
+    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
     return new Promise((resolve, reject) => {                 
-        pool.query('INSERT INTO exercise_sort (sort_id, sort_name) SELECT MAX(sort_id)+1,? FROM exercise_sort', [Exercise_sort.sort_name], function (errors, results) {
+        pool.query(sql, reqParam, function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -38,11 +28,12 @@ function addExercise_sort(Exercise_sort){
         })
     })
  }
-
-// 添加food_sort
-function addFood_sort(Food_sort){
+ // 添加健康知识
+function insertHealth(req){
+    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
     return new Promise((resolve, reject) => {                 
-        pool.query('INSERT INTO food_sort (sort_id,sort_name,sort_description,sort_pic) SELECT MAX(sort_id)+1,?,?,null FROM food_sort', [Food_sort.sort_name,Food_sort.sort_description], function (errors, results) {
+        pool.query(sql, reqParam, function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -51,11 +42,12 @@ function addFood_sort(Food_sort){
         })
     })
  }
-
-// 添加plan_body
-function addPlan_body(Plan_body){
+ // 添加健身工具
+function insertImplement(req){
+    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
     return new Promise((resolve, reject) => {                 
-        pool.query('INSERT INTO plan_body (body_id,body_name) SELECT MAX(body_id)+1,? FROM plan_body', [Plan_body.body_name], function (errors, results) {
+        pool.query(sql, reqParam, function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -64,11 +56,12 @@ function addPlan_body(Plan_body){
         })
     })
  }
-
-// 添加plan_days
-function addPlan_days(Plan_days){
+ // 添加健身计划
+function insertPlan(req){
+    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
     return new Promise((resolve, reject) => {                 
-        pool.query('INSERT INTO plan_days (day_id,day_name) SELECT MAX(day_id)+1,? FROM plan_days', [Plan_days.day_name], function (errors, results) {
+        pool.query(sql, reqParam, function (errors, results) {
             if (results) {
                 resolve(results);
             } else {
@@ -77,10 +70,8 @@ function addPlan_days(Plan_days){
         })
     })
  }
+ 
 
- module.exports.addExercise_diff= addExercise_diff;
- module.exports.addExercise_imp = addExercise_imp;
- module.exports.addFood_sort = addFood_sort;
- module.exports.addExercise_sort = addExercise_sort;
- module.exports.addPlan_body = addPlan_body;
- module.exports.addPlan_days = addPlan_days;
+
+ module.exports.insertFood = insertFood;
+ 

@@ -73,5 +73,29 @@ router.get('/delete/item4', AdminController.deleteHealthById);
 //删除计划项
 router.get('/delete/item5', AdminController.deletePlanById);
 
+//更新食物项
+router.post('/update/item', AdminController.updateFood);
+//添加食物项
+router.post('/insert/item', AdminController.insertFood);
+
+//更新动作项
+router.post('/update/item1', AdminController.updateExercise);
+//添加动作项
+router.post('/insert/item1', AdminController.insertExercise);
+
+//更新健康知识项
+router.post('/update/item2', AdminController.updateHealth);
+//添加健康知识项
+router.post('/insert/item2', AdminController.insertHealth);
+
+//更新健身工具项
+router.post('/update/item3', AdminController.updateImplement);
+//添加健身工具项
+router.post('/insert/item3', AdminController.insertImplement);
+
+//更新健身计划项
+router.post('/update/item4', AdminController.updatePlan);
+//添加健身计划项
+router.post('/insert/item4', AdminController.insertPlan);
 
 module.exports = router;
