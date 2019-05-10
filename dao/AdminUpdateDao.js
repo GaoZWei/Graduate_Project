@@ -73,9 +73,33 @@ function updatePlan(req) {
     })
 }
 
+//更新plandetail表
+function updatePlanDetail(req) {
+    return new Promise((resolve, reject) => {
+        var newData = req.body;
+        var group_exercise_group = newData.group_exercise_group.split(',');
+        var group_exercise_id = newData.group_exercise_id.split(',');
+        var group_exercise_times = newData.group_exercise_times.split(',');
+        if (group_exercise_group.length == group_exercise_id.length &&
+            group_exercise_times.length == group_exercise_id.length) {
+            var sql = 'delete from plan_detail where plan_id=? and plan_day=?'
+            pool.query(sql, [newData.plan_id, newData.plan_day]);
+            var sql2 = 'insert into plan_detail (plan_id,plan_day,exercise_id,exercise_groups,exercise_times) values (?,?,?,?,?)'
+            for (var i = 0; i < group_exercise_id.length; i++) {
+                pool.query(sql2, [newData.plan_id, newData.plan_day, group_exercise_id[i], group_exercise_group[i], group_exercise_times[i]]);
+            }
+            resolve('ok');
+        } else {
+            resolve('error')
+        }
+    })
+}
+
+
 
 module.exports.updateFood = updateFood;
 module.exports.updateExercise = updateExercise;
 module.exports.updateHealth = updateHealth;
 module.exports.updateImplement = updateImplement;
 module.exports.updatePlan = updatePlan;
+module.exports.updatePlanDetail = updatePlanDetail;

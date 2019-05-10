@@ -6,7 +6,7 @@ function deleteExerciseById(req) {
     pool.query(
       "delete from exercise where exercise_id=?",
       [req.query.exercise_id],
-      function(errors, results) {
+      function (errors, results) {
         if (results) {
           resolve(results);
         } else {
@@ -23,7 +23,7 @@ function deleteFoodById(req) {
     pool.query(
       "delete from food where food_id=?",
       [req.query.food_id],
-      function(errors, results) {
+      function (errors, results) {
         if (results) {
           resolve(results);
         } else {
@@ -40,7 +40,7 @@ function deleteImplementById(req) {
     pool.query(
       "delete from implement where implement_id=?",
       [req.query.implement_id],
-      function(errors, results) {
+      function (errors, results) {
         if (results) {
           resolve(results);
         } else {
@@ -57,7 +57,7 @@ function deleteHealthById(req) {
     pool.query(
       "delete from  health where health_id=?",
       [req.query.health_id],
-      function(errors, results) {
+      function (errors, results) {
         if (results) {
           resolve(results);
         } else {
@@ -67,13 +67,13 @@ function deleteHealthById(req) {
     );
   });
 }
-// 删除health_id
+// 删除plan_id
 function deletePlanById(req) {
   return new Promise((resolve, reject) => {
     pool.query(
       "delete from  plan where plan_id=?",
       [req.query.plan_id],
-      function(errors, results) {
+      function (errors, results) {
         if (results) {
           resolve(results);
         } else {
@@ -82,6 +82,15 @@ function deletePlanById(req) {
       }
     );
   });
+}
+//更新plandetail表
+function deletePlanDetail(req) {
+  console.log(req);
+  return new Promise((resolve, reject) => {
+    var sql = 'delete from plan_detail where plan_id=? and plan_day=?'
+    pool.query(sql, [req.body.plan_id, req.body.plan_day]);
+    resolve('ok');
+  })
 }
 
 
@@ -90,3 +99,4 @@ module.exports.deleteExerciseById = deleteExerciseById;
 module.exports.deleteImplementById = deleteImplementById;
 module.exports.deleteHealthById = deleteHealthById;
 module.exports.deletePlanById = deletePlanById;
+module.exports.deletePlanDetail = deletePlanDetail;

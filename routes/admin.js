@@ -98,4 +98,9 @@ router.post('/update/item4', AdminController.updatePlan);
 //添加健身计划项
 router.post('/insert/item4', AdminController.insertPlan);
 
+//更新健身计划项
+router.post('/update/item5', AdminController.updatePlanDetail);
+//添加健身计划项
+router.post('/delete/item5', AdminController.deletePlanDetail);
+
 module.exports = router;

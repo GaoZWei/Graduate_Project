@@ -133,6 +133,21 @@ function insertPlan(req, res, next) {
             res.send('ok')
         })
 }
+// 更新健身计划详情
+function updatePlanDetail(req, res, next) {
+    AdminUpdateDao.updatePlanDetail(req)
+        .then((response) => {
+            res.send(response)
+        })
+}
+// 删除健身计划详情
+function deletePlanDetail(req, res, next) {
+    console.log(313333132)
+    AdminDeleteDao.deletePlanDetail(req)
+        .then((response) => {
+            res.send(response)
+        })
+}
 module.exports.getAllExercise = getAllExercise
 module.exports.getAllFood = getAllFood
 module.exports.getAllHealth = getAllHealth
@@ -153,3 +168,5 @@ module.exports.updateImplement = updateImplement
 module.exports.insertImplement = insertImplement
 module.exports.updatePlan = updatePlan
 module.exports.insertPlan = insertPlan
+module.exports.updatePlanDetail = updatePlanDetail
+module.exports.deletePlanDetail = deletePlanDetail

@@ -302,7 +302,7 @@ export const insertPlanMessage = values => {
   console.log(values);
   return dispatch => {
     post("/admin/insert/item4", values).then(res => {
-      if ((res = "ok")) {
+      if (res == "ok") {
         message.success("添加成功");
         dispatch(getPlanInfo());
       } else {
@@ -311,3 +311,46 @@ export const insertPlanMessage = values => {
     });
   };
 };
+
+export const showModal1 = () => ({
+  type: actionTypes.SHOW_MODAL1,
+  value: true
+});
+
+//隐藏模态框
+export const hideModal1 = () => ({
+  type: actionTypes.HIDE_MODAL1,
+  value: false
+});
+
+export const updatePlanDetailMessage = values => {
+  return dispatch => {
+    post("/admin/update/item5", values).then(res => {
+      if (res == "ok") {
+        message.success("修改成功");
+        dispatch(getPlanInfo());
+      } else {
+        message.error("修改失败");
+      }
+    })
+    .catch(error=>{
+      message.error("修改失败");
+    });
+  };
+};
+
+export const deletePlanDetailMessage = values => {
+  console.log(123)
+  return dispatch => {
+    post("/admin/delete/item5", values).then(res => {
+      if (res == "ok") {
+        message.success("删除成功");
+        dispatch(getPlanInfo());
+      } else {
+        message.error("删除失败");
+      }
+    })
+  };
+};
+
+

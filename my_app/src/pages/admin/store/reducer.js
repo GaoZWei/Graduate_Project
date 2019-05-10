@@ -9,6 +9,7 @@ const defaultState = fromJS({
   healthList: [],
   implementList: [],
   modelVisible: false,
+  modelVisible1: false,
   temporaryData: []
 });
 
@@ -30,6 +31,10 @@ export default (state = defaultState, action) => {
       return state.set("modelVisible", action.value);
     case actionTypes.UPDATE_TEMPORARY:
       return state.set("temporaryData", action.temporaryData);
+    case actionTypes.SHOW_MODAL1:
+      return state.set("modelVisible1", action.value);
+    case actionTypes.HIDE_MODAL1:
+      return state.set("modelVisible1", action.value);
     default:
       return state;
   }
