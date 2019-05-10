@@ -3,24 +3,87 @@ import { connect } from "react-redux";
 import { actionCreator } from "../../store";
 import AdminNav from "../../component/AdminNav";
 import PlanAddForm from "./PlanAddForm";
-import { Table,
+import { groupBy } from "../../../../util/HttpUtil";
+import {
+  Table,
   Divider,
   Layout,
   Row,
   Col,
   Popconfirm,
   Modal,
-  Button} from "antd";
+  Button
+} from "antd";
 class AdminPlanTable extends Component {
   onBindChild = ref => {
     this.child = ref;
   };
   render() {
-    const { planList, deleteItem,showModal,
+    const {
+      planList,
+      deleteItem,
+      showModal,
       modelVisible,
       hideModal,
-      handleOK } = this.props;
+      handleOK
+    } = this.props;
     var planListArr = planList.toJS();
+    var planInfo = planListArr.info;
+    var planDetail = planListArr.detail;
+    //将计划按plan_id分组,groupby函数
+    var planDetailHandled = groupBy(planDetail, function(item) {
+      return [item.plan_id];
+    });
+    console.log(planDetailHandled);
+
+    const expandeRow = record => {
+      var detail = [];
+      for (var i = 0; i < planDetailHandled.length; i++) {
+        if (record.plan_id === planDetailHandled[i][0].plan_id) {
+          detail = planDetailHandled[i];
+        }
+      }
+      const columns = [
+        { title: "日期", dataIndex: "plan_day", key: "plan_day" },
+        {
+          title: "动作",
+          dataIndex: "group_exercise_name",
+          key: "group_exercise_name"
+        },
+        {
+          title: "组数",
+          dataIndex: "group_exercise_group",
+          key: "group_exercise_group"
+        },
+        {
+          title: "每组个数",
+          dataIndex: "group_exercise_times",
+          key: "upgradeNum"
+        },
+        {
+          title: "操作",
+          key: "action",
+          render: (text, record) => (
+            <span>
+              <Popconfirm
+                title="确认删除?"
+                onConfirm={() => deleteItem(record, this)}
+              >
+                <a href="/">删除</a>
+              </Popconfirm>
+              <Divider type="vertical" />
+              <Popconfirm
+                title="确认修改?"
+                onConfirm={() => showModal(record, this)}
+              >
+                <a href="/">修改</a>
+              </Popconfirm>
+            </span>
+          )
+        }
+      ];
+      return <Table columns={columns} dataSource={detail} pagination={false} />;
+    };
     const columns = [
       {
         title: "计划名",
@@ -74,7 +137,7 @@ class AdminPlanTable extends Component {
               <div>
                 <Table
                   columns={columns}
-                  dataSource={planListArr}
+                  dataSource={planInfo}
                   bordered
                   title={() => (
                     <div>
@@ -92,32 +155,36 @@ class AdminPlanTable extends Component {
                     </div>
                   )}
                   footer={() => "Footer"}
-                  expandedRowRender={record => (
-                    <div>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划图片:</span>
-                        {record.plan_pic}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划描述:</span>
-                        {record.plan_description}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划内容:</span>
-                        {record.plan_content}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">计划创建者:</span>
-                        {record.plan_creator}
-                      </p>
-                      <p style={{ margin: 0 }}>
-                        <span className="expand_title">主页显示:</span>
-                        {record.is_main}
-                      </p>
-                    </div>
-                  )}
+                  expandedRowRender={
+                    //   record => (
+                    //   <div>
+                    //     <p style={{ margin: 0 }}>
+                    //       <span className="expand_title">计划图片:</span>
+                    //       {record.plan_pic}
+                    //     </p>
+                    //     <p style={{ margin: 0 }}>
+                    //       <span className="expand_title">计划描述:</span>
+                    //       {record.plan_description}
+                    //     </p>
+                    //     <p style={{ margin: 0 }}>
+                    //       <span className="expand_title">计划内容:</span>
+                    //       {record.plan_content}
+                    //     </p>
+                    //     <p style={{ margin: 0 }}>
+                    //       <span className="expand_title">计划创建者:</span>
+                    //       {record.plan_creator}
+                    //     </p>
+                    //     <p style={{ margin: 0 }}>
+                    //       <span className="expand_title">主页显示:</span>
+                    //       {record.is_main}
+                    //     </p>
+
+                    //   </div>
+                    // )
+                    record => expandeRow(record)
+                  }
                 />
-                  <Modal
+                <Modal
                   title="请选择添加/修改属性"
                   visible={modelVisible}
                   onOk={() => handleOK(this)}

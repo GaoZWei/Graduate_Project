@@ -47,8 +47,11 @@ const getplanData = result => ({
 export const getPlanInfo = () => {
   return dispatch => {
     fetch("/admin/select/plan").then(res => {
-      const result = util(res);
-      dispatch(getplanData(result));
+      var results = {
+        info: util(res.info),
+        detail: util(res.detail)
+      };
+      dispatch(getplanData(results));
     });
   };
 };
@@ -169,7 +172,7 @@ export const updateTemporaryData = temporaryData => ({
 });
 //更新食物
 export const updateFoodMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/update/item", values).then(res => {
       if ((res = "ok")) {
@@ -183,7 +186,7 @@ export const updateFoodMessage = values => {
 };
 //添加食物
 export const insertFoodMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/insert/item", values).then(res => {
       if ((res = "ok")) {
@@ -238,7 +241,7 @@ export const updateHealthMessage = values => {
 };
 //添加健康知识
 export const insertHealthMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/insert/item2", values).then(res => {
       if ((res = "ok")) {
@@ -251,10 +254,9 @@ export const insertHealthMessage = values => {
   };
 };
 
-
 //更新健身工具
 export const updateImplementMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/update/item3", values).then(res => {
       if ((res = "ok")) {
@@ -268,7 +270,7 @@ export const updateImplementMessage = values => {
 };
 //添加健身工具
 export const insertImplementMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/insert/item3", values).then(res => {
       if ((res = "ok")) {
@@ -281,10 +283,9 @@ export const insertImplementMessage = values => {
   };
 };
 
-
 //更新健身计划
 export const updatePlanMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/update/item4", values).then(res => {
       if ((res = "ok")) {
@@ -298,7 +299,7 @@ export const updatePlanMessage = values => {
 };
 //添加健身计划
 export const insertPlanMessage = values => {
-  console.log(values)
+  console.log(values);
   return dispatch => {
     post("/admin/insert/item4", values).then(res => {
       if ((res = "ok")) {
@@ -310,5 +311,3 @@ export const insertPlanMessage = values => {
     });
   };
 };
-
-

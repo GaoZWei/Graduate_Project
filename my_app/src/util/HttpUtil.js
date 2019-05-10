@@ -58,7 +58,22 @@ export function post(url, data) {
 //key
 export const util = obj => {
     for (var i = 0; i < obj.length; i++) {
-      obj[i].key = i;
+        obj[i].key = i;
     }
     return obj;
-  };
+};
+
+//   聚合函数
+export function groupBy(array, f) {
+    if (array !== undefined) {
+        let groups = {};
+        array.forEach(function (o) {
+            let group = JSON.stringify(f(o));
+            groups[group] = groups[group] || [];
+            groups[group].push(o);
+        });
+        return Object.keys(groups).map(function (group) {
+            return groups[group];
+        });
+    }
+}

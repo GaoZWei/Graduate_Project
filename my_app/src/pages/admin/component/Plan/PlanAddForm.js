@@ -1,91 +1,87 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input} from "antd";
+import { Form, Input } from "antd";
 const FormItem = Form.Item;
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class PlanAddFormItem extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { temporaryData } = this.props;
+    // plan_name,
+    //   plan_aim,
+    //   plan_day,
+    //   plan_implement,
+    //   plan_body,
+    //   plan_pic,
+    //   plan_description,
+    //   plan_content,
+    //   plan_creator,
+    //   is_main;
     return (
       <Form ref="formItem">
         <FormItem label="请选择健身计划标题">
-          {getFieldDecorator("plan_title", {
+          {getFieldDecorator("plan_name", {
             rules: [{ required: true, message: "请选择健身计划标题!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_title : ""
+            initialValue: temporaryData != null ? temporaryData.plan_name : ""
           })(<Input placeholder="请选择健身计划标题" />)}
         </FormItem>
         <FormItem label="请选择健身计划描述">
-          {getFieldDecorator("plan_description", {
+          {getFieldDecorator("plan_aim", {
             rules: [{ required: true, message: "请选择健身计划描述!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_description : ""
+            initialValue: temporaryData != null ? temporaryData.plan_aim : ""
           })(<Input placeholder="请选择健身计划描述" />)}
         </FormItem>
         <FormItem label="请输入健身计划内容">
-          {getFieldDecorator("plan_content", {
+          {getFieldDecorator("plan_day", {
             rules: [{ required: true, message: "请输入健身计划内容!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_content : ""
+            initialValue: temporaryData != null ? temporaryData.plan_day : ""
           })(<Input placeholder="请输入健身计划内容" />)}
         </FormItem>
         <FormItem label="请输入健身计划图片">
-          {getFieldDecorator("plan_pic", {
+          {getFieldDecorator("plan_implement", {
             rules: [{ required: true, message: "请输入健身计划图片!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_pic : ""
+            initialValue:
+              temporaryData != null ? temporaryData.plan_implement : ""
           })(<Input placeholder="请输入健身计划图片" />)}
         </FormItem>
         <FormItem label="是否输入高度">
-          {getFieldDecorator("input_height", {
+          {getFieldDecorator("plan_body", {
             rules: [{ required: true, message: "是否输入高度!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.input_height : ""
+            initialValue: temporaryData != null ? temporaryData.plan_body : ""
           })(<Input placeholder="是否输入高度" />)}
         </FormItem>
         <FormItem label="是否输入体重">
-          {getFieldDecorator("input_weight", {
+          {getFieldDecorator("plan_pic", {
             rules: [{ required: true, message: "是否输入体重!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.input_weight : ""
+            initialValue: temporaryData != null ? temporaryData.plan_pic : ""
           })(<Input placeholder="是否输入体重" />)}
         </FormItem>
         <FormItem label="是否输入年龄">
-          {getFieldDecorator("input_age", {
+          {getFieldDecorator("plan_description", {
             rules: [{ required: true, message: "是否输入年龄!" }],
             initialValue:
-              temporaryData != null ? temporaryData.input_age : ""
+              temporaryData != null ? temporaryData.plan_description : ""
           })(<Input placeholder="是否输入年龄" />)}
         </FormItem>
         <FormItem label="是否输入性别">
-          {getFieldDecorator("input_sex", {
+          {getFieldDecorator("plan_content", {
             rules: [{ required: true, message: "是否输入性别!" }],
             initialValue:
-              temporaryData != null ? temporaryData.input_sex : ""
+              temporaryData != null ? temporaryData.plan_content : ""
           })(<Input placeholder="是否输入性别" />)}
         </FormItem>
         <FormItem label="结果">
-          {getFieldDecorator("plan_result", {
+          {getFieldDecorator("plan_creator", {
             rules: [{ required: true, message: "结果!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_result : ""
+            initialValue:
+              temporaryData != null ? temporaryData.plan_creator : ""
           })(<Input placeholder="结果" />)}
         </FormItem>
         <FormItem label="结果1">
-          {getFieldDecorator("plan_result1", {
+          {getFieldDecorator("is_main", {
             rules: [{ required: true, message: "结果1!" }],
-            initialValue: temporaryData != null ? temporaryData.plan_result1 : ""
+            initialValue: temporaryData != null ? temporaryData.is_main : ""
           })(<Input placeholder="结果1" />)}
-        </FormItem>
-        <FormItem label="结果2">
-          {getFieldDecorator("plan_result2", {
-            rules: [{ required: true, message: "结果2!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.plan_result2 : ""
-          })(<Input placeholder="结果2" />)}
-        </FormItem>
-        <FormItem label="结果3">
-          {getFieldDecorator("plan_result3", {
-            rules: [{ required: true, message: "结果3!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.plan_result3 : ""
-          })(<Input placeholder="结果3" />)}
         </FormItem>
       </Form>
     );
