@@ -58,8 +58,10 @@ function insertImplement(req) {
 }
 // 添加健身计划
 function insertPlan(req) {
-    var sql = 'insert into food (food_name, sort_id ,food_pic,food_hots,food_protein,protein_account,food_carbohydrate,carbohydrate_account,food_fat,fat_account,measure_unit,measure_calorie,food_description,is_main) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-    var reqParam = [req.body.food_name, req.body.sort_id, req.body.food_pic, req.body.food_hots, req.body.food_protein, req.body.protein_account, req.body.food_carbohydrate, req.body.carbohydrate_account, req.body.food_fat, req.body.fat_account, req.body.measure_unit, req.body.measure_calorie, req.body.food_description, req.body.is_main]
+    console.log(req.body);
+    // plan_name,plan_aim,plan_day, plan_implement, plan_body,plan_pic, plan_description, plan_content, plan_creator,is_main
+    var sql = 'insert into plan ( plan_name,plan_aim,plan_day, plan_implement, plan_body,plan_pic, plan_description, plan_content, plan_creator,is_main) values (?,?,?,?,?,?,?,?,?,?)';
+    var reqParam = [req.body.plan_name, req.body.plan_aim, req.body.plan_day, req.body.plan_implement, req.body.plan_body, req.body.plan_pic, req.body.plan_description, req.body.plan_content, req.body.plan_creator, req.body.is_main]
     return new Promise((resolve, reject) => {
         pool.query(sql, reqParam, function (errors, results) {
             if (results) {

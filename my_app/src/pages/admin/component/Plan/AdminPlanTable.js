@@ -35,7 +35,7 @@ class AdminPlanTable extends Component {
       return [item.plan_id];
     });
     console.log(planDetailHandled);
-
+    //扩展表格
     const expandeRow = record => {
       var detail = [];
       for (var i = 0; i < planDetailHandled.length; i++) {
@@ -232,13 +232,13 @@ const mapDispatchToProps = dispatch => ({
   handleOK(_self) {
     _self.child.props.form.validateFields((err, values) => {
       if (!err) {
-        if (_self.props.temporaryData.health_id != null) {
+        if (_self.props.temporaryData.plan_id != null) {
           console.log("修改");
-          values.health_id = _self.props.temporaryData.health_id;
-          dispatch(actionCreator.updateHealthMessage(values));
+          values.plan_id = _self.props.temporaryData.plan_id;
+          dispatch(actionCreator.updatePlanMessage(values));
         } else {
           console.log("添加");
-          dispatch(actionCreator.insertHealthMessage(values));
+          dispatch(actionCreator.insertPlanMessage(values));
         }
       }
     });

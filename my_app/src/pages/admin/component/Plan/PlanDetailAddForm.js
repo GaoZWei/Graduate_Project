@@ -53,26 +53,6 @@ class PlanAddFormItem extends Component {
               temporaryData != null ? temporaryData.plan_description : ""
           })(<Input placeholder="请输入健身计划描述" />)}
         </FormItem>
-        <FormItem label="请输入健身计划内容">
-          {getFieldDecorator("plan_content", {
-            rules: [{ required: true, message: "请输入健身计划内容!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.plan_content : ""
-          })(<Input placeholder="请输入健身计划内容" />)}
-        </FormItem>
-        <FormItem label="请输入健身计划创建者">
-          {getFieldDecorator("plan_creator", {
-            rules: [{ required: true, message: "请输入健身计划创建者!" }],
-            initialValue:
-              temporaryData != null ? temporaryData.plan_creator : ""
-          })(<Input placeholder="请输入健身计划创建者" />)}
-        </FormItem>
-        <FormItem label="是否为主页">
-          {getFieldDecorator("is_main", {
-            rules: [{ required: true, message: "是否为主页!" }],
-            initialValue: temporaryData != null ? temporaryData.is_main : ""
-          })(<Input placeholder="是否为主页" />)}
-        </FormItem>
       </Form>
     );
   }
