@@ -23,13 +23,17 @@ class Implement extends Component {
               {implementList.map((item, index) => {
                 return (
                   <Col span={12} key={index}>
-                    <Link
-                      to={"/implement/" + item.get("implement_id")}
-                    >
+                    <Link to={"/implement/" + item.get("implement_id")}>
                       <div className="implement_item">
                         <Col span={2} />
-                        <Col span={6}>左侧图片
-                       { item.get("implement_id")}
+                        <Col span={6}>
+                          <br />
+                          <img
+                            src={item.get("implement_pic")}
+                            alt="左侧图片"
+                            width="60%"
+                            height="100%"
+                          />
                         </Col>
                         <Col span={16}>
                           <div className="implement_topic">
