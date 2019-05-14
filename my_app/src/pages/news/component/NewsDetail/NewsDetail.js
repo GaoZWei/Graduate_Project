@@ -46,7 +46,7 @@ class NewsDetail extends Component {
                     {/* <img src /> */}
                     -------------照 片------------
                   </div>
-                  <div className="news_detail_p_last">
+                  {/* <div className="news_detail_p_last">
                     小编今天就给大家推荐一组训练，不妨一起来了解一下吧。
                   </div>
                   <div className="news_detail_content_bottom_content">
@@ -76,7 +76,7 @@ class NewsDetail extends Component {
                         </div>
                       </Col>
                     </Row>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             );

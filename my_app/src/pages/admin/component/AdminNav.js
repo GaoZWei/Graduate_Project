@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import { actionCreator } from "../store";
 import { Layout, Menu, Popconfirm } from "antd";
 import "../style.css";
 const { Header } = Layout;
@@ -20,7 +19,9 @@ class AdminNav extends Component {
       selectValue1 = "4";
     } else if (recent_path1.indexOf("/implement") > -1) {
       selectValue1 = "5";
-    } 
+    } else {
+      selectValue1 = "1";
+    }
     return (
       <Header className="navHead">
         <div className="logo">
