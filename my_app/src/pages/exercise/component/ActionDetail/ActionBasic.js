@@ -21,6 +21,17 @@ class ActionBasic extends Component {
         {detailList.map((item, index) => {
           return (
             <div key={index}>
+              <div style={{ border: "1px solid yellow" }} key={index}>
+                <video
+                  id="my-video"
+                  controls
+                  preload="auto"
+                  width="100%"
+                  height="20%"
+                >
+                  <source src={item.get("exercise_video")} type="video/mp4" />
+                </video>
+              </div>
               <div className="action_basic">
                 <div className="action_title">{item.get("exercise_name")}</div>
                 <hr className="action_underline" />

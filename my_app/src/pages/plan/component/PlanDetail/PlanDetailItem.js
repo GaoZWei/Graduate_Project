@@ -14,7 +14,7 @@ class PlanDetailItem extends Component {
           return (
             <div className="plan_detail_area" key={index}>
               <div className="plan_detail_head">
-                <img src={item.get("plan_pic")} alt="" />
+                <img src={item.get("plan_pic_first")} alt="" />
               </div>
               <div className="plan_detail_first">
                 <div className="plan_detail_first_title">
