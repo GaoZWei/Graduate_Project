@@ -1,16 +1,35 @@
 import React, { Component } from "react";
-import testVideo from "../../../../statics/exercise.mp4";
+import { connect } from "react-redux";
 class ActionVideo extends Component {
   render() {
+    const { detailList } = this.props;
     return (
-      <div
-        style={{ border: "1px solid yellow" }}
-      >
-        <video id="my-video" controls preload="auto" width="100%" height="20%">
-          <source src={testVideo} type="video/mp4" />
-        </video>
+      <div>
+        {detailList.map((item, index) => {
+          return (
+            <div style={{ border: "1px solid yellow" }} key={index}>
+              <video
+                id="my-video"
+                controls
+                preload="auto"
+                width="100%"
+                height="20%"
+              >
+                <source src={item.get("exercise_video")} type="video/mp4" />
+              </video>
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
-export default ActionVideo;
+
+const mapStateToProps = state => ({
+  detailList: state.getIn(["exercise", "detailList"])
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(ActionVideo);

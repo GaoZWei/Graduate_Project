@@ -5,8 +5,6 @@ import { withRouter, Link } from "react-router-dom";
 import { Col, Row, Button, Divider, Modal } from "antd";
 import "../../style.css";
 import ActionForm from "./ActionForm";
-import num01 from "../../../../statics/01.jpg";
-import num02 from "../../../../statics/02.jpg";
 import num001 from "../../../../statics/001.png";
 import num002 from "../../../../statics/002.png";
 class ActionBasic extends Component {
@@ -30,7 +28,7 @@ class ActionBasic extends Component {
                   <Row>
                     <span className="action_type">类型:</span>
                     <span className="action_type_sort">
-                      上肢 
+                      上肢
                       {/* {item.get("exercise_sort")} */}
                     </span>
                     <Divider
@@ -43,7 +41,7 @@ class ActionBasic extends Component {
                     />
                     <span className="action_main">主要肌肉群:</span>
                     <span className="action_main_sort">
-                     {item.get("sort_name")}
+                      {item.get("sort_name")}
                     </span>
                   </Row>
                   <Row>
@@ -68,7 +66,7 @@ class ActionBasic extends Component {
                   <Row>
                     <span className="action_implement">器械要求:</span>
                     <span className="action_implement_sort">
-                   {item.get("exercise_implement_name")}
+                      {item.get("exercise_implement_name")}
                     </span>
                   </Row>
                 </div>
@@ -78,17 +76,17 @@ class ActionBasic extends Component {
                 <div className="action_main_pic">
                   <Row>
                     <Col span={10}>
-                      <img src={num01} alt="" />
+                      <img src={item.get("exercise_pic_first")} alt="" />
                       <br />
-                      <p>1、挺胸收腹，躯干与地面平行</p>
+                      {/* <p>1、挺胸收腹，躯干与地面平行</p> */}
                     </Col>
                     <Col span={1} />
                     <Col span={10}>
-                      <img src={num02} alt="" />
+                      <img src={item.get("exercise_pic_second")} alt="" />
                       <br />
-                      <p>
+                      {/* <p>
                         2、双手与肩同宽，始终保持腰背挺直，控制肘部紧贴身体两侧
-                      </p>
+                      </p> */}
                     </Col>
                   </Row>
                 </div>
@@ -154,7 +152,7 @@ class ActionBasic extends Component {
 }
 const mapStateToProps = state => ({
   detailList: state.getIn(["exercise", "detailList"]),
-  modelVisible: state.getIn(["exercise", "modelVisible"]),
+  modelVisible: state.getIn(["exercise", "modelVisible"])
 });
 const mapDispatchToProps = dispatch => ({
   getExerciseDetail(exercise_id) {
@@ -174,7 +172,7 @@ const mapDispatchToProps = dispatch => ({
         if (JSON.parse(sessionStorage.getItem("user")) != null) {
           values.exercise_id = _self.props.match.params.exercise_id;
           values.user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
-          // console.log(values); //这里可以拿到数据 
+          // console.log(values); //这里可以拿到数据
           dispatch(actionCreator.addPersonalPlan(values, _self));
         } else {
           _self.props.history.push("/login");

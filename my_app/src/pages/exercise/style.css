@@ -51,6 +51,7 @@
 /* 动作要领图样式 */
 .action_main_pic{
     margin-top: 1%;
+    margin-bottom: 3%;
 }
 .action_main_pic img{
     width:100%;
