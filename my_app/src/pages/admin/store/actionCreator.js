@@ -288,7 +288,7 @@ export const updatePlanMessage = values => {
   console.log(values);
   return dispatch => {
     post("/admin/update/item4", values).then(res => {
-      if ((res = "ok")) {
+      if ((res === "ok")) {
         message.success("修改成功");
         dispatch(getPlanInfo());
       } else {
@@ -302,7 +302,7 @@ export const insertPlanMessage = values => {
   console.log(values);
   return dispatch => {
     post("/admin/insert/item4", values).then(res => {
-      if (res == "ok") {
+      if (res === "ok") {
         message.success("添加成功");
         dispatch(getPlanInfo());
       } else {
@@ -326,7 +326,7 @@ export const hideModal1 = () => ({
 export const updatePlanDetailMessage = values => {
   return dispatch => {
     post("/admin/update/item5", values).then(res => {
-      if (res == "ok") {
+      if (res === "ok") {
         message.success("修改成功");
         dispatch(getPlanInfo());
       } else {
@@ -343,7 +343,7 @@ export const deletePlanDetailMessage = values => {
   console.log(123)
   return dispatch => {
     post("/admin/delete/item5", values).then(res => {
-      if (res == "ok") {
+      if (res === "ok") {
         message.success("删除成功");
         dispatch(getPlanInfo());
       } else {

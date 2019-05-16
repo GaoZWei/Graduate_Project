@@ -71,8 +71,8 @@ class AdminNav extends Component {
         ) : (
           <span>
             <span className="login">
-              <Link to="/login" className="loginRegister_font">
-                登录
+              <Link to="/" className="loginRegister_font">
+                退出登录
               </Link>
             </span>
           </span>

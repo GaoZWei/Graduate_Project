@@ -17,7 +17,7 @@ import NewsDetail from "./pages/news/component/NewsDetail/NewsDetail";
 import Personal from "./pages/personal/index";
 import Implement from "./pages/implement/index";
 import BMI from "./pages/implement/component/ImplementItem/BMI";
-import Admin from "./pages/admin/index";
+// import Admin from "./pages/admin/index";
 import AdminExerciseTable from "./pages/admin/component/Exercise/AdminExerciseTable";
 import AdminPlanTable from "./pages/admin/component/Plan/AdminPlanTable";
 import AdminFoodTable from "./pages/admin/component/Food/AdminFoodTable";

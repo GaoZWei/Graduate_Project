@@ -6,8 +6,8 @@ import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
 import NavBreadcrumb from "../../../common/NavBreadcrumb";
 import "../../style.css";
-import rice from "../../../../statics/rice.jpg";
-import { Layout, Row, Col } from "antd";
+// import rice from "../../../../statics/rice.jpg";
+import { Layout } from "antd";
 class NewsDetail extends Component {
   render() {
     const { detailList } = this.props;
@@ -21,26 +21,31 @@ class NewsDetail extends Component {
           {detailList.map((item, index) => {
             return (
               <div className="news_detail_area" key={index}>
-                <div className="news_detail_title">{item.get('health_title')}</div>
+                <div className="news_detail_title">
+                  {item.get("health_title")}
+                </div>
                 <div className="news_detail_title_under">所属分类:增肌</div>
                 <hr style={{ width: "100%", color: "gray", opacity: "0.3" }} />
                 <div className="news_detail_content">
                   <div className="news_detail_p">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.get('health_content_first')}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {item.get("health_content_first")}
                   </div>
                   <div className="news_detail_img">
                     {/* <img src /> */}
                     ------------照 片-------------
                   </div>
                   <div className="news_detail_p">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.get('health_content_second')}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {item.get("health_content_second")}
                   </div>
                   <div className="news_detail_img">
                     {/* <img src /> */}
                     -------------照 片------------
                   </div>
                   <div className="news_detail_p">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.get('health_content_third')}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {item.get("health_content_third")}
                   </div>
                   <div className="news_detail_img">
                     {/* <img src /> */}
