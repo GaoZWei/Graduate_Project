@@ -25,7 +25,7 @@ class MainMiddleRight extends Component {
                   <Card
                     hoverable
                     style={{ width: "80%", height: "210px", marginTop: "6%" }}
-                    cover={<img alt="example" src={item.get("health_content_first")} />}
+                    cover={<img alt="example" src={item.get("health_img_first")} />}
                     key={item.get("health_id")}
                   >
                     <Meta title={item.get("health_title")} />

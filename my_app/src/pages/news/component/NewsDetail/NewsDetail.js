@@ -32,24 +32,21 @@ class NewsDetail extends Component {
                     {item.get("health_content_first")}
                   </div>
                   <div className="news_detail_img">
-                    {/* <img src /> */}
-                    ------------照 片-------------
+                    <img src={item.get("health_img_first")} alt="first" />
                   </div>
                   <div className="news_detail_p">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {item.get("health_content_second")}
                   </div>
                   <div className="news_detail_img">
-                    {/* <img src /> */}
-                    -------------照 片------------
+                    <img src={item.get("health_img_second")} alt="second" />
                   </div>
                   <div className="news_detail_p">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {item.get("health_content_third")}
                   </div>
                   <div className="news_detail_img">
-                    {/* <img src /> */}
-                    -------------照 片------------
+                    <img src={item.get("health_img_third")} alt="third" />
                   </div>
                   {/* <div className="news_detail_p_last">
                     小编今天就给大家推荐一组训练，不妨一起来了解一下吧。

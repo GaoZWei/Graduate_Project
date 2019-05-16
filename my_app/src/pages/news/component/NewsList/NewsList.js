@@ -33,11 +33,11 @@ class NewsList extends Component {
               pageSize: 3
             }}
             dataSource={newsList}
-            footer={
-              <div>
-                <b>--下 面 没 有 了 呢--</b>
-              </div>
-            }
+            // footer={
+            //   <div>
+            //     <b>--下 面 没 有 了 呢--</b>
+            //   </div>
+            // }
             renderItem={item => (
               <List.Item
                 key={item.get("health_title")}
@@ -50,7 +50,8 @@ class NewsList extends Component {
                   <img
                     width={272}
                     alt="logo"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                    src={item.get("health_img_first")}
+                    alt="first"
                   />
                 }
               >
@@ -59,7 +60,7 @@ class NewsList extends Component {
                     // avatar={<Avatar src={item.avatar} />}
                     // title={<a href={item.href}>{item.title}</a>}
                     title={item.get("health_title")}
-                    description={item.get("health_description")}
+                    description={item.get("health_content_first")}
                   />
                   {item.content}
                 </Link>
