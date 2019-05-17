@@ -6,7 +6,7 @@ import "../../style.css";
 import Nav from "../../../common/Nav";
 import Foot from "../../../common/Foot";
 import ExerciseNav from "../../../common/LeftNavComponent/ExerciseNav";
-import ActionVideo from "./ActionVideo";
+// import ActionVideo from "./ActionVideo";
 import ActionBasic from "./ActionBasic";
 import { Layout, Col, Row } from "antd";
 const { Content } = Layout;
