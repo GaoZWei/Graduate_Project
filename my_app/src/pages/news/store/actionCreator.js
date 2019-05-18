@@ -1,7 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import {
-  fetch
-} from "../../../util/HttpUtil";
+import { fetch } from "../../../util/HttpUtil";
 
 const changehealthData = (AddMuscleData, ReduceFatData, FoodKnowledge) => ({
   type: actionTypes.CHANGE_NEWS_DATA,
@@ -18,11 +16,11 @@ export const changeHealthInfo = () => {
       const ReduceFatData = [];
       const FoodKnowledge = [];
       for (let i = 0; i < res.length; i++) {
-        if (res[i].health_sort === '1') {
+        if (res[i].health_sort === "1") {
           AddMuscleData.push(res[i]);
-        } else if (res[i].health_sort === '2') {
+        } else if (res[i].health_sort === "2") {
           ReduceFatData.push(res[i]);
-        } else if (res[i].health_sort === '3') {
+        } else if (res[i].health_sort === "3") {
           FoodKnowledge.push(res[i]);
         }
       }
@@ -39,7 +37,6 @@ export const getHealthDetail = health_id => {
   return dispatch => {
     fetch("/health/" + health_id).then(res => {
       const result = res;
-      console.log(res)
       dispatch(changeDetailData(result));
     });
   };

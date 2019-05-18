@@ -16,7 +16,7 @@ function getAllHealth(res) {
 // 根据id查询详细health信息
 function getHealthById(req) {
     return new Promise((resolve, reject) => {
-        pool.query('select * from health where health_id=?', [req.params.health_id], function (errors, results) {
+        pool.query('select * from health,health_sort where health.health_sort=health_sort.sort_id and health.health_id=?', [req.params.health_id], function (errors, results) {
             if (results) {
                 resolve(results)
             } else {

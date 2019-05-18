@@ -83,9 +83,8 @@ function deletePlanById(req) {
     );
   });
 }
-//更新plandetail表
+//删除plandetail表
 function deletePlanDetail(req) {
-  console.log(req);
   return new Promise((resolve, reject) => {
     var sql = 'delete from plan_detail where plan_id=? and plan_day=?'
     pool.query(sql, [req.body.plan_id, req.body.plan_day]);

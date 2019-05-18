@@ -24,7 +24,7 @@ class NewsDetail extends Component {
                 <div className="news_detail_title">
                   {item.get("health_title")}
                 </div>
-                <div className="news_detail_title_under">所属分类:增肌</div>
+                <div className="news_detail_title_under">所属分类:{item.get("sort_name")}</div>
                 <hr style={{ width: "100%", color: "gray", opacity: "0.3" }} />
                 <div className="news_detail_content">
                   <div className="news_detail_p">
