@@ -97,7 +97,7 @@ class PersonalCustomize extends Component {
                             &nbsp;&nbsp;&nbsp;
                           </Popconfirm>
                           <Popconfirm
-                            title="确认删除?"
+                            title="确认修改?"
                             onConfirm={() => showModal(tag)}
                           >
                             <Tag color="green">

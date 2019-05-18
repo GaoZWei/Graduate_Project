@@ -9,7 +9,7 @@ class MainMiddleLeft extends Component {
     return (
       <div>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp;热&nbsp;门
+          &nbsp;&nbsp;热门新闻
           <Link to="/" className="more_link">
             查看更多->
           </Link>
@@ -23,7 +23,7 @@ class MainMiddleLeft extends Component {
             dataSource={hotList}
             renderItem={item => (
               <List.Item>
-                <Link to={"/news/" + item.get("health_id")}>
+                <Link to={"/news/" + item.get("health_id")} className="main_a">
                   {item.get("health_title")}
                 </Link>
               </List.Item>

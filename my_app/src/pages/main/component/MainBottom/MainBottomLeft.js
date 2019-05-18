@@ -23,7 +23,7 @@ class MainBottomLeft extends Component {
             dataSource={planList}
             renderItem={item => (
               <List.Item>
-                <Link to={"/plan/" + item.get("plan_id")}>
+                <Link to={"/plan/" + item.get("plan_id")} className="main_a">
                   {item.get("plan_description")}
                 </Link>
               </List.Item>

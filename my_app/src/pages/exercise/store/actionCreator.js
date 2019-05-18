@@ -30,6 +30,12 @@ export const getExerciseDetail = exercise_id => {
   };
 };
 
+//清除动作detail
+export const clearExerciseDetail = () => ({
+  type: actionTypes.CLEAR_DETAIL_DATA,
+  detailList: []
+});
+
 // 搜索动作
 const getSearchData = result => ({
   type: actionTypes.GET_SEARCH_DATA,

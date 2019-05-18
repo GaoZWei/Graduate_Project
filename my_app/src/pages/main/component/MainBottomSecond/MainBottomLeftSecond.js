@@ -23,7 +23,7 @@ class MainBottomLeftSecond extends Component {
             dataSource={foodKnowledgeList}
             renderItem={item => (
               <List.Item>
-                <Link to={"/news/" + item.get("health_id")}>
+                <Link to={"/news/" + item.get("health_id")} className="main_a">
                   {item.get("health_title")}
                 </Link>
               </List.Item>

@@ -157,8 +157,8 @@ class ActionBasic extends Component {
       </div>
     );
   }
-  componentDidMount() {
-    this.props.getExerciseDetail(this.props.match.params.exercise_id);
+  componentWillUnmount() {
+    this.props.clearExerciseDetail();
   }
 }
 const mapStateToProps = state => ({
@@ -166,8 +166,8 @@ const mapStateToProps = state => ({
   modelVisible: state.getIn(["exercise", "modelVisible"])
 });
 const mapDispatchToProps = dispatch => ({
-  getExerciseDetail(exercise_id) {
-    dispatch(actionCreator.getExerciseDetail(exercise_id));
+  clearExerciseDetail() {
+    dispatch(actionCreator.clearExerciseDetail());
   },
   showModal() {
     dispatch(actionCreator.showModal());

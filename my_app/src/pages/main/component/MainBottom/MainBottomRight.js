@@ -10,7 +10,7 @@ class MainBottomRight extends Component {
     return (
       <Fragment>
         <div className="index_middle_content_small_title">
-          &nbsp;&nbsp; 肌 肉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;健身动作
           <Link to="/exercise" className="more_link">
             查看更多->
           </Link>
