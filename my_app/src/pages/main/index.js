@@ -15,7 +15,11 @@ class Main extends Component {
         <MainTop />
         <MainMiddle />
         <hr style={{ width: "90%", color: "gray", opacity: "0.2" }} />
+        <br />
         <MainBottom />
+        <br />
+        <hr style={{ width: "90%", color: "gray", opacity: "0.2" }} />
+        <br />
         <MainBottomSecond />
         <Foot />
       </Layout>
@@ -38,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
     //饮食知识
     dispatch(actionCreator.changeFoodInfo());
     //健康知识
-    dispatch(actionCreator.changeHealthInfo()); 
+    dispatch(actionCreator.changeHealthInfo());
   }
 });
 export default connect(

@@ -10,7 +10,7 @@ class MainMiddleLeft extends Component {
       <div>
         <div className="index_middle_content_small_title">
           &nbsp;&nbsp;热门新闻
-          <Link to="/" className="more_link">
+          <Link to="/news" className="more_link">
             查看更多->
           </Link>
         </div>
