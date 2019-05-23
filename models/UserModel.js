@@ -11,12 +11,17 @@ User.prototype = {
     constructor: User
 }
 
-function PersonalPlan(exercise_groups, exercise_id, exercise_times, plan_day, plan_id) {
+function PersonalPlan(exercise_groups, exercise_id, exercise_times, plan_day, plan_id, exercise_id_pre, plan_id_pre, plan_day_pre, exercise_groups_pre, exercise_times_pre) {
     this.exercise_groups = exercise_groups
     this.exercise_id = exercise_id
     this.exercise_times = exercise_times
     this.plan_day = plan_day
     this.plan_id = plan_id
+    this.exercise_id_pre = exercise_id_pre
+    this.plan_id_pre = plan_id_pre
+    this.plan_day_pre = plan_day_pre
+    this.exercise_groups_pre = exercise_groups_pre
+    this.exercise_times_pre = exercise_times_pre
 }
 PersonalPlan.prototype = {
     constructor: PersonalPlan

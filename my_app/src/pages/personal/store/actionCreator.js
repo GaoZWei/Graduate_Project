@@ -54,11 +54,13 @@ const utilPlan = obj => {
       obj[i].group_name = obj[i].group_exercise_name.split(",");
       obj[i].group_group = obj[i].group_exercise_group.split(",");
       obj[i].group_times = obj[i].group_exercise_times.split(",");
+      obj[i].group_plan_group = obj[i].group_plan_group.split(",");
     } else {
       obj[i].group_id = [];
       obj[i].group_name = [];
       obj[i].group_group = [];
       obj[i].group_times = [];
+      obj[i].group_plan_group = [];
     }
   }
   return obj;
@@ -95,9 +97,15 @@ export const deleteFoodList = (food_id, user_id) => {
 };
 //删除定制计划
 export const deletePersonalPlan = (plan_id, exercise_id, user_id) => {
+  console.log(plan_id, exercise_id, user_id);
   return dispatch => {
     fetch(
-      "/users/delete/item2?plan_id=" + plan_id + "&exercise_id=" + exercise_id
+      "/users/delete/item2?plan_id=" +
+        plan_id +
+        "&exercise_id=" +
+        exercise_id +
+        "&user_id=" +
+        user_id
     ).then(res => {
       if ((res = "ok")) {
         dispatch(getUserBasicMessage(user_id));
@@ -110,10 +118,11 @@ export const deletePersonalPlan = (plan_id, exercise_id, user_id) => {
 };
 
 //显示模态框
-export const showModal = tag => ({
+export const showModal = (index,recordItem) => ({
   type: actionTypes.SHOW_MODAL,
   value: true,
-  tag: tag
+  index: index,
+  recordItem:recordItem
 });
 
 //隐藏模态框
@@ -123,11 +132,11 @@ export const hideModal = () => ({
 });
 
 //更新定制计划
-export const updatePersonalPlan = (values, user_id) => {
+export const updatePersonalPlan = (_self,values, user_id) => {
   return dispatch => {
     post("/users/update/item", values).then(res => {
       if ((res = "ok")) {
-        dispatch(hideModal())
+        dispatch(hideModal());
         message.success("修改成功");
         dispatch(getUserBasicMessage(user_id));
       } else {

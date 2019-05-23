@@ -185,6 +185,7 @@ const mapDispatchToProps = dispatch => ({
           values.user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
           // console.log(values); //这里可以拿到数据
           dispatch(actionCreator.addPersonalPlan(values, _self));
+          dispatch(actionCreator.hideModal());
         } else {
           _self.props.history.push("/login");
         }

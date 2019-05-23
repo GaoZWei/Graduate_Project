@@ -13,7 +13,8 @@ class PersonalCustomize extends Component {
       modelVisible,
       hideModal,
       handleOK,
-      recentExercise_id
+      rowIndex,
+      recordItem
     } = this.props;
     var userPersonalPlanListArr = userPersonalPlanList.toJS();
     const columns = [
@@ -85,20 +86,25 @@ class PersonalCustomize extends Component {
                     })}
                   </Col>
                   <Col>
-                    {record.group_id.map(tag => {
+                    {record.group_id.map((tag, index) => {
                       var random5 = new Date() + Math.random();
                       return (
                         <div key={random5}>
-                          <Popconfirm
+                          {/* <Popconfirm
                             title="确认删除?"
                             onConfirm={() => deleteItem(record, tag)}
+                          > */}
+                          <Tag
+                            color="volcano"
+                            onClick={() => deleteItem(record, tag)}
                           >
-                            <Tag color="volcano">删除</Tag>
-                            &nbsp;&nbsp;&nbsp;
-                          </Popconfirm>
+                            删除
+                          </Tag>
+                          &nbsp;&nbsp;&nbsp;
+                          {/* </Popconfirm> */}
                           <Popconfirm
                             title="确认修改?"
-                            onConfirm={() => showModal(tag)}
+                            onConfirm={() => showModal(index, record)}
                           >
                             <Tag color="green">
                               <a href="/" style={{ color: "green" }}>
@@ -112,21 +118,21 @@ class PersonalCustomize extends Component {
                     })}
                   </Col>
                 </Row>
-                <Modal
-                  title="请修改属性"
-                  visible={modelVisible}
-                  onOk={() => handleOK(this, record, recentExercise_id)}
-                  onCancel={hideModal}
-                  okText="确认"
-                  cancelText="取消"
-                >
-                  <CustomizeForm ref="abc" />
-                </Modal>
               </div>
             )}
             dataSource={userPersonalPlanListArr}
           />
         </div>
+        <Modal
+          title="请修改属性"
+          visible={modelVisible}
+          onOk={() => handleOK(this, recordItem, rowIndex)}
+          onCancel={hideModal}
+          okText="确认"
+          cancelText="取消"
+        >
+          <CustomizeForm ref="abc" />
+        </Modal>
       </div>
     );
   }
@@ -135,20 +141,61 @@ const mapStateToProps = state => ({
   userPersonalPlanList: state.getIn(["personal", "userPersonalPlanList"]),
   modelVisible: state.getIn(["personal", "modelVisible"]),
   hideModal: state.getIn(["personal", "hideModal"]),
-  recentExercise_id: state.getIn(["personal", "recentExercise_id"])
+  rowIndex: state.getIn(["personal", "rowIndex"]),
+  recordItem: state.getIn(["personal", "recordItem"])
 });
 const mapDispatchToProps = dispatch => ({
   deleteItem(record, tag) {
     var user_id = JSON.parse(sessionStorage.getItem("user")).user_id;
-    dispatch(actionCreator.deletePersonalPlan(record.plan_id, tag, user_id));
+    var selectitemIndex = record.group_id.indexOf(tag);
+    var selectPlanId = record.group_plan_group[selectitemIndex];
+    dispatch(actionCreator.deletePersonalPlan(selectPlanId, tag, user_id));
   },
-  showModal(tag) {
-    dispatch(actionCreator.showModal(tag));
+  showModal(index, record) {
+    dispatch(actionCreator.showModal(index, record));
   },
   hideModal() {
     dispatch(actionCreator.hideModal());
   },
-  handleOK(_self, record, recentExercise_id) {
+  handleOK(_self, recordItem, rowIndex) {
+    var record = recordItem.toJS();
+    //原来的数据
+    var selectPlanId = record.group_plan_group[rowIndex];
+    var selectExerciseId = record.group_id[rowIndex];
+    var selectExerciseGroup = record.group_group[rowIndex];
+    var selectExerciseTimes = record.group_times[rowIndex];
+    var plan_day_pre;
+    switch (record.plan_day) {
+      case "星期一":
+        plan_day_pre = 1;
+        break;
+      case "星期二":
+        plan_day_pre = 2;
+        break;
+      case "星期三":
+        plan_day_pre = 3;
+        break;
+      case "星期四":
+        plan_day_pre = 4;
+        break;
+      case "星期五":
+        plan_day_pre = 5;
+        break;
+      case "星期六":
+        plan_day_pre = 6;
+        break;
+      case "星期日":
+        plan_day_pre = 7;
+        break;
+      default:
+        plan_day_pre = 1;
+    }
+    var values = {};
+    values.exercise_id_pre = selectExerciseId;
+    values.plan_id_pre = selectPlanId;
+    values.plan_day_pre = plan_day_pre;
+    values.exercise_groups_pre = selectExerciseGroup;
+    values.exercise_times_pre = selectExerciseTimes;
     //强行操作dom
     var plan_day = document.getElementsByClassName(
       "ant-select-selection-selected-value"
@@ -183,13 +230,13 @@ const mapDispatchToProps = dispatch => ({
       default:
         plan_day = 1;
     }
-    var values = {};
-    values.exercise_id = recentExercise_id;
-    values.plan_id = record.plan_id;
+    //后来的数据
+    values.exercise_id = selectExerciseId;
+    values.plan_id = selectPlanId;
     values.plan_day = plan_day;
     values.exercise_groups = exercise_groups;
     values.exercise_times = exercise_times;
-    dispatch(actionCreator.updatePersonalPlan(values, user_id));
+    dispatch(actionCreator.updatePersonalPlan(_self, values, user_id));
   }
 });
 

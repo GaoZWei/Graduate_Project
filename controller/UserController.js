@@ -51,7 +51,8 @@ function deleteUserPersonalPlanById(req, res, next) {
 }
 
 function updateUserPersonalPlanById(req, res, next) {
-    var plan_detail = new userModel.PersonalPlan(req.body.exercise_groups, req.body.exercise_id, req.body.exercise_times, req.body.plan_day, req.body.plan_id);
+    var plan_detail = new userModel.PersonalPlan(req.body.exercise_groups, req.body.exercise_id, req.body.exercise_times, req.body.plan_day, req.body.plan_id, req.body.exercise_id_pre, req.body.plan_id_pre, req.body.plan_day_pre, req.body.exercise_groups_pre, req.body.exercise_times_pre);
+    console.log(plan_detail)
     UserDao.updateUserPersonalPlanById(plan_detail)
         .then((response) => {
             res.send('ok')

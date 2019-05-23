@@ -6,6 +6,7 @@ import { Button } from "antd";
 class PersonalMessage extends Component {
   render() {
     const { userBasicList } = this.props;
+    console.log(userBasicList.toJS())
     return (
       <div className="personal_message">
         {userBasicList.map((item, index) => {

@@ -4,8 +4,8 @@ var pool = require('../db');
 // 将获取用户基本信息
 function getUserBasicById(req) {
     return new Promise((resolve, reject) => {
-        var sql1 = 'select count(food_id) as food_num from user_food_reflect where user_id=?';
-        var sql2 = 'select count(plan_id) as common_plan_num from user_plan_reflect where user_id=?';
+        var sql1 = 'select count(distinct food_id) as food_num from user_food_reflect where user_id=?';
+        var sql2 = 'select count(distinct plan_id) as common_plan_num from user_plan_reflect where user_id=?';
         var sql3 = 'UPDATE user SET user_common_plan =?, user_food_list = ? WHERE user_id = ?';
         var sql4 = 'select * from user where user_id=?'
         pool.query(sql1 + ';' + sql2 + ';', [req.params.user_id, req.params.user_id], function (errors, results) {
@@ -55,7 +55,7 @@ function getUserPersonalPlanById(req) {
     return new Promise((resolve, reject) => {
         // var sql1 = 'SELECT * from plan_detail where plan_id in (select plan_id from plan where plan_creator=?)';
         // var sql2 = "SELECT * from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) "
-        var sql3 = "SELECT * ,group_concat(plan_detail.exercise_id) as group_exercise_id,group_concat(exercise.exercise_name)  as group_exercise_name ,group_concat(plan_detail.exercise_groups) as group_exercise_group,group_concat(plan_detail.exercise_times) as group_exercise_times from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) GROUP by plan_day"
+        var sql3 = "SELECT * ,group_concat(plan_detail.plan_id) as group_plan_group,group_concat(plan_detail.exercise_id) as group_exercise_id,group_concat(exercise.exercise_name)  as group_exercise_name ,group_concat(plan_detail.exercise_groups) as group_exercise_group,group_concat(plan_detail.exercise_times) as group_exercise_times from plan_detail left JOIN exercise on plan_detail.exercise_id=exercise.exercise_id  where plan_id in (select plan_id from plan where plan_creator=?) GROUP by plan_day"
         pool.query(sql3, [req[0][0][0].user_id], function (errors, results) {
             if (results) {
                 resolve([req, results]);
@@ -67,10 +67,10 @@ function getUserPersonalPlanById(req) {
 }
 //删除用户的定制计划
 function deleteUserPersonalPlanById(req) {
-    console.log(req.query);
     return new Promise((resolve, reject) => {
         var sql1 = 'delete FROM plan_detail where plan_id=? and exercise_id=?';
-        pool.query(sql1, [req.query.plan_id, req.query.exercise_id], function (errors, results) {
+        var sql2 = 'delete from plan where plan_id=? and user_id=?'
+        pool.query(sql1 + ';' + sql2 + ';', [req.query.plan_id, req.query.exercise_id, req.query.plan_id, req.query.user_id], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {
@@ -83,8 +83,8 @@ function deleteUserPersonalPlanById(req) {
 //修改定制计划
 function updateUserPersonalPlanById(plan_detail) {
     return new Promise((resolve, reject) => {
-        var sql3 = "UPDATE plan_detail set plan_day=?,exercise_id=?,exercise_groups=?,exercise_times=? WHERE plan_id=?"
-        pool.query(sql3, [plan_detail.plan_day, plan_detail.exercise_id, plan_detail.exercise_groups, plan_detail.exercise_times, plan_detail.plan_id], function (errors, results) {
+        var sql3 = "UPDATE plan_detail set plan_day=?,exercise_id=?,exercise_groups=?,exercise_times=? where plan_id=? and exercise_id=? and plan_id=? and plan_day=? and exercise_groups=? and exercise_times=?"
+        pool.query(sql3, [plan_detail.plan_day, plan_detail.exercise_id, plan_detail.exercise_groups, plan_detail.exercise_times, plan_detail.plan_id, plan_detail.exercise_id_pre, plan_detail.plan_id_pre, plan_detail.plan_day_pre, plan_detail.exercise_groups_pre, plan_detail.exercise_times_pre], function (errors, results) {
             if (results) {
                 resolve('ok');
             } else {
