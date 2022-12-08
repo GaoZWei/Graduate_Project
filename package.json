@@ -7,11 +7,11 @@
     "both": "concurrently \"npm start\" \"cd my_app && npm start\""
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "concurrently": "^4.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.15.5",
+    "express": "~4.18.2",
     "express-session": "^1.16.1",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
